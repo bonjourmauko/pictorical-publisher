@@ -23,7 +23,8 @@ $ git push origin :[branch] // this will delete the branch in the repo
 to pull changes
 $ git pull origin [branch or master]
 
-*note: you always want to pull changes after an others push
-
-in the very rare case there are conflicts
-$ git mergetool
+<<<<<<< HEAD
+Este es un cambio de mauko
+=======
+Este es el cambio de VICTOR
+>>>>>>> e8e53a8782da9f08edcf747e20988f45449f32d8
