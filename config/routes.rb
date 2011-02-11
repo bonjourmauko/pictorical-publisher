@@ -1,8 +1,12 @@
 PublisherPictoricalCom::Application.routes.draw do
   
+  devise_for :artists
+
   resources :books,   :only => :edit
   resources :artists, :only => :edit
   resources :texts,   :only => [:index, :show]
+  
+  root :to => "texts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

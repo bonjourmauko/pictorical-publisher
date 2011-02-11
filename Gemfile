@@ -29,6 +29,9 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem "devise"
+
 gem "haml"
 gem "haml-rails"
 gem "jquery-rails"
