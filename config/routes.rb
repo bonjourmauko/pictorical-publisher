@@ -1,19 +1,8 @@
 PublisherPictoricalCom::Application.routes.draw do
-  get "books/edit"
-
-  get "artists/edit"
-
-  get "illustrations/create"
-
-  get "illustrations/destroy"
-
-  get "texts/index"
-
-  get "texts/show"
-
-  get "texts/new"
-
-  get "texts/create"
+  
+  resources :books,   :only => :edit
+  resources :artists, :only => :edit
+  resources :texts,   :only => [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
