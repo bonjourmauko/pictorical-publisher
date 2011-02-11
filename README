@@ -18,6 +18,7 @@ $ git checkout master (if not already)
 $ git merge --no-ff [branch]
 $ git branch -d [branch]
 $ git push origin master
+$ git push origin :[branch] // this will delete the branch in the repo
 
 to pull changes
 $ git pull origin [branch or master]
