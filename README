@@ -22,3 +22,5 @@ $ git push origin :[branch] // this will delete the branch in the repo
 
 to pull changes
 $ git pull origin [branch or master]
+
+Este es un cambio de mauko
