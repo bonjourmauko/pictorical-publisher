@@ -5,10 +5,13 @@ to switch from master to a new branch
 $ git checkout -b [branch] master
 
 to switch from master to an existing branch
-$ git checkout master
+$ git checkout [branch]
 
 to push to that branch
 $ git push origin [branch]
+
+to switch from a branch to master
+$ git checkout master
 
 to merge a branch to github
 $ git checkout master (if not already)
