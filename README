@@ -16,5 +16,8 @@ $ git checkout master
 to merge a branch to github
 $ git checkout master (if not already)
 $ git merge --no-ff [branch]
-$ git -d [branch]
-$ git push origin master 
+$ git branch -d [branch]
+$ git push origin master
+
+to pull changes
+$ git pull origin [branch or master]
