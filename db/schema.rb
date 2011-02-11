@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211052705) do
+ActiveRecord::Schema.define(:version => 20110211072558) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110211052705) do
     t.string   "face_picture_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "handshake"
   end
 
   create_table "books", :force => true do |t|
