@@ -1,2 +1,5 @@
 %h1 Texts#index
 %p Find me in app/views/texts/index.html.haml
+- @texts.each do |i|
+  %p
+    = i.title
