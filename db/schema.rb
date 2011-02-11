@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211170950) do
+ActiveRecord::Schema.define(:version => 20110211215621) do
 
   create_table "artists", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20110211170950) do
   create_table "books", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "text_id"
+    t.integer  "artist_id"
   end
 
   create_table "illustrations", :force => true do |t|
@@ -50,14 +52,15 @@ ActiveRecord::Schema.define(:version => 20110211170950) do
     t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "book_id"
   end
 
   create_table "texts", :force => true do |t|
     t.string   "author"
     t.string   "title"
-    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content"
   end
 
 end
