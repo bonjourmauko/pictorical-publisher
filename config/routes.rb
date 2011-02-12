@@ -2,9 +2,13 @@ PublisherPictoricalCom::Application.routes.draw do
   
   devise_for :artists
 
-  resources :books,   :only => :edit
-  resources :artists, :only => :edit
-  resources :texts,   :only => [:index, :show]
+  #resources :books,   :only => :edit
+  #resources :artists, :only => :edit
+  #resources :texts,   :only => [:index, :show]
+  get "books/edit"
+  get "books/edit"
+  get "text/index"
+  get "texts/show"
   
   root :to => "texts#index"
 
