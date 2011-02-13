@@ -4,7 +4,6 @@ class TextsController < ApplicationController
   end
 
   def show
-    @text = Text.first #for test
   end
 
 end
