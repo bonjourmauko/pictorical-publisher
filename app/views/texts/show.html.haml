@@ -5,8 +5,11 @@
 %h2
   = @text.author
 // incluir número de ilustraciones
-illustrate_link
-  = link_to "illustrate this story", :controller => "books", :action => "create", :text_id => @text.id #revisa la sintaxis plz
+
+
+- form_for Book.new do |f|
+  = f.hidden_field :text_id, @text.id
+  = f.submit "illustrate this story"
 
 content
   = @text.content
