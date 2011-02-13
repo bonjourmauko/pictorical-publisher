@@ -1,2 +1,12 @@
-%h1 Texts#show
-%p Find me in app/views/texts/show.html.haml
+%p text#show
+
+%h1
+  = @text.title
+%h2
+  = @text.author
+// incluir número de ilustraciones
+illustrate_link
+  = link_to "illustrate this story", :controller => "books", :action => "create", :text_id => @text.id #revisa la sintaxis plz
+
+content
+  = @text.content
