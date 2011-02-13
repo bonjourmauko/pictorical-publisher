@@ -1,2 +1,19 @@
-%h1 Books#edit
-%p Find me in app/views/books/edit.html.haml
+%p book#edit
+
+%h1
+  = @book.text.title
+%h2
+  = @book.text.author
+// incluir número de ilustraciones
+
+content
+  = link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "cover"
+  = link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "capital" 
+  // hay que revisar como será esto con ajax... esto es un carril mio 
+  
+  = @book.text.content
+
+buttons
+  - form_for @book do |f|
+    = f.hidden_field :status, "review"
+    = f.submit "Publish"
