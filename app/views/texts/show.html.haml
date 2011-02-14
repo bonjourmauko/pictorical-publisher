@@ -1,2 +1,15 @@
-%h1 Texts#show
-%p Find me in app/views/texts/show.html.haml
+%p text#show
+
+%h1
+  = @text.title
+%h2
+  = @text.author
+// incluir número de ilustraciones
+
+
+- form_for Book.new do |f|
+  = f.hidden_field :text_id, @text.id
+  = f.submit "illustrate this story"
+
+content
+  = @text.content

@@ -1,5 +1,5 @@
-%h1 Texts#index
-%p Find me in app/views/texts/index.html.haml
-- @texts.each do |i|
+%p texts#index
+//necesario ordenarlos por algo...
+- @texts.each do |text|
   %p
-    = i.title
+    = link_to text.title, text
