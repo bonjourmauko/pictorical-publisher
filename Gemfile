@@ -36,6 +36,7 @@ gem "haml"
 gem "haml-rails"
 gem "jquery-rails"
 gem "compass"
+gem "simple_form"
 gem "rails3-generators", :group => [:test, :cucumber], :git => "git://github.com/maukoquiroga/rails3-generators.git"
 gem "autotest", :group => [:test, :cucumber]
 gem "autotest-rails-pure", :group => [:test, :cucumber]

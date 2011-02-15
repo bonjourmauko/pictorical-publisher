@@ -1,19 +1,20 @@
 %p book#edit
 
 %h1
-  = @book.text.title
+  // when the relationship is "belongs_to", the proxy to the parent object is singular: "text" instead of "texts"
+  = @book.text[:title]
 %h2
-  = @book.text.author
+  = @book.text[:author]
 // incluir número de ilustraciones
 
-content
-  = link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "cover"
-  = link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "capital" 
+#content
+  -#= link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "cover"
+  -#= link_to "upload cover", :controller => "illustration", :action => "new", :illustration_type => "capital" 
   // hay que revisar como será esto con ajax... esto es un carril mio 
   
-  = @book.text.content
+  = @book.text[:content].html_safe
 
-buttons
-  - form_for @book do |f|
-    = f.hidden_field :status, "review"
-    = f.submit "Publish"
+#buttons
+  -# form_for @book do |f|
+    -#= f.hidden_field :status, "review"
+    -#= f.submit "Publish"

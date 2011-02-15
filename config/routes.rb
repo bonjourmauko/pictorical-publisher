@@ -4,11 +4,13 @@ PublisherPictoricalCom::Application.routes.draw do
 
   #resources :books,   :only => :edit
   #resources :artists, :only => :edit
-  #resources :texts,   :only => [:index, :show]
-  get "books/edit"
-  get "books/edit"
-  get "text/index"
-  get "texts/show"
+  resources :texts
+  resources :books
+  
+  #get "books/edit"
+  #get "books/edit"
+  #get "text/index"
+  #get "texts/show"
   
   root :to => "texts#index"
 

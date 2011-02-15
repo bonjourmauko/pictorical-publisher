@@ -1,15 +1,11 @@
 %p text#show
 
 %h1
-  = @text.title
+  = @text[:title]
 %h2
-  = @text.author
-// incluir número de ilustraciones
+  = @text[:author]
 
-
-- form_for Book.new do |f|
-  = f.hidden_field :text_id, @text.id
-  = f.submit "illustrate this story"
+= link_to "Illustrate this Story!", illustrate_text(@text.id)
 
 #content
-  = @text.content
+  = @text[:content].html_safe
