@@ -30,7 +30,10 @@ gem 'mysql2'
 #   gem 'webrat'
 # end
 
+gem "warden"
 gem "devise"
+gem "hpricot"
+gem "ruby_parser"
 
 gem "haml"
 gem "haml-rails"
