@@ -10,35 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215022009) do
-
-  create_table "artists", :force => true do |t|
-    t.string   "email",                             :default => "", :null => false
-    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                     :default => "", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "country"
-    t.string   "artistic_name"
-    t.string   "face_picture_url"
-    t.boolean  "handshake"
-    t.date     "birthdate"
-    t.string   "paypal_account"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "art_school_name"
-    t.string   "art_school_city"
-    t.string   "art_school_country"
-    t.string   "portfolio_url"
-    t.string   "twitter"
-  end
-
-  add_index "artists", ["email"], :name => "index_artists_on_email", :unique => true
+ActiveRecord::Schema.define(:version => 20110218164021) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at"
@@ -66,6 +38,35 @@ ActiveRecord::Schema.define(:version => 20110215022009) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content"
+    t.string   "source"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                             :default => "", :null => false
+    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                     :default => "", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "country"
+    t.string   "artistic_name"
+    t.string   "face_picture_url"
+    t.boolean  "handshake"
+    t.date     "birthdate"
+    t.string   "paypal_account"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "art_school_name"
+    t.string   "art_school_city"
+    t.string   "art_school_country"
+    t.string   "portfolio_url"
+    t.string   "twitter"
+  end
+
+  add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
 
 end
