@@ -1,2 +1,2 @@
-module ArtistsHelper
+module UsersHelper
 end

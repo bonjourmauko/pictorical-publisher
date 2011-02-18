@@ -1,4 +1,4 @@
-class Artist < ActiveRecord::Base
+class User < ActiveRecord::Base
   has_many :books
   
   # Include default devise modules. Others available are:
