@@ -7,7 +7,7 @@
     = csrf_meta_tag
   %body
     #artist_session
-      - if artist_signed_in?
-        = "#{current_artist.email} | "
-        = link_to "sign out",  destroy_artist_session_path
+      - if user_signed_in?
+        = "#{current_user.email} | "
+        = link_to "sign out",  destroy_user_session_path
     = yield
