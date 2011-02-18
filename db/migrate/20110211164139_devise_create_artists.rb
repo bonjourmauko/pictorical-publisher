@@ -1,7 +1,7 @@
 class DeviseCreateArtists < ActiveRecord::Migration
   def self.up
     
-    drop_table :artists
+    #drop_table :artists
     
     create_table(:artists) do |t|
       t.database_authenticatable :null => false

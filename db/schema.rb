@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110218170142) do
+ActiveRecord::Schema.define(:version => 20110218171646) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20110218170142) do
   end
 
   add_index "books", ["text_id"], :name => "index_books_on_text_id"
-  add_index "books", ["user_id"], :name => "index_books_on_artist_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
   create_table "illustrations", :force => true do |t|
@@ -69,5 +68,6 @@ ActiveRecord::Schema.define(:version => 20110218170142) do
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
 
 end
