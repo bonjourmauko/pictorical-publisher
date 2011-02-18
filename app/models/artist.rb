@@ -3,8 +3,9 @@ class Artist < ActiveRecord::Base
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :database_authenticatable
-
+  devise  :database_authenticatable,
+          :registerable
+          
   attr_accessible :email,
                   :password, 
                   :password_confirmation,
@@ -25,5 +26,23 @@ class Artist < ActiveRecord::Base
                   :art_school_city,
                   :art_school_country,
                   :portfolio_url,
-                  :twitter                  
+                  :twitter 
+  
+  validates :email, 
+            :presence => true,
+            :uniqueness => true, 
+            :format => { 
+              :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+              :on => :create 
+            }
+            
+  validates :password,
+            :presence => true,
+            :confirmation => true
+            
+  validates_presence_of :first_name,
+                        :last_name,
+                        :birthdate,
+                        :country
+  
 end
