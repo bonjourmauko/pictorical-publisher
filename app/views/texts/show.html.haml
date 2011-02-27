@@ -1,6 +1,10 @@
 - title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
 - stylesheets "text"
 - javascripts "text"
+- content_for :navbar do
+  \&larr;
+  = link_to "Choose another story", texts_path
+
 
 #title
   %h1

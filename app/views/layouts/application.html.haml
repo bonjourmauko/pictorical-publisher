@@ -8,8 +8,7 @@
     = csrf_meta_tag
   %body
     #header
-      \&larr;
-      = link_to "Choose another story", texts_path
+      = yield :navbar
       .nav
         #artist_session
           - if user_signed_in?
