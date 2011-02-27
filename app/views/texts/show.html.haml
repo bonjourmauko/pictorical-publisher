@@ -1,64 +1,49 @@
-!!!
-%html
-  %head
-    %title
-      Pictorical, Illustrate
-      = @text[:title]
-      by
-      = @text[:author]
-    %link{:charset => "utf-8", :href => "css/style.css", :media => "screen", :rel => "stylesheet", :title => "no title", :type => "text/css"}/
-    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
-    %script{:src => "JS/javascript.js"}
-  %body
-    #header
-      \&larr;
-      = link_to "Choose another story", texts_path
-      .help
-        = link_to "help@pictorical.com", "help@pictorical.com"
-    #container
-      %h1
-        = @text[:title]
-      %h3
-        = @text[:author]
-        
-      - if User.status = "sample";
-        .total
-          We recommend
-          %span#number_of_illustrations
-          %span.illustrations
-            illustrations
-          for this story
-          %br/
-          .links
-            Remember to follow
-            = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
-          .links
-            To upload your illustrations:
-          .links 
-            1. Name the files following our Artwork Guidelines
-          .links
-            2. Send them, one by one, to
-            = link_to "upload+t#{@text[:id]}@pictorical.com", "mailto:upload+t#{@text[:id]}@pictorical.com"
-      
-      - if User.status = "sample";
-        .total
-          You have to make
-          %span.illustrations only 1
-          sample illustration for this story
-          %br/
-          .links
-            Remember to follow
-            = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
-          .links
-            To upload your sample illustration:
-          .links 
-            1. Name the file following our Artwork Guidelines
-          .links
-            2. Send it to
-            = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"      
+- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+- stylesheets "text"
+- javascripts "text"
 
-
-      #story
-        /
-          = "Source: " + @text.source
-        = @text[:content].html_safe
+#title
+  %h1
+    = @text[:title]
+  %h3
+    = @text[:author]
+#container     
+  - if true  #User.status = "sample";  JUST TO CHECK, UNCOMMENT WHEN user.status exists
+    .total
+      We recommend
+      %span#number_of_illustrations
+      %span.illustrations
+        illustrations
+      for this story
+      %br/
+      .links
+        Remember to follow
+        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
+      .links
+        To upload your illustrations:
+      .links 
+        1. Name the files following our Artwork Guidelines
+      .links
+        2. Send them, one by one, to
+        = link_to "upload+t#{@text[:id]}@pictorical.com", "mailto:upload+t#{@text[:id]}@pictorical.com"
+  
+  - if false #User.status = "sample"; JUST TO CHECK, UNCOMMENT WHEN user.status exists
+    .total
+      You have to make
+      %span.illustrations only 1
+      sample illustration for this story
+      %br/
+      .links
+        Remember to follow
+        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
+      .links
+        To upload your sample illustration:
+      .links 
+        1. Name the file following our Artwork Guidelines
+      .links
+        2. Send it to
+        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"      
+  #story
+    /
+      = "Source: " + @text[:source] unless @text[:source].nil?
+    = @text[:content].html_safe
