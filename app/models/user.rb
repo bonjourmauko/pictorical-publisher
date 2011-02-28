@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
                   :art_school_city,
                   :art_school_country,
                   :portfolio_url,
-                  :twitter 
+                  :twitter,
+                  :status
   
   validates :email, 
             :presence => true,
