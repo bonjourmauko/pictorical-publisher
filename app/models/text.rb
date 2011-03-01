@@ -1,3 +1,4 @@
 class Text < ActiveRecord::Base
-  has_many :books
+  belongs_to  :author
+  has_many    :books
 end
