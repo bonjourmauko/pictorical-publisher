@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                   :last_name,
                   :birthdate,
                   :country,
-                  :handshake,
+                  :terms_of_service,
                   :paypal_account,
                   :artistic_name,
                   :face_picture_url,
@@ -41,9 +41,10 @@ class User < ActiveRecord::Base
             :presence => true,
             :confirmation => true
             
-  validates_presence_of :first_name,
+  validates_presence_of :password_confirmation,
+                        :first_name,
                         :last_name,
                         :birthdate,
-                        :country
-  
+                        :country,
+                        :terms_of_service
 end

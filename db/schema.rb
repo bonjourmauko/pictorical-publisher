@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228232133) do
+ActiveRecord::Schema.define(:version => 20110301032805) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20110228232133) do
     t.string   "country"
     t.string   "artistic_name"
     t.string   "face_picture_url"
-    t.boolean  "handshake"
+    t.boolean  "terms_of_service"
     t.date     "birthdate"
     t.string   "paypal_account"
     t.string   "address_line_one"
