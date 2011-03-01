@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110301034840) do
+ActiveRecord::Schema.define(:version => 20110301172622) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20110301034840) do
     t.string   "art_school_country"
     t.string   "portfolio_url"
     t.string   "twitter"
-    t.string   "status"
+    t.boolean  "status"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true

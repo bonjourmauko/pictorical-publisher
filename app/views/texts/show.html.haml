@@ -10,9 +10,9 @@
   %h1
     = @text[:title]
   %h3
-    = @text[:author]
+    = "#{@text.author_name} #{@text.author_last_name}"
 #container     
-  - if true  #User.status = "sample";  JUST TO CHECK, UNCOMMENT WHEN user.status exists
+  - if current_user[:status]
     .total
       We recommend
       %span#number_of_illustrations
@@ -31,7 +31,7 @@
         2. Send them, one by one, to
         = link_to "upload+t#{@text[:id]}@pictorical.com", "mailto:upload+t#{@text[:id]}@pictorical.com"
   
-  - if false #User.status = "sample"; JUST TO CHECK, UNCOMMENT WHEN user.status exists
+  - if !current_user[:status]
     .total
       You have to make
       %span.illustrations only 1

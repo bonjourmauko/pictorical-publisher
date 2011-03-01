@@ -1,5 +1,5 @@
 %p texts#index
-//necesario ordenarlos por algo...
 - @texts.each do |text|
   %p
-    = link_to text.title, text
+    = link_to text[:title], text
+    = "by #{text.author_name} #{text.author_last_name}"
