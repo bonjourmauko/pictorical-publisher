@@ -18,7 +18,7 @@
       %span.illustrations
         illustrations
       for this story
-      .illustrate= link_to "Illustrate this story", "" # book#create con text_id = @text.id
+      .illustrate= link_to "Illustrate this story", illustrate_text(@text[:id])
 
   
   - if current_user[:tutorial_mode]
