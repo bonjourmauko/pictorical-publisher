@@ -78,6 +78,6 @@ ActiveRecord::Schema.define(:version => 20110301172622) do
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
 
 end

@@ -22,8 +22,18 @@ User.create(
   :country                =>  "Canada"
 )
 
+Author.create(
+  :name => "Edgar Allan",
+  :last_name => "Poe"
+)
+
+Author.create(
+  :name => "Oscar",
+  :last_name => "Wilde"
+)
+
 Text.create(
-  :author                 => "John Jackson",
+  :author_id                 => 1,
   :title                  => "Useless uselessness for you to do nothing",
   :content                => "
 
@@ -51,7 +61,7 @@ Text.create(
 )
 
 Text.create(
-  :author                 => "F. Andreas Hamburger",
+  :author_id                 => 2,
   :title                  => "Debordist image and neotextual narrative",
   :content                => "
   
