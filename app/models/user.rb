@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  after_initialize  :status?
+  after_initialize  :tutorial_mode?
   has_many          :books
 
   devise            :database_authenticatable,
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
                     :art_school_country,
                     :portfolio_url,
                     :twitter,
-                    :status
+                    :tutorial_mode
 
   validates         :email,
                     :presence => true,
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def status?
-    self.status ||= true
+  def tutorial_mode?
+    self.tutorial_mode ||= true
   end
 end

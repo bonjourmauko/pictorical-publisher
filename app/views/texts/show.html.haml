@@ -11,7 +11,7 @@
   %h3
     = "#{@text.author_name} #{@text.author_last_name}"
 #container     
-  - if current_user[:status]
+  - if !current_user[:tutorial_mode]
     .total
       We recommend
       %span#number_of_illustrations
@@ -21,7 +21,7 @@
       .illustrate= link_to "Illustrate this story", "" # book#create con text_id = @text.id
 
   
-  - if !current_user[:status]
+  - if current_user[:tutorial_mode]
     .total
       You have to make
       %span.illustrations only 1
