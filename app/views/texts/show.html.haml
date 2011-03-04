@@ -18,6 +18,7 @@
       %span.illustrations
         illustrations
       for this story
+      .illustrate= link_to "Illustrate this story", "" # book#create con text_id = @text.id
 
   
   - if !current_user[:status]

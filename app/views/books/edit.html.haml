@@ -46,7 +46,9 @@
         1. Name the file following our Artwork Guidelines
       .links
         2. Send it to
-        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"      
+        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"
+        3. When you have sent the pictures, click
+        = link_to "publish my book", "" # a book#review
   #story
     /
       = "Source: " + @text[:source] unless @text[:source].nil?
