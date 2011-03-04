@@ -18,6 +18,7 @@ class BooksController < ApplicationController
     #   user_id = user.id
     #   text_id = el texto que eligió el user (puede ser pasado como parametro books/create?text=123)
     #   book_status = active
+    #   además setea el book.text.status = locked
     #   y muestra el book_edit book#edit
     #   esta acción no tiene vista
     # si el user ya tiene un book con book_status = active se lo manda a su book activo y se le muestra un flash message
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
     # Quién lo llama? El artista
     # Qué hace?
     #   book_status = destroyed
+    #   y setea el book.text.status = available
     #   y muestra la vista book#change 
     
     # no destruir el book por si se arrepienten después
