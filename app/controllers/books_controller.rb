@@ -6,8 +6,22 @@ class BooksController < ApplicationController
   #   book_status = active, review, published, destroyed
   #   book_message : es un mensaje de nosotros al artista si le pedimos que revise su libro (ver "revise")
   
-  def create
+  def new
     
+    active_book = current_user.books.where(:status => 'active').first
+    
+    if active_book.nil?
+      @book = Book.create(:text_id => params[:txt], :user_id => current_user.id)
+      redirect_to :action => "edit", :id => @book.id
+    else
+      redirect_to :action => "edit", :id => active_book.id
+    end
+      
+  end
+  
+  
+  def create
+        
     # Por qué?
     #   El artista crea un libro a partir de un texto
     # Quién lo llama? El artista
