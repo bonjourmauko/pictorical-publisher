@@ -1,5 +1,6 @@
 - title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
 - stylesheets "text"
+- javascripts "text"
 - content_for :navbar do
   \&larr;
   = link_to "Choose another story", texts_path
@@ -18,7 +19,17 @@
       %span.illustrations
         illustrations
       for this story
-
+      %br/
+      .links
+        Remember to follow
+        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
+      .links
+        To upload your illustrations:
+      .links 
+        1. Name the files following our Artwork Guidelines
+      .links
+        2. Send them, one by one, to
+        = link_to "upload+t#{@text[:id]}@pictorical.com", "mailto:upload+t#{@text[:id]}@pictorical.com"
   
   - if !current_user[:status]
     .total

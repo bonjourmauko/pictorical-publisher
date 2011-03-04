@@ -76,6 +76,7 @@ p { margin: 0;}
 
 #story a {display: none;}
 #story .parnum a {display: inline;}
+#story p {margin-bottom: 1em;}
 	  
 #story h1, h2 {
   text-align: center;
