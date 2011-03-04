@@ -40,15 +40,7 @@ class BooksController < ApplicationController
   end
   
   def edit
-    
-    # Por qué?
-    #   Es donde el artista ve su libro activo (y donde podrá subir las ilustracioes)
-    #   el user solo puede editar su book activo, el usuario tiene solo un book activo
-    # Quién lo llama? El Artista
-    # Qué hace?
-    #   muestra la vista books#edit con @text = {book activo del usuario}.text
-    
-    
+    @book = Book.find(params[:id])
   end
   
   def review
