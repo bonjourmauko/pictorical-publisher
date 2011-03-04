@@ -12,26 +12,16 @@
   %h3
     = "#{@text.author_name} #{@text.author_last_name}"
 #container     
-  - if current_user[:status]
+
+  - if !current_user[:tutorial_mode]
     .total
       We recommend
       %span#number_of_illustrations
       %span.illustrations
         illustrations
       for this story
-      %br/
-      .links
-        Remember to follow
-        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
-      .links
-        To upload your illustrations:
-      .links 
-        1. Name the files following our Artwork Guidelines
-      .links
-        2. Send them, one by one, to
-        = link_to "upload+t#{@text[:id]}@pictorical.com", "mailto:upload+t#{@text[:id]}@pictorical.com"
-  
-  - if !current_user[:status]
+
+  - if current_user[:tutorial_mode]
     .total
       You have to make
       %span.illustrations only 1
@@ -47,8 +37,7 @@
       .links
         2. Send it to
         = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"
-        3. When you have sent the pictures, click
-        = link_to "publish my book", "" # a book#review
+
   #story
     /
       = "Source: " + @text[:source] unless @text[:source].nil?
