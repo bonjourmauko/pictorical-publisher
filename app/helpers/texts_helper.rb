@@ -1,6 +1,7 @@
 module TextsHelper
-  def illustrate_text(text_id)
-    @book = Book.create(:text_id => text_id)
-    edit_book_path @book[:id]
+  def illustrate_text_link
+    
+    link_to "illustrate text", :controller => "books", :action => "new", :txt => @text.id
+
   end
 end
