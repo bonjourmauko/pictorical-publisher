@@ -41,6 +41,7 @@ class BooksController < ApplicationController
   
   def edit
     @book = Book.find(params[:id])
+    @text = @book.text
   end
   
   def review
