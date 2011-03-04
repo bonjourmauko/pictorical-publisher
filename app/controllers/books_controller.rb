@@ -7,18 +7,10 @@ class BooksController < ApplicationController
   #   book_message : es un mensaje de nosotros al artista si le pedimos que revise su libro (ver "revise")
   
   def new
-    
-    active_book = current_user.books.where(:status => 'active').first
-    
-    if active_book.nil?
-      @book = Book.create(:text_id => params[:txt], :user_id => current_user.id)
-      redirect_to :action => "edit", :id => @book.id
-    else
-      redirect_to :action => "edit", :id => active_book.id
-    end
-      
-  end
-  
+    @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
+    redirect_to edit_book_path @book[:id]
+    #redirect_to :action => "edit", :id => active_book.id
+  end  
   
   def create
         
