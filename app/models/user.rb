@@ -49,8 +49,9 @@ class User < ActiveRecord::Base
                         #:status
 
   private
-
+  
+  #cambiar a true despues
   def tutorial_mode?
-    self.tutorial_mode ||= true
+    self.tutorial_mode ||= false
   end
 end
