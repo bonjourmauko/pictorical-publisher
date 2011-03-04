@@ -3,4 +3,5 @@ class Text < ActiveRecord::Base
   has_many    :books
   delegate    :name, :last_name, :to => :author, :prefix => true
   scope       :sorted, order('title ASC')
+  
 end
