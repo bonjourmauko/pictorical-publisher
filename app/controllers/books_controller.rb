@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :get_active_book
   before_filter :check_for_active_book, :except => [:new]
   

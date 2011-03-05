@@ -1,6 +1,11 @@
 class TextsController < ApplicationController
   respond_to :html
+<<<<<<< HEAD
+  before_filter :check_for_active_book
+=======
+  before_filter :authenticate_user!
   before_filter :get_active_book, :only => [:show, :index]
+>>>>>>> f2104ae053f7447951d0831e545604ab574c05fb
   before_filter :find_text_by_id, :only => [:show, :edit, :update, :destroy]
   
   def index
