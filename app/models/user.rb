@@ -56,7 +56,12 @@ class User < ActiveRecord::Base
   end
   
   def is_admin?
-    self.admin ||= false
+    self.admin ||=
+      if User.all.first.nil?
+        true
+      else
+        false
+      end
   end
   
 end
