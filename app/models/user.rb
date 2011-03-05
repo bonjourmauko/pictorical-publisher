@@ -50,8 +50,10 @@ class User < ActiveRecord::Base
                         :country,
                         :terms_of_service
 
-  validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
-  
+  if !Invitations.nil?
+    validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
+  end
+
   private
   
   #cambiar a true despues
