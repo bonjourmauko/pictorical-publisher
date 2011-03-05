@@ -1,6 +1,5 @@
 class TextsController < ApplicationController
   respond_to :html
-  before_filter :authenticate_user!
   before_filter :check_for_active_book
   before_filter :find_text_by_id, :only => [:show, :edit, :update, :destroy]
   
