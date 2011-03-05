@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       :on => :create
                     }
+                    
+                    
 
   validates         :password,
                     :presence => true,
@@ -48,6 +50,8 @@ class User < ActiveRecord::Base
                         :country,
                         :terms_of_service
 
+  validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
+  
   private
   
   #cambiar a true despues
