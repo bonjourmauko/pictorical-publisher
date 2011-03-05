@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_for_active_book
   
   # nuevas columnas:
   
@@ -7,9 +8,12 @@ class BooksController < ApplicationController
   #   book_message : es un mensaje de nosotros al artista si le pedimos que revise su libro (ver "revise")
   
   def new
-    @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
-    redirect_to edit_book_path @book[:id]
-    #redirect_to :action => "edit", :id => active_book.id
+    if @active_book.nil?
+      @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
+      redirect_to edit_book_path @book[:id]
+    else
+      redirect_to edit_book_path @active_book[:id]
+    end
   end  
   
   def create
@@ -31,26 +35,10 @@ class BooksController < ApplicationController
     
   end
   
-  def change
-    
-    active_book = current_user.books.where(:status => 'active').first
-    
-    active_book.status = "destroyed"
-    active_book.save
-    
+  def change    
+    @active_book.status = "destroyed"
+    @active_book.save
     redirect_to :action => "new", :text_id => params[:text_id]
-    
-    
-    # Por qué?
-    #   El artista quiere cambiar de libro
-    # Quién lo llama? El artista
-    # Qué hace?
-    #   book_status = destroyed
-    #   y setea el book.text.status = available
-    #   y muestra la vista book#change 
-    
-    # no destruir el book por si se arrepienten después
-
   end
   
   def edit
@@ -90,9 +78,12 @@ class BooksController < ApplicationController
     #   book_message = un texto que explique que tiene que cambiar
     #   envía un mail con "you have to change the following stuff:" y book_message
     
+  end  
+  
+  private
+  
+  def check_for_active_book
+    @active_book = current_user.books.where(:status => 'active').first
   end
-  
-  
-  
   
 end
