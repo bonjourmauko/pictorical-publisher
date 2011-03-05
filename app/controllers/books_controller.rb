@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_for_active_book
+  before_filter :get_active_book
+  before_filter :check_for_active_book, :except => [:new]
   
   # nuevas columnas:
   
@@ -28,23 +29,26 @@ class BooksController < ApplicationController
   end
   
   def review
+    
     @active_book.status = "review"
     @active_book.save
-    redirect_to texts_path
+
   end
   
   def publish
     
-    # Por qué?
-    #   El libro ya fue publicado
-    # Quién lo llama? Pictorical
-    # Qué hace?
-    #   book_status = published
-    #   envía un email "hell yeah! your book is published"
+    @book = Book.find(params[:id])
+    @book.status = "review"
+    @book.save
     
   end
   
   def revise
+    
+    @book = Book.find(params[:id])
+    @book.status = "active"
+    @book.save
+    
     
     # Por qué?
     #   Si el artista tiene que reenviar una ilustración (porque se equivocó en el formato, por ejemplo)
@@ -59,8 +63,12 @@ class BooksController < ApplicationController
   
   private
   
-  def check_for_active_book
+  def get_active_book
     @active_book = current_user.books.where(:status => 'active').first
   end
   
+  def check_for_active_book
+    redirect_to texts_path if @active_book.nil?
+  end
+    
 end

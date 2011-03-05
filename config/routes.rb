@@ -9,8 +9,10 @@ PublisherPictoricalCom::Application.routes.draw do
   resources :users
   resources :texts 
   
-  match "books/change"
+  match "books/change", :to => "books#change", :as => :change_book
   match "books/review", :to => "books#review", :as => :review_book
+  match "books/publish/:id", :to => "books#publish"
+  match "books/review/:id", :to => "books#review"
   
   resources :books
     
