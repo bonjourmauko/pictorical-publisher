@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many          :books
   after_initialize  :tutorial_mode?
-  after_initialize  :is_admin?
+  after_initialize  :admin_or_artist
 
   devise            :database_authenticatable,
                     :registerable
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
                         :country,
                         :terms_of_service
 
-  validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
+  validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist", :unless => :admin?
 
   private
   
@@ -58,8 +58,21 @@ class User < ActiveRecord::Base
     self.tutorial_mode ||= false
   end
   
-  def is_admin?
-    self.admin ||= false
+  def admin_or_artist
+    self.admin ||=
+      if User.all.first.nil?
+        true
+      else
+        false
+      end
+  end
+  
+  def admin?
+    if User.all.first.nil?
+      true
+    else
+      false
+    end
   end
   
 end
