@@ -33,6 +33,14 @@ class BooksController < ApplicationController
   
   def change
     
+    active_book = current_user.books.where(:status => 'active').first
+    
+    active_book.status = "destroyed"
+    active_book.save
+    
+    redirect_to :action => "new", :text_id => params[:text_id]
+    
+    
     # Por qué?
     #   El artista quiere cambiar de libro
     # Quién lo llama? El artista

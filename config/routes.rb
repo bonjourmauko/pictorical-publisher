@@ -8,7 +8,11 @@ PublisherPictoricalCom::Application.routes.draw do
 
   resources :users
   resources :texts
+
+  match "books/change", :to => "books#change", :via => "get"
+
   resources :books
+  
     
   root :to => "texts#index"
 
