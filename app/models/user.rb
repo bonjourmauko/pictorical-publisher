@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  after_initialize  :tutorial_mode?
+  has_and_belongs_to_many :roles
   has_many          :books
+  after_initialize  :tutorial_mode?
 
   devise            :database_authenticatable,
                     :registerable
