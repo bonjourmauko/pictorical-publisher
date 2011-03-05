@@ -1,7 +1,7 @@
 class TextsController < ApplicationController
   respond_to :html
   before_filter :authenticate_user!
-  before_filter :check_for_active_book
+  before_filter :get_active_book, :only => [:show, :index]
   before_filter :find_text_by_id, :only => [:show, :edit, :update, :destroy]
   
   def index
@@ -17,14 +17,28 @@ class TextsController < ApplicationController
   
   def create
     @text = Text.new(params[:text])
-    @text.save
+    
+      if @text.save
+        redirect_to @text, :notice => 'Text was successfully created.'
+      else
+        render :action => "new"
+      end
+    
   end
   
   def edit
   end
   
   def update
-    @text.update_attributes(params[:text])
+    
+    @text = Text.find(params[:id])
+    
+    if @text.update_attributes(params[:text])
+      redirect_to @text, :notice => 'Text was successfully updated.'
+    else
+      render :action => "edit"
+    end
+    
   end
   
   def destroy
@@ -33,7 +47,7 @@ class TextsController < ApplicationController
   
   private
   
-  def check_for_active_book
+  def get_active_book
     @active_book = current_user.books.where(:status => 'active').first
   end
   
