@@ -5,8 +5,7 @@ PublisherPictoricalCom::Application.routes.draw do
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
 
-  #match "hello", :to => "devise/registrations#new"
-
+  
 
   devise_for :users
 
