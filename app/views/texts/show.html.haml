@@ -42,3 +42,8 @@
     /
       = "Source: " + @text[:source] unless @text[:source].nil?
     = @text[:content].html_safe
+  #admin
+    admin: 
+    = link_to "edit text", :action => "edit"
+    | 
+    = link_to "new text", :action => "new"
