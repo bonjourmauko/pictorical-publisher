@@ -1,0 +1,24 @@
+= form_for @invitation do |f|
+  - if @invitation.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@invitation.errors.count, "error")
+        prohibited this invitation from being saved:
+      %ul
+        - @invitation.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    .title= f.label :first_name
+    .field= f.text_field :first_name
+  .field
+    .title= f.label :last_name
+    .field= f.text_field :last_name
+  .field
+    .title= f.label :email
+    .field= f.text_field :email
+  .field
+    .title= f.label :specially
+    .field= f.text_field :specially
+    
+  .actions
+    = f.submit

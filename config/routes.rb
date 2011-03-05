@@ -1,6 +1,5 @@
 PublisherPictoricalCom::Application.routes.draw do
   
-  resources :invitations
 
   get "authors/index"
 
@@ -11,6 +10,7 @@ PublisherPictoricalCom::Application.routes.draw do
   resources :users
   resources :texts 
   resources :authors
+  resources :invitations
   
   match "books/change", :to => "books#change", :as => :change_book
   match "books/review", :to => "books#review", :as => :review_book

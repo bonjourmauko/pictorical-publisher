@@ -1,0 +1,6 @@
+%p Invitations
+- @invitations.each do |invitation|
+  %p
+    = link_to "#{invitation.first_name} #{invitation.last_name}", invitation
+#admin
+  = link_to "new invitation", :action => "new"
