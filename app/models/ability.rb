@@ -5,5 +5,6 @@ class Ability
 
     user ||= User.new
     
+    
   end
 end
