@@ -1,9 +1,10 @@
 - title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
-- stylesheets "text"
 - content_for :navbar do
   \&larr;
   = link_to "Choose another story", texts_path
 
+#notice
+  = notice
 
 #title
   %h1
@@ -40,3 +41,8 @@
     /
       = "Source: " + @text[:source] unless @text[:source].nil?
     = @text[:content].html_safe
+  #admin
+    admin: 
+    = link_to "edit text", :action => "edit"
+    | 
+    = link_to "new text", :action => "new"

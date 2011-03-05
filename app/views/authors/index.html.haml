@@ -1,2 +1,4 @@
-%h1 Authors#index
-%p Find me in app/views/authors/index.html.haml
+%p Authors
+- @authors.each do |author|
+  %p
+    = link_to "#{author.last_name}, #{author.name}", author

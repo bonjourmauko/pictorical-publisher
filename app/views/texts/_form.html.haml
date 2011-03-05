@@ -1,0 +1,26 @@
+= form_for @text do |f|
+  - if @text.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@text.errors.count, "error")
+        prohibited this text from being saved:
+      %ul
+        - @text.errors.full_messages.each do |msg|
+          %li= msg
+  .field_container
+    .title= f.label :title
+    .field= f.text_field :title
+  .field_container
+    .title= f.label :author_id
+    .field= collection_select(:text, :author_id, Author.all, :id, :name_with_initial, :prompt => true)
+    = link_to "add new author", :controller => "authors", :action => "new"
+  .field_container
+    .title= f.label :source
+    .field= f.text_field :source
+  .field_container
+    .title= f.label :content
+    .field= f.text_area :content
+    
+    
+  .actions
+    = f.submit
