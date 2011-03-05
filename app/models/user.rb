@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many          :books
   after_initialize  :tutorial_mode?
+  after_initialize  :is_admin?
 
   devise            :database_authenticatable,
                     :registerable
@@ -26,8 +27,7 @@ class User < ActiveRecord::Base
                     :art_school_city,
                     :art_school_country,
                     :portfolio_url,
-                    :twitter,
-                    :tutorial_mode
+                    :twitter
 
   validates         :email,
                     :presence => true,
@@ -46,8 +46,7 @@ class User < ActiveRecord::Base
                         :last_name,
                         :birthdate,
                         :country,
-                        :terms_of_service#,
-                        #:status
+                        :terms_of_service
 
   private
   
@@ -55,4 +54,9 @@ class User < ActiveRecord::Base
   def tutorial_mode?
     self.tutorial_mode ||= false
   end
+  
+  def is_admin?
+    self.admin ||= false
+  end
+  
 end

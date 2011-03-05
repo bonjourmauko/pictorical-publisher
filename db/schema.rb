@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110305030758) do
+ActiveRecord::Schema.define(:version => 20110305051859) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -39,17 +39,6 @@ ActiveRecord::Schema.define(:version => 20110305030758) do
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-  end
 
   create_table "texts", :force => true do |t|
     t.string   "title"
@@ -88,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20110305030758) do
     t.string   "portfolio_url"
     t.string   "twitter"
     t.boolean  "tutorial_mode"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
