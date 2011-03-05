@@ -1,5 +1,9 @@
 class InvitationsController < ApplicationController
   
+  # actions where artists have access to
+  # ninguna
+  
+  
   def index
     @invitations = Invitation.sorted.all
   end
@@ -14,7 +18,7 @@ class InvitationsController < ApplicationController
   
   def create
     @invitation = Invitation.new(params[:invitation])
-    
+    @invitation.secret = Digest::SHA1.hexdigest("#{Time.now.to_s}")[0,10]
       if @invitation.save
         redirect_to @invitation, :notice => 'Invitation was successfully created.'
       else
@@ -42,8 +46,7 @@ class InvitationsController < ApplicationController
   def destroy
     @invitation.destroy
   end
-  
-  
+
   
   
   

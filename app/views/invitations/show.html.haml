@@ -3,6 +3,7 @@
 %p= "#{@invitation.first_name} #{@invitation.last_name}"
 %p= "#{@invitation.email}"
 %p= "...#{@invitation.specially}"
+%p= "secret: #{@invitation.secret}"
 #admin
   admin: 
   = link_to "edit invitation", :action => "edit"

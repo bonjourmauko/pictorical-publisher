@@ -3,11 +3,15 @@ class TextsController < ApplicationController
   before_filter :get_active_book, :only => [:show, :index]
   before_filter :find_text_by_id, :only => [:show, :edit, :update, :destroy]
   
+  # actions where artists have access to
+  # index
+  # show
+  
   def index
     @texts = Text.sorted.all
   end
 
-  def show
+  def show  
   end
   
   def new
