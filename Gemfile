@@ -32,6 +32,7 @@ gem 'mysql2'
 
 gem "warden"
 gem "devise"
+gem "cancan"
 gem "hpricot"
 gem "ruby_parser"
 
