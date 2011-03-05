@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :roles
   has_many          :books
   after_initialize  :tutorial_mode?
   after_initialize  :is_admin?
@@ -50,9 +49,7 @@ class User < ActiveRecord::Base
                         :country,
                         :terms_of_service
 
-  if !Invitations.nil?
-    validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
-  end
+  validates_inclusion_of :email, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"
 
   private
   
