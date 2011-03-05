@@ -14,25 +14,11 @@ class BooksController < ApplicationController
     else
       redirect_to edit_book_path @active_book[:id]
     end
-  end  
+  end
   
-  def create
-        
-    # Por qué?
-    #   El artista crea un libro a partir de un texto
-    # Quién lo llama? El artista
-    # Qué hace?
-    # si el user no tiene un book con book_status = active
-    # entonces:
-    #   crea un book con
-    #   user_id = user.id
-    #   text_id = el texto que eligió el user (puede ser pasado como parametro books/create?text=123)
-    #   book_status = active
-    #   además setea el book.text.status = locked
-    #   y muestra el book_edit book#edit
-    #   esta acción no tiene vista
-    # si el user ya tiene un book con book_status = active se lo manda a su book activo y se le muestra un flash message
-    
+  def edit
+    @book = Book.find(params[:id])
+    @text = @book.text
   end
   
   def change    
@@ -41,19 +27,10 @@ class BooksController < ApplicationController
     redirect_to :action => "new", :text_id => params[:text_id]
   end
   
-  def edit
-    @book = Book.find(params[:id])
-    @text = @book.text
-  end
-  
   def review
-    
-    # Por qué?
-    #   el artista termina de subit las ilustraciones y apreta un botón "publish" al final de book#edit
-    # Qué hace?
-    #   book_status = review
-    #   muestra la vista books#review y manda un mail "your book is under review"
-    
+    @active_book.status = "review"
+    @active_book.save
+    redirect_to texts_path
   end
   
   def publish

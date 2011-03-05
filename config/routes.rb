@@ -7,12 +7,12 @@ PublisherPictoricalCom::Application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :texts
-
-  match "books/change"
-
-  resources :books
+  resources :texts 
   
+  match "books/change"
+  match "books/review", :to => "books#review", :as => :review_book
+  
+  resources :books
     
   root :to => "texts#index"
 
