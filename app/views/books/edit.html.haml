@@ -1,8 +1,12 @@
-- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+- title "Pictorical, Illustrate #{@text[:title]} by #{@text.author_name} #{@text.author_last_name}"
 - stylesheets "text"
+- javascripts "text"
 - content_for :navbar do
   \&larr;
   = link_to "Choose another story", texts_path
+  = "·"
+  = "Have you finished illustrating this story? If so"
+  = link_to "send it to review", review_book_path
 
 
 #title
@@ -11,6 +15,7 @@
   %h3
     = "#{@text.author_name} #{@text.author_last_name}"
 #container     
+
   - if !current_user[:tutorial_mode]
     .total
       We recommend
@@ -18,8 +23,7 @@
       %span.illustrations
         illustrations
       for this story
-      .illustrate= illustrate_or_change
-  
+
   - if current_user[:tutorial_mode]
     .total
       You have to make
@@ -35,7 +39,8 @@
         1. Name the file following our Artwork Guidelines
       .links
         2. Send it to
-        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"      
+        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"
+
   #story
     /
       = "Source: " + @text[:source] unless @text[:source].nil?

@@ -18,7 +18,12 @@
       %span.illustrations
         illustrations
       for this story
-      .illustrate= illustrate_or_change
+<<<<<<< HEAD
+      .illustrate= #link_to "Illustrate this story", illustrate_text(@text[:id], current_user[:id])
+=======
+      .illustrate= illustrate_text_link
+>>>>>>> creacon
+
   
   - if current_user[:tutorial_mode]
     .total

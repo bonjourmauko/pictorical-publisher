@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110301172622) do
+ActiveRecord::Schema.define(:version => 20110305002636) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110301172622) do
     t.datetime "updated_at"
     t.integer  "text_id"
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "books", ["text_id"], :name => "index_books_on_text_id"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20110301172622) do
     t.text     "content"
     t.string   "source"
     t.integer  "author_id"
+    t.integer  "words"
   end
 
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"
@@ -74,10 +76,10 @@ ActiveRecord::Schema.define(:version => 20110301172622) do
     t.string   "art_school_country"
     t.string   "portfolio_url"
     t.string   "twitter"
-    t.boolean  "status"
+    t.boolean  "tutorial_mode"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

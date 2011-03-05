@@ -7,9 +7,15 @@ PublisherPictoricalCom::Application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :texts
-  resources :books
+  resources :texts 
   
+  match "books/change", :to => "books#change", :as => :change_book
+  match "books/review", :to => "books#review", :as => :review_book
+  match "books/publish/:id", :to => "books#publish"
+  match "books/review/:id", :to => "books#review"
+  
+  resources :books
+    
   root :to => "texts#index"
 
   # The priority is based upon order of creation:
