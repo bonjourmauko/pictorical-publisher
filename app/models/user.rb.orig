@@ -58,13 +58,19 @@ class User < ActiveRecord::Base
     self.tutorial_mode ||= false
   end
   
+<<<<<<< HEAD
+  def is_admin?
+=======
   def admin_or_artist
+>>>>>>> invitations
     self.admin ||=
       if User.all.first.nil?
         true
       else
         false
       end
+<<<<<<< HEAD
+=======
   end
   
   def admin?
@@ -73,6 +79,7 @@ class User < ActiveRecord::Base
     else
       false
     end
+>>>>>>> invitations
   end
   
 end

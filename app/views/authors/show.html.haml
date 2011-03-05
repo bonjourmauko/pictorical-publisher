@@ -1,0 +1,8 @@
+#notice
+  = notice
+%p= "#{@author.name} #{@author.last_name}"
+#admin
+  admin: 
+  = link_to "edit author", :action => "edit"
+  |
+  = link_to "new author", :action => "new"

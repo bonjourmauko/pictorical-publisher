@@ -1,13 +1,20 @@
 PublisherPictoricalCom::Application.routes.draw do
   
+
   get "authors/index"
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
+
+  
 
   devise_for :users
 
   resources :users
   resources :texts 
+  resources :authors
+
+
+  resources :invitations
   
   match "books/change", :to => "books#change", :as => :change_book
   match "books/review", :to => "books#review", :as => :review_book

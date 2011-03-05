@@ -7,6 +7,14 @@ class BooksController < ApplicationController
   #   book_status = active, review, published, destroyed
   #   book_message : es un mensaje de nosotros al artista si le pedimos que revise su libro (ver "revise")
   
+  
+  # actions where artists have access to
+  # new
+  # edit
+  # change
+  # review
+  
+  
   def new
     if @active_book.nil?
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)

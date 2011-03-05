@@ -3,17 +3,17 @@ class Text < ActiveRecord::Base
   has_many      :books
   delegate      :name, :last_name, :to => :author, :prefix => true
   scope         :sorted, order('title ASC')
-  before_create :count_words
+  #before_create :count_words
   
-  attr_accessible       :title
-                        :author
-                        :content
-                        :words
+  attr_accessible       :title,
+                        :author_id,
+                        :content,
+                        :words,
                         :source
   
-  validates_presence_of :title
-                        :author
-                        :content
+  validates_presence_of :title,
+                        :author_id,
+                        :content,
                         :source
   
   private
