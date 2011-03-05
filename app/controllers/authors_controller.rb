@@ -1,5 +1,10 @@
 class AuthorsController < ApplicationController
 
+  # actions where artists have access to
+  # index
+  # show
+
+
 
   def index
     @authors = Author.sorted.all

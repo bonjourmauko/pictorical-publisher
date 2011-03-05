@@ -1,5 +1,9 @@
 class InvitationsController < ApplicationController
   
+  # actions where artists have access to
+  # ninguna
+  
+  
   def index
     @invitations = Invitation.sorted.all
   end
