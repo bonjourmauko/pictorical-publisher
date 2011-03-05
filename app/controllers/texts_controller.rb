@@ -7,7 +7,7 @@ class TextsController < ApplicationController
     @texts = Text.sorted.all
   end
 
-  def show
+  def show  
   end
   
   def new
