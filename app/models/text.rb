@@ -39,6 +39,17 @@ class Text < ActiveRecord::Base
   end
   
   
+  def available?
+    
+    no_active =  self.books.find_by_status("active").nil?
+    no_published = self.books.find_by_status("published").nil?
+    no_review = self.books.find_by_status("review").nil?    
+    no_active && no_published && no_review
+    
+  end
+  
+
+  
   private
   
   def count_words

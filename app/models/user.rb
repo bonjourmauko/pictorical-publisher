@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
                         :portfolio_url,
                         :paypal_account
                         
-  after_save :redeem_invitation
+  before_create :redeem_invitation
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
@@ -100,9 +100,14 @@ class User < ActiveRecord::Base
   
   def redeem_invitation
     
+    unless User.all.count == 0
+    
     invitation = Invitation.find_by_email(email)
     invitation.redeemed_at = Time.now
     invitation.save
+    
+
+    end
     
   end
   

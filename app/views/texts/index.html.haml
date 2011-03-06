@@ -11,15 +11,22 @@
   #container
     - @authors.each do |author|
       - if author.texts.count > 0
-    
         %h4
           = author.name
           %span.up= author.last_name
         .textlist
           - author.texts.each do |text|
-            .onetext
-              .textlink= link_to text[:title], text
-              .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
+            - if text.available?
+              .onetext
+                .textlink= link_to text[:title], text
+                .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
+            - else
+              .onetext
+                .textlink= text[:title]
+                .textinfo= "Someone is illustrating this story"
+
+
+
     - if can? :new, Text
       .admin
         = link_to "new", :action => "new"

@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   def new
     if @active_book.nil?
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
+
       redirect_to edit_book_path @book[:id]
     else
       redirect_to edit_book_path @active_book[:id]
@@ -46,6 +47,7 @@ class BooksController < ApplicationController
   def change    
     @active_book.status = "destroyed"
     @active_book.save
+
     redirect_to :action => "new", :text_id => params[:text_id]
   end
   
@@ -70,6 +72,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.status = "destroyed"
     @book.save
+
     redirect_to @book
   end
   
