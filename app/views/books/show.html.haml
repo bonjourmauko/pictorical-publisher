@@ -18,7 +18,7 @@
   #container
   
     #action-box
-      = "#{@book.text.words} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      = "#{@book.text.words_rounded} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
       = "status: #{@book.status}"
       = link_to "revise", {:action => "revise"},  :class => "illustrate-this-link"
       = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link"

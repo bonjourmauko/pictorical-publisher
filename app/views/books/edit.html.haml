@@ -18,7 +18,7 @@
   #container
   
     #action-box
-      = "#{@book.text.words} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      = "#{@book.text.words_rounded} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
       ·  You are illustrating this book 
       = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"

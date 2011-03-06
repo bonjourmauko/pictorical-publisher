@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     
   end
   
+  def index
+  
+    @users = User.find(:all, :order => "created_at DESC")
+    
+  end
+  
   
   
   def mature #releases the user from tutorial

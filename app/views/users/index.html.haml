@@ -1,0 +1,12 @@
+#notice
+  = notice
+#admin-canvas
+  %h1 All users
+  - @users.each do |user|
+    %p
+      = user.id
+      ·
+      = link_to "#{user.first_name} #{user.last_name}", user
+      · Registered
+      = time_ago_in_words(user.created_at)
+      ago
