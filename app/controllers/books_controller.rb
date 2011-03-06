@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :get_active_book
-  before_filter :check_for_active_book, :except => [:new]
+  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy]
   
   # nuevas columnas:
   
@@ -25,6 +25,9 @@ class BooksController < ApplicationController
     end
   end
   
+  
+  
+  
   def edit
     @book = Book.find(params[:id])
     @text = @book.text
@@ -32,6 +35,12 @@ class BooksController < ApplicationController
       @book = Book.where(:user_id => current_user[:id], :status => "active").first
       redirect_to edit_book_path @book[:id]
     end
+  end
+  
+  
+  def show
+    @book = Book.find(params[:id])
+    @text = @book.text
   end
   
   def change    
@@ -44,23 +53,33 @@ class BooksController < ApplicationController
     
     @active_book.status = "review"
     @active_book.save
+    
 
   end
   
   def publish
     
     @book = Book.find(params[:id])
-    @book.status = "review"
+    @book.status = "published"
     @book.save
-    
+    redirect_to @book
   end
+  
+  def destroy
+    
+    @book = Book.find(params[:id])
+    @book.status = "destroyed"
+    @book.save
+    redirect_to @book
+  end
+  
   
   def revise
     
     @book = Book.find(params[:id])
     @book.status = "active"
     @book.save
-    
+    redirect_to @book
     
     # Por qué?
     #   Si el artista tiene que reenviar una ilustración (porque se equivocó en el formato, por ejemplo)
