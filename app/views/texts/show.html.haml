@@ -12,11 +12,18 @@
         = "#{@text.author_name} #{@text.author_last_name}"
   #container
   
+    - if can? :new, Text
+      .admin
+        = link_to "edit", :action => "edit"
+  
     #action-box
       20,000 words · 123-344 illustrations ·
       = illustrate_or_change
       or
       = link_to "choose another", {:action => "index"}, :class => "choose"
 
+
+
     #story
       = @text[:content].html_safe
+    
