@@ -7,14 +7,12 @@
       %ul
         - @author.errors.full_messages.each do |msg|
           %li= msg
-  .field
+  %p
     .title= f.label :name
     .field= f.text_field :name
-  .field
+  %p
     .title= f.label :last_name
     .field= f.text_field :last_name
-
-    
-    
-  .actions
-    = f.submit
+  %p
+    .actions
+      = f.submit

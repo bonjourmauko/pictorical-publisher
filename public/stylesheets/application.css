@@ -1,125 +1,104 @@
 body {
-  font: 1em "Georgia", serif;
-	padding: 5px; 
+	background: #EBEBEB;
 }
 
-h1 {
-  
-  text-align: center;
-  font-weight: normal;
-  font-size: 2em;
-	margin-bottom: 0.5em;
-  
+#header { font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; }
+
+#header .session {position: fixed; top: 0; right: 0; padding: 5px;}
+
+#admin-canvas {
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
-h2, h3 {
-  text-align: center;
-  font-size: 0.8em;
-  text-transform: uppercase;
-  letter-spacing: 0.3em; 
-}
-
-h2 {font-weight: bold;}
-
-#container {
-  
-  width: 30em;
-  margin: 0 auto;
-  text-align: justify;
-  
-}
-
-
-.parnum {
-  
-  font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  color: #f00;
-  margin: 0.8em 0;
-  margin-left: -3em;
-  font-weight: bold;
-  
-}
-
-p { margin: 0;}
-
-
-.total {
-  
-  border: 2px solid #FFC300;
-  padding: 10px;
-  atext-align: center;
-  font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  margin: 1.5em 0px 0.5em 0px;
-  text-align: left;
-  
-}
-
-.links {
-  margin-top: 5px;
-  
-}
-
-#number_of_illustrations, span.illustrations {
-  
-  color: #f00;
-  font-size: 1em;
-  margin: 0.5em 0;
-  font-weight: bold;
-  
-}
-
-
-#story a {display: none;}
-#story .parnum a {display: inline;}
-#story p {margin-bottom: 1em;}
-	  
-#story h1, h2 {
-  text-align: center;
-  font-size: 0.8em;
-  text-transform: uppercase;
-  letter-spacing: 0.3em; 
-  margin: 2em 0px;
-}
-
-#header {
-  font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  width: 100%;
-  margin-bottom: 1em;
-  
-}
-
-
-#header .nav {float: right; text-align: right;}
-  
-#header .help a {color: red; text-decoration: none; font-weight: bold;}
-#header .help a:hover {background: red; color: white;;}
-
-
-
-#artist_session {
-	float: right;
-	text-align: right;
+#admin-canvas h1 {
 	
+	font: 1em;
+	font-weight: bold;
 }
 
-#notice {
-	font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+.admin a:link, .admin a:visited, .admin a {color: #ff0000;}
 
-	background: #C2F982;
+#notice { color: #238B00}
+
+#error_explanation {color: red;}
+
+.invisible {color: #eee}
+
+#text-canvas #title h1 {
 	text-align: center;
+	font: 2.5em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: white 0px 1px 0px;
+	margin: 0.5em auto;
+}
+
+#text-canvas #title h3 {
+	text-align: center;
+	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: white 0px 1px 0px;
+	text-transform: uppercase;
+	margin: 1em auto;
+	
+}
+
+#text-canvas #container {
+	
+	width: 36em;
+	margin: 0 auto;
+}
+
+#text-canvas #action-box {
+	background: #D6E9D7;
+	padding: 0.5em;
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	margin-bottom: 1em;
-	line-height: 2em;
+	text-align: center;
+}
+
+#action-box a, #action-box a:visited {
+	
+	color: #000;
 	
 }
 
-#admin {
-	margin-top: 2em;
-	font: 60% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+#action-box a:hover {
+	
+	color: red;
+	text-decoration: none;
+	
+}
+
+
+
+#action-box a.illustrate-link, #action-box a.illustrate-link:visited {
+	display: inline-block;
+	background: #238B00;
+	padding: 0.25em;
+	text-decoration: none;
+	color: white;
+}
+
+#action-box a.illustrate-this-link:hover {
+	background: #F38E00;
+	color: white;
+}
+
+#action-box a.illustrate-this-link:active {
+	background: #000;
+	color: white;
+}
+
+#story {
+	
+	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	font-weight: normal;
+	
+	background: white;
+	padding: 2em;
+	
+
+	text-align: justify;
 	
 	
 }
 
-.field_container {
-	margin-top: 1em;
-	
-}
+#story p { margin: 0; margin-bottom: 1em;}

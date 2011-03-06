@@ -4,5 +4,6 @@
     = link_to text[:title], text
     = "by #{text.author_name} #{text.author_last_name}"
 #admin
-  admin:
-  = link_to "new text", :action => "new"
+  - if can? :new, @texts
+    admin:
+    = link_to "new text", :action => "new"
