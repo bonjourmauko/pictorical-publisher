@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   has_many          :books
-  #after_initialize  :tutorial_mode?
+  after_initialize  :is_tutorial_mode?
   #before_create     :a_user_exists?
   #before_create     :admin
-  after_initialize  :admin?
+  after_initialize  :is_admin?
 
   devise            :database_authenticatable,
                     :registerable
@@ -62,11 +62,11 @@ class User < ActiveRecord::Base
   private
   
   #cambiar a true despues
-  def tutorial_mode?
+  def is_tutorial_mode?
     self.tutorial_mode ||= false
   end
   
-  def admin?
+  def is_admin?
     self.admin ||= false
   end
   
