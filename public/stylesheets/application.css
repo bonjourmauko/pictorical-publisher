@@ -16,6 +16,7 @@ body {
 	font-weight: bold;
 }
 
+.admin a {font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;}
 .admin a:link, .admin a:visited, .admin a {color: #ff0000;}
 
 #notice { color: #238B00}
@@ -192,8 +193,8 @@ a.illustrate-change-link:active {
 	
 }
 
-#registration-canvas label {
-	display: block;
+#registration-canvas .label {
+	font-weight: bold;
 	
 }
 
@@ -201,3 +202,9 @@ a.illustrate-change-link:active {
 	margin-bottom: 1em;
 	
 }
+
+#registration-canvas .field-block {
+	display: inline-block;
+	
+}
+

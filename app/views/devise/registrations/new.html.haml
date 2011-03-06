@@ -8,29 +8,72 @@
   #container
     .insider
 
+
+
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         = devise_error_messages!
 
-        = f.input :first_name
-        = f.input :last_name
+        .input
+          .label Name
+          .field-block
+            = f.text_field :first_name
+            %br
+            &nbsp;First
+          .field-block
+            = f.text_field :last_name
+            %br
+            &nbsp;Last
+        .input
+          .label Email
+          = f.text_field :email
+          
+          
+        .input
+          .label Password
+          .field-block
+            = f.password_field :password
+            %br
+            &nbsp;One time
+          .field-block
+            = f.password_field :password_confirmation
+            %br
+            &nbsp;And again
+          
+        .input
+          .label Birth date 
+          = f.input :birthdate, :start_year => Date.today.year - 100, 
+                                :end_year => Date.today.year - 18,
+                                :order => [:month, :day, :year],
+                                :label => false
 
-        = f.input :email
-        = f.input :password
-        = f.input :password_confirmation
-
-        = f.input :birthdate, :start_year => Date.today.year - 100, 
-                              :end_year => Date.today.year - 18,
-                              :order => [:month, :day, :year]
-        = f.input :country
         
+
+        
+        .input
+          .label Your address
+          .address
+            = f.text_field :address_line_one, :size => 40
+          .address
+            = f.text_field :address_line_two, :size => 40
+          .field-block
+            City
+            = f.text_field :city, :size => 10
+          .field-block
+            State
+            = f.text_field :state, :size => 10
+        .input
+          .label Country
+          = f.input :country, :label => false
+        
+        .input 
+          We will pay you half of the profits from the sales of your books
         = f.input :terms_of_service, :label => "Do you accept the license agreement?"
   
         = f.button :submit, :value => "Sign Up"
   
         %br
   
-        = "By clicking on 'Sign Up' above, you confirm that you accept the "
-        = link_to "Terms of Service.", terms_of_service_path
+
   
       = #render :partial => "devise/shared/links"
 
