@@ -34,6 +34,30 @@ class UsersController < ApplicationController
     
   end
   
+  def make_admin #releases the user from tutorial
+    
+    @user = User.find(params[:id])
+    @user.admin = true
+    if @user.save
+      redirect_to @user, :notice => "user changed"
+    else
+      redirect_to @user, :notice => "user was not changed"
+    end
+
+  end
+  
+  def unmake_admin #sends the user back to tutorial
+    
+    @user = User.find(params[:id])
+    @user.admin = false
+    if @user.save
+      redirect_to @user, :notice => "user changed"
+    else
+      redirect_to @user, :notice => "user was not changed"
+    end
+    
+  end
+  
   
   
 end

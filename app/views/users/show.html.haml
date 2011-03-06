@@ -13,7 +13,14 @@
       = "User not in tutorial mode"
       = link_to "back to tutorial", :action => "demature"
       
-
+  - if @user.admin?
+    %p
+      = "User is an admin"
+      = link_to "downgrade", :action => "unmake_admin"
+  - else
+    %p
+      = "User is an artist"
+      = link_to "upgrade", :action => "make_admin"
 
   %p
     = "User created: " + time_ago_in_words(@user.created_at) + " ago "
