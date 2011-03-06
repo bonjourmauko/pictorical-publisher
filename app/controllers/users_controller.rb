@@ -10,28 +10,34 @@ class UsersController < ApplicationController
   
   def mature #releases the user from tutorial
     
-    @user = User.find(params[:id])
+    @user = User.find(current_user[:id])
     @user.tutorial_mode = false
-    if @user.save
-      redirect_to @user, :notice => "user changed"
-    else
-      redirect_to @user, :notice => "user was not changed"
-    end
+    @user.save
+    redirect_to @user, :notice => "user changed"
+    
+    #if @user.save
+    #  redirect_to @user, :notice => "user changed"
+    #else
+    #  redirect_to @user, :notice => "user was not changed"
+    #end
     
     
   end
   
   def demature #sends the user back to tutorial
     
-    @user = User.find(params[:id])
+    @user = User.find(current_user[:id])
     @user.tutorial_mode = true
-    if @user.save
-      redirect_to @user, :notice => "user changed"
+    @user.save
+    redirect_to @user, :notice => "user changed"
     
-    else
-      
-      redirect_to @user, :notice => "user was not changed"
-    end
+    #if @user.save
+    #  redirect_to @user, :notice => "user changed"
+    #
+    #else
+    #  
+    #  redirect_to @user, :notice => "user was not changed"
+    #end
     
   end
   
