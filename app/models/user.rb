@@ -22,11 +22,12 @@ class User < ActiveRecord::Base
                     :state,
                     :zip,
                     :art_school_name,
-                    :art_school_city,
-                    :art_school_country,
+                    :art_school_where,
+                    :art_school_when,
                     :portfolio_url,
-                    :twitter
-
+                    :twitter,
+                    :accepted_license_agreement
+                    
   validates         :email,
                     :presence => true,
                     :uniqueness => true,
@@ -46,7 +47,11 @@ class User < ActiveRecord::Base
                         :last_name,
                         :birthdate,
                         :country,
-                        :terms_of_service
+                        :accepted_license_agreement,
+                        :address_line_one,
+                        :city,
+                        :portfolio_url,
+                        :paypal_account
 
   protected
   
