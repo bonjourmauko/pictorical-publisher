@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306063743) do
+ActiveRecord::Schema.define(:version => 20110306144151) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110306063743) do
     t.datetime "updated_at"
     t.text     "specially"
     t.string   "secret"
+    t.datetime "redeemed_at"
   end
 
   create_table "texts", :force => true do |t|

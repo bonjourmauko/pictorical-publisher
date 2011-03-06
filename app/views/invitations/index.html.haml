@@ -1,3 +1,5 @@
+#notice
+  = notice
 #admin-canvas
   %h1 All invitations
   .admin
@@ -9,4 +11,10 @@
       = link_to "#{invitation.first_name} #{invitation.last_name}", invitation
       · 
       = time_ago_in_words(invitation.created_at)
+      ago
+      - unless invitation.redeemed_at.nil?
+        · Redeemed 
+        = time_ago_in_words(invitation.redeemed_at)
+        ago
+      
     

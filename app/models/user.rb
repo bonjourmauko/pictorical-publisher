@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
                         :portfolio_url,
                         :paypal_account
                         
+  after_save :redeem_invitation
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
@@ -95,6 +96,14 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+  
+  def redeem_invitation
+    
+    invitation = Invitation.find_by_email(email)
+    invitation.redeemed_at = Time.now
+    invitation.save
+    
   end
   
 end
