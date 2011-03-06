@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_filter :get_active_book
   before_filter :check_for_active_book, :except => [:new]
   
