@@ -6,5 +6,8 @@ class PagesController < ApplicationController
 
   def license_agrrement
   end
-
+  
+  def artwork_guidelines
+  end
+  
 end

@@ -1,0 +1,34 @@
+- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+
+- javascripts "text"
+
+#text-canvas
+
+  #notice
+    = notice
+  
+  #title
+    %h1=  @text[:title]
+    %h3
+      written by
+      %span.up= "#{@text.author_name} #{@text.author_last_name}"
+    %h3
+      illustrated by
+      %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
+  #container
+  
+    #action-box
+      = "#{@book.text.words} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      = "status: #{@book.status}"
+      = link_to "revise", {:action => "revise"},  :class => "illustrate-this-link"
+      = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link"
+      = link_to "destroy", {:action => "destroy"},  :class => "illustrate-this-link"
+      
+
+
+
+    #story
+      = @text[:content].html_safe
+    %h3
+      %span.up
+        The end

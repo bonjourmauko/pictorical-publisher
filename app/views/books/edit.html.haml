@@ -18,9 +18,22 @@
   #container
   
     #action-box
-      20,000 words · 123-344 illustrations ·
-      %b You are illustrating this book, 
-      = link_to "change it?", {:controller => "texts", :action => "index"},  :class => "choose"
+      = "#{@book.text.words} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      ·  You are illustrating this book 
+      = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
+      = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
+
+    #action-box
+      .left
+        · Illustrate this book following our
+        = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
+        %br
+        · Send the illustrations one by one to
+        = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
+        %br
+        · When you are ready, hit
+        = link_to "publish", {:action => "review"},  :class => "green"
+
 
     #story
       = @text[:content].html_safe

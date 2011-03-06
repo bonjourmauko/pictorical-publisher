@@ -5,6 +5,7 @@ PublisherPictoricalCom::Application.routes.draw do
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
+  match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
   
 
   devise_for :users
@@ -19,7 +20,8 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/change", :to => "books#change", :as => :change_book
   match "books/review", :to => "books#review", :as => :review_book
   match "books/publish/:id", :to => "books#publish"
-  match "books/review/:id", :to => "books#review"
+  match "books/revise/:id", :to => "books#revise"
+  match "books/destroy/:id", :to => "books#destroy"
   
   resources :books
     
