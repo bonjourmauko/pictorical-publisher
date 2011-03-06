@@ -5,6 +5,7 @@ PublisherPictoricalCom::Application.routes.draw do
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
+  match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
   
 
   devise_for :users

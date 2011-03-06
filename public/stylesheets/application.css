@@ -84,6 +84,44 @@ a.choose:hover, a.choose:active {
 	
 }
 
+
+a.blue, a.blue:visited {
+	color: #A2E7F9;
+	text-decoration: none;
+	}
+	
+a.blue:hover, a.blue:active {
+	text-decoration: underline;
+	}	
+	
+a.yellow, a.yellow:visited {
+color: #E6C200;
+text-decoration: none;
+}
+
+a.yellow:hover, a.yellow:active {
+text-decoration: underline;
+}
+
+
+a.green, a.green:visited {
+color: #C1E00C;
+text-decoration: none;
+}
+
+a.green:hover, a.green:active {
+text-decoration: underline;
+}
+
+a.blue, a.blue:visited {
+color: #A2E7F9;
+text-decoration: none;
+}
+
+a.blue:hover, a.blue:active {
+text-decoration: underline;
+}
+
 a.illustrate-this-link, a.illustrate-this-link:visited,
 a.illustrate-current-link, a.illustrate-current-link:visited {
 	display: inline-block;
@@ -229,3 +267,6 @@ a.illustrate-change-link:active {
 	
 }
 
+.left {
+	text-align: left;
+}
