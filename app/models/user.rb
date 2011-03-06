@@ -36,11 +36,8 @@ class User < ActiveRecord::Base
                       :on => :create
                     }
                     
-                    
-
-  #validates         :password,
-  #                  :presence => true,
-  #                  :confirmation => true
+  validates_presence_of :password, :on => :create 
+  validates_confirmation_of :password, :on => :create                  
 
    
   validates_presence_of :first_name,
@@ -52,7 +49,7 @@ class User < ActiveRecord::Base
                         :city,
                         :portfolio_url,
                         :paypal_account
-                        #:password_confirmation,
+                        
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
