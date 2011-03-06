@@ -9,7 +9,7 @@ class TextsController < ApplicationController
   # show
   
   def index
-    @texts = Text.sorted.all
+    @authors = Author.sorted.all
   end
 
   def show  

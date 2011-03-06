@@ -51,8 +51,14 @@ class User < ActiveRecord::Base
                         :country,
                         :terms_of_service
 
-  validates_inclusion_of :email, :on => :create, :in => Invitation.select(:email).map(&:email), :message => "%{value} is not an invited artist"#, :if => :artist?
-
+  protected
+  
+  def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
+    unless Invitation.select(:email).map(&:email).include? email
+      errors.add("invitation", "you are not invited to pictorical")
+    end
+  end
+  
   private
   
   #cambiar a true despues

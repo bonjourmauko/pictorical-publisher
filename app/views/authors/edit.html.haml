@@ -1,2 +1,7 @@
-%h1 Edit author
-= render 'form'
+#admin-canvas
+  %h1 Edit author
+  = render 'form'
+  .admin
+    = link_to "New", :action => "new"
+    · 
+    = link_to "All", :action => "index"
