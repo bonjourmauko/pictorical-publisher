@@ -1,48 +1,22 @@
 - title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
-- content_for :navbar do
-  \&larr;
-  = link_to "Choose another story", texts_path
 
-#notice
-  = notice
+#text-canvas
 
-#title
-  %h1
-    = @text[:title]
-  %h3
-    = "#{@text.author_name} #{@text.author_last_name}"
-#container     
-  - if !current_user[:tutorial_mode]
-    .total
-      We recommend
-      %span#number_of_illustrations
-      %span.illustrations
-        illustrations
-      for this story
-      .illustrate= illustrate_or_change
+  #notice
+    = notice
   
-  - if current_user[:tutorial_mode]
-    .total
-      You have to make
-      %span.illustrations only 1
-      sample illustration for this story
-      %br/
-      .links
-        Remember to follow
-        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
-      .links
-        To upload your sample illustration:
-      .links 
-        1. Name the file following our Artwork Guidelines
-      .links
-        2. Send it to
-        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"      
-  #story
-    /
-      = "Source: " + @text[:source] unless @text[:source].nil?
-    = @text[:content].html_safe
-  #admin
-    admin: 
-    = link_to "edit text", :action => "edit"
-    | 
-    = link_to "new text", :action => "new"
+  #title
+    %h1= @text[:title]
+    %h3
+      %span.up
+        = "#{@text.author_name} #{@text.author_last_name}"
+  #container
+  
+    #action-box
+      20,000 words · 123-344 illustrations ·
+      = illustrate_or_change
+      or
+      = link_to "choose another", {:action => "index"}, :class => "choose"
+
+    #story
+      = @text[:content].html_safe

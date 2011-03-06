@@ -7,20 +7,22 @@
       %ul
         - @text.errors.full_messages.each do |msg|
           %li= msg
-  .field_container
+  %p
     .title= f.label :title
-    .field= f.text_field :title
-  .field_container
-    .title= f.label :author_id
+    .field= f.text_field :title, :size => 70
+  %p
+    .title
+      = f.label :author_id
+      %span.admin= link_to "new", :controller => "authors", :action => "new"
     .field= collection_select(:text, :author_id, Author.all, :id, :name_with_initial, :prompt => true)
-    = link_to "add new author", :controller => "authors", :action => "new"
-  .field_container
+  %p
     .title= f.label :source
-    .field= f.text_field :source
-  .field_container
+    .field= f.text_field :source, :size => 70
+  %p
+    .actions
+      = f.submit
+  %p
     .title= f.label :content
-    .field= f.text_area :content
+    .field= f.text_area :content, :cols => 70, :rows => 500
+
     
-    
-  .actions
-    = f.submit

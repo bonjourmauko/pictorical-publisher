@@ -9,7 +9,7 @@
   %body
     #header
       = yield :navbar
-      .nav
+      .session
         #artist_session
           - if user_signed_in?
             = "#{current_user.email} | "

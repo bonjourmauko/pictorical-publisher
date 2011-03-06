@@ -16,7 +16,6 @@ $(document).ready(function() {
   
 
   $('p:first').before('<div class="parnum">CAP</div>');
-  $('p:last').after('<h3>The End</h3>');
 
   $('p,h2-h2:first').each(function(index) {
 
