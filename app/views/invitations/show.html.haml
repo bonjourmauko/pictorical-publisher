@@ -1,6 +1,6 @@
-#admin-canvas
-  #notice
-    = notice  
+#notice
+  = notice
+#admin-canvas 
   
   %h1= "Invitation for #{@invitation.first_name} #{@invitation.last_name}"
   %p= link_to "#{@invitation.email}", "mailto:" + @invitation.email
@@ -14,7 +14,7 @@
     %span.invisible= @invitation.created_at.to_s
 
   %p
-    = "Invitation updated: " + time_ago_in_words(@invitation.updated_at.to_s) + " ago "
+    = "Invitation updated: " + time_ago_in_words(@invitation.updated_at) + " ago "
     %span.invisible= @invitation.updated_at.to_s
     
   

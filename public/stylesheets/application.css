@@ -8,15 +8,16 @@ body {
 
 #admin-canvas {
 	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	background: white;
+	padding: 10px;
 }
 
 #admin-canvas h1 {
-	
-	font: 1em;
+	font-size: 1em;
 	font-weight: bold;
 }
 
-.admin a {font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;}
+.admin a {font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;}
 .admin a:link, .admin a:visited, .admin a {color: #ff0000;}
 
 #notice {
@@ -25,6 +26,7 @@ body {
 	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	margin: 0.5em 0;
 	}
+
 
 #error_explanation {color: red;}
 

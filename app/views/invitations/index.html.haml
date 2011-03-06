@@ -5,5 +5,8 @@
   - @invitations.each do |invitation|
     %p
       = invitation.id
+      ·
       = link_to "#{invitation.first_name} #{invitation.last_name}", invitation
+      · 
+      = time_ago_in_words(invitation.created_at)
     
