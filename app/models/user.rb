@@ -1,10 +1,7 @@
 class User < ActiveRecord::Base
   has_many          :books
   after_initialize  :is_tutorial_mode?
-  #before_create     :a_user_exists?
-  #before_create     :admin
-  after_initialize  :is_admin?
-
+  
   devise            :database_authenticatable,
                     :registerable
 
@@ -53,11 +50,18 @@ class User < ActiveRecord::Base
 
   protected
   
+
   def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
-    unless Invitation.select(:email).map(&:email).include? email
+    unless Invitation.select(:email).map(&:email).include? email or is_admin
       errors.add("invitation", "you are not invited to pictorical")
     end
+    if User.all.first.nil?
+      self.admin = true
+    else
+      self.admin = false
+    end
   end
+
   
   private
   
@@ -66,30 +70,12 @@ class User < ActiveRecord::Base
     self.tutorial_mode ||= false
   end
   
-  def is_admin?
-    self.admin ||= false
+  def is_admin
+    if User.all.first.nil?
+      true
+    else
+      false
+    end
   end
-  
-  # check this later
-  #def a_user_exists?
-  #  @a_user_exists =
-  #    if User.all.first.nil?
-  #      false
-  #    else
-  #      true
-  #    end
-  #end
-  
-  #def admin
-  #  if @a_user_exists
-  #    self.admin = false
-  #  else
-  #    self.admin = true
-  #  end
-  #end
-  
-  #def artist?
-  #  @a_user_exists
-  #end
   
 end
