@@ -11,10 +11,15 @@
       = yield :navbar
       #artist_session
         - if user_signed_in?
-          = "Hello #{current_user.first_name},"
+          = "Hello #{current_user.first_name}"
+          = link_to "sign out",  destroy_user_session_path  
           - unless current_user.active_book.nil?    
             = "You are illustrating " 
             = link_to "#{current_user.active_book.text.title}", :controller => "books", :action => "edit", :id => current_user.active_book.id
-        .session
-          = link_to "sign out",  destroy_user_session_path  
+          - if current_user.has_books_under_review?
+            = "Under review"
+          
+          
+          .session
+          
     = yield

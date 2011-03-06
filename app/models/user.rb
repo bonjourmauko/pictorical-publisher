@@ -58,6 +58,16 @@ class User < ActiveRecord::Base
     Book.where(:user_id => self.id, :status => "active").first
   end
   
+  def book_under_review
+    Book.where(:user_id => self.id, :status => "review").first
+  end
+  
+  def has_books_under_review?
+    
+    !self.book_under_review.nil?
+    
+  end
+  
   
   protected
   
@@ -73,7 +83,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  
+
 
   
   private
