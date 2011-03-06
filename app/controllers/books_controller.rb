@@ -28,6 +28,10 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     @text = @book.text
+    unless @book[:status] == "active"
+      @book = Book.where(:user_id => current_user[:id], :status => "active").first
+      redirect_to edit_book_path @book[:id]
+    end
   end
   
   def change    
