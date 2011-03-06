@@ -1,4 +1,5 @@
 class TextsController < ApplicationController
+  load_and_authorize_resource
   respond_to :html
   before_filter :get_active_book, :only => [:show, :index]
   before_filter :find_text_by_id, :only => [:show, :edit, :update, :destroy]
