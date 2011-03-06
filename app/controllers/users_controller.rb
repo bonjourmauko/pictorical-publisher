@@ -12,14 +12,11 @@ class UsersController < ApplicationController
     
     @user = User.find(current_user[:id])
     @user.tutorial_mode = false
-    @user.save
-    redirect_to @user, :notice => "user changed"
-    
-    #if @user.save
-    #  redirect_to @user, :notice => "user changed"
-    #else
-    #  redirect_to @user, :notice => "user was not changed"
-    #end
+    if @user.save
+      redirect_to @user, :notice => "user changed"
+    else
+      redirect_to @user, :notice => "user was not changed"
+    end
     
     
   end
@@ -28,16 +25,11 @@ class UsersController < ApplicationController
     
     @user = User.find(current_user[:id])
     @user.tutorial_mode = true
-    @user.save
-    redirect_to @user, :notice => "user changed"
-    
-    #if @user.save
-    #  redirect_to @user, :notice => "user changed"
-    #
-    #else
-    #  
-    #  redirect_to @user, :notice => "user was not changed"
-    #end
+    if @user.save
+      redirect_to @user, :notice => "user changed"
+    else
+      redirect_to @user, :notice => "user was not changed"
+    end
     
   end
   
