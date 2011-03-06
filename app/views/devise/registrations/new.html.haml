@@ -1,23 +1,36 @@
-%h2 Sign up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
+#registration-canvas
+  #notice
+    = notice
 
-  = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :birthdate, :start_year => Date.today.year - 100, 
-                        :end_year => Date.today.year - 18,
-                        :order => [:month, :day, :year]
-  = f.input :country
-  = f.input :terms_of_service
+  #title
+    %h1 Welcome to Pictorical
+
+  #container
+    .insider
+
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        = devise_error_messages!
+
+        = f.input :first_name
+        = f.input :last_name
+
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+
+        = f.input :birthdate, :start_year => Date.today.year - 100, 
+                              :end_year => Date.today.year - 18,
+                              :order => [:month, :day, :year]
+        = f.input :country
+        
+        = f.input :terms_of_service, :label => "Do you accept the license agreement?"
   
-  = f.button :submit, :value => "Sign Up"
+        = f.button :submit, :value => "Sign Up"
   
-  %br
+        %br
   
-  = "By clicking on 'Sign Up' above, you confirm that you accept the "
-  = link_to "Terms of Service.", terms_of_service_path
+        = "By clicking on 'Sign Up' above, you confirm that you accept the "
+        = link_to "Terms of Service.", terms_of_service_path
   
-= render :partial => "devise/shared/links"
+      = #render :partial => "devise/shared/links"
+

@@ -24,7 +24,7 @@ body {
 
 .invisible {color: #eee}
 
-#text-canvas #title h1 {
+#text-canvas #title h1, #registration-canvas #title h1 {
 	text-align: center;
 	font: 2.5em "Georgia", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: white 0px 1px 0px;
@@ -55,11 +55,12 @@ body {
 }
 
 
-#text-canvas #container {
+#container {
 	
 	width: 36em;
 	margin: 0 auto;
 }
+
 
 #text-canvas #action-box {
 	background: #4E4646;
@@ -170,3 +171,33 @@ a.illustrate-change-link:active {
 	margin-bottom: 1em;
 	
 	}
+
+
+
+#registration-canvas #container .insider
+{
+	background: white;
+	padding: 1em;
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
+}
+
+#registration-canvas input, #registration-canvas select {
+	
+	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
+	
+}
+
+#registration-canvas abbr {
+	color: red;
+	
+}
+
+#registration-canvas label {
+	display: block;
+	
+}
+
+#registration-canvas .input {
+	margin-bottom: 1em;
+	
+}
