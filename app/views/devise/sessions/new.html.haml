@@ -6,8 +6,6 @@
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     .input
       .label
-        Login
-        %span.required required
       .field-block
         = f.text_field :email
         %br
