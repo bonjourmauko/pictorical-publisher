@@ -19,7 +19,8 @@ class BooksController < ApplicationController
   def new
     if @active_book.nil?
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
-
+      mail = Notifications.new_book(@book)
+      mail.deliver
       redirect_to edit_book_path @book[:id]
     else
       redirect_to edit_book_path @active_book[:id]
