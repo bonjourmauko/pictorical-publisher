@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_many          :books
-  after_initialize  :is_tutorial_mode?
   
   devise            :database_authenticatable,
                     :registerable
@@ -26,8 +25,9 @@ class User < ActiveRecord::Base
                     :art_school_when,
                     :portfolio_url,
                     :twitter,
-                    :accepted_license_agreement
-                    
+                    :accepted_license_agreement,
+                    :tutorial_mode
+                                                                                
   validates         :email,
                     :presence => true,
                     :uniqueness => true,
@@ -36,14 +36,11 @@ class User < ActiveRecord::Base
                       :on => :create
                     }
                     
-                    
+  validates_presence_of :password, :on => :create 
+  validates_confirmation_of :password, :on => :create                  
 
-  validates         :password,
-                    :presence => true,
-                    :confirmation => true
-
-  validates_presence_of :password_confirmation,
-                        :first_name,
+   
+  validates_presence_of :first_name,
                         :last_name,
                         :birthdate,
                         :country,
@@ -52,7 +49,23 @@ class User < ActiveRecord::Base
                         :city,
                         :portfolio_url,
                         :paypal_account
+                        
 
+  def active_book
+    Book.where(:user_id => self.id, :status => "active").first
+  end
+  
+  def book_under_review
+    Book.where(:user_id => self.id, :status => "review").first
+  end
+  
+  def has_books_under_review?
+    
+    !self.book_under_review.nil?
+    
+  end
+  
+  
   protected
   
 
@@ -65,16 +78,17 @@ class User < ActiveRecord::Base
     else
       self.admin = false
     end
+    
+    self.tutorial_mode ||= true
+    
   end
+  
+
 
   
   private
   
-  #cambiar a true despues
-  def is_tutorial_mode?
-    self.tutorial_mode ||= false
-  end
-  
+
   def is_admin
     if User.all.first.nil?
       true

@@ -4,6 +4,7 @@ class Text < ActiveRecord::Base
   delegate      :name, :last_name, :to => :author, :prefix => true
   scope         :sorted, order('title ASC')
   before_create :count_words
+  before_update :count_words
   
   attr_accessible       :title,
                         :author_id,
@@ -22,7 +23,11 @@ class Text < ActiveRecord::Base
   end
   
   def illustrations_lower
-    ((words.to_f)/500.0).round
+    [
+      ((words.to_f)/300.0),
+      (20.0 + ((words.to_f) - 6000.0 )/600.0),
+      (30.0 + ((words.to_f)- 12000.0 )/1200.0)
+    ].min.round
   end
   
   def illustrations_upper
@@ -30,7 +35,7 @@ class Text < ActiveRecord::Base
   end  
   
   def words_rounded
-    (words.to_f/100).round * 100
+    (words.to_f/100.0).round * 100
   end
   
   

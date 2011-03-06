@@ -17,11 +17,15 @@
         = link_to "edit", :action => "edit"
   
     #action-box
-      20,000 words · 123-344 illustrations ·
-      = illustrate_or_change
-      or
-      = link_to "choose another", {:action => "index"}, :class => "choose"
-
+      = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
+      - unless current_user.has_books_under_review?
+        ·
+        = illustrate_or_change
+        or
+        = link_to "choose another", {:action => "index"}, :class => "choose"
+      - else
+        %br
+        Please wait until we publish your book to start illustrating another one
 
 
     #story
