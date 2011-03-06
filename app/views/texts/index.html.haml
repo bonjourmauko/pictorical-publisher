@@ -1,9 +1,19 @@
-%p texts#index
-- @texts.each do |text|
-  %p
-    = link_to text[:title], text
-    = "by #{text.author_name} #{text.author_last_name}"
-#admin
-  - if can? :new, @texts
-    admin:
-    = link_to "new text", :action => "new"
+- title "Pictorical, choose a story"
+#text-canvas
+
+  #notice
+    = notice
+
+  #title
+    %h1 Choose a story
+
+  #container
+    - @authors.each do |author|
+      %h4
+        = author.name
+        %span.up= author.last_name
+      .textlist
+        - author.texts.each do |text|
+          %p
+            = link_to text[:title], text
+            %span.textinfo Hola

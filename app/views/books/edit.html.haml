@@ -1,47 +1,29 @@
-- title "Pictorical, Illustrate #{@text[:title]} by #{@text.author_name} #{@text.author_last_name}"
-- stylesheets "text"
+- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+
 - javascripts "text"
-- content_for :navbar do
-  \&larr;
-  = link_to "Choose another story", texts_path
-  = "·"
-  = "Have you finished illustrating this story? If so"
-  = link_to "send it to review", review_book_path
 
+#text-canvas
 
-#title
-  %h1
-    = @text[:title]
-  %h3
-    = "#{@text.author_name} #{@text.author_last_name}"
-#container     
+  #notice
+    = notice
+  
+  #title
+    %h1=  @text[:title]
+    %h3
+      written by
+      %span.up= "#{@text.author_name} #{@text.author_last_name}"
+    %h3
+      illustrated by
+      %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
+  #container
+  
+    #action-box
+      20,000 words · 123-344 illustrations ·
+      %b You are illustrating this book, 
+      = link_to "change it?", :controller => "texts", :action => "index"
 
-  - if !current_user[:tutorial_mode]
-    .total
-      We recommend
-      %span#number_of_illustrations
-      %span.illustrations
-        illustrations
-      for this story
-
-  - if current_user[:tutorial_mode]
-    .total
-      You have to make
-      %span.illustrations only 1
-      sample illustration for this story
-      %br/
-      .links
-        Remember to follow
-        = link_to "Pictorical's Artwork Guidelines", "http://goo.gl/cqX6i"
-      .links
-        To upload your sample illustration:
-      .links 
-        1. Name the file following our Artwork Guidelines
-      .links
-        2. Send it to
-        = link_to "sample+t#{@text[:id]}@pictorical.com", "mailto:sample+t#{@text[:id]}@pictorical.com"
-
-  #story
-    /
-      = "Source: " + @text[:source] unless @text[:source].nil?
-    = @text[:content].html_safe
+    #story
+      = @text[:content].html_safe
+    %h3
+      %span.up
+        The end
