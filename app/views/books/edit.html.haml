@@ -20,7 +20,7 @@
     #action-box
       20,000 words · 123-344 illustrations ·
       %b You are illustrating this book, 
-      = link_to "change it?", :controller => "texts", :action => "index"
+      = link_to "change it?", {:controller => "texts", :action => "index"},  :class => "choose"
 
     #story
       = @text[:content].html_safe

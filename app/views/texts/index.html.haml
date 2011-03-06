@@ -9,11 +9,13 @@
 
   #container
     - @authors.each do |author|
-      %h4
-        = author.name
-        %span.up= author.last_name
-      .textlist
-        - author.texts.each do |text|
-          %p
-            = link_to text[:title], text
-            %span.textinfo Hola
+      - if author.texts.count > 1
+    
+        %h4
+          = author.name
+          %span.up= author.last_name
+        .textlist
+          - author.texts.each do |text|
+            .onetext
+              .textlink= link_to text[:title], text
+              .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"

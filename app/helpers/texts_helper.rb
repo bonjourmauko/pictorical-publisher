@@ -1,6 +1,6 @@
 module TextsHelper
   def illustrate_or_change
-    if @active_book.nil?
+    if @active_book.nil? || @active_book.text.nil?
       link_to "Illustrate text", { :controller => "books", :action => "new", :text_id => @text[:id] }, :class => "illustrate-this-link"
     else
       if @active_book.text[:id] == @text[:id]
