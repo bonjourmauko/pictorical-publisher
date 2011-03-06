@@ -10,6 +10,9 @@ PublisherPictoricalCom::Application.routes.draw do
 
   devise_for :users
 
+  match "users/:id/mature", :to => "users#mature"
+  match "users/:id/demature", :to => "users#demature"
+
   resources :users
   resources :texts 
   resources :authors

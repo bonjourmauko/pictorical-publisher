@@ -1,0 +1,24 @@
+#admin-canvas
+  #notice
+    = notice  
+  
+  %h1= "User #{@user.first_name} #{@user.last_name}"
+
+  - if @user.tutorial_mode?
+    %p
+      = "User in tutorial mode"
+      = link_to "release from tutorial", :action => "mature"
+  - else
+    %p
+      = "User not in tutorial mode"
+      = link_to "back to tutorial", :action => "demature"
+      
+
+
+  %p
+    = "User created: " + time_ago_in_words(@user.created_at) + " ago "
+    %span.invisible= @user.created_at.to_s
+
+  %p
+    = "User updated: " + time_ago_in_words(@user.updated_at.to_s) + " ago "
+    %span.invisible= @user.updated_at.to_s

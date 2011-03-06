@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
                     :portfolio_url,
                     :twitter,
                     :accepted_license_agreement
-                    
+                                                                                
   validates         :email,
                     :presence => true,
                     :uniqueness => true,
@@ -53,11 +53,10 @@ class User < ActiveRecord::Base
                         :portfolio_url,
                         :paypal_account
 
-  
-  before_create {
-    self.tutorial_mode = true
-    
-  }
+
+  def active_book
+    Book.where(:user_id => self.id, :status => "active").first
+  end
   
   
   protected
@@ -73,13 +72,15 @@ class User < ActiveRecord::Base
       self.admin = false
     end
   end
+  
+  
 
   
   private
   
   #cambiar a true despues
   def is_tutorial_mode?
-    self.tutorial_mode ||= false
+    self.tutorial_mode ||= true
   end
   
   def is_admin
