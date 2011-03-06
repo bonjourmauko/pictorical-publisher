@@ -1,23 +1,23 @@
-#login-canvas
+#message-canvas
   #notice
     = notice
-
+  %h1 Welcome to Pictorical
 
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     .input
       .label
-      .field-block
+      %p
         = f.text_field :email
         %br
         &nbsp;Email
-      .field-block
+      %p
         = f.text_field :password
         %br
         &nbsp;Password
-      .field-block
-        = f.submit "Sign in"
-        %br
-        &nbsp;
+      %p
+      = f.submit "Sign in"
+      %br
+      &nbsp;
 
     - if devise_mapping.rememberable?
       %p

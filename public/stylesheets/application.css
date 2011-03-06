@@ -291,6 +291,21 @@ a.illustrate-change-link:active {
 
 #message-canvas {
 	
+	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
+	width: 30em;
+	background: white;
+	margin: 5em auto;
+	padding: 1em;
+	
+}
+
+#message-canvas h1 {
+	font-size: 2em;
+	text-align: center;
+}
+
+#message-canvas input {
+	font-size: 1em;
 	
 }
 
