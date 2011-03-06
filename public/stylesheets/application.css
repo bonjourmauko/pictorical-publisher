@@ -195,15 +195,36 @@ a.illustrate-change-link:active {
 
 #registration-canvas .label {
 	font-weight: bold;
+	margin-bottom: 0.25em;
+}
+
+#login-canvas {
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
 	
+}
+
+.required {
+	color: #A11E22;
+	font-weight: normal;
+}
+
+.optional {
+	color: #2C79C1;
+	font-weight: normal;
+	
+}
+
+#registration-canvas .label2 {
+	color: #666;
+	margin: 0.25em 0;
 }
 
 #registration-canvas .input {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 	
 }
 
-#registration-canvas .field-block {
+.field-block {
 	display: inline-block;
 	
 }

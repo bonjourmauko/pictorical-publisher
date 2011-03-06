@@ -4,7 +4,7 @@ PublisherPictoricalCom::Application.routes.draw do
   get "authors/index"
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
-
+  match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
   
 
   devise_for :users
