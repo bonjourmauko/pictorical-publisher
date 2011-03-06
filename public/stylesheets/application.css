@@ -72,6 +72,13 @@ body {
 	color: white;
 }
 
+#action-box h3 {
+	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: none;
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+
 a.choose, a.choose:visited {
 	color: #A2E7F9;
 	text-decoration: none;
@@ -269,4 +276,8 @@ a.illustrate-change-link:active {
 
 .left {
 	text-align: left;
+}
+
+.tutorial {
+	
 }

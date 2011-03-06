@@ -23,16 +23,32 @@
       = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
 
-    #action-box
-      .left
-        · Illustrate this book following our
-        = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
-        %br
-        · Send the illustrations one by one to
-        = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
-        %br
-        · When you are ready, hit
-        = link_to "publish", {:action => "review"},  :class => "green"
+    - if @current_user.tutorial_mode?
+
+      #action-box
+        .left.tutorial
+          · Make ONE story illustration (not a cover or capital) following our
+          = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
+          %br
+          · Send the illustration to
+          = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
+          %br
+          · When you are ready, hit
+          = link_to "publish", {:action => "review"},  :class => "green"    
+    
+    
+    - else
+
+      #action-box
+        .left
+          · Illustrate this book following our
+          = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
+          %br
+          · Send the illustrations one by one to
+          = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
+          %br
+          · When you are ready, hit
+          = link_to "publish", {:action => "review"},  :class => "green"
 
 
     #story

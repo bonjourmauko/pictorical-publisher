@@ -53,6 +53,13 @@ class User < ActiveRecord::Base
                         :portfolio_url,
                         :paypal_account
 
+  
+  before_create {
+    self.tutorial_mode = true
+    
+  }
+  
+  
   protected
   
 
