@@ -17,7 +17,7 @@
             = "You are illustrating " 
             = link_to "#{current_user.active_book.text.title}", :controller => "books", :action => "edit", :id => current_user.active_book.id
           - if current_user.has_books_under_review?
-            = "Under review"
+            = "We are reviewing #{current_user.book_under_review.text.title}"
           
           
           .session

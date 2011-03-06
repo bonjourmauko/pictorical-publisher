@@ -17,7 +17,7 @@
         = link_to "edit", :action => "edit"
   
     #action-box
-      20,000 words · 123-344 illustrations
+      = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
       - unless current_user.has_books_under_review?
         ·
         = illustrate_or_change
