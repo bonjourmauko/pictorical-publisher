@@ -46,7 +46,7 @@ class Text < ActiveRecord::Base
     no_active && no_published && no_review
   end
   
-  def belongs_to_this_user?(current_user)
+  def belongs_to_current_user?(current_user)
     self.books.first[:user_id] == current_user.id
   end
   
