@@ -14,8 +14,6 @@ class Invitation < ActiveRecord::Base
                       :on => :create
                     }
   
-  validates_presence_of :first_name,
-                        :last_name
-  
+  validates_presence_of :first_name  
   
 end
