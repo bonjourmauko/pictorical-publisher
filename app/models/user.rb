@@ -61,35 +61,28 @@ class User < ActiveRecord::Base
   end
   
   def has_books_under_review?
-    
     !self.book_under_review.nil?
-    
   end
   
-  
-  protected
-  
+  #protected
+  private
 
   def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
     unless Invitation.select(:email).map(&:email).include? email or is_admin
       errors.add("invitation", "you are not invited to pictorical")
     end
-    if User.all.first.nil?
+    
+    if is_admin
       self.admin = true
     else
       self.admin = false
     end
     
-    self.tutorial_mode ||= true
-    
+    self.tutorial_mode ||= true 
   end
   
-
-
+  #private
   
-  private
-  
-
   def is_admin
     if User.all.first.nil?
       true
@@ -99,16 +92,11 @@ class User < ActiveRecord::Base
   end
   
   def redeem_invitation
-    
-    unless User.all.count == 0
-    
-    invitation = Invitation.find_by_email(email)
-    invitation.redeemed_at = Time.now
-    invitation.save
-    
-
-    end
-    
+    unless is_admin   
+      invitation = Invitation.find_by_email(email)
+      invitation.redeemed_at = Time.now
+      invitation.save
+    end 
   end
   
 end
