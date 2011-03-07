@@ -51,6 +51,9 @@ class User < ActiveRecord::Base
                         :paypal_account
                         
   before_create :redeem_invitation
+  
+  after_commit :send_welcome_email
+  
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
@@ -95,5 +98,15 @@ class User < ActiveRecord::Base
       invitation.save
     end 
   end
+  
+  def send_welcome_email
+    
+    mail = Notifications.welcome(self)
+    mail.deliver
+    
+  end
+  
+  
+  
   
 end

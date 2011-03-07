@@ -63,8 +63,12 @@ class BooksController < ApplicationController
   def review
     
     @active_book.status = "review"
-    @active_book.save
+    if @active_book.save
     
+      mail = Notifications.review_book(@active_book)
+      mail.deliver
+    
+    end
 
   end
   
@@ -72,8 +76,13 @@ class BooksController < ApplicationController
     
     @book = Book.find(params[:id])
     @book.status = "published"
-    @book.save
-    redirect_to @book
+    if @book.save
+    
+      mail = Notifications.review_book(@active_book)
+      mail.deliver
+      redirect_to @book    
+    end
+
   end
   
   def destroy
