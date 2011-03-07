@@ -1,9 +1,9 @@
 class Invitation < ActiveRecord::Base
   scope :sorted, order('id DESC')
   
-  attr_accessible   :email
-                    :first_name
-                    :last_name
+  attr_accessible   :email,
+                    :first_name,
+                    :last_name,
                     :specially
   
   validates         :email,
@@ -14,7 +14,7 @@ class Invitation < ActiveRecord::Base
                       :on => :create
                     }
   
-  validates_presence_of :first_name
+  validates_presence_of :first_name,
                         :last_name
   
   
