@@ -5,7 +5,7 @@ class Author < ActiveRecord::Base
   validates_presence_of :last_name
   
   def name_with_initial
-    "#{name.first}. #{last_name}"
+    "#{last_name}, #{name}"
   end
   
   
