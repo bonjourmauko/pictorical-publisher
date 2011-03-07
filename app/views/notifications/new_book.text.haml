@@ -1,3 +1,21 @@
 = "Hi, #{@book.user[:first_name]}"
 
-= "We are glad you choose #{@book.text[:title]} to illustrate"
+= "We are happy that you want to illustrate #{@book.text[:title]}."
+
+- if @book.user[:tutorial_mode]
+
+  As this is your first illustrated book with Pictorical, we want to help you understand how we do stuff here.
+
+  We are asking you to do the first illustration for your book following our Artwork Guidelines, send us only your first illustration, and "publish" your book. After that we will give you the text back so you can complete your book and publish it for real.
+  
+- else
+  
+  Please remember to follow our Artwork Guidelines carefully, as they are very important for keeping the quality of our books awesome. If you have any questions about this, please email us at artists@pictorical.com and we will be happy to help.
+  
+You can start illustrating the story right now. Please, keep us updated on your work. We will send you friendly reminders each week or so, just to ask how you’re doing and see if you have any questions.
+  
+If you have any question, please feel free to ask us to artists@pictorical.com
+
+Thanks, and happy illustrating!
+
+Victor, co-founder of Pictorical

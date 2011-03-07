@@ -19,8 +19,13 @@ class BooksController < ApplicationController
   def new
     if @active_book.nil?
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
-      mail = Notifications.new_book(@book)
-      mail.deliver
+      if params[:change]
+        mail = Notifications.change_book(@book)
+        mail.deliver
+      else
+        mail = Notifications.new_book(@book)
+        mail.deliver        
+      end  
       redirect_to edit_book_path @book[:id]
     else
       redirect_to edit_book_path @active_book[:id]
@@ -49,7 +54,7 @@ class BooksController < ApplicationController
     @active_book.status = "destroyed"
     @active_book.save
 
-    redirect_to :action => "new", :text_id => params[:text_id]
+    redirect_to :action => "new", :text_id => params[:text_id], :change => true
   end
   
   def review
