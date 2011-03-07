@@ -16,7 +16,8 @@ class Text < ActiveRecord::Base
                         :author_id,
                         :content,
                         :source
-  
+                        
+  validates_uniqueness_of :title
   
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
