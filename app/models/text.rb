@@ -38,17 +38,17 @@ class Text < ActiveRecord::Base
     (words.to_f/100.0).round * 100
   end
   
-  
+  # revisar esto!!
   def available?
-    
     no_active =  self.books.find_by_status("active").nil?
     no_published = self.books.find_by_status("published").nil?
-    no_review = self.books.find_by_status("review").nil?    
+    no_review = self.books.find_by_status("review").nil?   
     no_active && no_published && no_review
-    
   end
   
-
+  def belongs_to_this_user?(current_user)
+    self.books.first[:user_id] == current_user.id
+  end
   
   private
   
