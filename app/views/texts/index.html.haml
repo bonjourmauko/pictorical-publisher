@@ -21,9 +21,14 @@
                 .textlink= link_to text[:title], text
                 .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
             - else
-              .onetext
-                .textlink= text[:title]
-                .textinfo= "Someone is illustrating this story"
+              - if current_user.active_book && current_user.active_book.text[:id] == text[:id]
+                .onetext
+                  .textlink= link_to text[:title], text
+                  .textinfo= "You are illustrating this story"
+              - else
+                .onetext
+                  .textlink= text[:title]
+                  .textinfo= "Someone is illustrating this story"
 
 
 
