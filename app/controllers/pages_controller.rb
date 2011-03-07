@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def terms_of_service
   end
 
-  def license_agrrement
+  def license_agreement
   end
   
   def artwork_guidelines
