@@ -17,6 +17,7 @@
           .label
             Name
             %span.required required
+          .label2 Your real name, as it appears in your id
           .field-block
             = f.text_field :first_name
             %br
@@ -25,18 +26,24 @@
             = f.text_field :last_name
             %br
             &nbsp;Last
-        .input
-          .label
-            Email
-            %span.required required
-          = f.text_field :email
-          
+
+
         .input
           .label
             Artistic name
             %span.optional optional
           .label2 To sign your illustrations with other name
           = f.text_field :artistic_name
+
+
+
+        .input
+          .label
+            Email
+            %span.required required
+          .label2 The same one where you got your invitation
+          = f.text_field :email
+          
         
         .input
           .label
@@ -95,10 +102,10 @@
 
         .input
           .label
-            Portfolio url
+            Portfolio address
             %span.required required
           .label2 We will link to it in our webpage
-          =f.text_field :portfolio_url, :value => "http://", :size => 60  
+          =f.text_field :portfolio_url, :size => 60  
 
         .input
           .label

@@ -54,3 +54,4 @@ gem "database_cleaner", :group => [:test, :cucumber]
 gem "factory_girl", :group => [:test, :cucumber]
 gem "factory_girl_rails", :group => [:test, :cucumber]
 gem "launchy", :group => [:test, :cucumber]
+gem 'htmlentities'

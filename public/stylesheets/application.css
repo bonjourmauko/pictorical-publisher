@@ -323,6 +323,19 @@ a.illustrate-change-link:active {
 	
 }
 
+#static-canvas {
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	text-align: center;
+	
+}
 
+#static-canvas .inner {
+	width: 60em;
+	background: white;
+	padding: 1em;
+	text-align: left;
+	margin: 0 auto;
+	
+}
 
 
