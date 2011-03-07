@@ -29,6 +29,7 @@
           .label
             Email
             %span.required required
+            .label2 The same one where you got your invitation
           = f.text_field :email
           
         .input
@@ -95,10 +96,10 @@
 
         .input
           .label
-            Portfolio url
+            Portfolio address
             %span.required required
           .label2 We will link to it in our webpage
-          =f.text_field :portfolio_url, :value => "http://", :size => 60  
+          =f.text_field :portfolio_url, :size => 60  
 
         .input
           .label
