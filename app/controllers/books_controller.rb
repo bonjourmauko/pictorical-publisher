@@ -17,7 +17,10 @@ class BooksController < ApplicationController
   
   
   def new
-    if @active_book.nil?
+    
+    text_exists = !params[:text_id].nil? && !Text.find(params[:text_id]).nil?
+    
+    if @active_book.nil? && text_exists
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
       if params[:change]
         mail = Notifications.change_book(@book)
