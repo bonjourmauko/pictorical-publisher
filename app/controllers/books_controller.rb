@@ -78,7 +78,7 @@ class BooksController < ApplicationController
     @book.status = "published"
     if @book.save
     
-      mail = Notifications.review_book(@active_book)
+      mail = Notifications.publish_book(@active_book)
       mail.deliver
       redirect_to @book    
     end

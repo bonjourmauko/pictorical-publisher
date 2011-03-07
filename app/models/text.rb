@@ -24,15 +24,19 @@ class Text < ActiveRecord::Base
   end
   
   def illustrations_lower
-    [
+    
+    factor = 0.8
+    
+    ([
       ((words.to_f)/300.0),
       (20.0 + ((words.to_f) - 6000.0 )/600.0),
       (30.0 + ((words.to_f)- 12000.0 )/1200.0)
-    ].min.round
+    ].min * factor).round
   end
   
   def illustrations_upper
-    ((words.to_f)/300.0).round
+    factor = 1.2
+    (((words.to_f)/300.0) * factor).round
   end  
   
   def words_rounded
