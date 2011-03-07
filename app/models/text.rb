@@ -16,22 +16,27 @@ class Text < ActiveRecord::Base
                         :author_id,
                         :content,
                         :source
-  
+                        
+  validates_uniqueness_of :title
   
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
   end
   
   def illustrations_lower
-    [
+    
+    factor = 0.8
+    
+    ([
       ((words.to_f)/300.0),
       (20.0 + ((words.to_f) - 6000.0 )/600.0),
       (30.0 + ((words.to_f)- 12000.0 )/1200.0)
-    ].min.round
+    ].min * factor).round
   end
   
   def illustrations_upper
-    ((words.to_f)/300.0).round
+    factor = 1.2
+    (((words.to_f)/300.0) * factor).round
   end  
   
   def words_rounded
@@ -40,14 +45,18 @@ class Text < ActiveRecord::Base
   
   # revisar esto!!
   def available?
-    no_active =  self.books.find_by_status("active").nil?
-    no_published = self.books.find_by_status("published").nil?
-    no_review = self.books.find_by_status("review").nil?   
-    no_active && no_published && no_review
+
+    self.books.where('status= ? OR status= ? OR status= ?', "review", "active", "published").first.nil?
+    
   end
   
-  def belongs_to_current_user?(current_user)
-    self.books.first[:user_id] == current_user.id
+  def is_active_for_someone?
+    !self.books.find_by_status("active").nil? unless self.books.nil?
+  end
+  
+  
+  def belongs_to_user?(current_user)
+    self.books.first[:user_id] == current_user.id unless self.books.nil?
   end
   
   private

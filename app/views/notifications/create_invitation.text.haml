@@ -1,8 +1,23 @@
 = "Hi, #{@invitation[:first_name]}"
 
-= "You have invited to join Pictorical. Please go to #{@url} and sign up with your #{@invitation[:email]} email."
+- if @invitation[:specially].empty?
+  I've looked at your portfolio and am a big fan of your work.
+- else
+  = "I've looked at your portfolio and am a big fan of your work, specially #{@invitation[:specially]}."
 
-- if !@invitation[:specially].empty?
-  = "We had invited you, specially, #{@invitation[:specially]}."
-  
-= "Welcome aboard!"
+We are Pictorical. We publish the world’s greatest stories illustrated by emergent artists all over the world. Currently we are publishing them as ebooks in Apple's iBookstore for the iPad, and soon we will be in Amazon's and Google's stores.
+
+I’d like to personally invite you to apply to illustrate books with us, be published worldwide and earn half of the profits from the sale of your books.
+
++ What's next?
+
+="To start illustrating your first story, go to #{@url} and sign up with your email #{@invitation[:email]}."
+
+We have tons of stories to choose from. If you can't find the one you are looking for, just write us to books@pictorical.com and we will look it for you.
+
+Looking forward to having you on board!
+
+Best,
+
+Victor, co-founder of Pictorical
+http://pictorical.com

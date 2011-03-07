@@ -17,9 +17,23 @@ class Notifications < ActionMailer::Base
     mail :to => book.user[:email]
   end
   
+  def publish_book(book)
+    @book = book
+    mail :to => book.user[:email]
+  end
+  
   def create_invitation(invitation, host) 
     @invitation = invitation
     @url = "http://" + host + new_user_registration_path
     mail :to => invitation[:email]
   end
+  
+  def welcome(user)
+    @user = user
+    @url = "http://publisher.pictorical.com" + new_user_session_path
+    mail :to => user[:email]
+  end
+  
+  
+  
 end

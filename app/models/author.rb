@@ -2,11 +2,10 @@ class Author < ActiveRecord::Base
   has_many  :texts
   scope :sorted, order('last_name ASC')
   
-  validates_presence_of :name,
-                        :last_name
+  validates_presence_of :last_name
   
   def name_with_initial
-    "#{name.first}. #{last_name}"
+    "#{last_name}, #{name}"
   end
   
   

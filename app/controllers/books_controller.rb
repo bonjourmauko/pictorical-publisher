@@ -17,10 +17,18 @@ class BooksController < ApplicationController
   
   
   def new
-    if @active_book.nil?
+    
+    text_exists = !params[:text_id].nil? && !Text.find(params[:text_id]).nil?
+    
+    if @active_book.nil? && text_exists
       @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
-      mail = Notifications.new_book(@book)
-      mail.deliver
+      if params[:change]
+        mail = Notifications.change_book(@book)
+        mail.deliver
+      else
+        mail = Notifications.new_book(@book)
+        mail.deliver        
+      end  
       redirect_to edit_book_path @book[:id]
     else
       redirect_to edit_book_path @active_book[:id]
@@ -49,14 +57,18 @@ class BooksController < ApplicationController
     @active_book.status = "destroyed"
     @active_book.save
 
-    redirect_to :action => "new", :text_id => params[:text_id]
+    redirect_to :action => "new", :text_id => params[:text_id], :change => true
   end
   
   def review
     
     @active_book.status = "review"
-    @active_book.save
+    if @active_book.save
     
+      mail = Notifications.review_book(@active_book)
+      mail.deliver
+    
+    end
 
   end
   
@@ -64,8 +76,13 @@ class BooksController < ApplicationController
     
     @book = Book.find(params[:id])
     @book.status = "published"
-    @book.save
-    redirect_to @book
+    if @book.save
+    
+      mail = Notifications.publish_book(@active_book)
+      mail.deliver
+      redirect_to @book    
+    end
+
   end
   
   def destroy
