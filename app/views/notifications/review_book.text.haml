@@ -1,1 +1,3 @@
-= @greeting + ", find me in app/views/notifications/review_book.text.haml"
+= "Hi, #{@book.user[:first_name]}"
+
+= "We are glad you sent #{@book.text[:title]} to review. If everything is fine, we're going to publish it in a few days"
