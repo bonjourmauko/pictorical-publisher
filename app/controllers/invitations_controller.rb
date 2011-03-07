@@ -20,6 +20,8 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(params[:invitation])
     @invitation.secret = Digest::SHA1.hexdigest("#{Time.now.to_s}")[0,10]
       if @invitation.save
+        mail = Notifications.create_invitation(@invitation)
+        mail.deliver
         redirect_to @invitation, :notice => 'Invitation was successfully created.'
       else
         render :action => "new"
