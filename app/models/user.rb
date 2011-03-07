@@ -64,7 +64,6 @@ class User < ActiveRecord::Base
     !self.book_under_review.nil?
   end
   
-  #protected
   private
 
   def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
@@ -80,9 +79,7 @@ class User < ActiveRecord::Base
     
     self.tutorial_mode ||= true 
   end
-  
-  #private
-  
+    
   def is_admin
     if User.all.first.nil?
       true
