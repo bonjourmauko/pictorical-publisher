@@ -16,10 +16,10 @@
           %span.up= author.last_name
         .textlist
           - author.texts.each do |text|
-            - if text.available? or text.belongs_to_current_user?(current_user)
+            - if text.available?
               .onetext
                 .textlink= link_to text[:title], text
-                .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
+                .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
             - else
               .onetext
                 .textlink= text[:title]

@@ -46,8 +46,13 @@ class Text < ActiveRecord::Base
     no_active && no_published && no_review
   end
   
-  def belongs_to_current_user?(current_user)
-    self.books.first[:user_id] == current_user.id
+  def is_active_for_someone?
+    !self.books.find_by_status("active").nil? unless self.books.nil?
+  end
+  
+  
+  def belongs_to_user?(current_user)
+    self.books.first[:user_id] == current_user.id unless self.books.nil?
   end
   
   private
