@@ -2,7 +2,7 @@
 
 = "You have invited to join Pictorical. Please go to #{@url} and sign up with your #{@invitation[:email]} email."
 
-= if !@invitation[:specially].empty?
-  = "We had invited you, specially, because #{@invitation[:specially]}"
+- if !@invitation[:specially].empty?
+  = "We had invited you, specially, #{@invitation[:specially]}."
   
 = "Welcome aboard!"
