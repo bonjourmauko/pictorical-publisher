@@ -41,10 +41,9 @@ class Text < ActiveRecord::Base
   
   # revisar esto!!
   def available?
-    no_active =  self.books.find_by_status("active").nil?
-    no_published = self.books.find_by_status("published").nil?
-    no_review = self.books.find_by_status("review").nil?   
-    no_active && no_published && no_review
+
+    self.books.where('status= ? OR status= ? OR status= ?', "review", "active", "published").first.nil?
+    
   end
   
   def is_active_for_someone?
