@@ -49,9 +49,10 @@ class TextsController < ApplicationController
     
     @text = Text.find(params[:id])
     @text.deleted = true
-    @text.save
-    redirect_to @text, :notice => 'Text was successfully deleted.'
-
+    if @text.save
+      redirect_to @text, :notice => 'Text was successfully deleted.'
+    else
+      redirect_to @text, :notice => 'Text was not deleted.'
     
   end
   
