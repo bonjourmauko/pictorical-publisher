@@ -48,6 +48,7 @@ class TextsController < ApplicationController
       redirect_to @text, :notice => 'Text was successfully deleted.'
     else
       redirect_to @text, :notice => 'Text was not deleted.'
+    end
   end
   
   private

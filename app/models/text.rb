@@ -10,8 +10,9 @@ class Text < ActiveRecord::Base
                         :author_id,
                         :content,
                         :words,
-                        :source
-  
+                        :source,
+                        :deleted
+                          
   validates_presence_of :title,
                         :author_id,
                         :content,
