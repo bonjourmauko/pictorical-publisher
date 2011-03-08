@@ -34,7 +34,6 @@ class TextsController < ApplicationController
   end
   
   def update
-        
     if @text.update_attributes(params[:text])
       redirect_to @text, :notice => 'Text was successfully updated.'
     else
@@ -44,10 +43,16 @@ class TextsController < ApplicationController
   
   def destroy
     @text.deleted = true
+<<<<<<< HEAD
     if @text.save
       redirect_to @text, :notice => 'Text was successfully deleted.'
     else
       redirect_to @text, :notice => 'Text was not deleted.'
+    
+=======
+    @text.save
+    redirect_to @text, :notice => 'Text was successfully deleted.'
+>>>>>>> ee5b0083c0e7dd1de6b6111333b97c5104a09c4d
   end
   
   private
