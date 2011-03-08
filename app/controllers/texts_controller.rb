@@ -34,25 +34,17 @@ class TextsController < ApplicationController
   end
   
   def update
-    
-    @text = Text.find(params[:id])
-    
     if @text.update_attributes(params[:text])
       redirect_to @text, :notice => 'Text was successfully updated.'
     else
       render :action => "edit"
     end
-    
   end
   
   def destroy
-    
-    @text = Text.find(params[:id])
     @text.deleted = true
     @text.save
     redirect_to @text, :notice => 'Text was successfully deleted.'
-
-    
   end
   
   private
