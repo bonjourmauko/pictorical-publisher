@@ -15,7 +15,7 @@
           = author.name
           %span.up= author.last_name
         .textlist
-          - author.texts.ordered.each do |text|
+          - author.texts.each do |text|
             - unless text.deleted
               - if text.available?
                 .onetext
