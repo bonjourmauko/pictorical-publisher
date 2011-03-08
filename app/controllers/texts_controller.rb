@@ -46,7 +46,13 @@ class TextsController < ApplicationController
   end
   
   def destroy
-    @text.destroy
+    
+    @text = Text.find(params[:id])
+    @text.deleted = true
+    @text.save
+    redirect_to @text, :notice => 'Text was successfully deleted.'
+
+    
   end
   
   private
