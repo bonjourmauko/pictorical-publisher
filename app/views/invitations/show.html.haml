@@ -24,3 +24,5 @@
     = link_to "new", :action => "new"
     ·
     = link_to "all", :action => "index"
+    .
+    = link_to "delete", @invitation, :confirm => 'Are you sure?', :method => :delete
