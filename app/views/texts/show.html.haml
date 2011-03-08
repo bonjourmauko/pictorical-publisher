@@ -17,7 +17,8 @@
     - if can? :new, Text
       .admin
         = link_to "edit", :action => "edit"
-        = link_to 'Destroy', @text, :confirm => 'Are you sure?', :method => :delete
+        ·
+        = link_to 'destroy', @text, :confirm => 'Are you sure?', :method => :delete
   
     #action-box
       = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"

@@ -45,7 +45,7 @@ class TextsController < ApplicationController
   def destroy
     @text.deleted = true
     if @text.save
-      redirect_to @text, :notice => 'Text was successfully deleted.'
+      redirect_to texts_path, :notice => 'Text was successfully deleted.'
     else
       redirect_to @text, :notice => 'Text was not deleted.'
     end
