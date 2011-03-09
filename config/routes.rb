@@ -18,8 +18,8 @@ PublisherPictoricalCom::Application.routes.draw do
   resources :users
   resources :texts
   
-  match "trashes/:id", :to => "texts#trashed_destroy", :via => :delete
-  match "trashes/:id/undestroy", :to => "texts#trashed_undestroy", :as => :trashed_undestroy
+  match "trashes/:id/trashed_destroy", :to => "texts#trashed_destroy", :as => :trashed_destroy
+  match "trashes/:id/trashed_undestroy", :to => "texts#trashed_undestroy", :as => :trashed_undestroy
   match "trashes/:id", :to => "texts#trashed_show", :as => :trashed
   match "trashes", :to => "texts#trashed_index", :as => :trashes
   
