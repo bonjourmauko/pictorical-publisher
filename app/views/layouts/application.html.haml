@@ -7,6 +7,25 @@
     = yield :head
     = csrf_meta_tag
   %body
+    -if user_signed_in? && current_user.admin?
+      #admin-bar
+        .x Hello, Master
+        .x
+          %strong
+            = link_to "Invites", invitations_path
+          = link_to "new", new_invitation_path
+        .x
+          %strong
+            = link_to "Texts", texts_path
+          = link_to "new", new_text_path
+          = link_to "trash", trashes_path
+
+        .x
+          %strong
+            = link_to "Authors", authors_path
+          = link_to "new", new_author_path
+      
+    
     #header
       = yield :navbar
       #artist_session

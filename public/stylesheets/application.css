@@ -338,4 +338,22 @@ a.illustrate-change-link:active {
 	
 }
 
+#admin-bar {
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	background: #fea;
+	padding: 0.5em;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 15em;
+	
+}
 
+#admin-bar a, #admin-bar a:visited {
+	color: red;
+	text-decoration: none;
+}
+
+#admin-bar a:hover {
+	text-decoration: underline;
+}
