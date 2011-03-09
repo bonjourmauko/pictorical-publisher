@@ -1,4 +1,4 @@
-- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+- title "Pictorical, trashed #{@text[:title]} by #{@text[:author]}"
 #notice
   = notice
 #text-canvas
@@ -16,9 +16,9 @@
   
     - if can? :new, Text
       .admin
-        = link_to "edit", :action => "edit"
-        ·
-        = link_to 'destroy', :action => "trashed_destroy"
+        = link_to "destroy for real", @text, :method => :delete
+        -#·
+        -#= link_to "undestroy", :action => "trashed_undestroy"
   
     #action-box
       = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
@@ -34,4 +34,3 @@
 
     #story
       = @text[:content].html_safe
-    

@@ -2,7 +2,7 @@ class TextsController < ApplicationController
   load_and_authorize_resource
   #respond_to :html
   before_filter :get_active_book, :only => [:show, :index]
-  before_filter :find_text_by_id, :only => [:show, :edit, :update]
+  before_filter :find_text_by_id, :only => [:show, :trash_show, :edit, :update]
   
   # actions where artists have access to
   # index
@@ -11,8 +11,15 @@ class TextsController < ApplicationController
   def index
     @authors = Author.sorted.all
   end
-
+  
+  def trashed_index
+    @authors = Author.sorted.all
+  end
+  
   def show  
+  end
+  
+  def trashed_show
   end
   
   def new
@@ -34,7 +41,6 @@ class TextsController < ApplicationController
   end
   
   def update
-        
     if @text.update_attributes(params[:text])
       redirect_to @text, :notice => 'Text was successfully updated.'
     else
@@ -42,13 +48,21 @@ class TextsController < ApplicationController
     end
   end
   
-  def destroy
+  def trashed_destroy
     @text.deleted = true
     if @text.save
       redirect_to texts_path, :notice => 'Text was successfully deleted.'
     else
       redirect_to @text, :notice => 'Text was not deleted.'
     end
+  end
+  
+  def trashed_undestroy
+  end
+  
+  def destroy
+    @text.destroy
+    redirect_to trashes_path
   end
   
   private
