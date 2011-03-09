@@ -22,7 +22,7 @@ class Text < ActiveRecord::Base
                         :source
 
   #por alguna razón los textos se duplican
-  validates_uniqueness_of :title
+  validates_uniqueness_of :title, :scope => :author_id
 
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
