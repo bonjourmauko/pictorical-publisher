@@ -20,6 +20,10 @@
         .x
           %strong
             = link_to "Books", books_path
+          = link_to "active", books_path + "?status=active"
+          = link_to "review", books_path + "?status=review"
+          = link_to "published", books_path + "?status=published"
+          = link_to "destroyed", books_path + "?status=destroyed"
         .x
           %strong
             = link_to "Texts", texts_path
