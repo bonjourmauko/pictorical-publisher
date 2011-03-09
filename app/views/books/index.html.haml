@@ -1,0 +1,17 @@
+#notice
+  = notice
+#admin-canvas
+  %h1 All books
+  .admin
+    = link_to "New", :action => "new"
+  - @books.each do |book|
+    %p
+      = link_to "#{book.id}", book
+      ·
+      = link_to "#{book.text.title}", book unless book.text.nil?
+      · 
+      by
+      = link_to "#{book.user.first_name} #{book.user.last_name}", book.user unless book.user.nil?
+      
+      = time_ago_in_words(book.created_at)
+      ago
