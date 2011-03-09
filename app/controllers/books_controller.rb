@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :get_active_book
-  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index]
+  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status]
   before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy]
   
   # nuevas columnas:
@@ -16,9 +16,24 @@ class BooksController < ApplicationController
   # change
   # review
   
+  
   def index
-    @books = Book.all
+    
+    status = params[:status]
+    
+    if status.nil? || status.empty?
+    
+      @books = Book.all
+      
+    else
+      
+      @books = Book.find_all_by_status(status)
+      
+    end
+      
   end
+  
+  
   
   
   def show

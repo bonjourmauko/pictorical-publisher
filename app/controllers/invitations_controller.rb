@@ -5,9 +5,33 @@ class InvitationsController < ApplicationController
   # ninguna
 
 
+  #def index
+  #  @invitations = Invitation.sorted.all
+  #end
+  
   def index
-    @invitations = Invitation.sorted.all
+    
+    redeemed = params[:redeemed]
+    
+    if redeemed.nil? ||redeemed == ""
+    
+      @invitations = Invitation.sorted.all
+      
+    elsif redeemed == 'yes' || redeemed == "YES"
+      
+      @invitations = Invitation.sorted.where('redeemed_at > 0')
+      
+    else
+      
+      @invitations = Invitation.sorted.find_all_by_redeemed_at(nil)
+      
+    end
+    
+    
+      
   end
+  
+  
 
   def show
   end

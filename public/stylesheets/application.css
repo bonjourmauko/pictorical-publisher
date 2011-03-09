@@ -356,3 +356,10 @@ a.illustrate-change-link:active {
 #admin-bar a:hover {
 	text-decoration: underline;
 }
+
+.all_authors {
+	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	
+}
+
+.all_authors a {text-decoration: none;}

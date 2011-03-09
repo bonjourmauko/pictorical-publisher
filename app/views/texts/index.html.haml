@@ -7,12 +7,18 @@
     %h1 Choose a story
 
   #container
+    
+    .all_authors
+      - @authors.each do |author|
+        - unless author.texts.first.nil? || author.texts.not_deleted.first.nil?
+          = link_to author.last_name, :anchor => "a#{author.id}"
+          ·
     - @authors.each do |author|
       - unless author.texts.first.nil?
-        -unless author.texts.not_deleted.first.nil?
+        - unless author.texts.not_deleted.first.nil?
+          = tag "a", {:name => "a#{author.id}"}
           %h4
-            = author[:name]
-            %span.up= author[:last_name]
+            %span.up= "#{author[:name]} #{author[:last_name]}"
           .textlist
             - author.texts.sorted.each do |text|
               - unless text[:deleted]
