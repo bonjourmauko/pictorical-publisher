@@ -47,6 +47,7 @@ class AuthorsController < ApplicationController
   
   def destroy
     @author.destroy
+    redirect_to authors_path
   end
 
 
