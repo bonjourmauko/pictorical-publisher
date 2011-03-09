@@ -34,7 +34,6 @@ class TextsController < ApplicationController
       else
         render :action => "new"
       end
-    
   end
   
   def edit
@@ -58,6 +57,12 @@ class TextsController < ApplicationController
   end
   
   def trashed_undestroy
+    @text.deleted = false
+    if @text.save
+      redirect_to texts_path, :notice => 'Text was successfully undeleted.'
+    else
+      redirect_to @text, :notice => 'Text was not undeleted.'
+    end
   end
   
   def destroy
