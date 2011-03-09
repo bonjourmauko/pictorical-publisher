@@ -13,4 +13,4 @@
     = link_to "all", :action => "index"
     - unless @author.texts.first.nil? 
       ·
-      = link_to "delete", @invitation, :confirm => 'Are you sure?', :method => :delete
+      = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
