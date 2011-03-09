@@ -1,19 +1,13 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   
-  def show
-  
-    @user = User.find(params[:id])
-    
-  end
-  
   def index
-  
-    @users = User.find(:all, :order => "created_at DESC")
-    
+    @users = User.sorted.all
   end
   
-  
+  def show
+    @user = User.find(params[:id])
+  end  
   
   def mature #releases the user from tutorial
     
