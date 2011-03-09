@@ -66,8 +66,14 @@ class TextsController < ApplicationController
   end
   
   def destroy
-    @text.destroy
-    redirect_to trashes_path
+ 
+    #if there are existing books with this text
+        
+    if @text.books.not_deleted.empty? && @text.destroy
+      redirect_to trashes_path, :notice => 'Text was successfully destroyed for ever.'
+    else
+      redirect_to @text, :notice => 'Text was not destroyed.'
+    end
   end
   
   private
