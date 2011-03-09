@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :get_active_book
   before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status]
-  before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy]
+  before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy, :add_text, :remove_text]
   
   # nuevas columnas:
   
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   
   
   
-  def show
+  def show    
     @text = @book.text
   end
   
@@ -103,8 +103,29 @@ class BooksController < ApplicationController
     redirect_to @book
   end
   
-  
- 
+  def add_text
+    
+    text = Text.find(params[:text_id])
+    @book.texts << text
+      
+    redirect_to @book, :notice => "text added to book"
+
+  end
+
+  def remove_text
+    
+    text = Text.find(params[:text_id])
+    if @book.texts.delete(text)
+      
+        redirect_to @book, :notice => "text removed from book"
+        
+      else
+        
+        redirect_to @book, :notice => "text not removed from book"
+    
+      end
+  end
+
   
   private
   

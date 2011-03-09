@@ -32,6 +32,8 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/publish/:id", :to => "books#publish"
   match "books/revise/:id", :to => "books#revise"
   match "books/destroy/:id", :to => "books#destroy"
+  match "books/:id/add_text", :to => "books#add_text"
+  match "books/:id/remove_text", :to => "books#remove_text"  
   
   resources :books
     

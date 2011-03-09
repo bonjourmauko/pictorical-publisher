@@ -1,4 +1,4 @@
-- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+- title "Pictorical, Illustrate #{@book[:title]} by #{@book[:author]}"
 
 - javascripts "text"
 
@@ -8,7 +8,7 @@
     = notice
   
   #title
-    %h1=  @text[:title]
+    %h1=  @book.title
     %h3
       written by
       %span.up= "#{@text.author_name} #{@text.author_last_name}"
@@ -18,7 +18,7 @@
   #container
   
     #action-box
-      = "#{@book.text.words_rounded} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·  You are illustrating this book 
       = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
@@ -52,7 +52,7 @@
 
 
     #story
-      = @text[:content].html_safe
+      = @book.content.html_safe
     %h3
       %span.up
         The end
