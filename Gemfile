@@ -35,6 +35,7 @@ gem "devise"
 gem "cancan"
 gem "hpricot"
 gem "ruby_parser"
+gem 'rails3-jquery-autocomplete'
 
 gem "haml"
 gem "haml-rails"
