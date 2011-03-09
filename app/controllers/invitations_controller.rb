@@ -47,6 +47,7 @@ class InvitationsController < ApplicationController
   
   def destroy
     @invitation.destroy
+    redirect_to invitations_path
   end
 
   
