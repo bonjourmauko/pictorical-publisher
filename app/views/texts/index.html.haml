@@ -3,36 +3,33 @@
   = notice
 #text-canvas
 
-
-
   #title
     %h1 Choose a story
 
   #container
     - @authors.each do |author|
-      - if author.texts.count > 0
-        %h4
-          = author.name
-          %span.up= author.last_name
-        .textlist
-          - author.texts.each do |text|
-            - unless text.deleted
-              - if text.available?
-                .onetext
-                  .textlink= link_to text[:title], text
-                  .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
-              - else
-                - if current_user.active_book && current_user.active_book.text[:id] == text[:id]
+      - unless author.texts.first.nil?
+        -unless author.texts.not_deleted.first.nil?
+          %h4
+            = author[:name]
+            %span.up= author[:last_name]
+          .textlist
+            - author.texts.sorted.each do |text|
+              - unless text[:deleted]
+                - if text.available?
                   .onetext
                     .textlink= link_to text[:title], text
-                    .textinfo= "You are illustrating this story"
+                    .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
                 - else
-                  .onetext
-                    .textlink= text[:title]
-                    .textinfo= "Someone is illustrating this story"
-
-
+                  - if current_user.active_book && current_user.active_book.text[:id] == text[:id]
+                    .onetext
+                      .textlink= link_to text[:title], text
+                      .textinfo= "You are illustrating this story"
+                  - else
+                    .onetext
+                      .textlink= text[:title]
+                      .textinfo= "Someone is illustrating this story"
 
     - if can? :new, Text
       .admin
-        = link_to "new", :action => "new"
+        = link_to "new", new_text_path
