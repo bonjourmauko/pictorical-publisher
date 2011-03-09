@@ -2,8 +2,6 @@
   = notice
 #admin-canvas
   %h1 All books
-  .admin
-    = link_to "New", :action => "new"
   - @books.each do |book|
     %p
       = link_to "#{book.id}", book
