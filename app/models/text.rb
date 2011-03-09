@@ -21,7 +21,8 @@ class Text < ActiveRecord::Base
                         :content,
                         :source
 
-  #validates_uniqueness_of :title
+  #por alguna razón los textos se duplican
+  validates_uniqueness_of :title
 
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
@@ -62,7 +63,7 @@ class Text < ActiveRecord::Base
   private
   
   def deleted?
-    self.deleted ||= false
+    self[:deleted] ||= false
   end
   
   def count_words
