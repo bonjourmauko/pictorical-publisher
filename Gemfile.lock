@@ -121,6 +121,8 @@ GEM
       activesupport (= 3.0.4)
       bundler (~> 1.0)
       railties (= 3.0.4)
+    rails3-jquery-autocomplete (0.6.2)
+      rails (~> 3.0.0)
     railties (3.0.4)
       actionpack (= 3.0.4)
       activesupport (= 3.0.4)
@@ -186,6 +188,7 @@ DEPENDENCIES
   mysql2
   rails (= 3.0.4)
   rails3-generators!
+  rails3-jquery-autocomplete
   rspec
   rspec-rails
   ruby_parser

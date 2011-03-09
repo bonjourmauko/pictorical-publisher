@@ -20,13 +20,11 @@ class AuthorsController < ApplicationController
   
   def create
     @author = Author.new(params[:author])
-    
-      if @author.save
-        redirect_to @author, :notice => 'Author was successfully created.'
-      else
-        render :action => "new"
-      end
-    
+    if @author.save
+      redirect_to new_text_path, :notice => 'Author was successfully created.'
+    else
+      render :action => "new"
+    end
   end
   
   def edit
