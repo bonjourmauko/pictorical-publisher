@@ -1,0 +1,23 @@
+- title "Pictorical, you are reviewing the trash can. Why are you here, by the way?"
+#notice
+  = notice
+#text-canvas
+
+
+
+  #title
+    %h1 Choose a story
+
+  #container
+    - @authors.each do |author|
+      - unless author.texts.first.nil?
+        -unless author.texts.deleted.first.nil?
+          %h4
+            = author[:name]
+            %span.up= author[:last_name]
+          .textlist
+            - author.texts.each do |text|
+              - if text[:deleted]
+                .onetext
+                  .textlink= link_to text[:title], trashed_path(text[:id])
+                  .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
