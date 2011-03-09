@@ -3,7 +3,7 @@ class Text < ActiveRecord::Base
   has_many          :books
   delegate          :name, :last_name, :to => :author, :prefix => true
   scope             :sorted, order('title ASC')
-  scope             :not_deleted, where(:deleted => false)
+  scope             :not_deleted, where(:deleted => false) 
   scope             :deleted, where(:deleted => true)
   after_initialize  :deleted?
   before_create     :count_words
