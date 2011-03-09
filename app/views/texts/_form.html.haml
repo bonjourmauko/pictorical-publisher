@@ -13,8 +13,7 @@
   %p
     .title
       = f.label :author_id
-      -#%span.admin= link_to "new", :controller => "authors", :action => "new"
-      %span.admin= link_to "new", new_author_path, :class => "fancy"
+      %span.admin= link_to "new", :controller => "authors", :action => "new"
     .field= collection_select(:text, :author_id, Author.sorted.all, :id, :name_with_initial, :prompt => true)
   %p
     .title= f.label :source
