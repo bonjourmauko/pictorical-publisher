@@ -70,7 +70,7 @@ body {
 }
 
 
-#text-canvas #action-box {
+#action-box, #warning-box {
 	background: #4E4646;
 	padding: 0.5em;
 	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -78,6 +78,8 @@ body {
 	text-align: center;
 	color: white;
 }
+
+#warning-box {background: #9D0000;}
 
 #action-box h3 {
 	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -376,4 +378,4 @@ a.illustrate-change-link:active {
 	
 }
 
-#action-box a, #action-box a:visited { color: white;}
+#warning-box a, #warning-box a:visited { color: white;}

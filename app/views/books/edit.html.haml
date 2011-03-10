@@ -20,8 +20,14 @@
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·  You are illustrating this book 
-      = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
+      - unless @book.words < 4000
+        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
+
+    - if @book.words < 4000
+      #warning-box
+        = "This is a short story (#{@text.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
+        = link_to "books@pictorical.com", "mailto:books@pictorical.com"
 
     - if @current_user.tutorial_mode?
 
