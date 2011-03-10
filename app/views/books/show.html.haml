@@ -11,7 +11,7 @@
     %h1=  @book.title
     %h3
       written by
-      %span.up= "#{@text.author_name} #{@text.author_last_name}"
+      %span.up= "#{@book.author.name} #{@book.author.last_name}"
     %h3
       illustrated by
       %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
@@ -24,8 +24,21 @@
       = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link"
       = link_to "destroy", {:action => "destroy"},  :class => "illustrate-this-link"
       
-
-
+    #multitext
+      .x
+        = form_tag("/books/#{@book.id}/add_text", :method => :get) do
+          %b Add text
+          = text_field_tag 'text_id'
+          = submit_tag 'add'
+      %br
+      .x
+        %b Remove text
+        - @book.texts.each do |text|
+          - if text != @book.texts.first
+            = link_to text.title, "/books/#{@book.id}/remove_text?text_id=#{text.id}"
+          - else
+            = text.title
+          ·  
 
     #story
       = @book.content.html_safe

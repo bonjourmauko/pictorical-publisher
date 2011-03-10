@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :get_active_book
-  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status]
+  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status, :add_text, :remove_text]
   before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy, :add_text, :remove_text]
   
   # nuevas columnas:
@@ -37,7 +37,6 @@ class BooksController < ApplicationController
   
   
   def show    
-    @text = @book.text
   end
   
   def new

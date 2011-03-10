@@ -363,3 +363,9 @@ a.illustrate-change-link:active {
 }
 
 .all_authors a {text-decoration: none;}
+
+#multitext {
+	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	margin: 1em 0;
+	
+}

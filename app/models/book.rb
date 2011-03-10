@@ -14,6 +14,10 @@ class Book < ActiveRecord::Base
     self.texts.first
   end
   
+  def author
+    self.texts.first.author
+  end
+  
   def title
   
     if self.texts.count > 2
