@@ -21,15 +21,20 @@
         = link_to 'destroy', :action => "trashed_destroy"
   
     #action-box
-      = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
-      - unless current_user.has_books_under_review?
+      = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
+      - unless current_user.has_books_under_review? || @text.words < 4000
         ·
         = illustrate_or_change
         or
         = link_to "choose another", {:action => "index"}, :class => "choose"
       - else
-        %br
-        Please wait until we publish your book to start illustrating another one
+        - if current_user.has_books_under_review?
+          %br
+          Please wait until we publish your book to start illustrating another one
+          - else
+          %br
+          = "This story is too short (#{@text.words} words), please choose one or more additional stories by the same author until you reach over 4000 words, and send your choice to "
+          = link_to("books@pictorical.com", "mailto:books@pictorical.com")
 
 
     #story

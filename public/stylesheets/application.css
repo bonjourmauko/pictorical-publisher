@@ -375,3 +375,5 @@ a.illustrate-change-link:active {
 	text-align: center;
 	
 }
+
+#action-box a, #action-box a:visited { color: white;}
