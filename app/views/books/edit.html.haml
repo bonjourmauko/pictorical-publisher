@@ -21,7 +21,7 @@
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·  You are illustrating this book 
       - unless @book.words < 4000
-        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
+        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => 'Are you ready to publish this book? Did you send the illustrations to books@pictorical.com?'
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - if @book.words < 4000

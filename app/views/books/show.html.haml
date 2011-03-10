@@ -34,7 +34,7 @@
       .x
         %b Remove text
         - @book.texts.each do |text|
-          - if text != @book.texts.first
+          - if @book.texts.count > 1
             = link_to "#{text.title} (#{text.id})", "/books/#{@book.id}/remove_text?text_id=#{text.id}"
           - else
             = "#{text.title} (#{text.id})"

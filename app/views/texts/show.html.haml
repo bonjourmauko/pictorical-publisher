@@ -24,13 +24,15 @@
       #action-box
         = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
         ·
-        = illustrate_or_change
+        = illustrate_change_or_add
         or
         = link_to "choose another", {:action => "index"}, :class => "choose"
         
       - if @text.words < 4000
         #warning-box
-          = "This is a short story (#{@text.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
+          %b= "This is a short story (#{@text.words} words)"
+          %br
+          = "Want to illustrate it? Click \"Illustrate text\", Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
           = link_to "books@pictorical.com", "mailto:books@pictorical.com"
         
     - else
