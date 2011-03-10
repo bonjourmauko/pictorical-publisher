@@ -359,6 +359,12 @@ a.illustrate-change-link:active {
 	text-decoration: underline;
 }
 
+#admin-bar .header {
+	font-size: 150%;
+	margin-top: 0.5em;
+	
+}
+
 .all_authors {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	
