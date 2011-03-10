@@ -6,9 +6,9 @@
   #title
     %h1 
       -if @text[:deleted]
-        = "DELETED!"
-        %br
-      = @text[:title]
+        .deleted= @text[:title]
+      -else
+        = @text[:title]
     %h3
       %span.up
         = "#{@text.author_name} #{@text.author_last_name}"
@@ -22,15 +22,6 @@
   
     #action-box
       = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
-      - unless current_user.has_books_under_review?
-        ·
-        = illustrate_or_change
-        or
-        = link_to "choose another", {:action => "index"}, :class => "choose"
-      - else
-        %br
-        Please wait until we publish your book to start illustrating another one
-
 
     #story
       = @text[:content].html_safe

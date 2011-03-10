@@ -42,27 +42,50 @@ class BooksController < ApplicationController
 
   
   def new
-    text_exists = !params[:text_id].nil? && !Text.find(params[:text_id]).nil?
-    if @active_book.nil? && text_exists
+        
+    unless Text.find_by_id(params[:text_id]).nil?
       
-      @book = Book.create(:user_id => current_user.id)
-      
-      @book.principal = Text.find(params[:text_id])
-      
-      @book.save
-      
-      @book.texts << Text.find(params[:text_id])
-      if params[:change]
-        mail = Notifications.change_book(@book)
-        mail.deliver
+      if @active_book.nil? # user doesn't have an active book
+
+        text = Text.find(params[:text_id])
+
+        @book = Book.create(:user_id => current_user.id)
+
+        @book.principal = text
+        @book.save
+
+        text.availability = false
+        text.save
+
+        @book.texts << Text.find(params[:text_id])
+        
+        if params[:change]
+          
+          mail = Notifications.change_book(@book)
+          mail.deliver
+          
+        else
+          
+          mail = Notifications.new_book(@book)
+          mail.deliver
+               
+        end  
+        
+        redirect_to edit_book_path @book[:id], :notice => "Book was created succesfully"
+        
       else
-        mail = Notifications.new_book(@book)
-        mail.deliver        
-      end  
-      redirect_to edit_book_path @book[:id]
-    else
-      redirect_to edit_book_path @active_book[:id]
+        
+        redirect_to edit_book_path @active_book[:id], :notice => "You already have an active book"
+        
+      end
+
+    else # if text doesn't exist
+      
+      redirect_to texts_path, :notice => "That text doesn't exist!"
+       
     end
+     
+    
   end
   
   def edit

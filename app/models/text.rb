@@ -7,6 +7,7 @@ class Text < ActiveRecord::Base
   scope             :sorted, order('title ASC')
   scope             :not_deleted, where(:deleted => false) 
   scope             :deleted, where(:deleted => true)
+  scope             :available, where(:availability => true)
   after_initialize  :deleted?
   before_create     :count_words
   before_update     :count_words
@@ -16,7 +17,8 @@ class Text < ActiveRecord::Base
                         :content,
                         :words,
                         :source,
-                        :deleted
+                        :deleted,
+                        :availability
 
   validates_presence_of :title,
                         :author_id,

@@ -6,9 +6,9 @@
   #title
     %h1 
       -if @text[:deleted]
-        = "DELETED!"
-        %br
-      = @text[:title]
+        .deleted= @text[:title]
+      -else
+        = @text[:title]
     %h3
       %span.up
         = "#{@text.author_name} #{@text.author_last_name}"
@@ -16,10 +16,26 @@
   
     - if can? :new, Text
       .admin
+        Admin: 
         = link_to "edit", :action => "edit"
         ·
         = link_to 'destroy', :action => "trashed_destroy"
-
+        ·
+        - if @text.availability
+          text is available
+          = link_to 'make unavailable', :action => "make_unavailable"
+        - else
+          text is unavailable
+          = link_to 'make available', :action => "make_available"
+        %br
+        %br
+        %b= "Books with this text"
+        - if @text.books.not_deleted.count > 0
+          - @text.books.not_deleted.each do |book|
+            .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user.id}) · status: #{book.status}", book
+        - else
+          .x No books with this text
+        
     - unless current_user.has_books_under_review?
       #action-box
         = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"

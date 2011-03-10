@@ -2,7 +2,7 @@ class TextsController < ApplicationController
   load_and_authorize_resource
   #respond_to :html
   before_filter :get_active_book, :only => [:show, :index]
-  before_filter :find_text_by_id, :only => [:show, :trash_show, :edit, :update]
+  before_filter :find_text_by_id, :only => [:show, :trash_show, :edit, :update, :make_available, :make_unavailable]
   
   # actions where artists have access to
   # index
@@ -29,6 +29,8 @@ class TextsController < ApplicationController
   def create
     @text = Text.new(params[:text])
     
+      @text.availability = true
+      
       if @text.save
         redirect_to @text, :notice => 'Text was successfully created.'
       else
@@ -49,6 +51,7 @@ class TextsController < ApplicationController
   
   def trashed_destroy
     @text.deleted = true
+    @text.availability = false
     if @text.save
       redirect_to texts_path, :notice => 'Text was successfully deleted.'
     else
@@ -58,6 +61,7 @@ class TextsController < ApplicationController
   
   def trashed_undestroy
     @text.deleted = false
+    @text.availability = true
     if @text.save
       redirect_to texts_path, :notice => 'Text was successfully undeleted.'
     else
@@ -73,6 +77,25 @@ class TextsController < ApplicationController
       redirect_to trashes_path, :notice => 'Text was successfully destroyed for ever.'
     else
       redirect_to @text, :notice => 'Text was not destroyed.'
+    end
+  end
+  
+  
+  def make_available
+    @text.availability = true
+    if @text.save
+      redirect_to @text, :notice => 'Text now is available.'
+    else
+      redirect_to @text, :notice => 'Text was NOT made available.'
+    end
+  end
+  
+  def make_unavailable
+    @text.availability = false
+    if @text.save
+      redirect_to @text, :notice => 'Text now is unavailable.'
+    else
+      redirect_to @text, :notice => 'Text was NOT made unavailable.'
     end
   end
   
