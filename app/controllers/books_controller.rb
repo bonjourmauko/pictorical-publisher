@@ -113,22 +113,30 @@ class BooksController < ApplicationController
   def publish
     @book.status = "published"
     if @book.save
-      mail = Notifications.publish_book(@active_book)
+      mail = Notifications.publish_book(@book)
       mail.deliver
-      redirect_to @book    
+      redirect_to @book, :notice => "book has been published"
+    else
+      redirect_to @book, :notice => "could not change status"
     end
   end
   
   def revise
     @book.status = "active"
-    @book.save
-    redirect_to @book
+    if @book.save
+      redirect_to @book, :notice => "changed status to active"
+    else
+      redirect_to @book, :notice => "could not change status"
+    end
   end
   
   def destroy
     @book.status = "destroyed"
-    @book.save
-    redirect_to @book
+    if @book.save
+      redirect_to @book, :notice => "changed status to destroyed"
+    else
+      redirect_to @book, :notice =>  "could not change status"
+    end
   end
   
   def add_text
