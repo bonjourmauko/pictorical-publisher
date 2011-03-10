@@ -35,9 +35,9 @@
         %b Remove text
         - @book.texts.each do |text|
           - if text != @book.texts.first
-            = link_to text.title, "/books/#{@book.id}/remove_text?text_id=#{text.id}"
+            = link_to "#{text.title} (#{text.id})", "/books/#{@book.id}/remove_text?text_id=#{text.id}"
           - else
-            = text.title
+            = "#{text.title} (#{text.id})"
           ·  
 
     #story

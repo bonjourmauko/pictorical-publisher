@@ -24,7 +24,7 @@ class Book < ActiveRecord::Base
       self.texts.first[:title] + " & Other Stories"
     elsif @texts.count == 2
       self.texts.first[:title] + " & " + self.texts[1][:title]
-    elsif
+    else
       self.texts.first[:title]
     end
   
@@ -33,12 +33,14 @@ class Book < ActiveRecord::Base
   
   def content
     
-    contents = ""
     
-    self.texts.each do |text|
+    
+    if self.texts.count == 1
+      contents = self.texts.first.content
+    else
+      contents = ""
+      self.texts.each do |text| contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n" end
       
-      contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n\n\n\n"
-    
     end
     
     return contents
