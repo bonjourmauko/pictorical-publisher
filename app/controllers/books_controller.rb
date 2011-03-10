@@ -45,7 +45,11 @@ class BooksController < ApplicationController
     text_exists = !params[:text_id].nil? && !Text.find(params[:text_id]).nil?
     if @active_book.nil? && text_exists
       
-      @book = Book.create(:user_id => current_user.id)      
+      @book = Book.create(:user_id => current_user.id)
+      
+      @book.principal = Text.find(params[:text_id])
+      
+      @book.save
       
       @book.texts << Text.find(params[:text_id])
       if params[:change]
@@ -116,18 +120,22 @@ class BooksController < ApplicationController
   def remove_text
     
     text = Text.find(params[:text_id])
-    if @book.texts.delete(text)
-      
-        redirect_to @book, :notice => "text removed from book"
-        
-      else
-        
-        redirect_to @book, :notice => "text not removed from book"
     
+    if text == @book.principal
+      
+      redirect_to @book, :notice => "You can't remove the principal text of the book"
+      
+    else
+      if @book.texts.delete(text)
+        redirect_to @book, :notice => "text removed from book"
+      else
+        redirect_to @book, :notice => "text not removed from book"
       end
+    end
   end
+    
+    
 
-  
   private
   
   def get_active_book

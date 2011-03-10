@@ -11,10 +11,10 @@
     %h1=  @book.title
     %h3
       written by
-      %span.up= "#{@book.author.name} #{@book.author.last_name}"
+      %span.up= "#{@book.author.name} #{@book.author.last_name} (#{@book.author.id})"
     %h3
       illustrated by
-      %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
+      %span.up= "#{@book.user.first_name} #{@book.user.last_name} (#{@book.user.id})"
   #container
   
     #action-box
@@ -25,19 +25,21 @@
       = link_to "destroy", {:action => "destroy"},  :class => "illustrate-this-link"
       
     #multitext
-      .x
+      %p
+        %b Principal text:
+        ="#{@book.principal.title} (#{@book.principal.id})"
+      %p
         = form_tag("/books/#{@book.id}/add_text", :method => :get) do
           %b Add text
           = text_field_tag 'text_id'
           = submit_tag 'add'
-      %br
-      .x
+      %p
         %b Remove text
-        - @book.texts.each do |text|
-          - if @book.texts.count > 1
-            = link_to "#{text.title} (#{text.id})", "/books/#{@book.id}/remove_text?text_id=#{text.id}"
-          - else
-            = "#{text.title} (#{text.id})"
+        - if @book.texts.count > 1
+          - @book.texts.each do |text|
+            - unless text == @book.principal
+              = link_to "#{text.title} (#{text.id})", "/books/#{@book.id}/remove_text?text_id=#{text.id}"
+            
           ·  
 
     #story

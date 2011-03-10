@@ -22,10 +22,10 @@ $(document).ready(function() {
 			
 		});
 		
-	} else { $('p:first').before('<div class="parnum">CAP</div>');}
+	} else { $('#story p:first').before('<div class="parnum">CAP</div>');}
   
 
-  $('p').each(function(index) {
+  $('#story p').each(function(index) {
 
     var positionemail = pad(index+1,3);
     $(this).after('<div class="parnum">'+pad(index+1,3)+'</div>');

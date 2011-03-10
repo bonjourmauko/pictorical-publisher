@@ -3,12 +3,16 @@ class Book < ActiveRecord::Base
   has_many :collections
   has_many  :texts, :through => :collections
   
+  belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
+  
   belongs_to  :user
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
   
   after_initialize :status?
+  
+  
   
   def text
     self.texts.first
@@ -21,11 +25,11 @@ class Book < ActiveRecord::Base
   def title
   
     if self.texts.count > 2
-      self.texts.first[:title] + " & Other Stories"
+      self.principal[:title] + " & Other Stories"
     elsif @texts.count == 2
-      self.texts.first[:title] + " & " + self.texts[1][:title]
+      self.principal[:title] + " & " + self.texts[1][:title]
     else
-      self.texts.first[:title]
+      self.principal[:title]
     end
   
   end
@@ -33,14 +37,15 @@ class Book < ActiveRecord::Base
   
   def content
     
-    
-    
     if self.texts.count == 1
-      contents = self.texts.first.content
+      contents = self.principal.content
     else
-      contents = ""
-      self.texts.each do |text| contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n" end
-      
+      contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
+      self.texts.each do |text|
+        unless text == principal
+          contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
+        end
+      end
     end
     
     return contents
