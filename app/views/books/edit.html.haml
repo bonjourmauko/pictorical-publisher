@@ -11,7 +11,7 @@
     %h1=  @book.title
     %h3
       written by
-      %span.up= "#{@text.author_name} #{@text.author_last_name}"
+      %span.up= "#{@book.author.name} #{@book.author.last_name}"
     %h3
       illustrated by
       %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
@@ -26,7 +26,7 @@
 
     - if @book.words < 4000
       #warning-box
-        = "This is a short story (#{@text.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
+        = "This is a short story (#{@book.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
         = link_to "books@pictorical.com", "mailto:books@pictorical.com"
 
     - if @current_user.tutorial_mode?

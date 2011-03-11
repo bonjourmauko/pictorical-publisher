@@ -42,12 +42,12 @@ class BooksController < ApplicationController
 
   
   def new
-        
-    unless Text.find_by_id(params[:text_id]).nil?
+    
+    text = Text.find_by_id(params[:text_id])
+    
+    if text
       
       if @active_book.nil? # user doesn't have an active book
-
-        text = Text.find(params[:text_id])
 
         @book = Book.create(:user_id => current_user.id)
 
@@ -57,7 +57,7 @@ class BooksController < ApplicationController
         text.availability = false
         text.save
 
-        @book.texts << Text.find(params[:text_id])
+        @book.texts << text
         
         if params[:change]
           
@@ -89,11 +89,12 @@ class BooksController < ApplicationController
   end
   
   def edit
-    @text = @book.text
-    unless @book[:status] == "active"
-      @book = Book.where(:user_id => current_user[:id], :status => "active").first
+
+    if @book != current_user.active_book || @book.nil?
+      @book = current_user.active_book
       redirect_to edit_book_path @book[:id]
     end
+    
   end
   
   def change    
