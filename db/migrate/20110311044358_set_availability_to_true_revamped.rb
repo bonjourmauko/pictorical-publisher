@@ -1,6 +1,6 @@
 class SetAvailabilityToTrueRevamped < ActiveRecord::Migration
   def self.up
-    Text.all.each { |text| text[:availability] = true if !text.first.nil?; text.save }
+    Text.all.each { |text| text[:availability] = true; text.save }
   end
 
   def self.down
