@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :get_active_book
-  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status]
-  before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy]
+  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status, :add_text, :remove_text]
+  before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy, :add_text, :remove_text]
   
   # nuevas columnas:
   
@@ -36,33 +36,65 @@ class BooksController < ApplicationController
   
   
   
-  def show
-    @text = @book.text
+  def show    
   end
   
+
+  
   def new
-    text_exists = !params[:text_id].nil? && !Text.find(params[:text_id]).nil?
-    if @active_book.nil? && text_exists
-      @book = Book.create(:text_id => params[:text_id], :user_id => current_user.id)
-      if params[:change]
-        mail = Notifications.change_book(@book)
-        mail.deliver
+    
+    text = Text.find_by_id(params[:text_id])
+    
+    if text
+      
+      if @active_book.nil? # user doesn't have an active book
+
+        @book = Book.create(:user_id => current_user.id)
+
+        @book.principal = text
+        @book.save
+
+        text.availability = false
+        text.save
+
+        @book.texts << text
+        
+        if params[:change]
+          
+          mail = Notifications.change_book(@book)
+          mail.deliver
+          
+        else
+          
+          mail = Notifications.new_book(@book)
+          mail.deliver
+               
+        end  
+        
+        redirect_to edit_book_path @book[:id], :notice => "Book was created succesfully"
+        
       else
-        mail = Notifications.new_book(@book)
-        mail.deliver        
-      end  
-      redirect_to edit_book_path @book[:id]
-    else
-      redirect_to edit_book_path @active_book[:id]
+        
+        redirect_to edit_book_path @active_book[:id], :notice => "You already have an active book"
+        
+      end
+
+    else # if text doesn't exist
+      
+      redirect_to texts_path, :notice => "That text doesn't exist!"
+       
     end
+     
+    
   end
   
   def edit
-    @text = @book.text
-    unless @book[:status] == "active"
-      @book = Book.where(:user_id => current_user[:id], :status => "active").first
+
+    if @book != current_user.active_book || @book.nil?
+      @book = current_user.active_book
       redirect_to edit_book_path @book[:id]
     end
+    
   end
   
   def change    
@@ -80,29 +112,78 @@ class BooksController < ApplicationController
   end
   
   def publish
-    @book.status = "published"
-    if @book.save
-      mail = Notifications.publish_book(@active_book)
-      mail.deliver
-      redirect_to @book    
+    unless @book.user[:tutorial_mode]
+      @book.status = "published"
+      if @book.save
+        mail = Notifications.publish_book(@book)
+        mail.deliver
+        redirect_to @book, :notice => "book has been published"
+      else
+        redirect_to @book, :notice => "could not change status"
+      end
+    else
+      redirect_to @book, :notice => "can't publish a book from a user in tutorial mode"
     end
   end
   
   def revise
     @book.status = "active"
-    @book.save
-    redirect_to @book
+    if @book.save
+      redirect_to @book, :notice => "changed status to active"
+    else
+      redirect_to @book, :notice => "could not change status"
+    end
   end
   
   def destroy
     @book.status = "destroyed"
-    @book.save
-    redirect_to @book
+    if @book.save
+      redirect_to @book, :notice => "changed status to destroyed"
+    else
+      redirect_to @book, :notice =>  "could not change status"
+    end
   end
   
-  
- 
-  
+  def add_text
+    
+    unless Text.find_by_id(params[:text_id]).nil?
+      text = Text.find_by_id(params[:text_id])
+      unless text[:deleted]
+        @book.texts << text
+        redirect_to @book, :notice => "text added to book"
+      else
+        redirect_to @book, :notice => "can't add a text in the trash can"
+      end
+    else
+      redirect_to @book, :notice => "text doesn't exist"
+    end
+
+  end
+
+  def remove_text
+    
+    unless Text.find_by_id(params[:text_id]).nil?
+    
+      text = Text.find_by_id(params[:text_id])
+    
+      if text == @book.principal
+      
+        redirect_to @book, :notice => "You can't remove the principal text of the book"
+      
+      else
+        if @book.texts.delete(text)
+          redirect_to @book, :notice => "text removed from book"
+        else
+          redirect_to @book, :notice => "text not removed from book"
+        end
+      end
+    else
+      redirect_to @book, :notice => "text doesn't exist"
+    end
+  end
+    
+    
+
   private
   
   def get_active_book

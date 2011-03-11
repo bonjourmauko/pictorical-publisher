@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
   
   after_commit :send_welcome_email
   
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first

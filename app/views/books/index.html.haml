@@ -1,3 +1,4 @@
+- title "Books list"
 #notice
   = notice
 #admin-canvas
@@ -6,7 +7,7 @@
     %p
       = link_to "#{book.id}", book
       ·
-      = link_to "#{book.text.title}", book unless book.text.nil?
+      = link_to "#{book.title}", book unless book.text.nil?
       · 
       by
       = link_to "#{book.user.first_name} #{book.user.last_name}", book.user unless book.user.nil?

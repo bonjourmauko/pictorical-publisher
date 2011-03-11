@@ -13,6 +13,10 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/:id/unmake_admin", :to => "users#unmake_admin"
 
   resources :users
+  
+  match "texts/:id/available", :to => "texts#make_available"
+  match "texts/:id/unavailable", :to => "texts#make_unavailable"  
+  
   resources :texts
   
   match "trashes/:id/trashed_destroy", :to => "texts#trashed_destroy", :as => :trashed_destroy
@@ -32,6 +36,8 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/publish/:id", :to => "books#publish"
   match "books/revise/:id", :to => "books#revise"
   match "books/destroy/:id", :to => "books#destroy"
+  match "books/:id/add_text", :to => "books#add_text"
+  match "books/:id/remove_text", :to => "books#remove_text"  
   
   resources :books
     
