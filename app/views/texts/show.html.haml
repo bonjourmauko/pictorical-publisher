@@ -6,9 +6,9 @@
   #title
     %h1 
       -if @text[:deleted]
-        = "DELETED!"
-        %br
-      = @text[:title]
+        .deleted= @text[:title]
+      -else
+        = @text[:title]
     %h3
       %span.up
         = "#{@text.author_name} #{@text.author_last_name}"
@@ -16,20 +16,46 @@
   
     - if can? :new, Text
       .admin
+        Admin: 
         = link_to "edit", :action => "edit"
         ·
         = link_to 'destroy', :action => "trashed_destroy"
-  
-    #action-box
-      = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
-      - unless current_user.has_books_under_review?
         ·
-        = illustrate_or_change
+        - if @text.availability
+          text is available
+          = link_to 'make unavailable', :action => "make_unavailable"
+        - else
+          text is unavailable
+          = link_to 'make available', :action => "make_available"
+        %br
+        %br
+        %b= "Books with this text"
+        - if @text.books.not_deleted.count > 0
+          - @text.books.not_deleted.each do |book|
+            .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user.id}) · status: #{book.status}", book
+        - else
+          .x No books with this text
+        
+    - unless current_user.has_books_under_review?
+      #action-box
+        = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
+        ·
+        = illustrate_change_or_add
         or
         = link_to "choose another", {:action => "index"}, :class => "choose"
-      - else
-        %br
-        Please wait until we publish your book to start illustrating another one
+        
+      - if @text.words < 4000
+        #warning-box
+          %b= "This is a short story (#{@text.words} words)"
+          %br
+          = "Want to illustrate it? Click \"Illustrate text\", Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
+          = link_to "books@pictorical.com", "mailto:books@pictorical.com"
+        
+    - else
+      #warning-box
+        Please wait until we publish your book to start illustrating a new one
+
+
 
 
     #story

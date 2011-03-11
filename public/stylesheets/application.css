@@ -17,8 +17,14 @@ body {
 	font-weight: bold;
 }
 
-.admin a {font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;}
-.admin a:link, .admin a:visited, .admin a {color: #ff0000;}
+#container .admin
+{
+	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	margin-bottom: 0.5em;
+	
+}
+
+.admin a, .admin a:visited {color: #ff0000;}
 
 #notice {
 	
@@ -70,7 +76,7 @@ body {
 }
 
 
-#text-canvas #action-box {
+#action-box, #warning-box {
 	background: #4E4646;
 	padding: 0.5em;
 	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -78,6 +84,8 @@ body {
 	text-align: center;
 	color: white;
 }
+
+#warning-box {background: #9D0000;}
 
 #action-box h3 {
 	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -357,9 +365,31 @@ a.illustrate-change-link:active {
 	text-decoration: underline;
 }
 
+#admin-bar .header {
+	font-size: 150%;
+	margin-top: 0.5em;
+	
+}
+
 .all_authors {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	
 }
 
 .all_authors a {text-decoration: none;}
+
+#multitext {
+	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	margin: 1em 0;
+	
+}
+
+#story h1 {
+	font-size: 1.5em;
+	text-align: center;
+	
+}
+
+#warning-box a, #warning-box a:visited { color: white;}
+
+.deleted {text-decoration: line-through}

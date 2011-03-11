@@ -1,4 +1,4 @@
-- title "Pictorical, choose a story"
+- title "Pictorical : Choose a story"
 #notice
   = notice
 #text-canvas
@@ -6,36 +6,33 @@
   #title
     %h1 Choose a story
 
+
+
   #container
-    
+
+
+
     .all_authors
       - @authors.each do |author|
-        - unless author.texts.first.nil? || author.texts.not_deleted.first.nil?
-          = link_to author.last_name, :anchor => "a#{author.id}"
-          ·
+        - if author.texts.available.count > 0
+          = link_to author.last_name, :anchor => "a#{author.id}" 
+          · 
     - @authors.each do |author|
-      - unless author.texts.first.nil?
-        - unless author.texts.not_deleted.first.nil?
-          = tag "a", {:name => "a#{author.id}"}
-          %h4
-            %span.up= "#{author[:name]} #{author[:last_name]}"
-          .textlist
-            - author.texts.sorted.each do |text|
-              - unless text[:deleted]
-                - if text.available?
-                  .onetext
-                    .textlink= link_to text[:title], text
-                    .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"            
-                - else
-                  - if current_user.active_book && current_user.active_book.text[:id] == text[:id]
-                    .onetext
-                      .textlink= link_to text[:title], text
-                      .textinfo= "You are illustrating this story"
-                  - else
-                    .onetext
-                      .textlink= text[:title]
-                      .textinfo= "Someone is illustrating this story"
+    
+      - if author.texts.available.count > 0        
+        = tag "a", {:name => "a#{author.id}"} #anchor
+        %h4
+          %span.up= "#{author[:name]} #{author[:last_name]}"
+        .textlist
+          - author.texts.sorted.each do |text|
+            - unless text[:deleted]
+              .onetext
+              - if text[:availability] || current_user.admin?
+                .textlink= link_to text[:title], text
+                .textinfo
+                  = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
+                  = "· Available? #{text.availability}" if current_user.admin?
+              - else
+                .textlink= text[:title]
+                .textinfo= "Someone is illustrating this story"
 
-    - if can? :new, Text
-      .admin
-        = link_to "new", new_text_path

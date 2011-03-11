@@ -1,4 +1,4 @@
-- title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
+- title "Pictorical : Edit your book"
 
 - javascripts "text"
 
@@ -8,20 +8,26 @@
     = notice
   
   #title
-    %h1=  @text[:title]
+    %h1=  @book.title
     %h3
       written by
-      %span.up= "#{@text.author_name} #{@text.author_last_name}"
+      %span.up= "#{@book.author.name} #{@book.author.last_name}"
     %h3
       illustrated by
       %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
   #container
   
     #action-box
-      = "#{@book.text.words_rounded} words · #{@book.text.illustrations_lower}~#{@book.text.illustrations_upper} illustrations"
+      = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·  You are illustrating this book 
-      = link_to "publish", {:action => "review"},  :class => "illustrate-this-link"
+      - unless @book.words < 4000
+        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => 'Are you ready to publish this book? Did you send the illustrations to books@pictorical.com?'
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
+
+    - if @book.words < 4000
+      #warning-box
+        = "This is a short story (#{@book.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
+        = link_to "books@pictorical.com", "mailto:books@pictorical.com"
 
     - if @current_user.tutorial_mode?
 
@@ -52,7 +58,7 @@
 
 
     #story
-      = @text[:content].html_safe
+      = @book.content.html_safe
     %h3
       %span.up
         The end

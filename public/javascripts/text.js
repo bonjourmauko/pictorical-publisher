@@ -14,10 +14,18 @@ $(document).ready(function() {
   
   var wordcount = 0;
   
+	if($('#story h1').length){
+		
+		$('#story h1').each(function(index) {
 
-  $('p:first').before('<div class="parnum">CAP</div>');
+			$(this).after('<div class="parnum">CAP'+ (index+1) +'</div>');
+			
+		});
+		
+	} else { $('#story p:first').before('<div class="parnum">CAP</div>');}
+  
 
-  $('p,h2-h2:first').each(function(index) {
+  $('#story p').each(function(index) {
 
     var positionemail = pad(index+1,3);
     $(this).after('<div class="parnum">'+pad(index+1,3)+'</div>');
