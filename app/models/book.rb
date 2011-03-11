@@ -25,11 +25,11 @@ class Book < ActiveRecord::Base
   def title
   
     if self.texts.count > 2
-      self.principal[:title] + " & Other Stories"
+      self.principal.title + " & Other Stories"
     elsif @texts.count == 2
-      self.principal[:title] + " & " + self.texts[1][:title]
+      self.principal.title + " & " + self.texts[1].title
     else
-      self.principal[:title]
+      self.principal.title
     end
   
   end
