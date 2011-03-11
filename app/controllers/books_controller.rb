@@ -112,13 +112,17 @@ class BooksController < ApplicationController
   end
   
   def publish
-    @book.status = "published"
-    if @book.save
-      mail = Notifications.publish_book(@book)
-      mail.deliver
-      redirect_to @book, :notice => "book has been published"
+    unless @book.user[:tutorial_mode]
+      @book.status = "published"
+      if @book.save
+        mail = Notifications.publish_book(@book)
+        mail.deliver
+        redirect_to @book, :notice => "book has been published"
+      else
+        redirect_to @book, :notice => "could not change status"
+      end
     else
-      redirect_to @book, :notice => "could not change status"
+      redirect_to @book, :notice => "can't publish a book from a user in tutorial mode"
     end
   end
   
