@@ -143,9 +143,13 @@ class BooksController < ApplicationController
   def add_text
     
     unless Text.find_by_id(params[:text_id]).nil?
-      text = Text.find_by_id(params[:text_id])    
-      @book.texts << text
-      redirect_to @book, :notice => "text added to book"
+      text = Text.find_by_id(params[:text_id])
+      unless text[:deleted]
+        @book.texts << text
+        redirect_to @book, :notice => "text added to book"
+      else
+        redirect_to @book, :notice => "can't add a text in the trash can"
+      end
     else
       redirect_to @book, :notice => "text doesn't exist"
     end
