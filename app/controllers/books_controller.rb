@@ -153,18 +153,23 @@ class BooksController < ApplicationController
 
   def remove_text
     
-    text = Text.find(params[:text_id])
+    unless Text.find_by_id(params[:text_id]).nil?
     
-    if text == @book.principal
+      text = Text.find_by_id(params[:text_id])
+    
+      if text == @book.principal
       
-      redirect_to @book, :notice => "You can't remove the principal text of the book"
+        redirect_to @book, :notice => "You can't remove the principal text of the book"
       
-    else
-      if @book.texts.delete(text)
-        redirect_to @book, :notice => "text removed from book"
       else
-        redirect_to @book, :notice => "text not removed from book"
+        if @book.texts.delete(text)
+          redirect_to @book, :notice => "text removed from book"
+        else
+          redirect_to @book, :notice => "text not removed from book"
+        end
       end
+    else
+      redirect_to @book, :notice => "text doesn't exist"
     end
   end
     
