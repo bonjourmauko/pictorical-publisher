@@ -89,7 +89,6 @@ class BooksController < ApplicationController
   end
   
   def edit
-
     if @book != current_user.active_book || @book.nil?
       @book = current_user.active_book
       redirect_to edit_book_path @book[:id]
