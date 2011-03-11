@@ -141,10 +141,13 @@ class BooksController < ApplicationController
   
   def add_text
     
-    text = Text.find(params[:text_id])
-    @book.texts << text
-      
-    redirect_to @book, :notice => "text added to book"
+    unless Text.find_by_id(params[:text_id]).nil?
+      text = Text.find_by_id(params[:text_id])    
+      @book.texts << text
+      redirect_to @book, :notice => "text added to book"
+    else
+      redirect_to @book, :notice => "text doesn't exist"
+    end
 
   end
 
