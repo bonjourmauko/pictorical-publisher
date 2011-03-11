@@ -26,7 +26,7 @@ class Book < ActiveRecord::Base
   
     if self.texts.count > 2
       self.principal.title + " & Other Stories"
-    elsif @texts.count == 2
+    elsif self.texts.count == 2
       self.principal.title + " & " + self.texts[1].title
     else
       self.principal.title
