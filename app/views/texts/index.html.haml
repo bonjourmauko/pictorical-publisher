@@ -25,13 +25,14 @@
           %span.up= "#{author[:name]} #{author[:last_name]}"
         .textlist
           - author.texts.sorted.each do |text|
-            .onetext
-            - if text[:availability] || current_user.admin?
-              .textlink= link_to text[:title], text
-              .textinfo
-                = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
-                = "· Available? #{text.availability}" if current_user.admin?
-            - else
-              .textlink= text[:title]
-              .textinfo= "Someone is illustrating this story"
+            - unless text[:deleted]
+              .onetext
+              - if text[:availability] || current_user.admin?
+                .textlink= link_to text[:title], text
+                .textinfo
+                  = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
+                  = "· Available? #{text.availability}" if current_user.admin?
+              - else
+                .textlink= text[:title]
+                .textinfo= "Someone is illustrating this story"
 
