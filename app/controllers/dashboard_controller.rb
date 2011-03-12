@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-  #load_and_authorize_resource
   before_filter :get_active_book #@active_book
   
     
