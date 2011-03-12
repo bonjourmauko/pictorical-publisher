@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311042017) do
+ActiveRecord::Schema.define(:version => 20110312021353) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -104,9 +104,11 @@ ActiveRecord::Schema.define(:version => 20110311042017) do
     t.boolean  "accepted_license_agreement"
     t.string   "art_school_where"
     t.string   "art_school_when"
+    t.string   "reset_password_token"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
