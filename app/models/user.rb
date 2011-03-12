@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   scope             :sorted, order('created_at ASC')
   
   devise            :database_authenticatable,
-                    :registerable
+                    :registerable,
+                    :recoverable
 
   attr_accessible   :email,
                     :password,
