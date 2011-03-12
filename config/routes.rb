@@ -1,6 +1,6 @@
 PublisherPictoricalCom::Application.routes.draw do
   
-  get "dashboard/welcome"
+  #get "dashboard/welcome"
 
   match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
@@ -43,7 +43,7 @@ PublisherPictoricalCom::Application.routes.draw do
   
   resources :books
     
-  root :to => "texts#index"
+  root :to => "dashboard#welcome"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
