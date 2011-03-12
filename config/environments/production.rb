@@ -46,4 +46,13 @@ PublisherPictoricalCom::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  ActionMailer::Base.smtp_settings = {
+    :address        => "smtp.sendgrid.net",
+    :port           => "25",
+    :authentication => :plain,
+    :user_name      => ENV['app439716@heroku.com'],
+    :password       => ENV['0fd47fd2328c8d3883'],
+    :domain         => ENV['heroku.com']
+  }
 end
