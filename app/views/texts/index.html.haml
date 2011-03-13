@@ -1,7 +1,8 @@
 - title "Pictorical : Choose a story"
 #notice
   = notice
-  = flash
+  
+  
 #text-canvas
 
   #title
@@ -25,12 +26,12 @@
           - author.texts.sorted.each do |text|
             - unless text[:deleted]
               .onetext
-              - if text[:availability] || current_user.admin?
-                .textlink= link_to text[:title], text
-                .textinfo
-                  = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
-                  = "· Available? #{text.availability}" if current_user.admin?
-              - else
-                .textlink= text[:title]
-                .textinfo= "Someone is illustrating this story"
+                - if text[:availability] || current_user.admin?
+                  .textlink= link_to text[:title], text
+                  .textinfo
+                    = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
+                    = "· Available? #{text.availability}" if current_user.admin?
+                - else
+                  .textlink= text[:title]
+                  .textinfo= "Someone is illustrating this story"
 

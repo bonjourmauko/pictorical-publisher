@@ -202,9 +202,8 @@ a.illustrate-change-link:active {
 .textlist {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	background: white;
-	padding: 1em;
-	padding-bottom: 0.5em;
-	
+	padding: 1em;	
+	padding-bottom: 0.1em;
 }
 
 .textlist a {text-decoration: none;}
@@ -414,4 +413,21 @@ a.illustrate-change-link:active {
 #footer a, #footer a.visited {
 	color: #838383;
 	
+}
+
+#welcome-canvas {
+	margin: 0 auto;
+	width: 30em;
+	background: white;
+	
+}
+
+#welcome-canvas .inner {
+	padding: 1em;
+	
+}
+
+#welcome-canvas p {
+	margin: 0;
+	margin-bottom: 1em;
 }
