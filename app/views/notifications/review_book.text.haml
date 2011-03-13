@@ -1,13 +1,16 @@
-= "Hi, #{@book.user[:first_name]}"
+%p= "Hi, #{@book.user[:first_name]},"
 
-= "Thanks for publishing your book #{@book.text[:title]}"
+%p= "Thanks for sending us {The Happy Prince}. We will check everything's fine, build your book and publish it to Apple iBookstore."
 
-We are checking it, and if everything is ok, we will publish it in the next few days.
+%p We will write you again when your book is published.
 
-We will send you an email confirmation as soon as we publish it.
+%p
+  In the meanwhile we would like to hear from you how was your experience using our website, and if you have any reccomendations and ideas that can help us improve. You can write us to
+  = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
 
-If you have any questions you can write to artists@pictorical.com. We are happy to help.
+%p You will hear from us soon,
 
-Cheers,
-
-Your friends at Pictorical
+%p 
+  Victor and Mauko
+  %br
+  Pictorical Team
