@@ -37,7 +37,7 @@
           - unless current_user.active_book.nil? || current_user.active_book.text.nil?
             ·  
             = "You are illustrating " 
-            = link_to "#{current_user.active_book.title}", :controller => "books", :action => "edit", :id => current_user.active_book.id
+            = link_to "#{current_user.active_book.title}", edit_book_path(current_user.active_book.id)
           - if current_user.has_books_under_review?
             We are reviewing
             %b= "#{current_user.book_under_review.title}"
