@@ -1,6 +1,9 @@
-%p= "Hi, #{@user[:first_name]},"
+%p= "Hi #{@user[:first_name]},"
 
-%p= "We checked your first illustration for #{@user.active_book.title} and everything's fine!"
+%p
+  We checked your first illustration for
+  %b= @user.active_book.title
+  and everything's fine!
 
 %p
   %b What's next?
@@ -15,6 +18,6 @@
 %p Happy illustrating!
 
 %p
-  Victor and Mauko
+  The Pictorical Team
   %br
-  Pictorical Team
+  Victor and Mauko

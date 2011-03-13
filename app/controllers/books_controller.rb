@@ -60,16 +60,14 @@ class BooksController < ApplicationController
         @book.texts << text
         
         if params[:change]
-          
-          mail = Notifications.change_book(@book)
-          mail.deliver
-          
+          @change = true
         else
+          @change = false
+        end
           
-          mail = Notifications.new_book(@book)
+          mail = Notifications.new_book(@book, @change)
           mail.deliver
-               
-        end  
+
         
         redirect_to edit_book_path @book[:id], :notice => "Book was created succesfully"
         

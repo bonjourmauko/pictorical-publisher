@@ -1,19 +1,16 @@
 class Notifications < ActionMailer::Base
   
-  def new_book(book)
+  def new_book(book, change)
     @book = book
+    @change = change
     @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
-    subject     "You are illustrating #{@book.title}"
+    if change
+      subject     "You are now illustrating #{@book.title}"
+    else
+      subject     "You are illustrating #{@book.title}"
+    end
     recipients  @book.user[:email]
     from        "hello@pictorical.com"
-    sent_on     Time.now   
-  end
-
-  def change_book(book)
-    @book = book
-    subject     "You are now illustrating #{@book.title}"
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com" 
     sent_on     Time.now   
   end
 

@@ -1,6 +1,9 @@
-%p= "Hi, #{@book.user[:first_name]},"
+%p= "Hi #{@book.user[:first_name]},"
 
-%p= "Thanks for sending us {The Happy Prince}. We will check everything's fine, build your book and publish it to Apple iBookstore."
+%p
+  Thanks for sending us
+  %b= @book.title
+  We will check everything's fine, build your book and publish it to Apple iBookstore.
 
 %p We will write you again when your book is published.
 
@@ -11,6 +14,6 @@
 %p You will hear from us soon,
 
 %p 
-  Victor and Mauko
+  The Pictorical Team
   %br
-  Pictorical Team
+  Victor and Mauko
