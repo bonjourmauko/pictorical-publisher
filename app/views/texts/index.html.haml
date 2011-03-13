@@ -14,12 +14,12 @@
 
     .all_authors
       - @authors.each do |author|
-        - if author.texts.available.count > 0
+        - if author.texts.not_deleted.count > 0
           = link_to author.last_name, :anchor => "a#{author.id}" 
           · 
     - @authors.each do |author|
     
-      - if author.texts.available.count > 0        
+      - if author.texts.not_deleted.count > 0        
         = tag "a", {:name => "a#{author.id}"} #anchor
         %h4
           %span.up= "#{author[:name]} #{author[:last_name]}"
