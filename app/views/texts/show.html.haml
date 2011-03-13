@@ -40,8 +40,12 @@
       #action-box
         = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
         ·
-        = illustrate_change_or_add
-        or
+        - if @text.availability?
+          = illustrate_change_or_add
+          or
+        - else
+          Not available.
+        
         = link_to "choose another", {:action => "index"}, :class => "choose"
         
       - if @text.words < 4000
