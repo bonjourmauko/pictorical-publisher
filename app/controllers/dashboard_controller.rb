@@ -13,11 +13,7 @@ class DashboardController < ApplicationController
     end
     
   end
-  
-  def review
-    
-  end
-  
+
   
   private
   
