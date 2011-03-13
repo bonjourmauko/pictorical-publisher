@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def mature #releases the user from tutorial
     @user = User.find(params[:id])
     @user.tutorial_mode = false
+    mail = Notifications.end_tutorial(@user)
+    mail.deliver
     if @user.save
       redirect_to @user, :notice => "user changed"
     else
