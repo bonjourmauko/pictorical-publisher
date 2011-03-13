@@ -7,12 +7,16 @@ class DashboardController < ApplicationController
     
     if @active_book.nil?
       redirect_to texts_path
+
     else
       redirect_to edit_book_path @active_book[:id]
     end
     
   end
   
+  def review
+    
+  end
   
   
   private
