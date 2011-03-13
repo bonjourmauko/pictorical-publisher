@@ -1,0 +1,8 @@
+- title "Pictorical : Artwork Guidelines"
+#guideline-canvas
+  
+  -for i in (1..13) do
+    %p
+    = tag "a", {:name => "a#{i}"}
+    = link_to :anchor => "a#{i+1}" do
+      = image_tag "artwork-guidelines/slide.#{i.to_s.rjust(3,'0')}.png"
