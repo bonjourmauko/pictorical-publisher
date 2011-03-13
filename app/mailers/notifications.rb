@@ -1,6 +1,5 @@
 class Notifications < ActionMailer::Base
   
-  # definir bien los mails (copywriting)
   def new_book(book)
     @book = book
     @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
