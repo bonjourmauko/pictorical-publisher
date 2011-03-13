@@ -45,7 +45,7 @@ class BooksController < ApplicationController
     
     text = Text.find_by_id(params[:text_id])
     
-    if text
+    if text && text[:availability]
       
       if @active_book.nil? # user doesn't have an active book
 
@@ -79,7 +79,7 @@ class BooksController < ApplicationController
 
     else # if text doesn't exist
       
-      redirect_to texts_path, :notice => "That text doesn't exist!"
+      redirect_to texts_path, :notice => "That text doesn't exist or is not available!"
        
     end
      
