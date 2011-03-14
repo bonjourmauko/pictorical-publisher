@@ -7,7 +7,8 @@
     = yield :head
     = csrf_meta_tag
   %body
-    = render "layouts/adminbar"
+    -if current_user && current_user.admin?
+      = render "layouts/adminbar"
       
       
     
