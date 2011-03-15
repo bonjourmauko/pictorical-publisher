@@ -11,6 +11,6 @@
     = link_to "new", :action => "new"
     ·
     = link_to "all", :action => "index"
-    - unless @author.texts.first.nil? 
+    - if @author.texts.first.nil? 
       ·
       = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
