@@ -88,6 +88,13 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    heroku (1.17.10)
+      json (~> 1.4.6)
+      launchy (~> 0.3.2)
+      rest-client (>= 1.4.0, < 1.7.0)
+    hoptoad_notifier (2.4.7)
+      activesupport
+      builder
     hpricot (0.8.3)
     htmlentities (4.2.4)
     i18n (0.5.0)
@@ -121,14 +128,14 @@ GEM
       activesupport (= 3.0.4)
       bundler (~> 1.0)
       railties (= 3.0.4)
-    rails3-jquery-autocomplete (0.6.2)
-      rails (~> 3.0.0)
     railties (3.0.4)
       actionpack (= 3.0.4)
       activesupport (= 3.0.4)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -181,6 +188,8 @@ DEPENDENCIES
   gherkin (= 2.3.2)
   haml
   haml-rails
+  heroku
+  hoptoad_notifier
   hpricot
   htmlentities
   jquery-rails
@@ -188,7 +197,6 @@ DEPENDENCIES
   mysql2
   rails (= 3.0.4)
   rails3-generators!
-  rails3-jquery-autocomplete
   rspec
   rspec-rails
   ruby_parser
