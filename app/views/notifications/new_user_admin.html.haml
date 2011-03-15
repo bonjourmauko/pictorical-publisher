@@ -1,0 +1,40 @@
+%p= "First name: #{@user.first_name}" unless @user.first_name.nil?
+%p= "Last name: #{@user.last_name}" unless @user.last_name.nil?
+%p= "Artistic name: #{@user.artistic_name}" unless @user.artistic_name.nil?
+
+%p= "Country: #{@user.country}" unless @user.country.nil?
+
+%p= "Birthdate: #{@user.birthdate.to_s}" unless @user.birthdate.nil?
+
+%p
+  Email:
+  = link_to @user.email, @user.email unless @user.email.nil?
+  
+%p= "Paypal account: #{@user.paypal_account}" unless @user.paypal_account.nil?
+
+%p
+  Address:
+  = @user.address_line_one unless @user.address_line_one.nil?
+  %br
+  = @user.address_line_two unless @user.address_line_two.nil?
+  %br
+  = "City: #{@user.city}" unless @user.city.nil?
+  %br
+  = "State: #{@user.state}" unless @user.state.nil?
+  %br
+  = "Zip: #{@user.zip}" unless @user.zip.nil?
+  %br
+  = "Country: #{@user.country}" unless @user.country.nil?
+
+%p
+  Portfolio:
+  = link_to(@user.portfolio_url,@user.portfolio_url)  unless @user.portfolio_url.nil?
+
+%p= "Artschool: #{@user.art_school_name}" unless @user.art_school_name.nil?
+
+%p= "Twitter: #{@user.twitter}" unless @user.twitter.nil?
+
+%p= "Accepted license agreement: #{@user.accepted_license_agreement.to_s}" unless @user.accepted_license_agreement.nil?
+
+%p= "Created at: #{@user.created_at}" unless @user.created_at.nil?
+

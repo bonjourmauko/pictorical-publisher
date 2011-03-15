@@ -56,4 +56,34 @@ class Notifications < ActionMailer::Base
     end
   end
   
+  def new_user_admin(user)
+    
+    @user = user
+    @subject = "New user from #{@user.country}, #{@user.first_name} #{@user.last_name}"
+    mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
+
+  end
+  
+  def new_book_admin(book, change)
+    @book = book
+    @user = book.user
+    
+    if change
+      @subject = "New book \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
+    else
+      @subject = "Changed book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
+    end
+    
+    mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
+
+  end
+  
+  
+  
+  
+  
 end
