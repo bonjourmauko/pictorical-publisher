@@ -1,27 +1,28 @@
-#message-canvas
-  #notice
-    = notice
-  %h1 Welcome to Pictorical
-
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    .input
-      .label
-      %p
-        = f.text_field :email
+#simple-canvas
+  %h1 Pictorical Secret Door
+  .inner
+    #alert
+      = flash[:alert]
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .input
+        .label
+        %p
+          = f.text_field :email
+          %br
+          &nbsp;Email
+        %p
+          = f.password_field :password
+          %br
+          &nbsp;Password
+        %p
+        = f.submit "Sign in"
         %br
-        &nbsp;Email
-      %p
-        = f.password_field :password
-        %br
-        &nbsp;Password
-      %p
-      = f.submit "Sign in"
-      %br
-      &nbsp;
+        &nbsp;
 
-    -# if devise_mapping.rememberable?
-      -#%p
-        -#= f.check_box :remember_me
-        -#= f.label :remember_me
-  -#= render :partial => "devise/shared/links"
-  = link_to "Help! I forgot my password!", new_password_path(resource_name)
+      -# if devise_mapping.rememberable?
+        -#%p
+          -#= f.check_box :remember_me
+          -#= f.label :remember_me
+    -#= render :partial => "devise/shared/links"
+    .forgot
+      = link_to "Help! I forgot my password!", new_password_path(resource_name)
