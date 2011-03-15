@@ -5,55 +5,55 @@ class Notifications < ActionMailer::Base
     @change = change
     @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
     if change
-      subject     "You are now illustrating #{@book.title}"
+      @subject = "You are now illustrating #{@book.title.to_s}"
     else
-      subject     "You are illustrating #{@book.title}"
+      @subject = "You are illustrating #{@book.title.to_s}"
     end
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now   
+    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
 
   def review_book(book)
     @book = book
-    subject     "We received #{@book.title}"
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now    
+    @subject = "We received #{@book.title.to_s}"
+    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
   
   def publish_book(book)
     @book = book
-    subject     "Your book #{@book.title} has been published."
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now
+    @subject = "Your book #{@book.title.to_s} has been published"
+    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
   
   def create_invitation(invitation, host) 
     @invitation = invitation
     @url = "http://" + host + new_user_registration_path
-    subject     "Good news from Pictorical"
-    recipients  @invitation[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now
+    @subject = "Good news from Pictorical"
+    mail(:to => @invitation[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
   
   def welcome(user)
     @user = user
     @url = "http://publisher.pictorical.com" + new_user_session_path
-    subject     "Welcome to Pictorical"
-    recipients  @user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now
+    @subject = "Welcome to Pictorical"
+    mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
   
   def end_tutorial(user)
     @user = user
-    subject     "You can keep on working in #{@user.active_book.title}"
-    recipients  @user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now
+    @subject = "You can keep on working in #{@user.active_book.title.to_s}"
+    mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
   
 end
