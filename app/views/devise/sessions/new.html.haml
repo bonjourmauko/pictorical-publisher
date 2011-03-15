@@ -1,8 +1,8 @@
 #simple-canvas
-  #notice
-    = notice
   %h1 Pictorical Secret Door
   .inner
+    #alert
+      = flash[:alert]
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .input
         .label

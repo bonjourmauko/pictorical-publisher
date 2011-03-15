@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
 
   def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
     unless Invitation.select(:email).map(&:email).include? email or is_admin
-      errors.add("invitation", "you are not invited to pictorical")
+      errors.add("Invitation", "could not be find for that email")
     end
     
     if is_admin
