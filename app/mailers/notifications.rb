@@ -1,5 +1,10 @@
 class Notifications < ActionMailer::Base
   
+  default :reply_to => 'hello@pictorical.com',
+          :return_path => 'Pictorical Team <hey@pictorical.com>',
+          :from => 'Pictorical Team <hey@pictorical.com>',
+          :bcc => 'log@pictorical.com'
+  
   def new_book(book, change)
     @book = book
     @change = change
@@ -9,7 +14,7 @@ class Notifications < ActionMailer::Base
     else
       @subject = "You are illustrating #{@book.title}"
     end
-    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @book.user[:email], :subject => @subject) do |format|
       format.html
     end
   end
@@ -17,7 +22,7 @@ class Notifications < ActionMailer::Base
   def review_book(book)
     @book = book
     @subject = "We received #{@book.title}"
-    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @book.user[:email], :subject => @subject) do |format|
       format.html
     end
   end
@@ -25,7 +30,7 @@ class Notifications < ActionMailer::Base
   def publish_book(book)
     @book = book
     @subject = "Your book #{@book.title} has been published"
-    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @book.user[:email], :subject => @subject) do |format|
       format.html
     end
   end
@@ -34,7 +39,7 @@ class Notifications < ActionMailer::Base
     @invitation = invitation
     @url = "http://" + host + new_user_registration_path
     @subject = "Good news from Pictorical"
-    mail(:to => @invitation[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @invitation[:email], :return_path => 'Victor from Pictorical <hey@pictorical.com>', :subject => @subject) do |format|
       format.html
     end
   end
@@ -43,7 +48,7 @@ class Notifications < ActionMailer::Base
     @user = user
     @url = "http://publisher.pictorical.com" + new_user_session_path
     @subject = "Welcome to Pictorical"
-    mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @user[:email], :subject => @subject) do |format|
       format.html
     end
   end
@@ -51,7 +56,7 @@ class Notifications < ActionMailer::Base
   def end_tutorial(user)
     @user = user
     @subject = "You can keep on working in #{@user.active_book.title}"
-    mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => @user[:email], :subject => @subject) do |format|
       format.html
     end
   end
@@ -60,7 +65,7 @@ class Notifications < ActionMailer::Base
     
     @user = user
     @subject = "New user from #{@user.country}, #{@user.first_name} #{@user.last_name}"
-    mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => "notifications@pictorical.com", :subject => @subject) do |format|
       format.html
     end
 
@@ -76,7 +81,7 @@ class Notifications < ActionMailer::Base
       @subject = "New book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
     end
     
-    mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
+    mail(:to => "notifications@pictorical.com", :subject => @subject) do |format|
       format.html
     end
 
