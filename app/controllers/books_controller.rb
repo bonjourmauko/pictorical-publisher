@@ -23,11 +23,11 @@ class BooksController < ApplicationController
     
     if status.nil? || status.empty?
     
-      @books = Book.all
+      @books = Book.sorted.all
       
     else
       
-      @books = Book.find_all_by_status(status)
+      @books = Book.sorted.find_all_by_status(status)
       
     end
       
