@@ -39,7 +39,7 @@ class Notifications < ActionMailer::Base
     @invitation = invitation
     @url = "http://" + host + new_user_registration_path
     @subject = "Good news from Pictorical"
-    mail(:to => @invitation[:email], :return_path => 'Victor from Pictorical <hey@pictorical.com>', :subject => @subject) do |format|
+    mail(:to => @invitation[:email], :from => 'Victor from Pictorical <hey@pictorical.com>', :subject => @subject) do |format|
       format.html
     end
   end
