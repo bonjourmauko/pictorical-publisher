@@ -13,13 +13,14 @@ class InvitationsController < ApplicationController
     
     redeemed = params[:redeemed]
     
-    if redeemed.nil? ||redeemed == ""
+    if redeemed.nil? || redeemed == ""
     
       @invitations = Invitation.sorted.all
       
-    elsif redeemed == 'yes' || redeemed == "YES"
+    elsif redeemed == "yes" || redeemed == "YES"
       
-      @invitations = Invitation.sorted.where('redeemed_at > 0')
+      #fuck
+      @invitations = Invitation.sorted.where("redeemed_at < #{Date.now}")
       
     else
       
