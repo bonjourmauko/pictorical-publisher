@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   load_and_authorize_resource
+  before_filter :find_author_by_id, :only => [:show, :edit, :update]
   # actions where artists have access to
   # index
   # show
@@ -11,7 +12,6 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find_by_id(params[:id])
   end
   
   def new
@@ -28,12 +28,10 @@ class AuthorsController < ApplicationController
   end
   
   def edit
-    @author = Author.find_by_id(params[:id])
   end
   
   def update
     
-    @author = Author.find_by_id(params[:id])
     
     if @author.update_attributes(params[:author])
       redirect_to @author, :notice => 'Author was successfully updated.'
@@ -47,7 +45,12 @@ class AuthorsController < ApplicationController
     @author.destroy
     redirect_to authors_path
   end
-
+  
+  private
+  
+  def find_author_by_id
+    @author = Author.find(params[:id])
+  end
 
 
 end
