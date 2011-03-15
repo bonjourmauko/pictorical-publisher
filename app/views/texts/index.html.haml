@@ -16,6 +16,11 @@
         - if author.texts.not_deleted.count > 0
           = link_to author.last_name, :anchor => "a#{author.id}" 
           · 
+    
+    #action-box
+      Do you need help to find a story? We can help, just write us to
+      =link_to "books@pictorical.com", "mailto:books@pictorical.com", :class => "yellow"
+    
     - @authors.each do |author|
     
       - if author.texts.not_deleted.count > 0        

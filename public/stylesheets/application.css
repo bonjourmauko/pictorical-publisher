@@ -374,6 +374,7 @@ a.illustrate-change-link:active {
 
 .all_authors {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	margin: 1em 0;
 	
 }
 
@@ -430,4 +431,12 @@ a.illustrate-change-link:active {
 #welcome-canvas p {
 	margin: 0;
 	margin-bottom: 1em;
+}
+
+#look_for_a_book {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	background: #373737;
+	
+	
 }
