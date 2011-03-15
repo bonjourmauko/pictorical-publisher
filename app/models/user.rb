@@ -110,6 +110,9 @@ class User < ActiveRecord::Base
     mail = Notifications.welcome(self)
     mail.deliver
     
+    mail_admin = Notifications.new_user_admin(self)
+    mail_admin.deliver
+    
   end
   
   

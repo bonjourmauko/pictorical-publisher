@@ -67,7 +67,9 @@ class BooksController < ApplicationController
           
           mail = Notifications.new_book(@book, @change)
           mail.deliver
-
+          
+          mail_admin = Notifications.new_book_admin(@book, @change)
+          mail_admin.deliver
         
         redirect_to edit_book_path @book[:id], :notice => "Book was created succesfully"
         

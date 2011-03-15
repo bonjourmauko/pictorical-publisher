@@ -1,0 +1,15 @@
+%p
+  = @book.title unless @book.title.nil?
+  (
+  = @book.words unless @book.words.nil?
+  )
+  
+%p
+  By
+  = @book.author.name unless @book.author.name.nil?
+  = @book.author.last_name unless @book.author.last_name.nil?
+
+%p
+  Illustrated by
+  = @user.first_name unless @user.first_name.nil?
+  = @user.last_name unless @user.last_name.nil?
