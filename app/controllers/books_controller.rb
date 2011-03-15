@@ -114,7 +114,7 @@ class BooksController < ApplicationController
   end
 
   def publish
-    unless @book.user[:tutorial_mode]
+    unless @book.user_tutorial_mode
       @book.status = "published"
       if @book.save
         mail = Notifications.publish_book(@book)

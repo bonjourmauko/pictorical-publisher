@@ -1,4 +1,4 @@
-%p= "Hi #{@book.user[:first_name]},"
+%p= "Hi #{@book.user_first_name},"
 
 %p
   Congratulations! Your book
@@ -15,7 +15,7 @@
 
 %p
   We will send you monthly updates by email on the sales of your book, stating how many copies have been sold for each of your books, and we will pay you through your PayPal account,
-  %b= @book.user[:paypal_account]
+  %b= @book.user_paypal_account
   , each time the money we owe you reaches $100 or more.
 
 %p

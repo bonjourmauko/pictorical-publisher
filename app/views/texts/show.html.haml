@@ -32,7 +32,7 @@
         %b= "Books with this text"
         - if @text.books.not_deleted.count > 0
           - @text.books.not_deleted.each do |book|
-            .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user.id}) · status: #{book.status}", book
+            .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user_id}) · status: #{book.status}", book
         - else
           .x No books with this text
 

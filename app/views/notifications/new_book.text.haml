@@ -1,4 +1,4 @@
-= "Hi #{@book.user[:first_name]},"
+= "Hi #{@book.user_first_name},"
 
 - if @change
   You are now illustrating
@@ -8,7 +8,7 @@
 
 What's next?
 
-- if @book.user[:tutorial_mode]
+- if @book.user_tutorial_mode
 
   As this is your first illustrated book with Pictorical, we want to teach you how to make awesome books with us.
 
