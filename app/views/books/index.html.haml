@@ -10,7 +10,7 @@
       = link_to "#{book.title}", book unless book.text.nil?
       ·
       by
-      = link_to "#{book.user.first_name} #{book.user.last_name}", book.user unless book.user.nil?
+      = link_to "#{book.user_first_name} #{book.user_last_name}", book.user unless book.user.nil?
 
       = time_ago_in_words(book.created_at)
       ago
