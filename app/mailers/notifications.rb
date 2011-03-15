@@ -1,17 +1,30 @@
 class Notifications < ActionMailer::Base
   
+  #def new_book(book, change)
+  #  @book = book
+  #  @change = change
+  #  @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
+  #  if change
+  #    subject     "You are now illustrating #{@book.title}"
+  #  else
+  #    subject     "You are illustrating #{@book.title}"
+  #  end
+  #  recipients  @book.user[:email]
+  #  from        "hello@pictorical.com"
+  #  sent_on     Time.now   
+  #end
   def new_book(book, change)
     @book = book
     @change = change
     @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
     if change
-      subject     "You are now illustrating #{@book.title}"
+      @subject = "You are now illustrating #{@book.title}"
     else
-      subject     "You are illustrating #{@book.title}"
+      @subject = "You are illustrating #{@book.title}"
     end
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com"
-    sent_on     Time.now   
+    mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
+      format.html
+    end
   end
 
   def review_book(book)
