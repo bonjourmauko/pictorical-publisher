@@ -84,13 +84,8 @@ class Notifications < ActionMailer::Base
     else
       @subject = "New book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
     end
-<<<<<<< HEAD
-    
-    mail(:to => "notifications@pictorical.com", :subject => @subject) do |format|
-=======
 
     mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
->>>>>>> b68ee75430918ed2497ad67f51919a76b93e1a2d
       format.html
     end
 
