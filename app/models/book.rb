@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
 
   belongs_to  :user
-  delegate    :id, :first_name, :last_name, :tutorial_mode, :paypal_account, :to => :user, :prefix => true
+  delegate    :id, :email, :first_name, :last_name, :tutorial_mode, :paypal_account, :to => :user, :prefix => true
   
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])

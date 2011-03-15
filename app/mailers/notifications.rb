@@ -14,7 +14,7 @@ class Notifications < ActionMailer::Base
     else
       @subject = "You are illustrating #{@book.title}"
     end
-    mail(:to => @book.user[:email], :subject => @subject) do |format|
+    mail(:to => @book.user_email, :subject => @subject) do |format|
       format.html
     end
   end
@@ -22,7 +22,7 @@ class Notifications < ActionMailer::Base
   def review_book(book)
     @book = book
     @subject = "We received #{@book.title}"
-    mail(:to => @book.user[:email], :subject => @subject) do |format|
+    mail(:to => @book.user_email, :subject => @subject) do |format|
       format.html
     end
   end
@@ -30,7 +30,7 @@ class Notifications < ActionMailer::Base
   def publish_book(book)
     @book = book
     @subject = "Your book #{@book.title} has been published"
-    mail(:to => @book.user[:email], :subject => @subject) do |format|
+    mail(:to => @book.user_email, :subject => @subject) do |format|
       format.html
     end
   end
