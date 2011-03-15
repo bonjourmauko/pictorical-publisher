@@ -2,6 +2,6 @@
   = notice
 #admin-canvas
   %h1 New author
-  = render 'form'
+  = render 'form', :author => @author
   .admin
     = link_to "All", :action => "index"
