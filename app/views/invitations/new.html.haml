@@ -2,6 +2,6 @@
   = notice
 #admin-canvas
   %h1 New invitation
-  = render 'form'
+  = render 'form', :invitation => @invitation
   .admin
     = link_to "All", :action => "index"
