@@ -1,6 +1,6 @@
 %p= "Hi #{@invitation[:first_name]},"
 
-- unless @invitation[:specially]
+- if @invitation[:specially].empty?
 
   %p I’ve looked at your portfolio and am a big fan of your work.
 
