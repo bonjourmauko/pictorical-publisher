@@ -4,9 +4,19 @@ body {
 	
 }
 
+h1 {
+	font-family: "Georgia", Serif;
+	font-weight: normal;
+	text-shadow: white 0px 1px 0px;
+	text-align: center;
+	margin-bottom: 1em;
+	font-size: 2.5em;
+	
+	
+}
+
 #header { font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; }
 
-#header .session {position: fixed; top: 0; right: 0; padding: 5px;}
 
 #admin-canvas {
 	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
@@ -15,8 +25,10 @@ body {
 }
 
 #admin-canvas h1 {
+	text-align: left;
 	font-size: 1em;
 	font-weight: bold;
+	font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 #container .admin
@@ -28,22 +40,19 @@ body {
 
 .admin a, .admin a:visited {color: #ff0000;}
 
-#notice {
-	
-	color: #238B00;
+#notice, #alert {
 	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	margin: 0.5em 0;
 	}
 
+#notice { color: #238B00; }
+#alert { color: #ff0000; }
 
 #error_explanation {color: red;}
 
 .invisible {color: #eee}
 
 #text-canvas #title h1, #registration-canvas #title h1 {
-	text-align: center;
-	font: 2.5em "Georgia", "Trebuchet MS", Verdana, sans-serif;
-	text-shadow: white 0px 1px 0px;
 	margin: 0.5em auto;
 }
 
@@ -298,22 +307,31 @@ a.illustrate-change-link:active {
 	
 }
 
-#message-canvas {
+#simple-canvas {
 	
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-	width: 30em;
-	background: white;
-	margin: 5em auto;
-	padding: 1em;
-	
-}
-
-#message-canvas h1 {
-	font-size: 2em;
 	text-align: center;
 }
 
-#message-canvas input {
+#simple-canvas .inner {
+	
+	background: white;
+	margin: 0em auto;
+	padding: 1em;
+	display: inline-block;
+	text-align: left;
+}
+
+.forgot {
+	font-size: 0.75em;
+}
+
+#simple-canvas h1 {
+	font-size: 3em;
+	text-align: center;
+}
+
+#simple-canvas input {
 	font-size: 1em;
 	
 }
@@ -374,6 +392,7 @@ a.illustrate-change-link:active {
 
 .all_authors {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	margin: 1em 0;
 	
 }
 
@@ -430,4 +449,12 @@ a.illustrate-change-link:active {
 #welcome-canvas p {
 	margin: 0;
 	margin-bottom: 1em;
+}
+
+#look_for_a_book {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	background: #373737;
+	
+	
 }

@@ -1,13 +1,19 @@
-%h2 Change your password
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p= f.submit "Change my password"
+#simple-canvas
+  #notice
+    = notice
+  %h1 Forgotten. 
+  .inner
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      .input
+        .label
+        %p
+          = f.text_field :password
+          %br
+          &nbsp;New Password
+        %p
+          = f.text_field :password_confirmation
+          %br
+          &nbsp;Repeat
+        %p= f.submit "Change my Password"
