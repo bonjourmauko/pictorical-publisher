@@ -71,9 +71,9 @@ class Notifications < ActionMailer::Base
     @user = book.user
     
     if change
-      @subject = "New book \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
+      @subject = "Changed book \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
     else
-      @subject = "Changed book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
+      @subject = "New book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
     end
     
     mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
