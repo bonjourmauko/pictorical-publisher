@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  scope :sorted,  order('id DESC')
+  scope :sorted,  order('created_at DESC')
   scope :not_nil, lambda {
     where("redeemed_at IS NOT ? AND redeemed_at <= ?", nil, Time.zone.now)
   }

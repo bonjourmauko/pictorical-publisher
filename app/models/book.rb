@@ -9,6 +9,7 @@ class Book < ActiveRecord::Base
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
+  scope       :sorted, order('created_at DESC')
   
   after_initialize :status?
   

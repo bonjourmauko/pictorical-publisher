@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many          :books
-  scope             :sorted, order('created_at ASC')
+  scope             :sorted, order('created_at DESC')
   
   devise            :database_authenticatable,
                     :registerable,
