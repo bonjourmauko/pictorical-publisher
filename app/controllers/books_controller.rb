@@ -96,7 +96,10 @@ class BooksController < ApplicationController
     
   end
   
-  def change    
+  def change   
+    principal_text = @active_book.principal
+    principal_text.availability = true
+    principal_text.save 
     @active_book.status = "destroyed"
     @active_book.save
     redirect_to :action => "new", :text_id => params[:text_id], :change => true
