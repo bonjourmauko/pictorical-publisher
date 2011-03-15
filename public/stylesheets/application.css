@@ -462,3 +462,21 @@ a.illustrate-change-link:active {
 	
 	
 }
+
+#help {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 0.3em;
+}
+
+#help a, #help a:visited {
+	font-size: 0.75em;
+	color: #C80202;
+	text-decoration: none;}
+
+#help a:hover {
+	background: #C80202;
+	color: white;
+	
+}
