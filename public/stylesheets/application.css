@@ -18,6 +18,9 @@ h1 {
 	
 }
 
+a:link {color: #4362CE;}
+a:visited {color: #764790;}
+
 #header { font-size: .75em }
 
 #admin-canvas {
@@ -30,6 +33,8 @@ h1 {
 	text-align: left;
 	font-size: 1em;
 	font-weight: bold;
+	font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+
 }
 
 .admin
@@ -455,5 +460,23 @@ a.illustrate-change-link:active {
 	margin-bottom: 1em;
 	background: #373737;
 	
+	
+}
+
+#help {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 0.3em;
+}
+
+#help a, #help a:visited {
+	font-size: 0.75em;
+	color: #C80202;
+	text-decoration: none;}
+
+#help a:hover {
+	background: #C80202;
+	color: white;
 	
 }

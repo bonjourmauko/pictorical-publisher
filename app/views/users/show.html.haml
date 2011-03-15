@@ -22,6 +22,73 @@
     %p
       = "User is an artist"
       = link_to "upgrade", :action => "make_admin"
+    %hr  
+    %p
+      = "First name:"
+      %b= "#{@user.first_name}" unless @user.first_name.nil?
+      
+    %p
+      = "Last name:"
+      %b="#{@user.last_name}" unless @user.last_name.nil?
+      
+    %p
+      = "Artistic name:"
+      %b="#{@user.artistic_name}" unless @user.artistic_name.nil?
+
+    %p
+      = "Country:"
+      %b="#{@user.country}" unless @user.country.nil?
+
+    %p
+      = "Birthdate:"
+      %b= "#{@user.birthdate.to_s}" unless @user.birthdate.nil?
+
+    %p
+      Email:
+      = link_to @user.email, @user.email unless @user.email.nil?
+
+    %p
+      = "Paypal account:"
+      %b="#{@user.paypal_account}" unless @user.paypal_account.nil?
+
+    %p
+      Address:
+      %br
+      %b= @user.address_line_one unless @user.address_line_one.nil?
+      %br
+      %b= @user.address_line_two unless @user.address_line_two.nil?
+      %br
+      = "City:"
+      %b= "#{@user.city}" unless @user.city.nil?
+      %br
+      = "State:"
+      %b= "#{@user.state}" unless @user.state.nil?
+      %br
+      = "Zip:"
+      %b= "#{@user.zip}" unless @user.zip.nil?
+      %br
+      = "Country:"
+      %b= "#{@user.country}" unless @user.country.nil?
+
+    %p
+      Portfolio:
+      %b= link_to(@user.portfolio_url,@user.portfolio_url)  unless @user.portfolio_url.nil?
+
+    %p
+      = "Artschool:"
+      %b= "#{@user.art_school_name}" unless @user.art_school_name.nil?
+
+    %p
+      = "Twitter:"
+      %b="#{@user.twitter}" unless @user.twitter.nil?
+
+    %p
+      = "Accepted license agreement:"
+      %b= "#{@user.accepted_license_agreement.to_s}" unless @user.accepted_license_agreement.nil?
+
+    %p
+      = "Created at:"
+      %b="#{@user.created_at}" unless @user.created_at.nil?
 
   %p
     = "User created: " + time_ago_in_words(@user.created_at) + " ago "
