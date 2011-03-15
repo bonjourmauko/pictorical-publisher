@@ -50,7 +50,7 @@ class Notifications < ActionMailer::Base
   
   def end_tutorial(user)
     @user = user
-    @subject = "You can keep on working in" + @user.active_book.title.to_s
+    @subject = "You can keep on working in #{@user.active_book.title}"
     mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
       format.html
     end
