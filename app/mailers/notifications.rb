@@ -1,25 +1,22 @@
 class Notifications < ActionMailer::Base
   
-  # definir bien los mails (copywriting)
-  def new_book(book)
+  def new_book(book, change)
     @book = book
-    subject     "hello"
+    @change = change
+    @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
+    if change
+      subject     "You are now illustrating #{@book.title}"
+    else
+      subject     "You are illustrating #{@book.title}"
+    end
     recipients  @book.user[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now   
   end
 
-  def change_book(book)
-    @book = book
-    subject     "hello"
-    recipients  @book.user[:email]
-    from        "hello@pictorical.com" 
-    sent_on     Time.now   
-  end
-
   def review_book(book)
     @book = book
-    subject     "hello"
+    subject     "We received #{@book.title}"
     recipients  @book.user[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now    
@@ -27,7 +24,7 @@ class Notifications < ActionMailer::Base
   
   def publish_book(book)
     @book = book
-    subject     "hello"
+    subject     "Your book #{@book.title} has been published."
     recipients  @book.user[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now
@@ -36,7 +33,7 @@ class Notifications < ActionMailer::Base
   def create_invitation(invitation, host) 
     @invitation = invitation
     @url = "http://" + host + new_user_registration_path
-    subject     "hello"
+    subject     "Good news from Pictorical"
     recipients  @invitation[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now
@@ -45,12 +42,18 @@ class Notifications < ActionMailer::Base
   def welcome(user)
     @user = user
     @url = "http://publisher.pictorical.com" + new_user_session_path
-    subject     "hello"
+    subject     "Welcome to Pictorical"
     recipients  @user[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now
   end
   
-  
+  def end_tutorial(user)
+    @user = user
+    subject     "You can keep on working in #{@user.active_book.title}"
+    recipients  @user[:email]
+    from        "hello@pictorical.com"
+    sent_on     Time.now
+  end
   
 end

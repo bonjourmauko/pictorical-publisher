@@ -1,23 +1,29 @@
-= "Hi, #{@invitation[:first_name]}"
+= "Hi #{@invitation[:first_name]},"
 
-- if @invitation[:specially].empty?
-  I've looked at your portfolio and am a big fan of your work.
+- unless @invitation[:specially]
+
+  I’ve looked at your portfolio and am a big fan of your work.
+
 - else
-  = "I've looked at your portfolio and am a big fan of your work, specially #{@invitation[:specially]}."
 
-We are Pictorical. We publish the world’s greatest stories illustrated by emergent artists all over the world. Currently we are publishing them as ebooks in Apple's iBookstore for the iPad, and soon we will be in Amazon's and Google's stores.
+  = "I’ve looked at your portfolio and am a big fan of your work, especially #{@invitation[:specially]}."
 
-I’d like to personally invite you to apply to illustrate books with us, be published worldwide and earn half of the profits from the sale of your books.
 
-+ What's next?
+My name is Victor, co-founder of Pictorical. Nice to meet you. Pictorical publishes the world’s greatest stories, illustrated by emerging artists all over the world—just like you.
 
-="To start illustrating your first story, go to #{@url} and sign up with your email #{@invitation[:email]}."
+I’d like to invite you to join us. As part of Pictorical, you will be published worldwide and earn half of the profits from the sale of your books.
 
-We have tons of stories to choose from. If you can't find the one you are looking for, just write us to books@pictorical.com and we will look it for you.
+What’s next?
 
-Looking forward to having you on board!
+To start illustrating your first story, go to http://publisher.pictorical.com/users/sign_up and sign up with your email address,
+= "#{@invitation[:email]}."
+
+If you have any questions, you can ask us at artists@pictorical.com.
+
+Looking forward to having you on board,
 
 Best,
 
 Victor, co-founder of Pictorical
-http://pictorical.com
+
+PS: In case you are wondering, you received this email because you sent us your portfolio on http://artists.pictorical.com

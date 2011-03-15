@@ -19,9 +19,14 @@
   
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
-      ·  You are illustrating this book 
+      ·
+      Illustrate this story following our
+      = link_to "Artwork Guidelines", :artwork_guidelines, :class => "yellow"
       - unless @book.words < 4000
+        %p
+        When you are ready
         = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => 'Are you ready to publish this book? Did you send the illustrations to books@pictorical.com?'
+        or
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - if @book.words < 4000

@@ -20,9 +20,9 @@
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       = "status: #{@book.status}"
-      = link_to "revise", {:action => "revise"},  :class => "illustrate-this-link"
-      = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link"
-      = link_to "destroy", {:action => "destroy"},  :class => "illustrate-this-link"
+      = link_to "active", {:action => "revise"},  :class => "illustrate-this-link"
+      = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link", :confirm => "Are you sure? Is the book published in the iBookstore? Is the artist/book/author page in pictorical.com set up?"
+      = link_to "delete", {:action => "destroy"},  :class => "illustrate-this-link"
       
     #multitext
       %p

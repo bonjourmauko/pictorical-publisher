@@ -11,11 +11,17 @@ class UsersController < ApplicationController
 
   def mature #releases the user from tutorial
     @user = User.find(params[:id])
-    @user.tutorial_mode = false
-    if @user.save
-      redirect_to @user, :notice => "user changed"
+    unless @user.active_book.nil?
+      @user.tutorial_mode = false
+      mail = Notifications.end_tutorial(@user)
+      mail.deliver
+      if @user.save
+        redirect_to @user, :notice => "user changed"
+      else
+        redirect_to @user, :notice => "user was not changed"
+      end
     else
-      redirect_to @user, :notice => "user was not changed"
+      redirect_to @user, :notice => "you have to make user's book active before maturing"
     end
   end
 

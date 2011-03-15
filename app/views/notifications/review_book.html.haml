@@ -1,0 +1,19 @@
+%p= "Hi #{@book.user[:first_name]},"
+
+%p
+  Thanks for sending us
+  %b= @book.title
+  . We will check that everything’s fine, build your book and publish it on the Apple iBook Store.
+
+%p We will write you again when your book is published.
+
+%p
+  In the meantime, we would love to hear from you about your experience of using our website, and whether you have any recommendations and ideas that could help us improve it. You can email us at
+  = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
+
+%p You will hear from us soon,
+
+%p
+  The Pictorical Team
+  %br
+  Victor and Mauko

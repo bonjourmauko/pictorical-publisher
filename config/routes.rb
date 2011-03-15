@@ -2,9 +2,13 @@ PublisherPictoricalCom::Application.routes.draw do
   
   #get "dashboard/welcome"
 
-  match "/terms-of-service", :to => "pages#terms_of_service", :as => :terms_of_service, :via => :get
+  match "/terms-and-conditions", :to => "pages#terms_and_conditions", :as => :terms_and_conditions, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
   match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
+  match "/privacy-policy", :to => "pages#privacy_policy", :as => :privacy_policy, :via => :get
+  match "/website-disclaimer", :to => "pages#website_disclaimer", :as => :website_disclaimer, :via => :get
+  match "/copyright-notice", :to => "pages#copyright_notice", :as => :copyright_notice, :via => :get
+  match "/legal", :to => "pages#legal", :as => :legal, :via => :get
   
 
   devise_for :users

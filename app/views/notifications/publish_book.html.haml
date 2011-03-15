@@ -1,0 +1,32 @@
+%p= "Hi #{@book.user[:first_name]},"
+
+%p
+  Congratulations! Your book
+  %b= @book.title
+  has been published on the Apple iBook Store for the US, Canada, UK, Germany, France and Australia.
+
+%p
+  %b What's next?
+
+%p
+  We have set up a page for you and your books at
+  =link_to "Pictorical.com", "http://pictorical.com"
+  Share it with everybody, and tell your friends to “like” you and your books in Facebook.
+
+%p
+  We will send you monthly updates by email on the sales of your book, stating how many copies have been sold for each of your books, and we will pay you through your PayPal account,
+  %b= @book.user[:paypal_account]
+  , each time the money we owe you reaches $100 or more.
+
+%p
+  Are you ready to illustrate another book? We are!
+  = link_to "Let's choose a new story.", "http://publisher.pictorical.com"
+
+%p Congratulations!
+
+%p
+  The Pictorical Team
+  %br
+  Victor and Mauko
+
+

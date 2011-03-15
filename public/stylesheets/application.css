@@ -1,5 +1,7 @@
 body {
 	background: #EBEBEB;
+	font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	
 }
 
 #header { font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; }
@@ -200,9 +202,8 @@ a.illustrate-change-link:active {
 .textlist {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	background: white;
-	padding: 1em;
-	padding-bottom: 0.5em;
-	
+	padding: 1em;	
+	padding-bottom: 0.1em;
 }
 
 .textlist a {text-decoration: none;}
@@ -393,3 +394,40 @@ a.illustrate-change-link:active {
 #warning-box a, #warning-box a:visited { color: white;}
 
 .deleted {text-decoration: line-through}
+
+
+#guideline-canvas {
+	margin: 0 auto;
+	text-align: center;
+	
+}
+
+#footer {
+	font-size: 0.5em;
+	color: #838383;	
+	margin: 3em 0px 1em 0px;
+	text-align: center;
+	
+}
+
+#footer a, #footer a.visited {
+	color: #838383;
+	
+}
+
+#welcome-canvas {
+	margin: 0 auto;
+	width: 30em;
+	background: white;
+	
+}
+
+#welcome-canvas .inner {
+	padding: 1em;
+	
+}
+
+#welcome-canvas p {
+	margin: 0;
+	margin-bottom: 1em;
+}
