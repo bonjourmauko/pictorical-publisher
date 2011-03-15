@@ -3,17 +3,16 @@ class TextsController < ApplicationController
   #respond_to :html
   before_filter :get_active_book, :only => [:show, :index]
   before_filter :find_text_by_id, :only => [:show, :trash_show, :edit, :update, :make_available, :make_unavailable]
+  before_filter :find_authors, :only => [:index, :trashed_index]
   
   # actions where artists have access to
   # index
   # show
   
   def index
-    @authors = Author.sorted.all
   end
   
   def trashed_index
-    @authors = Author.sorted.all
   end
   
   def show  
@@ -107,6 +106,10 @@ class TextsController < ApplicationController
   
   def find_text_by_id
     @text = Text.find(params[:id])
+  end
+  
+  def find_authors
+    @authors = Author.sorted.all
   end
   
 end
