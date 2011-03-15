@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
     elsif redeemed == "yes" || redeemed == "YES"
       
       #fuck
-      @invitations = Invitation.sorted.where("redeemed_at < #{Date.now}")
+      @invitations = Invitation.not_nil.sorted
       
     else
       
