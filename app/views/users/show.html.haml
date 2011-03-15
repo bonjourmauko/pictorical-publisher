@@ -1,8 +1,8 @@
 #notice
   = notice
 
-#admin-canvas 
-  
+#admin-canvas
+
   %h1= "User #{@user.first_name} #{@user.last_name}"
 
   - if @user.tutorial_mode?
@@ -13,7 +13,7 @@
     %p
       = "User not in tutorial mode"
       = link_to "back to tutorial", :action => "demature"
-      
+
   - if @user.admin?
     %p
       = "User is an admin"
@@ -22,15 +22,15 @@
     %p
       = "User is an artist"
       = link_to "upgrade", :action => "make_admin"
-    %hr  
+    %hr
     %p
       = "First name:"
       %b= "#{@user.first_name}" unless @user.first_name.nil?
-      
+
     %p
       = "Last name:"
       %b="#{@user.last_name}" unless @user.last_name.nil?
-      
+
     %p
       = "Artistic name:"
       %b="#{@user.artistic_name}" unless @user.artistic_name.nil?

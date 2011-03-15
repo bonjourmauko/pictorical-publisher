@@ -6,7 +6,7 @@
 
   #notice
     = notice
-  
+
   #title
     %h1= @book.title
     %h3
@@ -14,9 +14,9 @@
       %span.up= "#{@book.author.name} #{@book.author.last_name}"
     %h3
       illustrated by
-      %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
+      %span.up= "#{@book.user_first_name} #{@book.user_last_name}"
   #container
-  
+
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·
@@ -25,7 +25,7 @@
       - unless @book.words < 4000
         %p
         When you are ready
-        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => 'Are you ready to publish this book? Did you send the illustrations to books@pictorical.com?'
+        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
         or
       = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
 
@@ -46,9 +46,9 @@
           · Send the illustration to
           = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
           %br
-          · When you are ready, hit Publish.   
-    
-    
+          · When you are ready, hit Publish.
+
+
     - else
 
       #action-box

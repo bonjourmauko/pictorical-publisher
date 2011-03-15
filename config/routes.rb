@@ -1,5 +1,5 @@
 PublisherPictoricalCom::Application.routes.draw do
-  
+
   #get "dashboard/welcome"
 
   match "/terms-and-conditions", :to => "pages#terms_and_conditions", :as => :terms_and_conditions, :via => :get
@@ -9,7 +9,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "/website-disclaimer", :to => "pages#website_disclaimer", :as => :website_disclaimer, :via => :get
   match "/copyright-notice", :to => "pages#copyright_notice", :as => :copyright_notice, :via => :get
   match "/legal", :to => "pages#legal", :as => :legal, :via => :get
-  
+
 
   devise_for :users
 
@@ -19,34 +19,34 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/:id/unmake_admin", :to => "users#unmake_admin"
 
   resources :users
-  
+
   match "texts/:id/available", :to => "texts#make_available"
-  match "texts/:id/unavailable", :to => "texts#make_unavailable"  
-  
+  match "texts/:id/unavailable", :to => "texts#make_unavailable"
+
   resources :texts
-  
+
   match "trashes/:id/trashed_destroy", :to => "texts#trashed_destroy", :as => :trashed_destroy
   match "trashes/:id/trashed_undestroy", :to => "texts#trashed_undestroy", :as => :trashed_undestroy
   match "trashes/:id", :to => "texts#trashed_show", :as => :trashed
   match "trashes", :to => "texts#trashed_index", :as => :trashes
-  
+
   resources :authors
-  
+
   match "/new_fancy", :to => "authors#new_fancy"
   match "/create_fancy", :to => "author#create_fancy"
 
   resources :invitations
-  
+
   match "books/change", :to => "books#change", :as => :change_book
   match "books/review", :to => "books#review", :as => :review_book
   match "books/publish/:id", :to => "books#publish"
   match "books/revise/:id", :to => "books#revise"
   match "books/destroy/:id", :to => "books#destroy"
   match "books/:id/add_text", :to => "books#add_text"
-  match "books/:id/remove_text", :to => "books#remove_text"  
-  
+  match "books/:id/remove_text", :to => "books#remove_text"
+
   resources :books
-    
+
   root :to => "dashboard#welcome"
 
   # The priority is based upon order of creation:

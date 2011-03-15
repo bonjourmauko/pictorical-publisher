@@ -1,4 +1,4 @@
-%p= "Hi #{@book.user[:first_name]},"
+%p= "Hi #{@book.user_first_name},"
 
 %p
   -if @change
@@ -10,7 +10,7 @@
 %p
   %b What's next?
 
-- if @book.user[:tutorial_mode]
+- if @book.user_tutorial_mode
 
   %p As this is your first illustrated book with Pictorical, we want to teach you how to make awesome books with us.
 

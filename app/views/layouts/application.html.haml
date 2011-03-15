@@ -11,8 +11,8 @@
       = render "layouts/adminbar"
     #help
       = mail_to "help@pictorical.com", "help@pictorical.com", :encode => "javascript"
-      
-    
+
+
     #header
       = yield :navbar
       #artist_session
@@ -21,16 +21,16 @@
           = link_to current_user.first_name, edit_user_registration_path
           ·
           = link_to("sign out",  destroy_user_session_path)
-          
+
           - unless current_user.active_book.nil? || current_user.active_book.text.nil?
-            ·  
-            = "You are illustrating " 
+            ·
+            = "You are illustrating "
             = link_to "#{current_user.active_book.title}", edit_book_path(current_user.active_book.id)
           - if current_user.has_books_under_review?
             We are reviewing
             %b= "#{current_user.book_under_review.title}"
-          
-          
+
+
     = yield
     #footer
       2011 &copy; Pictorical Ltd, registered in England #07290547

@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(current_user)
-    
+
     if current_user.admin?
       can :manage, :all
     else
@@ -12,6 +12,6 @@ class Ability
         book.try(:user) == current_user
       end
     end
-    
+
   end
 end

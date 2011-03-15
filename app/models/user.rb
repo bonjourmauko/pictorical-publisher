@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many          :books
   scope             :sorted, order('created_at DESC')
-  
+
   devise            :database_authenticatable,
                     :registerable,
                     :recoverable
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
                     :twitter,
                     :accepted_license_agreement,
                     :tutorial_mode
-                                                                                
+
   validates         :email,
                     :presence => true,
                     :uniqueness => true,
@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       :on => :create
                     }
-                    
-  validates_presence_of :password, :on => :create 
-  validates_confirmation_of :password, :on => :create                  
 
-   
+  validates_presence_of :password, :on => :create
+  validates_confirmation_of :password, :on => :create
+
+
   validates_presence_of :first_name,
                         :last_name,
                         :birthdate,
@@ -51,11 +51,11 @@ class User < ActiveRecord::Base
                         :city,
                         :portfolio_url,
                         :paypal_account
-                        
+
   before_create :redeem_invitation
-  
+
   after_create :send_welcome_email
-  
+
   def name
     "#{self.first_name} #{self.last_name}"
   end
@@ -64,31 +64,31 @@ class User < ActiveRecord::Base
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
   end
-  
+
   def book_under_review
     Book.where(:user_id => self.id, :status => "review").first
   end
-  
+
   def has_books_under_review?
     !self.book_under_review.nil?
   end
-  
+
   private
 
   def validate_on_create #http://ar.rubyonrails.org/classes/ActiveRecord/Validations.html#M000078
     unless Invitation.select(:email).map(&:email).include? email or is_admin
       errors.add("Invitation", "could not be find for that email")
     end
-    
+
     if is_admin
       self.admin = true
     else
       self.admin = false
     end
-    
-    self.tutorial_mode ||= true 
+
+    self.tutorial_mode ||= true
   end
-    
+
   def is_admin
     if User.all.first.nil?
       true
@@ -96,26 +96,26 @@ class User < ActiveRecord::Base
       false
     end
   end
-  
+
   def redeem_invitation
-    unless is_admin   
+    unless is_admin
       invitation = Invitation.find_by_email(email)
       invitation.redeemed_at = Time.now
       invitation.save
-    end 
+    end
   end
-  
+
   def send_welcome_email
-    
+
     mail = Notifications.welcome(self)
     mail.deliver
-    
+
     mail_admin = Notifications.new_user_admin(self)
     mail_admin.deliver
-    
+
   end
-  
-  
-  
-  
+
+
+
+
 end

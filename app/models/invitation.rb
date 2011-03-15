@@ -3,12 +3,12 @@ class Invitation < ActiveRecord::Base
   scope :not_nil, lambda {
     where("redeemed_at IS NOT ? AND redeemed_at <= ?", nil, Time.zone.now)
   }
-  
+
   attr_accessible   :email,
                     :first_name,
                     :last_name,
                     :specially
-  
+
   validates         :email,
                     :presence => true,
                     :uniqueness => true,
@@ -16,7 +16,7 @@ class Invitation < ActiveRecord::Base
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       :on => :create
                     }
-  
-  validates_presence_of :first_name  
-  
+
+  validates_presence_of :first_name
+
 end
