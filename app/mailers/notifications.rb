@@ -5,9 +5,9 @@ class Notifications < ActionMailer::Base
     @change = change
     @expiration = (Time.now.advance :weeks => 2).strftime("%e %B")
     if change
-      @subject = "You are now illustrating #{@book.title.to_s}"
+      @subject = "You are now illustrating #{@book.title}"
     else
-      @subject = "You are illustrating #{@book.title.to_s}"
+      @subject = "You are illustrating #{@book.title}"
     end
     mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
       format.html
@@ -16,7 +16,7 @@ class Notifications < ActionMailer::Base
 
   def review_book(book)
     @book = book
-    @subject = "We received #{@book.title.to_s}"
+    @subject = "We received #{@book.title}"
     mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
       format.html
     end
@@ -24,7 +24,7 @@ class Notifications < ActionMailer::Base
   
   def publish_book(book)
     @book = book
-    @subject = "Your book #{@book.title.to_s} has been published"
+    @subject = "Your book #{@book.title} has been published"
     mail(:to => @book.user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
       format.html
     end
@@ -50,7 +50,7 @@ class Notifications < ActionMailer::Base
   
   def end_tutorial(user)
     @user = user
-    @subject = "You can keep on working in" + @user.active_book.title.to_s
+    @subject = "You can keep on working in #{@user.active_book.title}"
     mail(:to => @user[:email], :from => "hello@pictorical.com", :subject => @subject) do |format|
       format.html
     end
