@@ -41,8 +41,8 @@
             %span.required required
           .label2 The same one where you got your invitation
           = f.text_field :email
-    
-  
+
+
         .input
           .label
             New password
@@ -55,20 +55,20 @@
             = f.password_field :password_confirmation
             %br
             &nbsp;And again
-    
+
         .input
           .label
             Birth date
             %span.required required
           .label2 You have to be over 18 years old
-          = f.input :birthdate, :start_year => Date.today.year - 100, 
+          = f.input :birthdate, :start_year => Date.today.year - 100,
                                 :end_year => Date.today.year - 18,
                                 :order => [:month, :day, :year],
                                 :label => false
 
-  
 
-  
+
+
         .input
           .label
             Your address
@@ -78,7 +78,7 @@
           .address
             = f.text_field :address_line_two, :size => 60
           .field-block
-      
+
             = f.text_field :city, :size => 10
             %br
             City
@@ -103,7 +103,7 @@
             Portfolio address
             %span.required required
           .label2 We will link to it in our webpage
-          =f.text_field :portfolio_url, :size => 60  
+          =f.text_field :portfolio_url, :size => 60
 
         .input
           .label
@@ -114,13 +114,13 @@
 
 
         .input
-          .label 
+          .label
             Paypal username
             %span.required required
           .label2 So we can pay you
           = f.text_field :paypal_account
 
-  
+
 
         .input
           .label
@@ -133,10 +133,10 @@
             %i Saint Martins College, London UK, BA Fine Arts, 2009-2010
           = f.text_field :art_school_name, :size => 60
 
-    
 
 
-        .input 
+
+        .input
           = f.check_box :accepted_license_agreement, :disabled => true
           I accept Pictorical's
           = link_to "License Agreement", license_agreement_path

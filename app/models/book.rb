@@ -1,30 +1,30 @@
 class Book < ActiveRecord::Base
-  
+
   has_many :collections
   has_many  :texts, :through => :collections
-  
+
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
-  
+
   belongs_to  :user
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
   scope       :sorted, order('created_at DESC')
-  
+
   after_initialize :status?
-  
-  
-  
+
+
+
   def text
     self.texts.first
   end
-  
+
   def author
     self.texts.first.author
   end
-  
+
   def title
-  
+
     if self.texts.count > 2
       self.principal.title + " & Other Stories"
     elsif self.texts.count == 2
@@ -32,12 +32,12 @@ class Book < ActiveRecord::Base
     else
       self.principal.title
     end
-  
+
   end
-  
-  
+
+
   def content
-    
+
     if self.texts.count == 1
       contents = self.principal.content
     else
@@ -48,11 +48,11 @@ class Book < ActiveRecord::Base
         end
       end
     end
-    
+
     return contents
-    
+
   end
-  
+
   def illustrations_lower
     sums = 0
     self.texts.each do |text|
@@ -60,7 +60,7 @@ class Book < ActiveRecord::Base
     end
     return sums
   end
-  
+
   def illustrations_upper
     sums = 0
     self.texts.each do |text|
@@ -68,7 +68,7 @@ class Book < ActiveRecord::Base
     end
     return sums
   end
-  
+
   def words
     sums = 0
     self.texts.each do |text|
@@ -76,12 +76,12 @@ class Book < ActiveRecord::Base
     end
     return sums
   end
-  
-  
+
+
   private
-  
+
   def status?
     self.status ||= "active"
   end
-  
+
 end

@@ -9,7 +9,7 @@
 %p
   Email:
   = link_to @user.email, @user.email unless @user.email.nil?
-  
+
 %p= "Paypal account: #{@user.paypal_account}" unless @user.paypal_account.nil?
 
 %p

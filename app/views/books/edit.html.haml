@@ -6,7 +6,7 @@
 
   #notice
     = notice
-  
+
   #title
     %h1= @book.title
     %h3
@@ -16,7 +16,7 @@
       illustrated by
       %span.up= "#{@book.user.first_name} #{@book.user.last_name}"
   #container
-  
+
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       ·
@@ -46,9 +46,9 @@
           · Send the illustration to
           = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
           %br
-          · When you are ready, hit Publish.   
-    
-    
+          · When you are ready, hit Publish.
+
+
     - else
 
       #action-box

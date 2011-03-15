@@ -1,16 +1,16 @@
 #notice
   = notice
-  
+
 #admin-canvas
-  
+
   %h1= "#{@author.name} #{@author.last_name}"
-  
+
   .admin
     = link_to "edit", :action => "edit"
     ·
     = link_to "new", :action => "new"
     ·
     = link_to "all", :action => "index"
-    - if @author.texts.first.nil? 
+    - if @author.texts.first.nil?
       ·
       = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete

@@ -1,8 +1,8 @@
 - title "Pictorical : Choose a story"
 #notice
   = notice
-  
-  
+
+
 #text-canvas
 
   #title
@@ -14,16 +14,16 @@
     .all_authors
       - @authors.each do |author|
         - if author.texts.not_deleted.count > 0
-          = link_to author.last_name, :anchor => "a#{author.id}" 
-          · 
-    
+          = link_to author.last_name, :anchor => "a#{author.id}"
+          ·
+
     #action-box
       Do you need help to find a story? We can help, just write us to
       =link_to "books@pictorical.com", "mailto:books@pictorical.com", :class => "yellow"
-    
+
     - @authors.each do |author|
-    
-      - if author.texts.not_deleted.count > 0        
+
+      - if author.texts.not_deleted.count > 0
         = tag "a", {:name => "a#{author.id}"} #anchor
         %h4
           %span.up= "#{author[:name]} #{author[:last_name]}"
@@ -34,7 +34,7 @@
                 - if text[:availability] || current_user.admin?
                   .textlink= link_to text[:title], text
                   .textinfo
-                    = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"               
+                    = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
                     = "· Available? #{text.availability}" if current_user.admin?
                 - else
                   .textlink= text[:title]
