@@ -24,7 +24,7 @@ class Notifications < ActionMailer::Base
   
   def publish_book(book)
     @book = book
-    subject     "Your book #{@book.title} is published."
+    subject     "Your book #{@book.title} has been published."
     recipients  @book.user[:email]
     from        "hello@pictorical.com"
     sent_on     Time.now

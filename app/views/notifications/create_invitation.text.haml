@@ -2,32 +2,28 @@
 
 - unless @invitation[:specially]
 
-  I've looked at your portfolio and am a big fan of your work.
+  I’ve looked at your portfolio and am a big fan of your work.
 
 - else
 
-  = "I've looked at your portfolio and am a big fan of your work, specially #{@invitation[:specially]}."
+  = "I’ve looked at your portfolio and am a big fan of your work, especially #{@invitation[:specially]}."
 
 
-My name is Victor, co-founder of Pictorical. Nice to meet you. Pictorical publishes the world’s greatest stories illustrated by emerging artists all over the world, just like you.
+My name is Victor, co-founder of Pictorical. Nice to meet you. Pictorical publishes the world’s greatest stories, illustrated by emerging artists all over the world—just like you.
 
 I’d like to invite you to join us. As part of Pictorical, you will be published worldwide and earn half of the profits from the sale of your books.
 
+What’s next?
 
-What's next?
+To start illustrating your first story, go to http://publisher.pictorical.com/users/sign_up and sign up with your email address,
+= "#{@invitation[:email]}."
 
-To start illustrating your first story, go to
-= link_to "Pictorical's publishing tool", @url
-and sign up with your email
-= @invitation[:email]
-
-If you have a question, you can ask us to
-= link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
+If you have any questions, you can ask us at artists@pictorical.com.
 
 Looking forward to having you on board,
 
 Best,
+
 Victor, co-founder of Pictorical
 
-PS: In case you are asking yourself, you received this email because you sent us your portfolio in
-= link_to "Pictorical's website", "http://artists.pictorical.com"
+PS: In case you are wondering, you received this email because you sent us your portfolio on http://artists.pictorical.com
