@@ -6,7 +6,7 @@
 
   #notice
     = notice
-  
+
   #title
     %h1= @book.title
     %h3
@@ -16,14 +16,14 @@
       illustrated by
       %span.up= "#{@book.user.first_name} #{@book.user.last_name} (#{@book.user.id})"
   #container
-  
+
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
       = "status: #{@book.status}"
       = link_to "active", {:action => "revise"},  :class => "illustrate-this-link"
       = link_to "publish", {:action => "publish"},  :class => "illustrate-this-link", :confirm => "Are you sure? Is the book published in the iBookstore? Is the artist/book/author page in pictorical.com set up?"
       = link_to "delete", {:action => "destroy"},  :class => "illustrate-this-link"
-      
+
     #multitext
       %p
         %b Principal text:
@@ -39,8 +39,8 @@
           - @book.texts.each do |text|
             - unless text == @book.principal
               = link_to "#{text.title} (#{text.id})", "/books/#{@book.id}/remove_text?text_id=#{text.id}"
-            
-          ·  
+
+          ·
 
     #story
       = @book.content.html_safe

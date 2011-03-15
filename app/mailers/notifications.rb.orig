@@ -1,10 +1,14 @@
 class Notifications < ActionMailer::Base
+<<<<<<< HEAD
   
   default :reply_to => 'hello@pictorical.com',
           :return_path => 'Pictorical Team <hey@pictorical.com>',
           :from => 'Pictorical Team <hey@pictorical.com>',
           :bcc => 'log@pictorical.com'
   
+=======
+
+>>>>>>> b68ee75430918ed2497ad67f51919a76b93e1a2d
   def new_book(book, change)
     @book = book
     @change = change
@@ -80,8 +84,13 @@ class Notifications < ActionMailer::Base
     else
       @subject = "New book to \"#{@book.title}\" (#{@book.words}) for #{@user.first_name} #{@user.last_name}"
     end
+<<<<<<< HEAD
+    
+    mail(:to => "notifications@pictorical.com", :subject => @subject) do |format|
+=======
 
     mail(:to => "notifications@pictorical.com", :from => "hello@pictorical.com", :subject => @subject) do |format|
+>>>>>>> b68ee75430918ed2497ad67f51919a76b93e1a2d
       format.html
     end
 

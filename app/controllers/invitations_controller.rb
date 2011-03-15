@@ -8,31 +8,31 @@ class InvitationsController < ApplicationController
   #def index
   #  @invitations = Invitation.sorted.all
   #end
-  
+
   def index
-    
+
     redeemed = params[:redeemed]
-    
+
     if redeemed.nil? || redeemed == ""
-    
+
       @invitations = Invitation.sorted.all
-      
+
     elsif redeemed == "yes" || redeemed == "YES"
-      
+
       #fuck
       @invitations = Invitation.not_nil.sorted
-      
+
     else
-      
+
       @invitations = Invitation.sorted.find_all_by_redeemed_at(nil)
-      
+
     end
-    
-    
-      
+
+
+
   end
-  
-  
+
+
 
   def show
   end

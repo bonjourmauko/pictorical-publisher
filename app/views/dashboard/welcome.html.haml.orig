@@ -1,9 +1,15 @@
 #welcome-canvas
   .inner
     %p Welcome to Pictorical!
+<<<<<<< HEAD
   
     %p We are happy to welcome you to the Pictorical family. You are joining many talented emerging artists from all over the world, sharing our mission of illustrating the world's greatest stories.
     
+=======
+
+    %p We are happy to welcome you to the Pictorical family. You are joining many talented emerging artists from all over the world, all sharing our mission of illustrating the world's greatest stories.
+
+>>>>>>> b68ee75430918ed2497ad67f51919a76b93e1a2d
     %p
       And now
       = link_to "let's start illustrating your first story.", texts_path

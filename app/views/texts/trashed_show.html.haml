@@ -4,7 +4,7 @@
 #text-canvas
 
   #title
-    %h1 
+    %h1
       -if @text[:deleted]
         .deleted= @text[:title]
       -else
@@ -13,13 +13,13 @@
       %span.up
         = "#{@text.author_name} #{@text.author_last_name}"
   #container
-  
+
     - if can? :new, Text
       .admin
         = link_to "destroy for real", @text, :method => :delete
         ·
         = link_to "undestroy", :action => "trashed_undestroy"
-  
+
     #action-box
       = "#{@text.words_rounded} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
 

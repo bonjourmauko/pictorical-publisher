@@ -1,12 +1,12 @@
 #notice
   = notice
-#admin-canvas 
-  
+#admin-canvas
+
   %h1= "Invitation for #{@invitation.first_name} #{@invitation.last_name}"
   %p= link_to "#{@invitation.email}", "mailto:" + @invitation.email
   %p= "specially: ...#{@invitation.specially}" unless @invitation.specially.empty?
   %p= "secret: #{@invitation.secret}"
-  
+
   %p
 
   %p
@@ -16,8 +16,8 @@
   %p
     = "Invitation updated: " + time_ago_in_words(@invitation.updated_at) + " ago "
     %span.invisible= @invitation.updated_at.to_s
-    
-  
+
+
   .admin
     = link_to "edit", :action => "edit"
     ·

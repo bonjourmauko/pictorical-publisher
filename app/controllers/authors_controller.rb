@@ -13,11 +13,11 @@ class AuthorsController < ApplicationController
 
   def show
   end
-  
+
   def new
     @author = Author.new
   end
-  
+
   def create
     @author = Author.new(params[:author])
     if @author.save
@@ -26,28 +26,28 @@ class AuthorsController < ApplicationController
       render :action => "new"
     end
   end
-  
+
   def edit
   end
-  
+
   def update
-    
-    
+
+
     if @author.update_attributes(params[:author])
       redirect_to @author, :notice => 'Author was successfully updated.'
     else
       render :action => "edit"
     end
-    
+
   end
-  
+
   def destroy
     @author.destroy
     redirect_to authors_path
   end
-  
+
   private
-  
+
   def find_author_by_id
     @author = Author.find(params[:id])
   end

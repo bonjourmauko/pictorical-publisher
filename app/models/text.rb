@@ -2,10 +2,10 @@ class Text < ActiveRecord::Base
   belongs_to        :author
   has_many :collections
   has_many  :books, :through => :collections
-  
+
   delegate          :name, :last_name, :to => :author, :prefix => true
   scope             :sorted, order('title ASC')
-  scope             :not_deleted, where(:deleted => false) 
+  scope             :not_deleted, where(:deleted => false)
   scope             :deleted, where(:deleted => true)
   scope             :available, where(:availability => true)
   after_initialize  :deleted?
@@ -65,11 +65,11 @@ class Text < ActiveRecord::Base
   end
 
   private
-  
+
   def deleted?
     self[:deleted] ||= false
   end
-  
+
   def count_words
     self.words = self.content.scan(/[\w-]+/).size
   end

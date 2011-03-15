@@ -4,7 +4,7 @@
 #text-canvas
 
   #title
-    %h1 
+    %h1
       -if @text[:deleted]
         .deleted= @text[:title]
       -else
@@ -13,10 +13,10 @@
       %span.up
         = "#{@text.author_name} #{@text.author_last_name}"
   #container
-  
+
     - if can? :new, Text
       .admin
-        Admin: 
+        Admin:
         = link_to "edit", :action => "edit"
         ·
         = link_to 'destroy', :action => "trashed_destroy"
@@ -35,7 +35,7 @@
             .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user.id}) · status: #{book.status}", book
         - else
           .x No books with this text
-        
+
     - unless current_user.has_books_under_review?
       #action-box
         = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
@@ -45,16 +45,16 @@
           or
         - else
           Not available.
-        
+
         = link_to "choose another", {:action => "index"}, :class => "choose"
-        
+
       - if @text.words < 4000
         #warning-box
           %b= "This is a short story (#{@text.words} words)"
           %br
           = "Want to illustrate it? Click \"Illustrate text\", Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
           = link_to "books@pictorical.com", "mailto:books@pictorical.com"
-        
+
     - else
       #warning-box
         Please wait until we publish your book to start illustrating a new one
@@ -64,4 +64,3 @@
 
     #story
       = @text[:content].html_safe
-    
