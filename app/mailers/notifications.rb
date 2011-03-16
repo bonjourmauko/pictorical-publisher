@@ -1,10 +1,10 @@
 class Notifications < ActionMailer::Base
-  
+
   default :reply_to => 'hello@pictorical.com',
           :return_path => 'Pictorical Team <hey@pictorical.com>',
           :from => 'Pictorical Team <hey@pictorical.com>',
           :bcc => 'log@pictorical.com'
-  
+
   def new_book(book, change)
     @book = book
     @change = change

@@ -4,7 +4,7 @@ class DestroyBadTexts < ActiveRecord::Migration
       Text.find(:all).each { |text| text.destroy if text[:author_id] == 2872 }
     end
   end
-  
+
   def self.down
   end
 end
