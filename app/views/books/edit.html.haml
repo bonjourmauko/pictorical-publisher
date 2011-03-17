@@ -25,9 +25,12 @@
       - unless @book.words < 4000
         %p
         When you are ready
-        = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
+        - if @current_user.tutorial_mode?
+          = link_to "send your first illustration", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
+        - else
+          = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
         or
-      = link_to "change", {:controller => "texts", :action => "index"},  :class => "choose"
+      = link_to "change the book", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - if @book.words < 4000
       #warning-box
@@ -46,8 +49,9 @@
           · Send the illustration to
           = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
           %br
-          · When you are ready, hit Publish.
-
+          · When you are ready, hit the green button above
+          %br
+          · We will check your illustration, then you can continue illustrating this book
 
     - else
 
