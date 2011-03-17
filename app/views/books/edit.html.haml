@@ -19,52 +19,55 @@
 
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
-      ·
+      %br
       Illustrate this story following our
       = link_to "Artwork Guidelines", :artwork_guidelines, :class => "yellow"
       - unless @book.words < 4000
         %p
-        When you are ready
-        - if @current_user.tutorial_mode?
-          = link_to "send your first illustration", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
-        - else
-          = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
-        or
-      = link_to "change the book", {:controller => "texts", :action => "index"},  :class => "choose"
+          When you are ready
+          - if @current_user.tutorial_mode?
+            = link_to "send your first illustration", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
+          - else
+            = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
+      or
+      = link_to "choose another book", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - if @book.words < 4000
       #warning-box
         = "This is a short story (#{@book.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
         = link_to "books@pictorical.com", "mailto:books@pictorical.com"
+        = link_to "add a story to my book", {:controller => "texts", :action => "index"},  :class => "choose"
 
-    - if @current_user.tutorial_mode?
+    - unless @book.words < 4000
 
-      #action-box
-        .left.tutorial
-          · Make
-          %b ONLY ONE
-          story illustration (not a cover or capital) following our
-          = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
-          %br
-          · Send the illustration to
-          = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
-          %br
-          · When you are ready, hit the green button above
-          %br
-          · We will check your illustration, then you can continue illustrating this book
+      - if @current_user.tutorial_mode?
 
-    - else
+        #action-box
+          .left.tutorial
+            · Make
+            %b ONLY ONE
+            story illustration (not a cover or capital) following our
+            = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
+            %br
+            · Send the illustration to
+            = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
+            %br
+            · When you are ready, hit the green button above
+            %br
+            · We will check your illustration, then you can continue illustrating this book
 
-      #action-box
-        .left
-          · Illustrate this book following our
-          = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
-          %br
-          · Send the illustrations one by one to
-          = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
-          %br
-          · When you are ready, hit
-          = link_to "publish", {:action => "review"},  :class => "green"
+      - else
+
+        #action-box
+          .left
+            · Illustrate this book following our
+            = link_to "artwork guidelines", :artwork_guidelines, :class => "yellow"
+            %br
+            · Send the illustrations one by one to
+            = link_to "uploads+#{@book.id}@pictorical.com", "mailto:uploads+#{@book.id}@pictorical.com", :class => "blue"
+            %br
+            · When you are ready, hit
+            = link_to "publish", {:action => "review"},  :class => "green"
 
 
     #story

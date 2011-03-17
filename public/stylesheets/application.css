@@ -99,6 +99,23 @@ a:visited {color: #764790;}
 
 #warning-box {background: #9D0000;}
 
+#warning-box a.choose, #warning-box a.choose:visited {
+	
+	display: inline-block;
+	background: #FAB900;
+	padding: 0.25em;
+	text-decoration: none;
+	color: black;
+	margin: 0.25em;
+	
+	}
+	
+#warning-box a.choose:hover {
+	
+	background: white;
+}
+
+
 #action-box h3 {
 	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: none;
