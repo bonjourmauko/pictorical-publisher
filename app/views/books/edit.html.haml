@@ -74,12 +74,13 @@
             · When you are ready, hit
             = link_to "publish", {:action => "review"},  :class => "green"
 
-    #toc
-      Stories in your book:
-      - @book.texts.each do |text|
-        .item
-          = text.title
-          = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
+    - if @book.texts.count > 1
+      #toc
+        Stories in your book:
+        - @book.texts.each do |text|
+          .item
+            = text.title
+            = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
     
     #story
       = @book.content.html_safe
