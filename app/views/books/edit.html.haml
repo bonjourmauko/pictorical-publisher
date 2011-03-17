@@ -39,8 +39,9 @@
 
     - if @book.words < 4000
       #warning-box
-        = "This is a short story (#{@book.words} words). Want to illustrate it? Choose one or two more stories by the same author to reach 4000 words, and send us your choice to"
-        = link_to "books@pictorical.com", "mailto:books@pictorical.com"
+        %b= "This is a short story (#{@book.words} words)"
+        %br
+        Add one or two more stories by the same author to this book to reach 4000 words.
         = link_to "add a story to my book", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - unless @book.words < 4000
