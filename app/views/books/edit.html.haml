@@ -6,6 +6,11 @@
 
   #notice
     = notice
+    = params["notice"]
+
+  #alert
+    = alert
+    = params["alert"]
 
   #title
     %h1= @book.title
@@ -19,7 +24,7 @@
 
     #action-box
       = "#{@book.words} words · #{@book.illustrations_lower}~#{@book.illustrations_upper} illustrations"
-      %br
+      · 
       Illustrate this story following our
       = link_to "Artwork Guidelines", :artwork_guidelines, :class => "yellow"
       - unless @book.words < 4000
@@ -29,8 +34,8 @@
             = link_to "send your first illustration", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
           - else
             = link_to "publish", {:action => "review"},  :class => "illustrate-this-link", :confirm => "Are you ready to publish this book? Did you send the illustrations to uploads+#{@book.id}@pictorical.com?"
-      or
-      = link_to "choose another book", {:controller => "texts", :action => "index"},  :class => "choose"
+          or
+          = link_to "choose another book", {:controller => "texts", :action => "index"},  :class => "choose"
 
     - if @book.words < 4000
       #warning-box
@@ -69,7 +74,13 @@
             · When you are ready, hit
             = link_to "publish", {:action => "review"},  :class => "green"
 
-
+    #toc
+      Stories in your book:
+      - @book.texts.each do |text|
+        .item
+          = text.title
+          = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
+    
     #story
       = @book.content.html_safe
     %h3
