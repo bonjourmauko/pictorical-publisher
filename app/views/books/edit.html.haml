@@ -80,7 +80,8 @@
         - @book.texts.each do |text|
           .item
             = text.title
-            = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
+            - unless @book.principal == text
+              = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
     
     #story
       = @book.content.html_safe
