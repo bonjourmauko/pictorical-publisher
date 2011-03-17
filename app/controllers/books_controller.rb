@@ -151,13 +151,21 @@ class BooksController < ApplicationController
     unless Text.find_by_id(params[:text_id]).nil?
       text = Text.find_by_id(params[:text_id])
       unless text[:deleted]
-        @book.texts << text
-        redirect_to @book, :notice => "text added to book"
+        unless @book.texts.include?(text)
+          unless @book.principal.author.id != text.author.id
+            @book.texts << text
+            redirect_to edit_book_path @book, :notice => "text added to book"
+          else
+            redirect_to edit_book_path @book, :alert => "story is not by the same author"
+          end
+        else
+          redirect_to edit_book_path @book, :alert => "book has this story already"
+        end
       else
-        redirect_to @book, :notice => "can't add a text in the trash can"
+        redirect_to edit_book_path @book, :alert => "can't add a text in the trash can"
       end
     else
-      redirect_to @book, :notice => "text doesn't exist"
+      redirect_to edit_book_path @book, :alert => "text doesn't exist"
     end
 
   end
@@ -170,17 +178,17 @@ class BooksController < ApplicationController
 
       if text == @book.principal
 
-        redirect_to @book, :notice => "You can't remove the principal text of the book"
+        redirect_to edit_book_path @book, :alert => "You can't remove the principal text of the book"
 
       else
         if @book.texts.delete(text)
-          redirect_to @book, :notice => "text removed from book"
+          redirect_to edit_book_path @book, :notice => "text removed from book"
         else
-          redirect_to @book, :notice => "text not removed from book"
+          redirect_to edit_book_path @book, :alert => "text not removed from book"
         end
       end
     else
-      redirect_to @book, :notice => "text doesn't exist"
+      redirect_to edit_book_path @book, :alert => "text doesn't exist"
     end
   end
 

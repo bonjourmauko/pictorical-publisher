@@ -11,5 +11,5 @@
 
 %p
   Illustrated by
-  = @user.first_name unless @user.first_name.nil?
-  = @user.last_name unless @user.last_name.nil?
+  = @user.first_name if @user.first_name?
+  = @user.last_name if @user.last_name?

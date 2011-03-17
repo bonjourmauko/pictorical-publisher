@@ -1,10 +1,10 @@
 class Notifications < ActionMailer::Base
-  
+
   default :reply_to => 'hello@pictorical.com',
           :return_path => 'Pictorical Team <hey@pictorical.com>',
           :from => 'Pictorical Team <hey@pictorical.com>',
           :bcc => 'log@pictorical.com'
-  
+
   def new_book(book, change)
     @book = book
     @change = change
@@ -55,7 +55,7 @@ class Notifications < ActionMailer::Base
 
   def end_tutorial(user)
     @user = user
-    @subject = "You can keep on working in #{@user.active_book.title}"
+    @subject = "You can keep working on #{@user.active_book.title}"
     mail(:to => @user[:email], :subject => @subject) do |format|
       format.html
     end

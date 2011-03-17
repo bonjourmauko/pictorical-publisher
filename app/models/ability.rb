@@ -8,7 +8,7 @@ class Ability
     else
       can [:index, :show], [Text]
       can :new, Book
-      can [:edit, :change, :review], Book do |book|
+      can [:edit, :change, :review, :add_text, :remove_text], Book do |book|
         book.try(:user) == current_user
       end
     end

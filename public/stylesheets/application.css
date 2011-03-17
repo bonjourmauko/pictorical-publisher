@@ -99,11 +99,35 @@ a:visited {color: #764790;}
 
 #warning-box {background: #9D0000;}
 
+#warning-box a.choose, #warning-box a.choose:visited {
+	
+	display: inline-block;
+	background: #FAB900;
+	padding: 0.25em;
+	text-decoration: none;
+	color: black;
+	margin: 0.25em;
+	
+	}
+	
+#warning-box a.choose:hover {
+	
+	background: white;
+}
+
+
 #action-box h3 {
 	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: none;
 	margin: 0;
 	margin-bottom: 0.5em;
+}
+
+
+#action-box p {
+	margin: 0;
+	margin-top: 0.5em;
+	
 }
 
 a.choose, a.choose:visited {
@@ -157,13 +181,17 @@ text-decoration: underline;
 }
 
 a.illustrate-this-link, a.illustrate-this-link:visited,
-a.illustrate-current-link, a.illustrate-current-link:visited {
+a.illustrate-current-link, a.illustrate-current-link:visited,
+a.add-text, a.add-text:visited {
 	display: inline-block;
 	background: #A5BD00;
 	padding: 0.25em;
 	text-decoration: none;
 	color: black;
 }
+a.add-text, a.add-text:visited {background: #FAB900; color: black;}
+a.add-text:hover {background: white; color: black;}
+
 
 a.illustrate-this-link:hover,
 a.illustrate-current-link:hover {
@@ -194,6 +222,8 @@ a.illustrate-change-link:active {
 	background: #000;
 	color: white;
 }
+
+
 
 
 #story {
@@ -478,5 +508,24 @@ a.illustrate-change-link:active {
 #help a:hover {
 	background: #C80202;
 	color: white;
+	
+}
+
+#toc {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#toc .item {
+	margin-top: 0.5em;
+}
+
+#toc .item a {
+	text-decoration: none;
+}
+
+#toc .item a.remove {
+	font-size: 0.75em;
+	color: red;
 	
 }
