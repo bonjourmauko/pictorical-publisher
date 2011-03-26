@@ -58,12 +58,11 @@ a:visited {color: #764790;}
 .invisible {color: #eee}
 
 #text-canvas h3{
-	text-align: center;
-	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	font: 1.2em "Georgia", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: white 0px 1px 0px;
 	margin-bottom: 1em;	
 	text-transform: italic;
-	
+	text-align: center;
 }
 
 
@@ -73,11 +72,19 @@ a:visited {color: #764790;}
 }
 
 #text-canvas h4{
-	font: 1.2em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	font: 1.1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: white 0px 1px 0px;
 	margin-bottom: 1em;	
 	text-transform: italic;
-	
+	text-align: center;
+}
+
+#text-canvas h5{
+	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: white 0px 1px 0px;
+	margin-bottom: 1em;	
+	text-transform: italic;
+	text-align: center;
 }
 
 
