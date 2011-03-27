@@ -91,9 +91,9 @@ a:visited {color: #764790;}
   line-height: 2em;
   text-indent: 5px;
   list-style-position: outside;
-  list-style-type: lower-roman;
+  list-style-type: disc;
   padding: 6px;
-  margin: 2px;
+  margin: 10px;
 }
 
 #container {
