@@ -90,8 +90,8 @@ a:visited {color: #764790;}
 #text-canvas ul {
   text-indent: 5px;
   list-style-position: outside;
-  list-style-type: circle;
-  padding: 6px;
+  list-style-type: decimal;
+  padding: 10px;
   margin: 10px;
 }
 
