@@ -57,7 +57,7 @@ a:visited {color: #764790;}
 
 .invisible {color: #eee}
 
-#text-canvas h3{
+#text-canvas h2, #text-canvas h3{
 	font: 1.6em "Georgia", "Trebuchet MS", Verdana, sans-serif;
 	text-shadow: white 0px 1px 0px;
 	margin-bottom: 1em;	
@@ -87,9 +87,16 @@ a:visited {color: #764790;}
 	text-align: center;
 }
 
+#text-canvas ul {
+  line-height: 2em;
+  text-indent: 5px;
+  list-style-position: outside;
+  list-style-type: square;
+  padding: 6px;
+  margin: 2px;
+}
 
 #container {
-	
 	width: 36em;
 	margin: 0 auto;
 }
