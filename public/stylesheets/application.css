@@ -95,6 +95,10 @@ a:visited {color: #764790;}
   margin: 10px;
 }
 
+#text-canvas li {
+  margin: 5px;
+}
+
 #container {
 	width: 36em;
 	margin: 0 auto;
