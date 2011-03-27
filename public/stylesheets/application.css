@@ -91,7 +91,7 @@ a:visited {color: #764790;}
   line-height: 2em;
   text-indent: 5px;
   list-style-position: outside;
-  list-style-type: square;
+  list-style-type: lower-roman;
   padding: 6px;
   margin: 2px;
 }
