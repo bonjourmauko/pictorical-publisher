@@ -6,6 +6,17 @@ module TextsHelper
 
   end
 
+  def add_to_your_book
+
+    unless @active_book.nil?
+      
+
+        link_to "Add to your book", {:controller => "books", :action => "add_text", :id => @active_book.id, :text_id => @text[:id]}, :class => "add-text"
+     
+     
+   end
+
+  end
 
 
 
@@ -18,7 +29,7 @@ module TextsHelper
       if @active_book.text[:id] == @text[:id]
         link_to "You are illustrating this book", {:controller => "books", :action => "edit", :id => @active_book.id}, :class => "illustrate-current-link"
       else
-        change_to_this_story
+        add_to_your_book + " " + change_to_this_story
       end
 
 
