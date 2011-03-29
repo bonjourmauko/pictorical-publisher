@@ -44,6 +44,15 @@ class Notifications < ActionMailer::Base
     end
   end
 
+
+  def reject_artist(email, name, host)
+    @subject = "Sorry"
+    @name = name
+    mail(:to => email, :from => 'Pictorical Team <hey@pictorical.com>', :subject => @subject) do |format|
+      format.html
+    end
+  end
+
   def welcome(user)
     @user = user
     @url = "http://publisher.pictorical.com" + new_user_session_path
