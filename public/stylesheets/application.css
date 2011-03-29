@@ -480,3 +480,9 @@ a.illustrate-change-link:active {
 	color: white;
 	
 }
+
+.reject {
+	border: 2px solid red;
+	padding: 0.25em;
+	color: red;
+	}

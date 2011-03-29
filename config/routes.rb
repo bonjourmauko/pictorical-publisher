@@ -35,6 +35,9 @@ PublisherPictoricalCom::Application.routes.draw do
   match "/new_fancy", :to => "authors#new_fancy"
   match "/create_fancy", :to => "author#create_fancy"
 
+  match "invitations/reject", :to => "invitations#reject", :as => :reject_artist
+  
+
   resources :invitations
 
   match "books/change", :to => "books#change", :as => :change_book
