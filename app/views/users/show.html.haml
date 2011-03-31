@@ -25,70 +25,70 @@
     %hr
     %p
       = "First name:"
-      %b= "#{@user.first_name}" unless @user.first_name.nil?
+      %b= "#{@user.first_name}" if @user.first_name?
 
     %p
       = "Last name:"
-      %b="#{@user.last_name}" unless @user.last_name.nil?
+      %b="#{@user.last_name}" if @user.last_name?
 
     %p
       = "Artistic name:"
-      %b="#{@user.artistic_name}" unless @user.artistic_name.nil?
+      %b="#{@user.artistic_name}" if @user.artistic_name?
 
     %p
       = "Country:"
-      %b="#{@user.country}" unless @user.country.nil?
+      %b="#{@user.country}" if @user.country?
 
     %p
       = "Birthdate:"
-      %b= "#{@user.birthdate.to_s}" unless @user.birthdate.nil?
+      %b= "#{@user.birthdate.to_s}" if @user.birthdate?
 
     %p
       Email:
-      = link_to @user.email, @user.email unless @user.email.nil?
+      = link_to @user.email, @user.email if @user.email?
 
     %p
       = "Paypal account:"
-      %b="#{@user.paypal_account}" unless @user.paypal_account.nil?
+      %b="#{@user.paypal_account}" if @user.paypal_account?
 
     %p
       Address:
       %br
-      %b= @user.address_line_one unless @user.address_line_one.nil?
+      %b= @user.address_line_one if @user.address_line_one?
       %br
-      %b= @user.address_line_two unless @user.address_line_two.nil?
+      %b= @user.address_line_two if @user.address_line_two?
       %br
       = "City:"
-      %b= "#{@user.city}" unless @user.city.nil?
+      %b= "#{@user.city}" if @user.city?
       %br
       = "State:"
-      %b= "#{@user.state}" unless @user.state.nil?
+      %b= "#{@user.state}" if @user.state?
       %br
       = "Zip:"
-      %b= "#{@user.zip}" unless @user.zip.nil?
+      %b= "#{@user.zip}" if @user.zip?
       %br
       = "Country:"
-      %b= "#{@user.country}" unless @user.country.nil?
+      %b= "#{@user.country}" if @user.country?
 
     %p
       Portfolio:
-      %b= link_to(@user.portfolio_url,@user.portfolio_url)  unless @user.portfolio_url.nil?
+      %b= link_to(@user.portfolio_url,@user.portfolio_url)  if @user.portfolio_url?
 
     %p
       = "Artschool:"
-      %b= "#{@user.art_school_name}" unless @user.art_school_name.nil?
+      %b= "#{@user.art_school_name}" if @user.art_school_name?
 
     %p
       = "Twitter:"
-      %b="#{@user.twitter}" unless @user.twitter.nil?
+      %b="#{@user.twitter}" if @user.twitter?
 
     %p
       = "Accepted license agreement:"
-      %b= "#{@user.accepted_license_agreement.to_s}" unless @user.accepted_license_agreement.nil?
+      %b= "#{@user.accepted_license_agreement.to_s}" if @user.accepted_license_agreement?
 
     %p
       = "Created at:"
-      %b="#{@user.created_at}" unless @user.created_at.nil?
+      %b="#{@user.created_at}" if @user.created_at?
 
   %p
     = "User created: " + time_ago_in_words(@user.created_at) + " ago "
