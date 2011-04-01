@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-
-  has_many :collections
+  
+  has_many  :illustrations
+  has_many  :collections
   has_many  :texts, :through => :collections
 
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id

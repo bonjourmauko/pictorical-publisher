@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315235028) do
+ActiveRecord::Schema.define(:version => 20110401004843) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -41,16 +41,6 @@ ActiveRecord::Schema.define(:version => 20110315235028) do
 
   add_index "collections", ["book_id"], :name => "index_collections_on_book_id"
   add_index "collections", ["text_id"], :name => "index_collections_on_text_id"
-
-  create_table "illustrations", :force => true do |t|
-    t.string   "fullsize_url"
-    t.string   "thumbnail_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "book_id"
-  end
-
-  add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
 
   create_table "invitations", :force => true do |t|
     t.string   "first_name"
