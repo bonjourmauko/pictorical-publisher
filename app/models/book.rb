@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-
-  has_many :collections
+  
+  has_many  :illustrations
+  has_many  :collections
   has_many  :texts, :through => :collections
 
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
@@ -12,6 +13,8 @@ class Book < ActiveRecord::Base
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
   scope       :sorted, order('created_at DESC')
+  
+  #accepts_nested_attributes_for :illustration
 
   after_initialize :status?
 

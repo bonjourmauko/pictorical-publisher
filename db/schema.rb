@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315235028) do
+ActiveRecord::Schema.define(:version => 20110401194031) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -43,10 +43,12 @@ ActiveRecord::Schema.define(:version => 20110315235028) do
   add_index "collections", ["text_id"], :name => "index_collections_on_text_id"
 
   create_table "illustrations", :force => true do |t|
-    t.string   "fullsize_url"
-    t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "illustration_file_name"
+    t.string   "illustration_content_type"
+    t.integer  "illustration_file_size"
+    t.datetime "illustration_updated_at"
     t.integer  "book_id"
   end
 
