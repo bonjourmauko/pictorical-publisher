@@ -89,29 +89,6 @@ class BooksController < ApplicationController
       @book = current_user.active_book
       redirect_to edit_book_path @book[:id]
     end
-    
-    @transloadit_params = {
-       "auth" => { "key" => TRANSLOADIT[:auth_key] },
-       "template_id" => TRANSLOADIT[:template_id],
-       "redirect_url" => root_url
-     }
-  end
-  
-  def update
-    @illustration = @book.illustrations.new
-    
-    illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
-    
-    @illustration.update_attributes(
-      :illustration_file_name => illustration[:name], 
-      :illustration_content_type => illustration[:mime], 
-      :illustration_file_size => illustration[:size], 
-      :illustration_unique_prefix => illustration[:id].insert(2, '/')
-    )
-    
-    @illustration.save
-    render :edit
-    
   end
   
   def change

@@ -49,6 +49,8 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/remove_text", :to => "books#remove_text"
 
   resources :books
+  
+  resources :illustrations
 
   root :to => "dashboard#welcome"
 

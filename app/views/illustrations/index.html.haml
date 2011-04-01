@@ -1,0 +1,5 @@
+%h1 todos los negros
+- for illustration in @illustrations
+  %p= image_tag illustration.illustration.url(:thumbnail)
+  
+= link_to 'otro negro', new_illustration_path
