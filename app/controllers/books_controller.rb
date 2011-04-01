@@ -37,6 +37,23 @@ class BooksController < ApplicationController
 
 
   def show
+    @illustration_params = {
+      "auth" => { "key" => TRANSLOADIT[:auth_key] },
+      "template_id" => TRANSLOADIT[:template_id],
+      "redirect_url" => users_url
+    }
+  end
+  
+  def upload_illustration
+    @illustration = @book.illustration.new
+    illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
+    
+    @illustration.update_attributes(
+      :illustration_file_name => illustration[:name], 
+      :illustration_content_type => illustration[:mime], 
+      :illustration_file_size => illustration[:size], 
+      :illustration_unique_prefix => illustration[:id].insert(2, '/')
+    )
   end
 
 
