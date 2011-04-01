@@ -85,6 +85,7 @@
               = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
     
     #story
+      = render "form"
       = @book.content.html_safe
     %h3
       %span.up

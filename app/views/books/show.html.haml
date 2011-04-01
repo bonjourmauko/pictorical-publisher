@@ -43,24 +43,6 @@
           ·
 
     #story
-    
-      = form_tag('http://api2.transloadit.com/assemblies', :multipart => true) do
-        = hidden_field_tag :params, @illustration_params.to_json
-        %p
-          = label_tag :avatar
-          %br
-          = file_field_tag :avatar
-        %p
-          = submit_tag
-          or #{link_to 'cancel', book_path(@book[:id])}
-      :javascript
-        var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-        document.write(unescape("%3Cscript src='" + tlProtocol + "assets.transloadit.com/js/jquery.transloadit2.js' type='text/javascript'%3E%3C/script%3E"));
-      :javascript
-        $(document).ready(function() {
-          $('#new_user_form').transloadit();
-        });
-      
       = @book.content.html_safe
     %h3
       %span.up
