@@ -23,8 +23,8 @@ class IllustrationsController < ApplicationController
       :inline_content_type     => inline_illustration[:mime], 
       :inline_file_size        => inline_illustration[:size], 
       :inline_original_id      => inline_illustration[:original_id],
-      :inline_original_width   => inline_illustration[:meta][:width],
-      :inline_original_height  => inline_illustration[:meta][:height]
+      :inline_original_width   => inline_illustration[:meta]["width"],
+      :inline_original_height  => inline_illustration[:meta]["height"]
     )
     
     if @inline_illustration.save
