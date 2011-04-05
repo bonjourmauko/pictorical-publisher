@@ -14,18 +14,20 @@ class IllustrationsController < ApplicationController
   end
   
   def create
-    @illustration = Illustration.new(params[:illustration])
+    @inline_illustration = Illustration.new(params[:inline_illustration])
     
-    brayatan = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
+    inline_illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
     
-    @illustration.update_attributes(
-      :illustration_file_name => brayatan[:name], 
-      :illustration_content_type => brayatan[:mime], 
-      :illustration_file_size => brayatan[:size], 
-      :illustration_unique_prefix => brayatan[:id].insert(2, '/')
+    @inline_illustration.update_attributes(
+      :inline_file_name        => inline_illustration[:name], 
+      :inline_content_type     => inline_illustration[:mime], 
+      :inline_file_size        => inline_illustration[:size], 
+      :inline_original_id      => inline_illustration[:original_id],
+      :inline_original_width   => inline_illustration[:meta][:width],
+      :inline_original_height  => inline_illustration[:meta][:height]
     )
     
-    if @illustration.save
+    if @inline_illustration.save
       redirect_to illustrations_path, :notice => 'sup nigger'
     else
       render new_illustration_path

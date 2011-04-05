@@ -1,15 +1,16 @@
 class Illustration < ActiveRecord::Base
   belongs_to  :book
   
-  has_attached_file :illustration,
+  has_attached_file :inline,
                     :styles => {
-                      :hola => "100x100>",
-                      :chao => "200x200>"
+                      :i180w => "",
+                      :i180w => "",
+                      :i180w => ""
                     },
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :bucket => 'publisher_test',
-                    :path => ":unique_prefix/:basename.:extension"
+                    :path => ":original_id/:style.:extension"
   
   #validates_attachment_presence     :illustration
   #validates_attachment_size         :illustration, :less_than => 10.megabytes

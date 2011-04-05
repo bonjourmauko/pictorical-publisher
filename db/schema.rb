@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401225358) do
+ActiveRecord::Schema.define(:version => 20110405230313) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -45,12 +45,15 @@ ActiveRecord::Schema.define(:version => 20110401225358) do
   create_table "illustrations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "illustration_file_name"
-    t.string   "illustration_content_type"
-    t.integer  "illustration_file_size"
-    t.datetime "illustration_updated_at"
+    t.string   "inline_file_name"
+    t.string   "inline_content_type"
+    t.integer  "inline_file_size"
+    t.datetime "inline_updated_at"
     t.integer  "book_id"
-    t.string   "illustration_unique_prefix"
+    t.string   "inline_original_id"
+    t.integer  "inline_position"
+    t.integer  "inline_original_width"
+    t.integer  "inline_original_height"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
