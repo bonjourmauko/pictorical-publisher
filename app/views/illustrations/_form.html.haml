@@ -4,13 +4,11 @@
   = hidden_field_tag :book_id, @book_id
   
   -if @type == "inline"
-    = hidden_field_tag :inline_position, @position
-  %p
-    = label_tag :inline_illustration
-    %br
-    = file_field_tag :inline_illustration
-  %p
-    = submit_tag
+    %p
+      = hidden_field_tag :inline_position, @position
+      = file_field_tag :inline_illustration
+    %p
+      = submit_tag "Upload illustration"
 
 :javascript
   var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
