@@ -1,8 +1,8 @@
 %h1 todos los negros
 - for illustration in @illustrations
   %p
-    = image_tag illustration.inline.url(:i180w).downcase
-    -#= image_tag illustration.inline.url(:i280w).downcase
-    -#= image_tag illustration.inline.url(:i600w).downcase
+    = image_tag illustration.inline.url(:i180w)
+    -#= image_tag illustration.inline.url(:i280w)
+    -#= image_tag illustration.inline.url(:i600w)
   
 = link_to 'otro negro', new_illustration_path
