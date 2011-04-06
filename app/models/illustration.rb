@@ -10,7 +10,7 @@ class Illustration < ActiveRecord::Base
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :bucket => 'publisher_test',
-                    :path => ":original_id/:style.:extension"
+                    :path => ":original_id/:style.:file_extension"
   
   #validates_attachment_presence     :illustration
   #validates_attachment_size         :illustration, :less_than => 10.megabytes
