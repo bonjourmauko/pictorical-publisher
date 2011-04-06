@@ -22,6 +22,7 @@ class IllustrationsController < ApplicationController
       :inline_file_name        => inline_illustration[:name], 
       :inline_content_type     => inline_illustration[:mime], 
       :inline_file_size        => inline_illustration[:size], 
+      :inline_file_extension   => inline_illustration[:ext].downcase,
       :inline_original_id      => inline_illustration[:original_id],
       :inline_original_width   => inline_illustration[:meta]["width"],
       :inline_original_height  => inline_illustration[:meta]["height"]
