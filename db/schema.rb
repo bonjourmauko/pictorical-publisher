@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20110406204903) do
   create_table "illustrations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "book_id"
+    t.string   "inline_file_name"
     t.string   "inline_content_type"
     t.integer  "inline_file_size"
     t.datetime "inline_updated_at"
@@ -53,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20110406204903) do
     t.integer  "inline_original_width"
     t.integer  "inline_original_height"
     t.string   "inline_file_extension"
-    t.string   "inline_file_name"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"

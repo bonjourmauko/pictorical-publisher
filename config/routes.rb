@@ -50,6 +50,7 @@ PublisherPictoricalCom::Application.routes.draw do
 
   resources :books
   
+  
   resources :illustrations
 
   root :to => "dashboard#welcome"

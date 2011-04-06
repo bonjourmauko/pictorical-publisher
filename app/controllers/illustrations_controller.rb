@@ -5,7 +5,10 @@ class IllustrationsController < ApplicationController
   end
   
   def new
-    @illustration = Illustration.new
+    @type = params[:type]
+    @position = params[:position]
+    @book_id = params[:book]
+    @illustration = Illustration.new()
     @transloadit_params = {
        "auth" => { "key" => TRANSLOADIT[:auth_key] },
        "template_id" => TRANSLOADIT[:template_id],
@@ -28,8 +31,13 @@ class IllustrationsController < ApplicationController
       :inline_original_height  => inline_illustration[:meta]["height"]
     )
     
+     @inline_illustration.update_attributes(
+      :inline_position => params[:inline_position],
+      :book_id => params[:book_id]
+      )
+        
     if @inline_illustration.save
-      redirect_to illustrations_path, :notice => 'sup nigger'
+      redirect_to illustrations_path, :notice => 'success!'
     else
       render new_illustration_path
     end
