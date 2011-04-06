@@ -206,7 +206,7 @@ class BooksController < ApplicationController
   
   def find_illustrations
     @inline_illustrations = Hash.new
-    @inline.illustrations.each do |illustration|
+    @book.illustrations.each do |illustration|
       @inline_illustrations[illustration.inline_position] = illustration.inline.url
     end
     @inline_illustrations = ActiveSupport::JSON.encode(@inline_illustrations)
