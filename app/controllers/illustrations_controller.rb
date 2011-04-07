@@ -12,7 +12,7 @@ class IllustrationsController < ApplicationController
   def new
     @type = params[:type]
     @position = params[:position]
-    @illustration = Illustration.new()
+    @illustration = Illustration.new
     @transloadit_params = {
        "auth" => { "key" => TRANSLOADIT[:auth_key] },
        "template_id" => TRANSLOADIT[:template_id],
@@ -21,30 +21,28 @@ class IllustrationsController < ApplicationController
   end
   
   def create
-    @inline_illustration = Illustration.new(params[:inline_illustration])
+    @illustration = Illustration.new(params[:illustration])
     
-    inline_illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
+    illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
     
-    @inline_illustration.update_attributes(
-      :inline_file_name        => inline_illustration[:name], 
-      :inline_content_type     => inline_illustration[:mime], 
-      :inline_file_size        => inline_illustration[:size], 
-      :inline_file_extension   => inline_illustration[:ext].downcase,
-      :inline_original_id      => inline_illustration[:original_id],
-      :inline_original_width   => inline_illustration[:meta]["width"],
-      :inline_original_height  => inline_illustration[:meta]["height"]
+    @illustration.update_attributes(
+      :image_file_name        => illustration[:name], 
+      :image_content_type     => illustration[:mime], 
+      :image_file_size        => illustration[:size], 
+      :image_file_extension   => illustration[:ext].downcase,
+      :image_original_id      => illustration[:original_id],
+      :width                  => illustration[:meta]["width"],
+      :height                 => illustration[:meta]["height"],
+      :position               => params[:position],
+      :type                   => params[:type],
+      :book_id                => current_user.books.where(:status => 'active').first.id
     )
-    
-     @inline_illustration.update_attributes(
-      :inline_position => params[:inline_position],
-      :book_id => current_user.books.where(:status => 'active').first.id
-      )
         
     if @inline_illustration.save
       @active_book = current_user.books.where(:status => 'active').first
       redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been uploaded'
     else
-      render new_illustration_path, :alert => 'error!'
+      render new_illustration_path, :alert => 'Error!'
     end
     
   end
