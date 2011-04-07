@@ -35,7 +35,8 @@ class IllustrationsController < ApplicationController
       :height                 => illustration[:meta]["height"],
       :position               => params[:position],
       :type                   => params[:type],
-      :book_id                => current_user.books.where(:status => 'active').first.id
+      :book_id                => current_user.books.where(:status => 'active').first.id,
+      :deleted                => false
     )
         
     if @illustration.save
