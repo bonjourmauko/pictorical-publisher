@@ -9,7 +9,7 @@
     \//<![CDATA[
     var inline = new Array();
     - @book.illustrations.each do |illustration|
-      = "inline['in#{illustration.inline_position}'] = '#{illustration.inline.url(:i600w)}';"
+      = "inline['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
     \//]]>
 
   #notice

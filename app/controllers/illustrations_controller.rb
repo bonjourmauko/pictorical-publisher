@@ -38,7 +38,7 @@ class IllustrationsController < ApplicationController
       :book_id                => current_user.books.where(:status => 'active').first.id
     )
         
-    if @inline_illustration.save
+    if @illustration.save
       @active_book = current_user.books.where(:status => 'active').first
       redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been uploaded'
     else

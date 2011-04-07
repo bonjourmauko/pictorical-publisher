@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_filter :get_active_book
   before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status, :add_text, :remove_text]
   before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text]
-  before_filter :find_illustrations, :only => [:edit]
+  #before_filter :find_illustrations, :only => [:edit]
   
   # nuevas columnas:
 
@@ -204,12 +204,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
-  def find_illustrations
-    @inline_illustrations = Hash.new
-    @book.illustrations.each do |illustration|
-      @inline_illustrations[illustration.inline_position] = illustration.inline.url
-    end
-    @inline_illustrations = ActiveSupport::JSON.encode(@inline_illustrations)
-  end
+  #def find_illustrations
+  #  @inline_illustrations = Hash.new
+  #  @book.illustrations.each do |illustration|
+  #    @inline_illustrations[illustration.position] = illustration.inline.url
+  #  end
+  #  @inline_illustrations = ActiveSupport::JSON.encode(@inline_illustrations)
+  #end
   
 end

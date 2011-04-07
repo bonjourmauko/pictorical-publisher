@@ -240,7 +240,12 @@ a.illustrate-change-link:active {
 	color: white;
 }
 
+.upload-link {
+	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+}
 
+.upload-link a, .upload-link a:visited  { text-decoration: none; }
+.upload-link a:hover {color: red;}
 
 
 #story {
@@ -255,6 +260,13 @@ a.illustrate-change-link:active {
 	text-align: justify;
 	
 }
+
+
+#story img.inline {
+	width: 100%;
+	
+}
+
 
 .textlist {
 	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;

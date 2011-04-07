@@ -31,7 +31,7 @@ $(document).ready(function() {
 		
 		if(inline[key])
 		{
-			$(this).after('<p><img src='+inline[key]+'></p>');
+			$(this).after('<p><img src="'+inline[key]+'" class="inline"></p>');
 			
 		}
 		else

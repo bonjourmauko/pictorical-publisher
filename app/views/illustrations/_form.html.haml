@@ -1,12 +1,12 @@
 = form_tag('http://api2.transloadit.com/assemblies', :multipart => true, :id => 'upload_illustration') do
   = hidden_field_tag :params, @transloadit_params.to_json
   
-  -if @type == "inline"
-    %p
-      = hidden_field_tag :inline_position, @position
-      = file_field_tag :inline_illustration
-    %p
-      = submit_tag "Upload illustration"
+  %p
+    = hidden_field_tag :type, @type
+    = hidden_field_tag :position, @position
+    = file_field_tag :image
+  %p
+    = submit_tag "Upload illustration"
 
 :javascript
   var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
