@@ -1,5 +1,12 @@
-= image_tag @illustration.inline.url(:i180w)
-    -#= image_tag illustration.inline.url(:i280w)
-    -#= image_tag illustration.inline.url(:i600w)
-  
-= link_to 'otro negro', new_illustration_path
+%p
+  180w
+  %br
+  = image_tag @illustration.image.url(:i180w)
+%p
+  280w
+  %br
+  = image_tag @illustration.image.url(:i280w)
+%p
+  600w
+  %br
+  = image_tag @illustration.image.url(:i600w)
