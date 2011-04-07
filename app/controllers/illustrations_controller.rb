@@ -35,8 +35,6 @@ class IllustrationsController < ApplicationController
       :height                 => illustration[:meta]["height"],
       :position               => params[:position],
       :tipe                   => params[:type],
-      :book_id                => current_user.books.where(:status => 'active').first.id
-      :type                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id,
       :deleted                => false
     )
@@ -47,7 +45,13 @@ class IllustrationsController < ApplicationController
     else
       render new_illustration_path, :alert => 'Error!'
     end
-    
   end
   
+  def destroy
+    @illustration = Illustration.find(params[:id])
+    @illustration.deleted = true
+    @illustration.save
+    @active_book = current_user.books.where(:status => 'active').first
+    redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been deleted'
+  end
 end
