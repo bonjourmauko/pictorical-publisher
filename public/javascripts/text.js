@@ -27,21 +27,19 @@ $(document).ready(function() {
 
   $('#story p').each(function(index) {
 
-    var positionemail = pad(index+1,3);
-    $(this).after('<div class="parnum">'+pad(index+1,3)+'</div>');
+		var key = 'in' + (index+1)
+		
+		if(inline[key])
+		{
+			$(this).after('<p><img src='+inline[key]+'></p>');
+			
+		}
+		else
+		{
+			$(this).after('<p class="upload-link"><a href="/illustrations/new?type=inline&position='+ (index+1) +'">Upload illustration here</a></p>');
+		}
 
-    var string = $(this).text();
-    var count = string.split(" "); 
-    wordcount = wordcount + count.length;
+  });
 
-    });
-
-    wordcount = wordcount/1.2; // correction for number of word 
-
-    var number_of_illustrations = wordcount/300;
-    var number_of_illustrations_top = Math.round(number_of_illustrations*1.2);
-    var number_of_illustrations_bottom = Math.round(Math.min(wordcount/300,20+(wordcount-6000)/600,30+(wordcount-12000)/1200)*0.9);
-
-    $('#number_of_illustrations').html( number_of_illustrations_bottom + "-" + number_of_illustrations_top );
 
 });

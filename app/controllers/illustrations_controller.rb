@@ -4,10 +4,14 @@ class IllustrationsController < ApplicationController
     @illustrations = Illustration.all
   end
   
+  def uploaded
+    @active_book = current_user.books.where(:status => 'active').first
+    redirect_to edit_book_path (@active_book)
+  end
+  
   def new
     @type = params[:type]
     @position = params[:position]
-    @book_id = params[:book]
     @illustration = Illustration.new()
     @transloadit_params = {
        "auth" => { "key" => TRANSLOADIT[:auth_key] },
@@ -33,13 +37,14 @@ class IllustrationsController < ApplicationController
     
      @inline_illustration.update_attributes(
       :inline_position => params[:inline_position],
-      :book_id => params[:book_id]
+      :book_id => current_user.books.where(:status => 'active').first.id
       )
         
     if @inline_illustration.save
-      redirect_to illustrations_path, :notice => 'success!'
+      @active_book = current_user.books.where(:status => 'active').first
+      redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been uploaded'
     else
-      render new_illustration_path
+      render new_illustration_path, :alert => 'error!'
     end
     
   end
