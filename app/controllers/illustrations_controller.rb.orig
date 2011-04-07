@@ -34,11 +34,14 @@ class IllustrationsController < ApplicationController
       :width                  => illustration[:meta]["width"],
       :height                 => illustration[:meta]["height"],
       :position               => params[:position],
+<<<<<<< HEAD
       :tipe                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id
+=======
       :type                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id,
       :deleted                => false
+>>>>>>> 11e085c1a53d3b09496ab4dcdc27c7d8f5e54041
     )
         
     if @illustration.save
