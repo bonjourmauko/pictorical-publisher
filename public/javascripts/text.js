@@ -18,20 +18,20 @@ $(document).ready(function() {
 		
 		$('#story h1').each(function(index) {
 
-			$(this).after('<div class="parnum">CAP'+ (index+1) +'</div>');
+			$(this).after('<p class="upload-link"><a href="/illustrations/new?type=cap&position='+ (index+1) +'">Upload capital here</a></p>');
 			
 		});
 		
-	} else { $('#story p:first').before('<div class="parnum">CAP</div>');}
+	} else { $('#story p:first').before('<p class="upload-link"><a href="/illustrations/new?type=cap&position=1">Upload capital here</a></p>');}
   
 
   $('#story p').each(function(index) {
 
 		var key = 'in' + (index+1)
 		
-		if(inline[key])
+		if(ill[key])
 		{
-			$(this).after('<p><img src="'+inline[key]+'" class="inline"></p>');
+			$(this).after('<p><img src="'+ill[key]+'" class="inline"></p>');
 			
 		}
 		else

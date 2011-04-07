@@ -7,9 +7,12 @@
 
   %script
     \//<![CDATA[
-    var inline = new Array();
+    var ill = new Array();
     - @book.illustrations.each do |illustration|
-      = "inline['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
+      - if illustration.tipe == "inline"
+        = "ill['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
+      - elsif illustration.tipe == "cap"
+        = "ill['cap#{illustration.position}'] = '#{illustration.image.url(:i280w)}';"
     \//]]>
 
   #notice

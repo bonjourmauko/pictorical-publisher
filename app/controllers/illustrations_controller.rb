@@ -34,7 +34,7 @@ class IllustrationsController < ApplicationController
       :width                  => illustration[:meta]["width"],
       :height                 => illustration[:meta]["height"],
       :position               => params[:position],
-      :type                   => params[:type],
+      :tipe                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id
     )
         

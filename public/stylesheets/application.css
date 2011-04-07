@@ -244,7 +244,7 @@ a.illustrate-change-link:active {
 	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
-.upload-link a, .upload-link a:visited  { text-decoration: none; }
+.upload-link a, .upload-link a:visited  { text-decoration: none; color: #4362CE; }
 .upload-link a:hover {color: red;}
 
 

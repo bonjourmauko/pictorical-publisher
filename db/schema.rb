@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407210822) do
+ActiveRecord::Schema.define(:version => 20110407213843) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(:version => 20110407210822) do
     t.integer  "width"
     t.integer  "height"
     t.string   "image_file_extension"
-    t.string   "type"
     t.boolean  "deleted"
+    t.string   "tipe"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
