@@ -1,4 +1,10 @@
 %p
+  = link_to "delete", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "illustrate-this-link"
+%p
+  Deleted? 
+  = @illustration.deleted
+
+%p
   180w
   %br
   = image_tag @illustration.image.url(:i180w)

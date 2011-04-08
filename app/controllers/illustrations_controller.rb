@@ -1,5 +1,9 @@
 class IllustrationsController < ApplicationController
   
+  def show
+    @illustration = Illustration.find(params[:id])
+  end
+  
   def index
     @illustrations = Illustration.all
   end
@@ -41,7 +45,7 @@ class IllustrationsController < ApplicationController
         
     if @illustration.save
       @active_book = current_user.books.where(:status => 'active').first
-      redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been uploaded'
+      redirect_to @illustration, :notice => 'Success! Your image has been uploaded'
     else
       render new_illustration_path, :alert => 'Error!'
     end

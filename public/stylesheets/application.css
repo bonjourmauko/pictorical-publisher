@@ -557,8 +557,17 @@ a.illustrate-change-link:active {
 #toc .item a.remove {
 	font-size: 0.75em;
 	color: red;
+}
+.upload-link, .illustration {
+	margin-bottom: 1em;
 	
 }
+
+a.delete-link, a.delete-link:visited {
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
+	color: red; text-decoration: none;
+	} 
+
 =======
 .reject {
 	border: 2px solid red;

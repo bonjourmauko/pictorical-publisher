@@ -8,11 +8,14 @@
   %script
     \//<![CDATA[
     var ill = new Array();
-    - @book.illustrations.each do |illustration|
+    var ill_id = new Array();
+    - @book.illustrations.active.each do |illustration|
       - if illustration.tipe == "inline"
         = "ill['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
+        = "ill_id['in#{illustration.position}'] = #{illustration.id};"
       - elsif illustration.tipe == "cap"
         = "ill['cap#{illustration.position}'] = '#{illustration.image.url(:i280w)}';"
+        = "ill_id['in#{illustration.position}'] = '#{illustration.id};'"
     \//]]>
 
   #notice
