@@ -1,0 +1,17 @@
+%script
+  \//<![CDATA[
+  var ill = new Array();
+  var ill_id = new Array();
+  var ill_status = new Array();
+  var inline = new Array();
+  - @book.illustrations.active.each do |illustration|
+    - if illustration.tipe == "inline"
+      =# "ill['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
+      =# "ill_id['in#{illustration.position}'] = #{illustration.id};"
+      =# "ill_status['in#{illustration.position}'] = '#{illustration.status}';"
+      =# "inline['#{illustration.position}'] = "
+    - elsif illustration.tipe == "cap"
+      = "ill['cap#{illustration.position}'] = '#{illustration.image.url(:i280w)}';"
+      = "ill_id['cap#{illustration.position}'] = '#{illustration.id};'"
+      = "ill_status['cap#{illustration.position}'] = '#{illustration.status}';"
+  \//]]>

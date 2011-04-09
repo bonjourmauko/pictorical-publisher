@@ -1,0 +1,4 @@
+= image_tag cover.image.url(:i180w)
+%br
+= render :partial => "illustration_status", :locals => {:illustration => cover}
+= link_to "Change or delete cover", cover, :method => :delete, :class => 'delete-link', :confirm => "Are you sure?"

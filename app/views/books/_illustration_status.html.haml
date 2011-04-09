@@ -1,0 +1,7 @@
+.illustration-status
+  - if illustration.status == "review"
+    .review Pending review
+  - if illustration.status == "ok"
+    .ok Ok
+  - if illustration.status == "not"
+    .not Revise

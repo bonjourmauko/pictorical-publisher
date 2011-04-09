@@ -43,16 +43,12 @@ class Book < ActiveRecord::Base
 
   def content
 
-    if self.texts.count == 1
-      contents = self.principal.content
-    else
       contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
       self.texts.each do |text|
         unless text == principal
           contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
         end
       end
-    end
 
     return contents
 

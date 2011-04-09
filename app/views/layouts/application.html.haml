@@ -10,7 +10,8 @@
     -if current_user && current_user.admin?
       = render "layouts/adminbar"
     #help
-      = mail_to "help@pictorical.com", "help@pictorical.com", :encode => "javascript"
+      -unless current_user && current_user.admin?
+        = mail_to "help@pictorical.com", "help@pictorical.com", :encode => "javascript"
 
 
     #header

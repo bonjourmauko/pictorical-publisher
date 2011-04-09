@@ -3,20 +3,14 @@
 - javascripts "text"
 
 
+
 #text-canvas
 
-  %script
-    \//<![CDATA[
-    var ill = new Array();
-    var ill_id = new Array();
-    - @book.illustrations.active.each do |illustration|
-      - if illustration.tipe == "inline"
-        = "ill['in#{illustration.position}'] = '#{illustration.image.url(:i600w)}';"
-        = "ill_id['in#{illustration.position}'] = #{illustration.id};"
-      - elsif illustration.tipe == "cap"
-        = "ill['cap#{illustration.position}'] = '#{illustration.image.url(:i280w)}';"
-        = "ill_id['in#{illustration.position}'] = '#{illustration.id};'"
-    \//]]>
+  - @book.illustrations.active.each do |illustration|
+    - if illustration.tipe == "inline"
+      = render :partial => "show_inline_illustration", :locals => { :inline => illustration }
+    - if illustration.tipe == "cap"
+      = render :partial => "show_cap", :locals => { :cap => illustration }
 
   #notice
     = notice
@@ -99,6 +93,13 @@
               = link_to "remove", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "remove"
     
     #story
+      .cover
+        - cover = @book.illustrations.active.find_by_tipe('cover')
+        - if cover.nil?
+          .upload-link
+            = link_to "Upload cover", "/illustrations/new?type=cover"
+        - else
+          = render :partial => "show_cover", :locals => {:cover => cover}
       = @book.content.html_safe
     %h3
       %span.up

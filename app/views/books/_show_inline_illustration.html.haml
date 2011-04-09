@@ -1,0 +1,5 @@
+%div{:id => "inline#{inline.position}", :class => "inline"}
+  = image_tag inline.image.url(:i600w), :class => "inline"
+  %br
+  = render :partial => "illustration_status", :locals => {:illustration => inline}
+  = link_to "Change or delete illustration", inline, :method => :delete, :class => 'delete-link', :confirm => "Are you sure?"

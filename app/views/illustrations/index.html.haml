@@ -1,5 +1,18 @@
-- for illustration in @illustrations
-  %p
-    = image_tag illustration.image.url(:i180w)
-  
-= link_to 'otro negro', new_illustration_path
+- title "All active illustrations"
+#notice
+  = notice
+#admin-canvas
+
+
+  - @illustrations.each do |illustration|
+    %p
+      = link_to illustration.tipe + " #" + illustration.position.to_s, illustration
+      %b= "First" if illustration.book.illustrations.active.count == 1
+        
+      for
+      = link_to illustration.book do
+        = illustration.book.title
+        = "(" + illustration.book.illustrations.active.count.to_s + ")"
+      ·
+      = time_ago_in_words(illustration.created_at) + " ago"
+      = "· status: "+illustration.status unless illustration.status.nil?

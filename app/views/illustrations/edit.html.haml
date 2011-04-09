@@ -1,0 +1,7 @@
+%p
+  = image_tag @illustration.image.url(:i280w)
+%p
+  = @illustration.height.to_s + "x" + @illustration.width.to_s
+  = @illustration.image_content_type
+%p
+  = render 'change_status_form', :illustration => @illustration

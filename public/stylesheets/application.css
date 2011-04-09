@@ -37,13 +37,20 @@ a:visited {color: #764790;}
 
 }
 
+#admin-canvas a, #admin-canvas a:visited
+{
+	color: #4362CE;
+	text-decoration: none;
+	
+}
+
 .admin
 {
 	font-size: 0.75em;
 	margin-bottom: 0.5em;	
 }
 
-.admin a, .admin a:visited {color: #ff0000;}
+.admin a, .admin a:visited {color: #ff0000; text-decoration: none;}
 
 #notice, #alert {
 	font-size: 0.75em;
@@ -567,6 +574,36 @@ a.delete-link, a.delete-link:visited {
 	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
 	color: red; text-decoration: none;
 	} 
+a.delete-link:hover {text-decoration: underline;}	
+	
+.cover {
+	margin-bottom: 1em;
+}
+
+.illustration-status {
+	display: inline-block;
+	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
+}
+
+.illustration-status .review {
+	background: #666;
+	padding: 1px 2px;
+	color: #fff;
+}
+
+.illustration-status .ok {
+	color: #4A9900;
+}
+
+.illustration-status .not {
+	background: #F00;
+	color: white;
+	padding: 1px 2px;
+}
+
+div.inline, div.cap {
+	margin-bottom: 1em;
+}
 
 =======
 .reject {

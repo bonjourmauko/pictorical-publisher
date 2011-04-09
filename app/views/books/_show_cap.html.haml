@@ -1,0 +1,5 @@
+%div{:id => "cap#{cap.position}", :class => "cap"}
+  = image_tag cap.image.url(:i180w)
+  %br
+  = render :partial => "illustration_status", :locals => {:illustration => cap}
+  = link_to "Change or delete capital", cap, :method => :delete, :class => 'delete-link', :confirm => "Are you sure?"

@@ -5,7 +5,7 @@ class IllustrationsController < ApplicationController
   end
   
   def index
-    @illustrations = Illustration.all
+    @illustrations = Illustration.active
   end
   
   def uploaded
@@ -40,7 +40,8 @@ class IllustrationsController < ApplicationController
       :position               => params[:position],
       :tipe                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id,
-      :deleted                => false
+      :deleted                => false,
+      :status                 => "review"
     )
         
     if @illustration.save
@@ -58,4 +59,20 @@ class IllustrationsController < ApplicationController
     @active_book = current_user.books.where(:status => 'active').first
     redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been deleted'
   end
+  
+  def edit
+    @illustration = Illustration.find(params[:id])
+  end
+  
+  def update
+    @illustration = Illustration.find(params[:id])
+    if @illustration.update_attributes(params[:illustration])
+      render :action => "edit", :notice => 'Illustration was successfully updated.'
+    else
+      render :action => "edit", :notice => 'Illustration was not updated'
+    end
+  end
+  
+  
+  
 end
