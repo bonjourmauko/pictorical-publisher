@@ -1,9 +1,21 @@
-#notice
-  = notice
+
+
+- content_for :navbar do
+  -if notice || params["notice"]
+    #notice
+      = notice
+      = params["notice"]
+
+  -if alert || params["alert"]
+    #alert
+      = alert
+      = params["alert"]
+      
+  = render :partial => "layouts/adminbar"
+
 #admin-canvas
   %h1 All invitations
-  .admin
-    = link_to "New", :action => "new"
+
   - @invitations.each do |invitation|
     %p
       = invitation.id

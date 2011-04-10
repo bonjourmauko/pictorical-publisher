@@ -1,5 +1,16 @@
-#notice
-  = notice
+- content_for :navbar do
+  -if notice || params["notice"]
+    #notice
+      = notice
+      = params["notice"]
+
+  -if alert || params["alert"]
+    #alert
+      = alert
+      = params["alert"]
+      
+  = render :partial => "layouts/adminbar"
+
 #admin-canvas
   %h1 All users
   - @users.each do |user|

@@ -1,7 +1,16 @@
-#notice
-  = notice
+- content_for :navbar do
+  -if notice || params["notice"]
+    #notice
+      = notice
+      = params["notice"]
+
+  -if alert || params["alert"]
+    #alert
+      = alert
+      = params["alert"]
+      
+  = render :partial => "layouts/adminbar"
+
 #admin-canvas
   %h1 New author
   = render 'form', :author => @author
-  .admin
-    = link_to "All", :action => "index"

@@ -11,22 +11,27 @@
     #alert
       = alert
       = params["alert"]
-  &nbsp;
-
-
+      
+  = render :partial => "layouts/adminbar"
 
 #admin-canvas
 
+  - if params[:status] == "review" || params[:status] == "ok" || params[:status] == "not"
+    - @set = @illustrations.find_all_by_status(params[:status], :order => "id DESC")
+  - else
+    - @set = @illustrations.order("id DESC")
 
-  - @illustrations.each do |illustration|
-    %p
-      = link_to illustration.tipe + " #" + illustration.position.to_s, illustration
-      %b= "First" if illustration.book.illustrations.active.count == 1
+  - @set.each do |illustration|
+    - unless illustration.book.nil?
+      %p
+        = illustration.id
+        ·
+        = link_to illustration.tipe + " #" + illustration.position.to_s, edit_illustration_path(illustration)
         
-      for
-      = link_to illustration.book do
-        = illustration.book.title
-        = "(" + illustration.book.illustrations.active.count.to_s + ")"
-      ·
-      = time_ago_in_words(illustration.created_at) + " ago"
-      = "· status: "+illustration.status unless illustration.status.nil?
+        for
+        = link_to illustration.book do
+          = illustration.book.title
+          = "(" + illustration.book.illustrations.active.count.to_s + ")"
+        ·
+        = time_ago_in_words(illustration.created_at) + " ago"
+        = "· status: "+illustration.status unless illustration.status.nil?

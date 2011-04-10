@@ -14,3 +14,7 @@
   .item= link_to "trash", trashes_path
   .header= link_to "Authors", authors_path
   .item= link_to "new", new_author_path
+  .header= link_to "Illustrations", illustrations_path
+  .item= link_to "review", illustrations_path + "?status=review"
+  .item= link_to "not", illustrations_path + "?status=not"
+  .item= link_to "ok", illustrations_path + "?status=ok"
