@@ -1,23 +1,25 @@
-#simple-canvas
-  %h1 Pictorical Secret Door
+- content_for :navbar do
+
   .inner
-    #alert
-      = flash[:alert]
+    -if flash[:alert]
+      #alert
+        = flash[:alert]
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      .input
-        .label
-        %p
-          = f.text_field :email
-          %br
-          &nbsp;Email
+      .section
+        .input
+          .label
+          %p
+            = f.text_field :email
+            %br
+            &nbsp;Email
+      .section
         %p
           = f.password_field :password
           %br
           &nbsp;Password
-        %p
+      .section
         = f.submit "Sign in"
-        %br
-        &nbsp;
+
 
       -# if devise_mapping.rememberable?
         -#%p

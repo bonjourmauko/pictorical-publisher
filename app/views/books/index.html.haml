@@ -10,12 +10,10 @@
     #alert
       = alert
       = params["alert"]
-  &nbsp;
   
   = render :partial => "layouts/adminbar"
 
 #admin-canvas
-  %h1 All books
   - @books.each do |book|
     %p
       = link_to "#{book.id}", book

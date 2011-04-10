@@ -18,21 +18,26 @@
   
   
   .section
-    %h3
-      Written by #{@book.author.name} #{@book.author.last_name}
-    %h3
-      Illustrated by #{@book.user.name}
+    .item
+      Written by
+      %b #{@book.author.name} #{@book.author.last_name}
+    .item
+      Illustrated by
+      %b #{@book.user.name}
   
   
   .section
     .item
-      This book has #{@book.words} words
+      This book has 
+      %b #{@book.words} words
     .item
-      We recommend #{@book.illustrations_lower}—#{@book.illustrations_upper} illustrations
+      We recommend 
+      %b #{@book.illustrations_lower}—#{@book.illustrations_upper} illustrations
     .item
-      You have uploaded #{@book.illustrations.active.count} illustrations
-  .section.yellowbg
-    Follow our
+      You have uploaded 
+      %b #{@book.illustrations.active.count} illustrations
+  .section
+    Please follow our
     %b= link_to "Artwork Guidelines", artwork_guidelines_path
     
 
@@ -49,9 +54,9 @@
       %b= link_to "Publish this book", {:action => "review"},  :confirm => "Are you ready to publish this book?"
       .item
         or
-        = link_to "choose another story", texts_path
+        = link_to "choose a new story", texts_path
     - else
-      = link_to "Choose another story", texts_path
+      = link_to "Choose a new story", texts_path
   
   
   - if @book.texts.count > 1
@@ -76,37 +81,35 @@
 
 
   - unless @book.illustrations.active.find_by_tipe('cap').nil?
-    .section
-      %h3 Capital illustrations
+    %h3.half Capital illustrations
 
-      - @book.illustrations.active.find_all_by_tipe('cap', :order => "position ASC").each do |illustration|
-        .section
-          .item.cap
-            = image_tag illustration.image.url(:i180w)
-          .item
-            = render :partial => "illustration_status", :locals => {:illustration => illustration}
-            = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-            - if current_user && current_user.admin?
-              = link_to "Review", edit_illustration_path(illustration), :class => "red"
-          - if illustration.status == "not"
-            .redbox.problems
-              = illustration.problems
+    - @book.illustrations.active.find_all_by_tipe('cap', :order => "position ASC").each do |illustration|
+      .section
+        .item.cap
+          = image_tag illustration.image.url(:i180w)
+        .item
+          = render :partial => "illustration_status", :locals => {:illustration => illustration}
+          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
+          - if current_user && current_user.admin?
+            = link_to "Review", edit_illustration_path(illustration), :class => "red"
+        - if illustration.status == "not"
+          .redbox.problems
+            %pre= illustration.problems
        
   - unless @book.illustrations.active.find_by_tipe('inline').nil?
-    .section
-      %h3 Story illustrations
-      - @book.illustrations.active.find_all_by_tipe('inline', :order => "position ASC").each do |illustration|
-        .section
-          .item.inline
-            = image_tag illustration.image.url(:i180w)
-          .item
-            = render :partial => "illustration_status", :locals => {:illustration => illustration}
-            = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-            - if current_user && current_user.admin?
-              = link_to "Review", edit_illustration_path(illustration), :class => "red"
-          - if illustration.status == "not"
-            .redbox.problems
-              = illustration.problems
+    %h3.half Story illustrations
+    - @book.illustrations.active.find_all_by_tipe('inline', :order => "position ASC").each do |illustration|
+      .section
+        .item.inline
+          = image_tag illustration.image.url(:i180w)
+        .item
+          = render :partial => "illustration_status", :locals => {:illustration => illustration}
+          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
+          - if current_user && current_user.admin?
+            = link_to "Review", edit_illustration_path(illustration), :class => "red"
+        - if illustration.status == "not"
+          .redbox.problems
+            %pre= illustration.problems
 
 
 

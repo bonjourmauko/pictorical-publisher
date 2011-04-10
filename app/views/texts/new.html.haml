@@ -1,13 +1,17 @@
 - title "Pictorical : New text"
 
 - content_for :navbar do
-  &nbsp;
   - if notice 
     #notice
       = notice
   - if alert
     #alert
       = alert
+
+  - if current_user.admin?
+    = render "layouts/adminbar"
+      
+
       
 #admin-canvas
   %h1 New text

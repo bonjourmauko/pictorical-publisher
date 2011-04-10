@@ -1,14 +1,15 @@
-#simple-canvas
-  #notice
-    = notice
-  %h1 Forgotten.
+- content_for :navbar do
+  -if notice
+    #notice
+      = notice
+    
+  %h1 Passord forgotten.
   .inner
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
       = devise_error_messages!
-      .input
-        .label
-        %p
-          = f.text_field :email
-          %br
-          &nbsp;Email
+      .section
+        = f.text_field :email
+        %br
+        Email
+      .section
         %p= f.submit "Send me reset password instructions"

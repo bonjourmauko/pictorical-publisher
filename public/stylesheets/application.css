@@ -33,7 +33,7 @@
 }
 
 /* line 24, ../../app/stylesheets/application.sass */
-body {
+body, pre {
   font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -264,37 +264,34 @@ a:hover {
   margin-bottom: 1em;
 }
 
-/* line 182, ../../app/stylesheets/application.sass */
-#admin-bar .header {
-  margin-top: 0.5em;
-}
-/* line 184, ../../app/stylesheets/application.sass */
-#admin-bar .item {
-  margin-left: 0.5em;
+/* line 181, ../../app/stylesheets/application.sass */
+#admin-bar {
+  margin-bottom: 1em;
+  padding-left: 1em;
 }
 
-/* line 188, ../../app/stylesheets/application.sass */
+/* line 186, ../../app/stylesheets/application.sass */
 #registration-canvas .input {
   margin-bottom: 1em;
 }
-/* line 190, ../../app/stylesheets/application.sass */
+/* line 188, ../../app/stylesheets/application.sass */
 #registration-canvas .label {
   font-weight: bold;
 }
-/* line 192, ../../app/stylesheets/application.sass */
+/* line 190, ../../app/stylesheets/application.sass */
 #registration-canvas .label .required {
   color: #cb0802;
 }
-/* line 194, ../../app/stylesheets/application.sass */
+/* line 192, ../../app/stylesheets/application.sass */
 #registration-canvas .label .optional {
   color: #0a8b00;
 }
-/* line 196, ../../app/stylesheets/application.sass */
+/* line 194, ../../app/stylesheets/application.sass */
 #registration-canvas .field-block {
   display: inline-block;
 }
 
-/* line 199, ../../app/stylesheets/application.sass */
+/* line 197, ../../app/stylesheets/application.sass */
 #error_explanation {
   margin-bottom: 1em;
   border: 2px solid #cb0802;
@@ -302,12 +299,12 @@ a:hover {
   background: #cb0802;
   color: white;
 }
-/* line 205, ../../app/stylesheets/application.sass */
+/* line 203, ../../app/stylesheets/application.sass */
 #error_explanation h2 {
   font-size: 13px;
   display: none;
 }
-/* line 208, ../../app/stylesheets/application.sass */
+/* line 206, ../../app/stylesheets/application.sass */
 #error_explanation li {
   margin-left: 1.5em;
 }

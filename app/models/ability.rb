@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     else
       can [:index, :show], [Text]
+      can [:new, :show], [Illustration]
       can :new, Book
       can [:edit, :change, :review, :add_text, :remove_text], Book do |book|
         book.try(:user) == current_user

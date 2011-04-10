@@ -1,6 +1,5 @@
 class IllustrationsController < ApplicationController
-  
-  before_filter :get_active_book, :only => [:new, :create]
+  load_and_authorize_resource
   
   
   def show

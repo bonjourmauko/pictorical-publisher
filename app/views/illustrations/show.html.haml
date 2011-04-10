@@ -21,7 +21,7 @@
   .section
     Uploaded #{time_ago_in_words(@illustration.created_at)} ago
     .item
-      = link_to "Change or delete this illustration", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
+      = link_to "Change or delete this illustration", @illustration, :confirm => "You are about to delete this illustration. After this you can upload a new one. Are you sure?", :method => :delete,  :class => "red"
   .section
     .item
       Size
@@ -39,7 +39,8 @@
         .item.half Great! This illustration is perfect
       - if @illustration.status == "not"
         .status.not.big There is a problem
-        .item.half= @illustration.problems
+        .item.half
+          %pre= @illustration.problems
   .section
     Return to
     = link_to "your book", edit_book_path(@illustration.book)

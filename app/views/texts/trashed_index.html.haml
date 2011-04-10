@@ -2,7 +2,6 @@
 
 
 - content_for :navbar do
-  &nbsp;
   - if notice 
     #notice
       = notice
@@ -10,13 +9,10 @@
     #alert
       = alert
 
+  - if current_user.admin?
+    = render "layouts/adminbar"
 
-#text-canvas
-
-
-
-  #title
-    %h1 Choose a story
+#list
 
   #container
     - @authors.each do |author|
@@ -31,3 +27,4 @@
                 .onetext
                   .textlink= link_to text[:title], trashed_path(text[:id])
                   .textinfo= "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
+

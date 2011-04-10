@@ -27,7 +27,8 @@
       %b #{@illustration.deleted}
     
   = render 'change_status_form', :illustration => @illustration
-    
+  
+  = link_to "Illustrations for review", illustrations_path + "/?status=review"
     
 - if @illustration.tipe == "cover"
 

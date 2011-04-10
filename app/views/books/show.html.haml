@@ -91,7 +91,7 @@
             = link_to "Review", edit_illustration_path(illustration), :class => "red"
         - if illustration.status == "not"
           .redbox.problems
-            = illustration.problems
+            %pre= illustration.problems
        
 
   .section
@@ -108,7 +108,7 @@
             = link_to "Review", edit_illustration_path(illustration), :class => "red"
         - if illustration.status == "not"
           .redbox.problems
-            = illustration.problems
+            %pre= illustration.problems
 
 
 

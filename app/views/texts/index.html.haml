@@ -8,6 +8,9 @@
     #alert
       = alert
 
+  - if current_user.admin?
+    = render "layouts/adminbar"
+      
 
   .section
     - @authors.each do |author|

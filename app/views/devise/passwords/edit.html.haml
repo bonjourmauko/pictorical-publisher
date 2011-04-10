@@ -1,6 +1,8 @@
-#simple-canvas
-  #notice
-    = notice
+- content_for :navbar do
+  -if notice
+    #notice
+      = notice
+
   %h1 Forgotten.
   .inner
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
