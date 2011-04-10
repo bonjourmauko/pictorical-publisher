@@ -1,0 +1,147 @@
+$red: #CB0802
+$green: #0A8B00
+$ibooksgray: #f4f4f4
+$linkblue: #4362CE
+
+.red
+  color: $red
+  &:link, &:visited
+    color: $red
+.green
+  color: $green
+  &:link, &:visited
+    color: $green
+
+.yellowbg
+  background: #fea
+  padding: 3px
+
+.half
+  margin: 0.5em 0
+
+body
+  font: 13px  "Helvetica Neue", Helvetica, Arial, sans-serif
+
+a
+  color: $linkblue
+  text-decoration: none
+  &:link, &:visited
+    color: $linkblue
+    text-decoration: none
+  &:hover
+    text-decoration: underline
+  
+#notice, #alert
+  padding: 5px
+  color: white
+  margin-bottom: 1em
+  
+#notice
+  background: $green
+
+#alert
+  background: $red
+
+.section
+  margin-bottom: 1em
+
+#userinfo, #title
+  padding: 10px 0
+
+#userinfo
+  text-align: right
+  
+#title
+  padding: 10px 0
+  h1
+    font-size:  20px
+    
+#left_bar
+  h1, h2
+    margin-bottom: 0.5em
+    font-weight: normal
+  h1
+    font-size:  20px
+
+.redbox
+  border: 2px solid $red
+  padding: 5px
+  background: white
+  h3
+    color: $red
+    font-size: 15px
+    margin-bottom: 0
+    
+#container
+  padding: 20px
+  &.gray
+    background: $ibooksgray
+
+.inline, .cap, .cover
+  margin-bottom: 5px
+
+.status
+  font-size: 10px
+  &.big
+    font-size: 14px
+  text-transform: uppercase
+  padding: 2px
+  display: inline-block
+  letter-spacing: 1px
+  &.review
+    background: #F9B900
+    color: black
+  &.ok
+    background: $green
+    color: white
+  &.not
+    background: $red
+    color: white
+
+#footer
+  font-size: 12px
+  text-align: center
+  padding: 20px
+
+#story
+  p, h1
+    margin: 1em 0
+    font: 16px "Georgia", "Trebuchet MS", Verdana, sans-serif
+  h1
+    font-size: 24px
+    text-align: center
+  .inline
+    width: 100%
+    
+.sampler-ipad
+  .ipad
+    width: 620px
+    height: 794px
+    background-image: url('/images/ipad-sample.jpg')
+    font: 18px "Georgia", "Trebuchet MS", Verdana, sans-serif
+    margin-bottom: 30px
+    .inner
+      position: relative
+      top: 146px
+      left: 127px
+      width: 355px
+      height: 509px
+      overflow: hidden
+      p
+        margin-bottom: 1em
+        text-align: justify
+      img
+        &.inline
+          width: 100%
+          margin-bottom: 20px
+        &.cap
+          width: 40%
+          float: left
+          margin-right: 10px
+          margin-bottom: 10px
+        
+.sampler-transparent
+  background-image: url('/images/transparent.png')
+  width: 600px
+  min-height: 100px
+  margin: 0 auto

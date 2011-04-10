@@ -1,18 +1,54 @@
-%p
-  = link_to "delete", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "illustrate-this-link"
-%p
-  Deleted? 
-  = @illustration.deleted
+- content_for :navbar do
+  .section
+    Illustration for
+    .item
+      %h1= link_to @illustration.book.title, edit_book_path(@illustration.book)
+  .section
+    By #{@illustration.book.user.name}
+  .section
+    Uploaded #{time_ago_in_words(@illustration.created_at)} ago
+    .item
+      = link_to "Change or delete this illustration", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
+  .section
+    .item
+      Size
+      %b #{@illustration.width} x #{@illustration.height}
+    .item
+      Format
+      %b #{@illustration.image.content_type}
+  .section
+    .item
+      - if @illustration.status == "review"
+        .status.review.big Pending review
+        .item.half We will check this illustration soon
+      - if @illustration.status == "ok"
+        .status.ok.big &#x2714; Ok
+        .item.half Great! This illustration is perfect
+      - if @illustration.status == "not"
+        .status.not.big There is a problem
+        .item.half= @illustration.problems
+    
+    
+    
+- if @illustration.tipe == "cover"
 
-%p
-  180w
-  %br
-  = image_tag @illustration.image.url(:i180w)
-%p
-  280w
-  %br
-  = image_tag @illustration.image.url(:i280w)
-%p
-  600w
-  %br
   = image_tag @illustration.image.url(:i600w)
+  = image_tag "cover-bottom.png"
+  
+  
+- else  
+  
+
+  .sampler-ipad
+    .ipad
+      .inner
+        - if @illustration.tipe == "cap"
+          = image_tag @illustration.image.url(:i280w), :class => "cap"
+        - if @illustration.tipe == "inline"
+          = image_tag @illustration.image.url(:i600w), :class => "inline"
+      
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      
+  .sampler-transparent
+    = image_tag @illustration.image.url(:i600w)

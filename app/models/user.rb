@@ -57,7 +57,9 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   def name
-    "#{self.first_name} #{self.last_name}"
+
+      self.artistic_name || "#{self.first_name} #{self.last_name}"
+      
   end
 
 

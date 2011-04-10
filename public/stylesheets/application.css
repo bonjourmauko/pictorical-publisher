@@ -1,614 +1,219 @@
+/* line 6, ../../app/stylesheets/application.sass */
+.red {
+  color: #cb0802;
+}
+/* line 8, ../../app/stylesheets/application.sass */
+.red:link, .red:visited {
+  color: #cb0802;
+}
+
+/* line 10, ../../app/stylesheets/application.sass */
+.green {
+  color: #0a8b00;
+}
+/* line 12, ../../app/stylesheets/application.sass */
+.green:link, .green:visited {
+  color: #0a8b00;
+}
+
+/* line 15, ../../app/stylesheets/application.sass */
+.yellowbg {
+  background: #ffeeaa;
+  padding: 3px;
+}
+
+/* line 19, ../../app/stylesheets/application.sass */
+.half {
+  margin: 0.5em 0;
+}
+
+/* line 22, ../../app/stylesheets/application.sass */
 body {
-	background: #EBEBEB;
-	font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	background-image: url('http://welcu.com/images/home/bgTwo.png');
-	
+  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h1 {
-	font-family: "Georgia", Serif;
-	font-weight: normal;
-	text-shadow: white 0px 1px 0px;
-	text-align: center;
-	margin-bottom: 1em;
-	font-size: 2.5em;
-	margin: 0.5em auto;
-	
-	
-	
+/* line 25, ../../app/stylesheets/application.sass */
+a {
+  color: #4362ce;
+  text-decoration: none;
+}
+/* line 28, ../../app/stylesheets/application.sass */
+a:link, a:visited {
+  color: #4362ce;
+  text-decoration: none;
+}
+/* line 31, ../../app/stylesheets/application.sass */
+a:hover {
+  text-decoration: underline;
 }
 
-a:link {color: #4362CE;}
-a:visited {color: #764790;}
-
-#header { font-size: .75em }
-
-#admin-canvas {
-	font-size: .75em;
-	background: white;
-	padding: 10px;
-}
-
-#admin-canvas h1 {
-	text-align: left;
-	font-size: 1em;
-	font-weight: bold;
-	font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-
-}
-
-#admin-canvas a, #admin-canvas a:visited
-{
-	color: #4362CE;
-	text-decoration: none;
-	
-}
-
-.admin
-{
-	font-size: 0.75em;
-	margin-bottom: 0.5em;	
-}
-
-.admin a, .admin a:visited {color: #ff0000; text-decoration: none;}
-
+/* line 34, ../../app/stylesheets/application.sass */
 #notice, #alert {
-	font-size: 0.75em;
-	margin: 0.5em 0;
-	}
-
-#notice { color: #238B00; }
-#alert { color: #ff0000; }
-
-#error_explanation {color: red;}
-
-.invisible {color: #eee}
-
-#text-canvas h2, #text-canvas h3{
-	font: 1.6em "Georgia", "Trebuchet MS", Verdana, sans-serif;
-	text-shadow: white 0px 1px 0px;
-	margin-bottom: 1em;	
-	text-transform: italic;
-	text-align: center;
+  padding: 5px;
+  color: white;
+  margin-bottom: 1em;
 }
 
-
-#text-canvas h3 .up {
-	text-transform: uppercase;
-	font-style: normal;
+/* line 39, ../../app/stylesheets/application.sass */
+#notice {
+  background: #0a8b00;
 }
 
-#text-canvas h4{
-	font: 1.2em "Georgia", "Trebuchet MS", Verdana, sans-serif;
-	text-shadow: white 0px 1px 0px;
-	margin-bottom: 1em;	
-	text-transform: italic;
-	text-align: center;
+/* line 42, ../../app/stylesheets/application.sass */
+#alert {
+  background: #cb0802;
 }
 
-#text-canvas h5{
-	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
-	text-shadow: white 0px 1px 0px;
-	margin-bottom: 1em;	
-	text-transform: italic;
-	text-align: center;
+/* line 45, ../../app/stylesheets/application.sass */
+.section {
+  margin-bottom: 1em;
 }
 
-#text-canvas ul {
-  text-indent: 5px;
-  list-style-position: outside;
-  list-style-type: decimal;
-  padding: 10px;
-  margin: 10px;
+/* line 48, ../../app/stylesheets/application.sass */
+#userinfo, #title {
+  padding: 10px 0;
 }
 
-#text-canvas li {
-  margin: 10px;
+/* line 51, ../../app/stylesheets/application.sass */
+#userinfo {
+  text-align: right;
 }
 
+/* line 54, ../../app/stylesheets/application.sass */
+#title {
+  padding: 10px 0;
+}
+/* line 56, ../../app/stylesheets/application.sass */
+#title h1 {
+  font-size: 20px;
+}
+
+/* line 60, ../../app/stylesheets/application.sass */
+#left_bar h1, #left_bar h2 {
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+/* line 63, ../../app/stylesheets/application.sass */
+#left_bar h1 {
+  font-size: 20px;
+}
+
+/* line 66, ../../app/stylesheets/application.sass */
+.redbox {
+  border: 2px solid #cb0802;
+  padding: 5px;
+  background: white;
+}
+/* line 70, ../../app/stylesheets/application.sass */
+.redbox h3 {
+  color: #cb0802;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+/* line 75, ../../app/stylesheets/application.sass */
 #container {
-	width: 36em;
-	margin: 0 auto;
+  padding: 20px;
+}
+/* line 77, ../../app/stylesheets/application.sass */
+#container.gray {
+  background: #f4f4f4;
 }
 
-
-#action-box, #warning-box {
-	background: #4E4646;
-	padding: 0.5em;
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	margin-bottom: 1em;
-	text-align: center;
-	color: white;
+/* line 80, ../../app/stylesheets/application.sass */
+.inline, .cap, .cover {
+  margin-bottom: 5px;
 }
 
-#warning-box {background: #9D0000;}
-
-#warning-box a.choose, #warning-box a.choose:visited {
-	
-	display: inline-block;
-	background: #FAB900;
-	padding: 0.25em;
-	text-decoration: none;
-	color: black;
-	margin: 0.25em;
-	
-	}
-	
-#warning-box a.choose:hover {
-	
-	background: white;
+/* line 83, ../../app/stylesheets/application.sass */
+.status {
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+/* line 85, ../../app/stylesheets/application.sass */
+.status.big {
+  font-size: 14px;
+}
+/* line 91, ../../app/stylesheets/application.sass */
+.status.review {
+  background: #f9b900;
+  color: black;
+}
+/* line 94, ../../app/stylesheets/application.sass */
+.status.ok {
+  background: #0a8b00;
+  color: white;
+}
+/* line 97, ../../app/stylesheets/application.sass */
+.status.not {
+  background: #cb0802;
+  color: white;
 }
 
-
-#action-box h3 {
-	font: 1.2em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	text-shadow: none;
-	margin: 0;
-	margin-bottom: 0.5em;
-}
-
-
-#action-box p {
-	margin: 0;
-	margin-top: 0.5em;
-	
-}
-
-a.choose, a.choose:visited {
-	color: #A2E7F9;
-	text-decoration: none;
-	
-}
-
-a.choose:hover, a.choose:active {
-	color: white;
-	text-decoration: none;
-	
-}
-
-
-a.blue, a.blue:visited {
-	color: #A2E7F9;
-	text-decoration: none;
-	}
-	
-a.blue:hover, a.blue:active {
-	text-decoration: underline;
-	}	
-	
-a.yellow, a.yellow:visited {
-color: #E6C200;
-text-decoration: none;
-}
-
-a.yellow:hover, a.yellow:active {
-text-decoration: underline;
-}
-
-
-a.green, a.green:visited {
-color: #C1E00C;
-text-decoration: none;
-}
-
-a.green:hover, a.green:active {
-text-decoration: underline;
-}
-
-a.blue, a.blue:visited {
-color: #A2E7F9;
-text-decoration: none;
-}
-
-a.blue:hover, a.blue:active {
-text-decoration: underline;
-}
-
-a.illustrate-this-link, a.illustrate-this-link:visited,
-a.illustrate-current-link, a.illustrate-current-link:visited,
-a.add-text, a.add-text:visited {
-	display: inline-block;
-	background: #A5BD00;
-	padding: 0.25em;
-	text-decoration: none;
-	color: black;
-}
-a.add-text, a.add-text:visited {background: #FAB900; color: black;}
-a.add-text:hover {background: white; color: black;}
-
-
-a.illustrate-this-link:hover,
-a.illustrate-current-link:hover {
-	background: #F38E00;
-	color: white;
-}
-
-a.illustrate-this-link:active,
-a.illustrate-current-link:active {
-	background: #000;
-	color: white;
-}
-
-a.illustrate-change-link, a.illustrate-change-link:visited {
-	display: inline-block;
-	background: #ccc;
-	padding: 0.25em;
-	text-decoration: none;
-	color: black;
-}
-
-a.illustrate-change-link:hover {
-	background: #F38E00;
-	color: white;
-}
-
-a.illustrate-change-link:active {
-	background: #000;
-	color: white;
-}
-
-.upload-link {
-	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-}
-
-.upload-link a, .upload-link a:visited  { text-decoration: none; color: #4362CE; }
-.upload-link a:hover {color: red;}
-
-
-#story {
-	
-	font: 1em "Georgia", "Trebuchet MS", Verdana, sans-serif;
-	font-weight: normal;
-	
-	background: white;
-	padding: 2em;
-	
-
-	text-align: justify;
-	
-}
-
-
-#story img.inline {
-	width: 100%;
-	
-}
-
-
-.textlist {
-	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	background: white;
-	padding: 1em;	
-	padding-bottom: 0.1em;
-}
-
-.textlist a {text-decoration: none;}
-
-.onetext {
-	margin-bottom: 1em;
-	
-}
-
-.textlink {
-	margin-bottom: 0.2em;
-	
-}
-.textinfo {
-	
-	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	color: #555;
-	margin-top: 0;
-}
-
-#story p { margin: 0; margin-bottom: 1em;}
-
-.parnum {
-	
-	color: red;
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	margin-bottom: 1em;
-	
-	}
-
-
-
-#registration-canvas #container .insider
-{
-	background: white;
-	padding: 1em;
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-}
-
-#registration-canvas input, #registration-canvas select {
-	
-	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-	
-}
-
-#registration-canvas abbr {
-	color: red;
-	
-}
-
-#registration-canvas .label {
-	font-weight: bold;
-	margin-bottom: 0.25em;
-}
-
-#login-canvas {
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-	
-}
-
-.required {
-	color: #A11E22;
-	font-weight: normal;
-}
-
-.optional {
-	color: #2C79C1;
-	font-weight: normal;
-	
-}
-
-#registration-canvas .label2 {
-	color: #666;
-	margin: 0.25em 0;
-}
-
-#registration-canvas .input {
-	margin-bottom: 1.5em;
-	
-}
-
-.field-block {
-	display: inline-block;
-	
-}
-
-.left {
-	text-align: left;
-}
-
-.tutorial {
-	
-}
-
-#simple-canvas {
-	
-	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-	text-align: center;
-}
-
-#simple-canvas .inner {
-	
-	background: white;
-	margin: 0em auto;
-	padding: 1em;
-	display: inline-block;
-	text-align: left;
-}
-
-.forgot {
-	font-size: 0.75em;
-}
-
-#simple-canvas h1 {
-	font-size: 3em;
-	text-align: center;
-}
-
-#simple-canvas input {
-	font-size: 1em;
-	
-}
-
-#artist_session a {
-	
-	color: #AC5500;
-	text-decoration: none;
-	
-}
-
-#artist_session a:active, #artist_session a:hover {
-	
-	color: #F66A00;
-
-	
-}
-
-#static-canvas {
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	text-align: center;
-	
-}
-
-#static-canvas .inner {
-	width: 60em;
-	background: white;
-	padding: 1em;
-	text-align: left;
-	margin: 0 auto;
-	
-}
-
-#admin-bar {
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	background: #fea;
-	padding: 0.5em;
-	position: fixed;
-	top: 0;
-	right: 0;
-	
-}
-
-#admin-bar a, #admin-bar a:visited {
-	color: red;
-	text-decoration: none;
-}
-
-#admin-bar a:hover {
-	text-decoration: underline;
-}
-
-#admin-bar .header {
-	font-size: 150%;
-	margin-top: 0.5em;
-	
-}
-
-.all_authors {
-	font: 1em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	margin: 1em 0;
-	
-}
-
-.all_authors a {text-decoration: none;}
-
-#multitext {
-	font: 0.75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	margin: 1em 0;
-	
-}
-
-#story h1 {
-	font-size: 1.5em;
-	text-align: center;
-	
-}
-
-#warning-box a, #warning-box a:visited { color: white;}
-
-.deleted {text-decoration: line-through}
-
-
-#guideline-canvas {
-	margin: 0 auto;
-	text-align: center;
-	
-}
-
+/* line 101, ../../app/stylesheets/application.sass */
 #footer {
-	font-size: 0.5em;
-	color: #838383;	
-	margin: 3em 0px 1em 0px;
-	text-align: center;
-	
+  font-size: 12px;
+  text-align: center;
+  padding: 20px;
 }
 
-#footer a, #footer a.visited {
-	color: #838383;
-	
+/* line 107, ../../app/stylesheets/application.sass */
+#story p, #story h1 {
+  margin: 1em 0;
+  font: 16px "Georgia", "Trebuchet MS", Verdana, sans-serif;
+}
+/* line 110, ../../app/stylesheets/application.sass */
+#story h1 {
+  font-size: 24px;
+  text-align: center;
+}
+/* line 113, ../../app/stylesheets/application.sass */
+#story .inline {
+  width: 100%;
 }
 
-#welcome-canvas {
-
-	
+/* line 117, ../../app/stylesheets/application.sass */
+.sampler-ipad .ipad {
+  width: 620px;
+  height: 794px;
+  background-image: url("/images/ipad-sample.jpg");
+  font: 18px "Georgia", "Trebuchet MS", Verdana, sans-serif;
+  margin-bottom: 30px;
+}
+/* line 123, ../../app/stylesheets/application.sass */
+.sampler-ipad .ipad .inner {
+  position: relative;
+  top: 146px;
+  left: 127px;
+  width: 355px;
+  height: 509px;
+  overflow: hidden;
+}
+/* line 130, ../../app/stylesheets/application.sass */
+.sampler-ipad .ipad .inner p {
+  margin-bottom: 1em;
+  text-align: justify;
+}
+/* line 134, ../../app/stylesheets/application.sass */
+.sampler-ipad .ipad .inner img.inline {
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* line 137, ../../app/stylesheets/application.sass */
+.sampler-ipad .ipad .inner img.cap {
+  width: 40%;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-#welcome-canvas .inner {
-	padding: 1em;
-	margin: 0 auto;
-	width: 30em;
-	background: white;
+/* line 143, ../../app/stylesheets/application.sass */
+.sampler-transparent {
+  background-image: url("/images/transparent.png");
+  width: 600px;
+  min-height: 100px;
+  margin: 0 auto;
 }
-
-#welcome-canvas p {
-	margin: 1em auto;
-}
-
-#welcome-canvas a {
-	text-decoration: none;
-}
-
-#look_for_a_book {
-	margin-top: 1em;
-	margin-bottom: 1em;
-	background: #373737;
-	
-	
-}
-
-#help {
-	position: fixed;
-	top: 0;
-	right: 0;
-	padding: 0.3em;
-}
-
-#help a, #help a:visited {
-	font-size: 0.75em;
-	color: #C80202;
-	text-decoration: none;}
-
-#help a:hover {
-	background: #C80202;
-	color: white;
-	
-}
-
-<<<<<<< HEAD
-#toc {
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-#toc .item {
-	margin-top: 0.5em;
-}
-
-#toc .item a {
-	text-decoration: none;
-}
-
-#toc .item a.remove {
-	font-size: 0.75em;
-	color: red;
-}
-.upload-link, .illustration {
-	margin-bottom: 1em;
-	
-}
-
-a.delete-link, a.delete-link:visited {
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-	color: red; text-decoration: none;
-	} 
-a.delete-link:hover {text-decoration: underline;}	
-	
-.cover {
-	margin-bottom: 1em;
-}
-
-.illustration-status {
-	display: inline-block;
-	font: .75em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;	
-}
-
-.illustration-status .review {
-	background: #666;
-	padding: 1px 2px;
-	color: #fff;
-}
-
-.illustration-status .ok {
-	color: #4A9900;
-}
-
-.illustration-status .not {
-	background: #F00;
-	color: white;
-	padding: 1px 2px;
-}
-
-div.inline, div.cap {
-	margin-bottom: 1em;
-}
-
-=======
-.reject {
-	border: 2px solid red;
-	padding: 0.25em;
-	color: red;
-	}
->>>>>>> hotfixes

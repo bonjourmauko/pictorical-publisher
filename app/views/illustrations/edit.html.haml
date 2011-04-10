@@ -1,7 +1,37 @@
-%p
-  = image_tag @illustration.image.url(:i280w)
-%p
-  = @illustration.height.to_s + "x" + @illustration.width.to_s
-  = @illustration.image_content_type
-%p
+- content_for :navbar do
+  .section
+    Illustration for
+    .item
+      %h1= link_to @illustration.book.title, edit_book_path(@illustration.book)
+      [#{@illustration.book.id}]
+  .section
+    By #{@illustration.book.user.name} [#{@illustration.book.user.id}]
+  .section
+    Uploaded #{time_ago_in_words(@illustration.created_at)} ago
+    .item
+      = link_to "Change or delete this illustration", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
+  .section
+    .item
+      Size
+      %b #{@illustration.width} x #{@illustration.height}
+    .item
+      Format
+      %b #{@illustration.image.content_type}
+    .item
+      Type
+      %b #{@illustration.tipe}
+    .item
+      Deleted?
+      %b #{@illustration.deleted}
+    
   = render 'change_status_form', :illustration => @illustration
+    
+    
+- if @illustration.tipe == "cover"
+
+  = image_tag @illustration.image.url(:i600w)  
+  
+- else  
+
+  .sampler-transparent
+    = image_tag @illustration.image.url(:i600w)

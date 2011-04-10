@@ -1,4 +1,13 @@
-= image_tag cover.image.url(:i180w)
-%br
-= render :partial => "illustration_status", :locals => {:illustration => cover}
-= link_to "Change or delete cover", cover, :method => :delete, :class => 'delete-link', :confirm => "Are you sure?"
+.item
+  = link_to cover do
+    .cover
+      = image_tag cover.image.url(:i180w)
+      = image_tag "cover-bottom.png", :width => 180
+.item
+  = render :partial => "illustration_status", :locals => {:illustration => cover}
+  = link_to "change or delete", cover, :method => :delete, :confirm => "Are you sure?"
+  - if current_user && current_user.admin?
+    = link_to "Review", edit_illustration_path(cover), :class => "red"
+- if cover.status == "not"
+  .redbox.problems
+    = cover.problems

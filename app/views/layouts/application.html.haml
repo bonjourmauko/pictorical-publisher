@@ -2,37 +2,39 @@
 %html
   %head
     %title= yield :title
+    = stylesheet_link_tag "960", :media => "all"
+    = stylesheet_link_tag "reset", :media => "all"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag :defaults
     = yield :head
     = csrf_meta_tag
   %body
-    -if current_user && current_user.admin?
-      = render "layouts/adminbar"
-    #help
-      -unless current_user && current_user.admin?
-        = mail_to "help@pictorical.com", "help@pictorical.com", :encode => "javascript"
-
-
-    #header
-      = yield :navbar
-      #artist_session
-        - if user_signed_in?
-          = "Hello"
-          = link_to current_user.first_name, edit_user_registration_path
-          ·
-          = link_to("sign out",  destroy_user_session_path)
-
-          - unless current_user.active_book.nil? || current_user.active_book.text.nil?
+    .container_12
+      #header.grid_12
+        #title.grid_4.alpha
+          %h1
+            Pictorical
+        #userinfo.grid_8.omega
+          - if user_signed_in?
+            = "Hello " + current_user.first_name
             ·
-            = "You are illustrating "
-            = link_to "#{current_user.active_book.title}", edit_book_path(current_user.active_book.id)
+            = link_to "your info", edit_user_registration_path
+            ·
+            = link_to("sign out",  destroy_user_session_path)
+      .clear &nbsp;
+      .grid_12
+        #left_bar.grid_4.alpha
+          -# unless current_user.active_book.nil? || current_user.active_book.text.nil?
+            -#= "You are illustrating "
+            -#= link_to "#{current_user.active_book.title}", edit_book_path(current_user.active_book.id)
           - if current_user.has_books_under_review?
             We are reviewing your book
             %b= "#{current_user.book_under_review.title}"
-
-
-    = yield
-    #footer
-      2011 &copy; Pictorical Ltd, registered in England #07290547
-      = link_to "Legal", legal_path
+          -if current_user && current_user.admin?
+            = #render "layouts/adminbar"
+          = yield :navbar
+        #main.grid_8.omega
+          = yield
+      .clear &nbsp
+      #footer.grid_12
+        = render :partial => "layouts/footer"
