@@ -1,9 +1,11 @@
+- title "Edit illustration"
+
 - content_for :navbar do
   .section
-    Illustration for
     .item
-      %h1= link_to @illustration.book.title, edit_book_path(@illustration.book)
-      [#{@illustration.book.id}]
+      %h1
+        = link_to edit_book_path(@illustration.book) do
+          #{@illustration.book.title} [#{@illustration.book.id}]
   .section
     By #{@illustration.book.user.name} [#{@illustration.book.user.id}]
   .section

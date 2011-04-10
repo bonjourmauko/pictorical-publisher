@@ -1,42 +1,51 @@
 - title "Pictorical : Choose a story"
-#notice
-  = notice
+
+- content_for :navbar do
+  - if notice 
+    #notice
+      = notice
+  - if alert
+    #alert
+      = alert
 
 
-#text-canvas
-
-  #title
-    %h1 Choose a story
-
-  #container
-
-
-    .all_authors
-      - @authors.each do |author|
-        - if author.texts.not_deleted.count > 0
-          = link_to author.last_name, :anchor => "a#{author.id}"
-          ·
-
-    #action-box
-      Do you need help finding a story? We can help, just write us at
-      =link_to "books@pictorical.com", "mailto:books@pictorical.com", :class => "yellow"
-
+  .section
     - @authors.each do |author|
-
       - if author.texts.not_deleted.count > 0
-        = tag "a", {:name => "a#{author.id}"} #anchor
-        %h4
-          %span.up= "#{author[:name]} #{author[:last_name]}"
-        .textlist
-          - author.texts.sorted.each do |text|
-            - unless text[:deleted]
-              .onetext
-                - if text[:availability] || current_user.admin?
-                  .textlink= link_to text[:title], text
-                  .textinfo
-                    = "#{text.words_rounded} words ~#{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations"
-                    = "· Available? #{text.availability}" if current_user.admin?
-                - else
-                  .textlink= text[:title]
-                  .textinfo= "Someone is illustrating this story"
+        .item
+          = link_to :anchor => "a#{author.id}" do
+            #{author.name}
+            %b #{author.last_name}
+
+
+%h1 Choose a story
+.section.yellowbg
+  Do you need help finding a story?
+  We can help, just write us at
+  %b= link_to "books@pictorical.com", "mailto:books@pictorical.com", :class => "yellow"
+
+
+#list
+
+
+
+  - @authors.each do |author|
+
+    - if author.texts.not_deleted.count > 0
+      .div
+        %a{:name => "a#{author.id}"}
+      %h4
+        #{author[:name]} #{author[:last_name]}
+      .textlist
+        - author.texts.sorted.each do |text|
+          - unless text[:deleted]
+            .onetext
+              - if text[:availability] || current_user.admin?
+                .textlink= link_to text[:title], text
+                .textinfo
+                  #{text.words_rounded} words · about #{text.pages} pages · between #{text.illustrations_lower} and #{text.illustrations_upper} illustrations
+                  = "· Available? #{text.availability}" if current_user.admin?
+              - else
+                .textlink= text[:title]
+                .textinfo= "Someone is illustrating this story"
 

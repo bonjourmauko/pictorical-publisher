@@ -1,6 +1,15 @@
 - title "Pictorical, trashed #{@text[:title]} by #{@text[:author]}"
-#notice
-  = notice
+
+- content_for :navbar do
+  &nbsp;
+  - if notice 
+    #notice
+      = notice
+  - if alert
+    #alert
+      = alert
+
+
 #text-canvas
 
   #title

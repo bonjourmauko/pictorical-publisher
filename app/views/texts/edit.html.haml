@@ -1,6 +1,16 @@
 - title "Pictorical : Edit a text"
-#notice
-  = notice
+
+- content_for :navbar do
+  &nbsp;
+  - if notice 
+    #notice
+      = notice
+  - if alert
+    #alert
+      = alert
+
+
+
 #admin-canvas
   %h1 Edit text
   = render 'form', :text => @text

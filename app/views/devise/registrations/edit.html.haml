@@ -1,155 +1,168 @@
+- title "Edit your info"
+
+- content_for :navbar do
+  -if notice || params["notice"]
+    #notice
+      = notice
+      = params["notice"]
+
+  -if alert || params["alert"]
+    #alert
+      = alert
+      = params["alert"]
+  &nbsp;
+
+
+
+
 #registration-canvas
-  #notice
-    = notice
 
-  #title
-    %h1 Update your info
-
-  #container
-    .insider
-
-
-      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-        = devise_error_messages!
-        .input
-          .label
-            Name
-            %span.required required
-          .label2 Your real name, as it appears in your id
-          .field-block
-            = f.text_field :first_name
-            %br
-            &nbsp;First
-          .field-block
-            = f.text_field :last_name
-            %br
-            &nbsp;Last
-
-
-        .input
-          .label
-            Artistic name
-            %span.optional optional
-          .label2 To sign your illustrations with other name
-          = f.text_field :artistic_name
-
-
-
-        .input
-          .label
-            Email
-            %span.required required
-          .label2 The same one where you got your invitation
-          = f.text_field :email
-
-
-        .input
-          .label
-            New password
-            %span.required (only if you want to change it)
-          .field-block
-            = f.password_field :password
-            %br
-            &nbsp;One time
-          .field-block
-            = f.password_field :password_confirmation
-            %br
-            &nbsp;And again
-
-        .input
-          .label
-            Birth date
-            %span.required required
-          .label2 You have to be over 18 years old
-          = f.input :birthdate, :start_year => Date.today.year - 100,
-                                :end_year => Date.today.year - 18,
-                                :order => [:month, :day, :year],
-                                :label => false
+  %h1 Update your info
 
 
 
 
-        .input
-          .label
-            Your address
-            %span.required required
-          .address
-            = f.text_field :address_line_one, :size => 60
-          .address
-            = f.text_field :address_line_two, :size => 60
-          .field-block
-
-            = f.text_field :city, :size => 10
-            %br
-            City
-            %span.required required
-          .field-block
-            = f.text_field :state, :size => 10
-            %br
-            State
-          .field-block
-            = f.text_field :zip, :size => 10
-            %br
-            Zip
-        .input
-          .label
-            Country
-            %span.required required
-          = f.input :country, :label => false
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    .input
+      .label
+        Name
+        %span.required required
+      .label2 Your real name, as it appears in your id
+      .field-block
+        = f.text_field :first_name
+        %br
+        &nbsp;First
+      .field-block
+        = f.text_field :last_name
+        %br
+        &nbsp;Last
 
 
-        .input
-          .label
-            Portfolio address
-            %span.required required
-          .label2 We will link to it in our webpage
-          =f.text_field :portfolio_url, :size => 60
-
-        .input
-          .label
-            Twitter username
-            %span.optional optional
-          .label2 So we can follow you
-          = f.text_field :twitter
-
-
-        .input
-          .label
-            Paypal username
-            %span.required required
-          .label2 So we can pay you
-          = f.text_field :paypal_account
+    .input
+      .label
+        Artistic name
+        %span.optional optional
+      .label2 To sign your illustrations with other name
+      = f.text_field :artistic_name
 
 
 
-        .input
-          .label
-            Did you attend art school?
-            %span.optional optional
-          .label2
-            Tell us where, when and what degree.
-            %br
-            For example:
-            %i Saint Martins College, London UK, BA Fine Arts, 2009-2010
-          = f.text_field :art_school_name, :size => 60
+    .input
+      .label
+        Email
+        %span.required required
+      .label2 The same one where you got your invitation
+      = f.text_field :email
+
+
+    .input
+      .label
+        New password
+        %span.required (only if you want to change it)
+      .field-block
+        = f.password_field :password
+        %br
+        &nbsp;One time
+      .field-block
+        = f.password_field :password_confirmation
+        %br
+        &nbsp;And again
+
+    .input
+      .label
+        Birth date
+        %span.required required
+      .label2 You have to be over 18 years old
+      = f.input :birthdate, :start_year => Date.today.year - 100,
+                            :end_year => Date.today.year - 18,
+                            :order => [:month, :day, :year],
+                            :label => false
 
 
 
 
-        .input
-          = f.check_box :accepted_license_agreement, :disabled => true
-          I accept Pictorical's
-          = link_to "License Agreement", license_agreement_path
-          %span.required (required)
+    .input
+      .label
+        Your address
+        %span.required required
+      .address
+        = f.text_field :address_line_one, :size => 60
+      .address
+        = f.text_field :address_line_two, :size => 60
+      .field-block
 
-        .input
-          .label
-            Your current password
-          .label2
-            To confirm the changes
-          = f.password_field :current_password
+        = f.text_field :city, :size => 10
+        %br
+        City
+        %span.required required
+      .field-block
+        = f.text_field :state, :size => 10
+        %br
+        State
+      .field-block
+        = f.text_field :zip, :size => 10
+        %br
+        Zip
+    .input
+      .label
+        Country
+        %span.required required
+      = f.input :country, :label => false
 
-        = f.button :submit, :value => "Update"
+
+    .input
+      .label
+        Portfolio address
+        %span.required required
+      .label2 We will link to it in our webpage
+      =f.text_field :portfolio_url, :size => 60
+
+    .input
+      .label
+        Twitter username
+        %span.optional optional
+      .label2 So we can follow you
+      = f.text_field :twitter
+
+
+    .input
+      .label
+        Paypal username
+        %span.required required
+      .label2 So we can pay you
+      = f.text_field :paypal_account
+
+
+
+    .input
+      .label
+        Did you attend art school?
+        %span.optional optional
+      .label2
+        Tell us where, when and what degree.
+        %br
+        For example:
+        %i Saint Martins College, London UK, BA Fine Arts, 2009-2010
+      = f.text_field :art_school_name, :size => 60
+
+
+
+
+    .input
+      = f.check_box :accepted_license_agreement, :disabled => true
+      I accept Pictorical's
+      = link_to "License Agreement", license_agreement_path
+      %span.required (required)
+
+    .input
+      .label
+        Your current password
+      .label2
+        To confirm the changes
+      = f.password_field :current_password
+
+    = f.button :submit, :value => "Update"
 
 
 

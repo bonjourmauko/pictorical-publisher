@@ -58,7 +58,11 @@ class User < ActiveRecord::Base
 
   def name
 
-      self.artistic_name || "#{self.first_name} #{self.last_name}"
+      unless self.artistic_name.length > 0
+         "#{self.first_name} #{self.last_name}"
+      else
+        self.artistic_name
+      end
       
   end
 

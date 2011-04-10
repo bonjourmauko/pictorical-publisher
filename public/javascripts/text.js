@@ -21,7 +21,7 @@ function upload_link(type, position){
 		}
 	}
 	
-	str = '<div class="upload-link"><a href="/illustrations/new?type=' + type + '&position=' + position + '">Upload '+what+' here</a></div>';
+	str = '<div class="upload-link"><a href="/illustrations/new/' + type + '/' + position + '">Upload '+what+' here</a></div>';
 	
 	return str;
 	

@@ -51,6 +51,7 @@ PublisherPictoricalCom::Application.routes.draw do
   resources :books
   
   match "illustrations/uploaded", :to => "illustrations#uploaded", :as => :illustration_uploaded
+  match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
   
   resources :illustrations
 

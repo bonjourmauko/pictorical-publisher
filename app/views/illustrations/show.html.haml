@@ -1,4 +1,17 @@
+- title "Show illustration"
+
 - content_for :navbar do
+
+  -if notice || params["notice"]
+    #notice
+      = notice
+      = params["notice"]
+
+  -if alert || params["alert"]
+    #alert
+      = alert
+      = params["alert"]
+
   .section
     Illustration for
     .item
@@ -27,7 +40,9 @@
       - if @illustration.status == "not"
         .status.not.big There is a problem
         .item.half= @illustration.problems
-    
+  .section
+    Return to
+    = link_to "your book", edit_book_path(@illustration.book)
     
     
 - if @illustration.tipe == "cover"

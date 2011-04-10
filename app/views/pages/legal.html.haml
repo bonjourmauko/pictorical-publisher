@@ -1,8 +1,7 @@
 - title "Pictorical.com Legal"
 
-#static-canvas
-  #title
-    %h1 Legal Stuff
+- content_for :navbar do
+  %h1 Legal stuff
   .inner
     %p= link_to "License Agreement", license_agreement_path
     %p= link_to "Terms and Conditions", terms_and_conditions_path

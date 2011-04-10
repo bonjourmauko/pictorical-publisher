@@ -1,1 +1,39 @@
-= render "upload_form"
+- title "Upload illustration"
+
+
+- content_for :navbar do
+  .section
+
+    Upload a
+    %b
+      = "Story" if @type == "inline"
+      = "Cap" if @type == "cap"
+      = "Cover" if @type == "cover"
+      illustration
+    to your book
+    = link_to @active_book.title, edit_book_path(@active_book)
+  .section.yellowbg
+    = render "upload_form"
+
+  -if @type == "inline"
+    .section
+      File format:
+      %b 32 bit PNG with transparency
+    .section
+      .item.half Allowed sizes
+      = image_tag "size-inline.png"
+  -if @type == "cap"
+    .section
+      File format:
+      %b 32 bit PNG with transparency
+    .section
+      = image_tag "size-cap.png"   
+  -if @type == "cover"
+    .section
+      File format:
+      %b High quality JPEG
+    .section
+      = image_tag "size-cover.png" 
+
+#guidelines
+  = render :partial => "artwork_guidelines", :locals => {:toc => true}

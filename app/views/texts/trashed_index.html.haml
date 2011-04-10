@@ -1,6 +1,16 @@
 - title "Pictorical, you are reviewing the trash can. Why are you here, by the way?"
-#notice
-  = notice
+
+
+- content_for :navbar do
+  &nbsp;
+  - if notice 
+    #notice
+      = notice
+  - if alert
+    #alert
+      = alert
+
+
 #text-canvas
 
 

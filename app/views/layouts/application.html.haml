@@ -18,20 +18,15 @@
           - if user_signed_in?
             = "Hello " + current_user.first_name
             ·
-            = link_to "your info", edit_user_registration_path
+            - unless @active_book.nil?
+              = link_to "Your book", edit_book_path(@active_book)
+              ·
+            = link_to "Your info", edit_user_registration_path
             ·
-            = link_to("sign out",  destroy_user_session_path)
+            = link_to("Sign out",  destroy_user_session_path)
       .clear &nbsp;
       .grid_12
         #left_bar.grid_4.alpha
-          -# unless current_user.active_book.nil? || current_user.active_book.text.nil?
-            -#= "You are illustrating "
-            -#= link_to "#{current_user.active_book.title}", edit_book_path(current_user.active_book.id)
-          - if current_user.has_books_under_review?
-            We are reviewing your book
-            %b= "#{current_user.book_under_review.title}"
-          -if current_user && current_user.admin?
-            = #render "layouts/adminbar"
           = yield :navbar
         #main.grid_8.omega
           = yield

@@ -19,7 +19,7 @@
 /* line 15, ../../app/stylesheets/application.sass */
 .yellowbg {
   background: #ffeeaa;
-  padding: 3px;
+  padding: 5px;
 }
 
 /* line 19, ../../app/stylesheets/application.sass */
@@ -27,105 +27,117 @@
   margin: 0.5em 0;
 }
 
-/* line 22, ../../app/stylesheets/application.sass */
+/* line 21, ../../app/stylesheets/application.sass */
+.indented {
+  margin-left: 1em;
+}
+
+/* line 24, ../../app/stylesheets/application.sass */
 body {
   font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 25, ../../app/stylesheets/application.sass */
+/* line 27, ../../app/stylesheets/application.sass */
 a {
   color: #4362ce;
   text-decoration: none;
 }
-/* line 28, ../../app/stylesheets/application.sass */
+/* line 30, ../../app/stylesheets/application.sass */
 a:link, a:visited {
   color: #4362ce;
   text-decoration: none;
 }
-/* line 31, ../../app/stylesheets/application.sass */
+/* line 33, ../../app/stylesheets/application.sass */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 34, ../../app/stylesheets/application.sass */
+/* line 36, ../../app/stylesheets/application.sass */
 #notice, #alert {
   padding: 5px;
   color: white;
   margin-bottom: 1em;
 }
 
-/* line 39, ../../app/stylesheets/application.sass */
+/* line 41, ../../app/stylesheets/application.sass */
 #notice {
   background: #0a8b00;
 }
 
-/* line 42, ../../app/stylesheets/application.sass */
+/* line 44, ../../app/stylesheets/application.sass */
 #alert {
   background: #cb0802;
 }
 
-/* line 45, ../../app/stylesheets/application.sass */
+/* line 47, ../../app/stylesheets/application.sass */
 .section {
   margin-bottom: 1em;
 }
 
-/* line 48, ../../app/stylesheets/application.sass */
+/* line 50, ../../app/stylesheets/application.sass */
+.admin {
+  background: #eeeeee;
+  padding: 5px;
+}
+
+/* line 54, ../../app/stylesheets/application.sass */
 #userinfo, #title {
   padding: 10px 0;
 }
 
-/* line 51, ../../app/stylesheets/application.sass */
+/* line 57, ../../app/stylesheets/application.sass */
 #userinfo {
   text-align: right;
 }
 
-/* line 54, ../../app/stylesheets/application.sass */
+/* line 60, ../../app/stylesheets/application.sass */
 #title {
   padding: 10px 0;
 }
-/* line 56, ../../app/stylesheets/application.sass */
+/* line 62, ../../app/stylesheets/application.sass */
 #title h1 {
   font-size: 20px;
 }
 
-/* line 60, ../../app/stylesheets/application.sass */
+/* line 66, ../../app/stylesheets/application.sass */
 #left_bar h1, #left_bar h2 {
   margin-bottom: 0.5em;
   font-weight: normal;
 }
-/* line 63, ../../app/stylesheets/application.sass */
+/* line 69, ../../app/stylesheets/application.sass */
 #left_bar h1 {
   font-size: 20px;
 }
 
-/* line 66, ../../app/stylesheets/application.sass */
+/* line 72, ../../app/stylesheets/application.sass */
 .redbox {
   border: 2px solid #cb0802;
   padding: 5px;
   background: white;
+  margin-top: 1em;
 }
-/* line 70, ../../app/stylesheets/application.sass */
+/* line 77, ../../app/stylesheets/application.sass */
 .redbox h3 {
   color: #cb0802;
   font-size: 15px;
   margin-bottom: 0;
 }
 
-/* line 75, ../../app/stylesheets/application.sass */
+/* line 82, ../../app/stylesheets/application.sass */
 #container {
   padding: 20px;
 }
-/* line 77, ../../app/stylesheets/application.sass */
+/* line 84, ../../app/stylesheets/application.sass */
 #container.gray {
   background: #f4f4f4;
 }
 
-/* line 80, ../../app/stylesheets/application.sass */
+/* line 87, ../../app/stylesheets/application.sass */
 .inline, .cap, .cover {
   margin-bottom: 5px;
 }
 
-/* line 83, ../../app/stylesheets/application.sass */
+/* line 90, ../../app/stylesheets/application.sass */
 .status {
   font-size: 10px;
   text-transform: uppercase;
@@ -133,49 +145,51 @@ a:hover {
   display: inline-block;
   letter-spacing: 1px;
 }
-/* line 85, ../../app/stylesheets/application.sass */
+/* line 92, ../../app/stylesheets/application.sass */
 .status.big {
   font-size: 14px;
 }
-/* line 91, ../../app/stylesheets/application.sass */
+/* line 98, ../../app/stylesheets/application.sass */
 .status.review {
   background: #f9b900;
   color: black;
 }
-/* line 94, ../../app/stylesheets/application.sass */
+/* line 101, ../../app/stylesheets/application.sass */
 .status.ok {
   background: #0a8b00;
   color: white;
 }
-/* line 97, ../../app/stylesheets/application.sass */
+/* line 104, ../../app/stylesheets/application.sass */
 .status.not {
   background: #cb0802;
   color: white;
 }
 
-/* line 101, ../../app/stylesheets/application.sass */
+/* line 108, ../../app/stylesheets/application.sass */
 #footer {
   font-size: 12px;
   text-align: center;
   padding: 20px;
+  border-top: 1px solid #dddddd;
+  margin-top: 20px;
 }
 
-/* line 107, ../../app/stylesheets/application.sass */
+/* line 116, ../../app/stylesheets/application.sass */
 #story p, #story h1 {
   margin: 1em 0;
   font: 16px "Georgia", "Trebuchet MS", Verdana, sans-serif;
 }
-/* line 110, ../../app/stylesheets/application.sass */
+/* line 119, ../../app/stylesheets/application.sass */
 #story h1 {
   font-size: 24px;
   text-align: center;
 }
-/* line 113, ../../app/stylesheets/application.sass */
+/* line 122, ../../app/stylesheets/application.sass */
 #story .inline {
   width: 100%;
 }
 
-/* line 117, ../../app/stylesheets/application.sass */
+/* line 126, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad {
   width: 620px;
   height: 794px;
@@ -183,7 +197,7 @@ a:hover {
   font: 18px "Georgia", "Trebuchet MS", Verdana, sans-serif;
   margin-bottom: 30px;
 }
-/* line 123, ../../app/stylesheets/application.sass */
+/* line 132, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner {
   position: relative;
   top: 146px;
@@ -192,17 +206,17 @@ a:hover {
   height: 509px;
   overflow: hidden;
 }
-/* line 130, ../../app/stylesheets/application.sass */
+/* line 139, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner p {
   margin-bottom: 1em;
   text-align: justify;
 }
-/* line 134, ../../app/stylesheets/application.sass */
+/* line 143, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner img.inline {
   width: 100%;
   margin-bottom: 20px;
 }
-/* line 137, ../../app/stylesheets/application.sass */
+/* line 146, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner img.cap {
   width: 40%;
   float: left;
@@ -210,10 +224,86 @@ a:hover {
   margin-bottom: 10px;
 }
 
-/* line 143, ../../app/stylesheets/application.sass */
+/* line 152, ../../app/stylesheets/application.sass */
 .sampler-transparent {
   background-image: url("/images/transparent.png");
   width: 600px;
   min-height: 100px;
   margin: 0 auto;
+}
+
+/* line 159, ../../app/stylesheets/application.sass */
+#main h1 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+/* line 162, ../../app/stylesheets/application.sass */
+#main h2 {
+  font-size: 18px;
+  margin-bottom: 1em;
+}
+/* line 165, ../../app/stylesheets/application.sass */
+#main p {
+  margin-bottom: 1em;
+}
+
+/* line 169, ../../app/stylesheets/application.sass */
+#guidelines h2 {
+  margin-top: 2em;
+  border-top: 1px solid #dddddd;
+  padding-top: 1em;
+}
+
+/* line 175, ../../app/stylesheets/application.sass */
+#list h4 {
+  font-size: 18px;
+  margin: 1em 0;
+}
+/* line 178, ../../app/stylesheets/application.sass */
+#list .onetext {
+  margin-bottom: 1em;
+}
+
+/* line 183, ../../app/stylesheets/application.sass */
+#admin-bar .item {
+  margin-left: 1em;
+}
+
+/* line 187, ../../app/stylesheets/application.sass */
+#registration-canvas .input {
+  margin-bottom: 1em;
+}
+/* line 189, ../../app/stylesheets/application.sass */
+#registration-canvas .label {
+  font-weight: bold;
+}
+/* line 191, ../../app/stylesheets/application.sass */
+#registration-canvas .label .required {
+  color: #cb0802;
+}
+/* line 193, ../../app/stylesheets/application.sass */
+#registration-canvas .label .optional {
+  color: #0a8b00;
+}
+/* line 195, ../../app/stylesheets/application.sass */
+#registration-canvas .field-block {
+  display: inline-block;
+}
+
+/* line 198, ../../app/stylesheets/application.sass */
+#error_explanation {
+  margin-bottom: 1em;
+  border: 2px solid #cb0802;
+  padding: 10px;
+  background: #cb0802;
+  color: white;
+}
+/* line 204, ../../app/stylesheets/application.sass */
+#error_explanation h2 {
+  font-size: 13px;
+  display: none;
+}
+/* line 207, ../../app/stylesheets/application.sass */
+#error_explanation li {
+  margin-left: 1.5em;
 }

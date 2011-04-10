@@ -1,6 +1,14 @@
 - title "Pictorical : New text"
-#notice
-  = notice
+
+- content_for :navbar do
+  &nbsp;
+  - if notice 
+    #notice
+      = notice
+  - if alert
+    #alert
+      = alert
+      
 #admin-canvas
   %h1 New text
   = render 'form', :text => @text
