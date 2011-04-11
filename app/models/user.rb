@@ -57,12 +57,6 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
   
-  has_attached_file :face,
-                    :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :bucket => 'pictorical_publisher',
-                    :path => ":original_id/:style.:file_extension"
-
   def name
 
       unless self.artistic_name.length > 0

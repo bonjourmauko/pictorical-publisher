@@ -2,27 +2,7 @@
 
 - content_for :navbar do
   = render :partial => "shared/alerts_notices"
-  
-
-
-  = form_tag('http://api2.transloadit.com/assemblies', :multipart => true, :id => 'upload_illustration') do
-    = hidden_field_tag :params, @transloadit_params.to_json
-
-    %p
-      = file_field_tag :face
-    %p
-      = submit_tag "Upload illustration"
-
-  :javascript
-    var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    document.write(unescape("%3Cscript src='" + tlProtocol + "assets.transloadit.com/js/jquery.transloadit2.js' type='text/javascript'%3E%3C/script%3E"));
-  :javascript
-    $(document).ready(function() {
-      $('#upload_illustration').transloadit();
-    });
-  
-
-
+  &nbsp;
 
 #registration-canvas
 

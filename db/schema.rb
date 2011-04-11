@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411200606) do
+ActiveRecord::Schema.define(:version => 20110411013712) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -45,16 +45,16 @@ ActiveRecord::Schema.define(:version => 20110411200606) do
   create_table "illustrations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "book_id"
-    t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "book_id"
     t.string   "image_original_id"
     t.integer  "position"
     t.integer  "width"
     t.integer  "height"
     t.string   "image_file_extension"
+    t.string   "image_file_name"
     t.boolean  "deleted"
     t.string   "tipe"
     t.string   "status"
@@ -122,14 +122,6 @@ ActiveRecord::Schema.define(:version => 20110411200606) do
     t.string   "reset_password_token"
     t.datetime "last_illustration_mail_sent_at"
     t.datetime "last_book_no_illustration_reminder_at"
-    t.string   "face_file_name"
-    t.string   "face_content_type"
-    t.integer  "face_file_size"
-    t.datetime "face_updated_at"
-    t.string   "face_original_id"
-    t.string   "face_file_extension"
-    t.integer  "width"
-    t.integer  "height"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
