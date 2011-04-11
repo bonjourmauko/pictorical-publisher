@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411013712) do
+ActiveRecord::Schema.define(:version => 20110411194938) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -122,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20110411013712) do
     t.string   "reset_password_token"
     t.datetime "last_illustration_mail_sent_at"
     t.datetime "last_book_no_illustration_reminder_at"
+    t.string   "face_file_name"
+    t.string   "face_content_type"
+    t.integer  "face_file_size"
+    t.datetime "face_updated_at"
+    t.string   "face_original_id"
+    t.string   "face_file_extension"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
