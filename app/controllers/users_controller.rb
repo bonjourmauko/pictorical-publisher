@@ -8,7 +8,32 @@ class UsersController < ApplicationController
 
   def show
   end
+  
+  def edit
+    @transloadit_params = {
+       "auth" => { "key" => TRANSLOADIT[:auth_key] },
+       "template_id" => TRANSLOADIT[:template_id],
+       "redirect_url" => illustrations_url
+     }
+  end
 
+  def update
+    face = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
+    
+    if face[:ext].downcase == "jpeg"
+      face[:ext] = "jpg"
+    end
+    
+    @user.update_attributes(
+      :face_file_name        => face[:name], 
+      :face_content_type     => face[:mime], 
+      :face_file_size        => face[:size], 
+      :face_file_extension   => face[:ext].downcase,
+      :face_original_id      => face[:original_id],
+      :width                 => face[:meta]["width"],
+      :height                => face[:meta]["height"]
+    )
+  end
 
   def make_admin #releases the user from tutorial
     @user.admin = true
