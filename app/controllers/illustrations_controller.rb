@@ -31,6 +31,10 @@ class IllustrationsController < ApplicationController
     
     illustration = ActiveSupport::JSON.decode(params[:transloadit]).symbolize_keys[:uploads].first.symbolize_keys
     
+    if illustration[:ext].downcase == "jpeg"
+      illustration[:ext] = "jpg"
+    end
+    
     @illustration.update_attributes(
       :image_file_name        => illustration[:name], 
       :image_content_type     => illustration[:mime], 
