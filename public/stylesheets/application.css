@@ -334,3 +334,9 @@ a:hover {
 #simple p.smaller, #simple h1.smaller, #simple h2.smaller, #simple h3.smaller {
   font-size: 13px;
 }
+
+/* line 225, ../../app/stylesheets/application.sass */
+.less {
+  color: #999999;
+  font-size: 11px;
+}

@@ -13,6 +13,7 @@ class Book < ActiveRecord::Base
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
   scope       :sorted, order('created_at DESC')
+  scope       :active, where(:status => 'active')
   
   #accepts_nested_attributes_for :illustration
 

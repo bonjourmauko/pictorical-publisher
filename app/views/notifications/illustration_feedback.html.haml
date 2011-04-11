@@ -1,8 +1,18 @@
-Hi #{@illustration.user.first_name},
+%p
+  Hi #{@illustration.user.first_name},
 
-= link_to "Read the new feedback", "http://publisher.pictorical.com/" + edit_book_path(@illustration.book)
-for your illustrations for #{@illustration.book.title}
+%p
+  We have
+  = link_to "new feedback", "http://publisher.pictorical.com"
+  for your illustrations for #{@illustration.book.title}
 
-A hug,
+%p
+  You can read your book and upload your illustrations in
+  = link_to "http://publisher.pictorical.com", "http://publisher.pictorical.com"
 
-Pictorical Team
+
+%p
+  A hug,
+
+%p
+  Pictorical Team

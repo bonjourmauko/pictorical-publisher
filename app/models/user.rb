@@ -66,6 +66,9 @@ class User < ActiveRecord::Base
       end
       
   end
+  
+  
+
 
 
   def active_book

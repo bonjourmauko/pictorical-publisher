@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411003335) do
+ActiveRecord::Schema.define(:version => 20110411013712) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(:version => 20110411003335) do
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                         :default => "", :null => false
-    t.string   "encrypted_password",             :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                                 :default => "", :null => false
+    t.string   "email",                                                :default => "", :null => false
+    t.string   "encrypted_password",                    :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                                        :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20110411003335) do
     t.string   "art_school_when"
     t.string   "reset_password_token"
     t.datetime "last_illustration_mail_sent_at"
+    t.datetime "last_book_no_illustration_reminder_at"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true

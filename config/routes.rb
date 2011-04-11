@@ -57,6 +57,9 @@ PublisherPictoricalCom::Application.routes.draw do
 
   match "cant", :to => "dashboard#cant", :as => :cant
 
+
+  match "reminders/book_no_illustration", :to => "reminders#book_no_illustration", :as => :book_no_illustration
+
   root :to => "dashboard#start"
 
   # The priority is based upon order of creation:

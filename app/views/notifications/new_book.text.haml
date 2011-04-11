@@ -4,10 +4,14 @@ You are illustrating #{@book.title}
 
 What's next?
 
+You can read your book and upload your illustrations in
+
+= link_to "http://publisher.pictorical.com", "http://publisher.pictorical.com"
+
 You can now start illustrating this book. Please remember to follow our Artwork Guidelines carefully, as they are very important for keeping the quality of our books awesome.
   
 = link_to "Artwork Guidelines", "http://publisher.pictorical.com#{artwork_guidelines_path}"
-    
+
 Please upload your illustrations often, then we can give you feedback on them.
 
 We will keep the book #{@book.title} reserved for you for two weeks. If you haven’t sent your first illustration by #{@expiration} then we will make the book available for another artist to illustrate it.

@@ -104,4 +104,17 @@ class Notifications < ActionMailer::Base
   end
 
 
+  def reminder_book_no_illustration(book)
+    @book = book
+    @user = book.user
+    @expiration = (book.created_at.advance :weeks => 2).strftime("%e %B")
+    @subject = "We are waiting for your first illustration"
+    
+    mail(:to => @user[:email], :subject => @subject) do |format|
+      format.html
+    end
+    
+  end
+
+
 end

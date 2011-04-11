@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     else
       can [:index, :show], Text
-      
+
       can [:new, :create], Illustration
       can [:show, :destroy], Illustration do |illustration|
         illustration.try(:user) == current_user
