@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def show
   end
 
-
   def make_admin #releases the user from tutorial
     @user.admin = true
     if @user.save

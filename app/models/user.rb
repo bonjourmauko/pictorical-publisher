@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   before_create :redeem_invitation
 
   after_create :send_welcome_email
-
+  
   def name
 
       unless self.artistic_name.length > 0
