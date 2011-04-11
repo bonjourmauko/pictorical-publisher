@@ -3,10 +3,7 @@
 - content_for :navbar do
   = render :partial => "shared/alerts_notices"
   
-  - unless resource.face.nil?
-    = image_tag resource.face.url[:i180w]
-  - else
-    No face
+
 
   = form_tag('http://api2.transloadit.com/assemblies', :multipart => true, :id => 'upload_illustration') do
     = hidden_field_tag :params, @transloadit_params.to_json
