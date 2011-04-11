@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411194938) do
+ActiveRecord::Schema.define(:version => 20110411200606) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20110411194938) do
     t.datetime "face_updated_at"
     t.string   "face_original_id"
     t.string   "face_file_extension"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true
