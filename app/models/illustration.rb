@@ -6,7 +6,7 @@ class Illustration < ActiveRecord::Base
   has_attached_file :image,
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :bucket => 'publisher_test',
+                    :bucket => 'pictorical_publisher',
                     :path => ":original_id/:style.:file_extension"
   
 end
