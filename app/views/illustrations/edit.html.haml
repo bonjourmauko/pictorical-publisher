@@ -1,0 +1,41 @@
+- title "Edit illustration"
+
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+
+
+  .section
+    .item
+      %h1
+        = link_to edit_book_path(@illustration.book) do
+          #{@illustration.book.title} [#{@illustration.book.id}]
+  .section
+    By #{@illustration.book.user.name} [#{@illustration.book.user.id}]
+  .section
+    Uploaded #{time_ago_in_words(@illustration.created_at)} ago
+    .item
+      = link_to "Change or delete this illustration", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
+  .section
+    .item
+      Size
+      %b #{@illustration.width} x #{@illustration.height}
+    .item
+      Format
+      %b #{@illustration.image.content_type}
+    .item
+      Type
+      %b #{@illustration.tipe}
+    .item
+      Deleted?
+      %b #{@illustration.deleted}
+    
+  = render 'change_status_form', :illustration => @illustration
+  
+  = link_to "Illustrations for review", illustrations_path + "/?status=review"
+    
+- if @illustration.tipe == "cover"
+
+  = image_tag @illustration.image.url(:i600w)  
+  
+- else  
+  = render :partial => "sampler_transparent" 

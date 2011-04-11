@@ -1,0 +1,10 @@
+- cover = @book.illustrations.active.find_by_tipe('cover')
+- if cover.nil?
+  .section
+    .upload-link
+      = link_to "Upload cover", "/illustrations/new/cover/0"
+- else
+  .section
+    %h3 Cover illustration
+  .section
+    = render :partial => "show_illustration", :locals => {:illustration => cover, :small => true, :editable => true}

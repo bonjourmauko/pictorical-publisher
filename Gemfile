@@ -37,6 +37,8 @@ gem "hpricot"
 gem "ruby_parser"
 gem 'hoptoad_notifier'
 gem 'heroku'
+gem 'paperclip', '2.3.4'
+gem 'aws-s3', '0.6.2'
 #gem 'rails3-jquery-autocomplete'
 
 gem "haml"

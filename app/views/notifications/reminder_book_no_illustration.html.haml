@@ -1,0 +1,23 @@
+%p
+  Hi #{@user.first_name},
+  
+%p
+  Just a friendly reminder that we are waiting for your first illustration for the book 
+  %b #{@book.title}.
+  
+%p
+  We will reserve your book until #{@expiration}. If we haven't received your first illustration by then, we will make your book available to other artists.
+  
+%p
+  You can read your book and upload your illustrations in
+  = link_to "http://publisher.pictorical.com", "http://publisher.pictorical.com"
+  
+%p
+  If you have any questions, you can reach us at
+  = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
+  
+%p
+  Kindest regards,
+  
+%p
+  The Pictorical Team

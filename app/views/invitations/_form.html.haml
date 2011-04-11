@@ -10,16 +10,17 @@
   %p
     .title= f.label :first_name
     .field= f.text_field :first_name
-  %p
-    .title= f.label :last_name
-    .field= f.text_field :last_name
+  - if false
+    %p
+      .title= f.label :last_name
+      .field= f.text_field :last_name
   %p
     .title= f.label :email
     .field= f.text_field :email
+    -unless @reject
+      %p
+        .title= f.label :specially
+        .field= f.text_field :specially, :size => 100
   %p
-    .title= f.label :specially
-    .field= f.text_field :specially, :size => 100
-  %p
-    = hidden_field(:session, :reject, :value => @reject)
     .actions
       = f.submit

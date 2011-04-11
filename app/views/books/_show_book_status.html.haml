@@ -1,0 +1,27 @@
+.section
+  - if @book.status == "review"
+    .item.half
+      .status.yellow.big
+        This books is pending review
+    .item.half
+      since #{time_ago_in_words(@book.updated_at)} ago
+  - if @book.status == "active"
+    .item.half
+      .status.green.big
+        Work in Progress
+    .item.half
+      since #{time_ago_in_words(@book.created_at)} ago
+    .section
+      =link_to "Edit this book", edit_book_path(@book)
+  - if @book.status == "published"
+    .item.half
+      .status.green.big
+        This book is published
+      .item.half
+        since #{time_ago_in_words(@book.updated_at)} ago
+  - if @book.status == "destroyed"
+    .item.half
+      .status.red.big
+        This book is deleted
+      .item.half
+        since #{time_ago_in_words(@book.updated_at)} ago

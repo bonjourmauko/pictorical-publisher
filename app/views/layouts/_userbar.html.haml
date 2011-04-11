@@ -1,0 +1,11 @@
+- if user_signed_in?
+  = "Hello " + current_user.first_name
+  ·
+  - unless @active_book.nil?
+    = link_to "Your book", edit_book_path(@active_book)
+    ·
+  = link_to "Your info", edit_user_registration_path
+  ·
+  = link_to "Sign out",  destroy_user_session_path
+  ·
+  = link_to "Help", help_path, :class => "red"

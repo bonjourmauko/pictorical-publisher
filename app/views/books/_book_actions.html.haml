@@ -1,0 +1,9 @@
+.section
+  - unless @book.words < 4000
+    When you are ready
+    %b= link_to "Publish this book", {:action => "review"},  :confirm => "Are you ready to publish this book?"
+    .item
+      or
+      = link_to "choose a new story", texts_path
+  - else
+    = link_to "Choose a new story", texts_path

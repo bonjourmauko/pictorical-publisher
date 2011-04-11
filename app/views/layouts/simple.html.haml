@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    = render :partial => "layouts/head"
+  %body
+    .container_12
+      #header.grid_12
+        = render :partial => "layouts/header"
+      .clear &nbsp;
+      .grid_12
+        #simple
+          = yield
+      .clear &nbsp
+      #footer.grid_12
+        = render :partial => "layouts/footer"

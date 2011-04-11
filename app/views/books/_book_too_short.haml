@@ -1,0 +1,6 @@
+- if @book.words < 4000
+  .section.redbox
+    %h3 This book is too short (#{@book.words} words)
+    Add one or two more stories by the same author to this book to reach 4000 words.
+    .item
+      = link_to "Add a story to my book", {:controller => "texts", :action => "index"}

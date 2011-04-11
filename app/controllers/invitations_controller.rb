@@ -67,6 +67,7 @@ class InvitationsController < ApplicationController
   
   def reject
     session[:reject] = params[:email]
+    @reject = true
     @invitation = Invitation.new(:email => params[:email], :first_name => params[:name])
   end
   

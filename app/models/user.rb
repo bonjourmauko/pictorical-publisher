@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many          :books
+  has_many          :illustrations, :through => :books
   scope             :sorted, order('created_at DESC')
 
   devise            :database_authenticatable,
@@ -57,8 +58,17 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   def name
-    "#{self.first_name} #{self.last_name}"
+
+      unless self.artistic_name.length > 0
+         "#{self.first_name} #{self.last_name}"
+      else
+        self.artistic_name
+      end
+      
   end
+  
+  
+
 
 
   def active_book
@@ -86,7 +96,6 @@ class User < ActiveRecord::Base
       self.admin = false
     end
 
-    self.tutorial_mode ||= true
   end
 
   def is_admin
