@@ -67,7 +67,7 @@ class IllustrationsController < ApplicationController
   
   def update
     @illustration = Illustration.find(params[:id])
-    if @illustration.update_attributes(params[:illustration])      
+    if @illustration.update_attributes(params[:illustration])
       render :action => "edit", :notice => 'Illustration was successfully updated.'
     else
       render :action => "edit", :notice => 'Illustration was not updated'
