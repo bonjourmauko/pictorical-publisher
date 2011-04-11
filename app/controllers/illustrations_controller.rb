@@ -71,11 +71,8 @@ class IllustrationsController < ApplicationController
   
   def update
     @illustration = Illustration.find(params[:id])
-    if @illustration.update_attributes(params[:illustration])
-      render :action => "edit", :notice => 'Illustration was successfully updated.'
-      
-      # Sends the illustration feedback email once every 6 hours
-      
+    if @illustration.update_attributes(params[:illustration])     
+      # Sends the illustration feedback email once every 6 hours    
       user = @illustration.user
       last = user.last_illustration_mail_sent_at || 0
             
@@ -86,7 +83,10 @@ class IllustrationsController < ApplicationController
           user.last_illustration_mail_sent_at = Time.now
           user.save
         end
-      end 
+      end
+      
+      redirect_to illustrations_path + "?status=review", :notice => 'Illustration was successfully updated.'
+      
     else
       render :action => "edit", :notice => 'Illustration was not updated'
     end
