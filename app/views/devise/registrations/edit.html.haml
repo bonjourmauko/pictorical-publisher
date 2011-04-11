@@ -1,15 +1,7 @@
 - title "Edit your info"
 
 - content_for :navbar do
-  -if notice || params["notice"]
-    #notice
-      = notice
-      = params["notice"]
-
-  -if alert || params["alert"]
-    #alert
-      = alert
-      = params["alert"]
+  = render :partial => "shared/alerts_notices"
   &nbsp;
 
 

@@ -62,13 +62,7 @@ class Notifications < ActionMailer::Base
     end
   end
 
-  def end_tutorial(user)
-    @user = user
-    @subject = "You can keep working on #{@user.active_book.title}"
-    mail(:to => @user[:email], :subject => @subject) do |format|
-      format.html
-    end
-  end
+
 
   def new_user_admin(user)
 
@@ -96,8 +90,18 @@ class Notifications < ActionMailer::Base
 
   end
 
+  def illustration_feedback(illustration)
+    
+    @illustration = illustration
+    @user = illustration.user
+    
+    @subject = "New feedback for your illustrations"
 
+    mail(:to => @user[:email], :subject => @subject) do |format|
+      format.html
+    end
 
+  end
 
 
 end

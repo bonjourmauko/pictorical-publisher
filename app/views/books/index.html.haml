@@ -1,27 +1,19 @@
 - title "Books list"
 
 - content_for :navbar do
-  -if notice || params["notice"]
-    #notice
-      = notice
-      = params["notice"]
 
-  -if alert || params["alert"]
-    #alert
-      = alert
-      = params["alert"]
-  
+  = render :partial => "shared/alerts_notices"
   = render :partial => "layouts/adminbar"
 
 #admin-canvas
   - @books.each do |book|
     %p
-      = link_to "#{book.id}", book
+      = link_to "#{book.id}", edit_book_path(book)
       ·
-      = link_to "#{book.title}", book unless book.text.nil?
+      = link_to "#{book.title}", edit_book_path(book) unless book.text.nil?
       ·
       by
       = link_to "#{book.user_first_name} #{book.user_last_name}", book.user unless book.user.nil?
-
+      ·
       = time_ago_in_words(book.created_at)
       ago

@@ -10,32 +10,20 @@
 %p
   %b What's next?
 
-- if @book.user_tutorial_mode
+%p
+  You can now start illustrating this book. Please remember to follow our
+  = link_to "Artwork Guidelines", "http://publisher.pictorical.com#{artwork_guidelines_path}"
+  carefully, as they are very important for keeping the quality of our books awesome.
+  
+%p
+  Please upload your illustrations often, then we can give you feedback on them.
 
-  %p As this is your first illustrated book with Pictorical, we want to teach you how to make awesome books with us.
-
-  %p
-    That’s why we are asking you initially to do only one illustration for
-    %b= "#{@book.title}"
-    , using our
-    = link_to "Artwork Guidelines", "http://publisher.pictorical.com#{artwork_guidelines_path}"
-    We will then check that everything’s fine, and then you can continue illustrating it.
-
-  %p
-    We will keep the book
-    %b= @book.title
-    reserved for you for two weeks. If you haven’t sent your first illustration by
-    = @expiration
-    then we will make the book available for another artist to illustrate it.
-
-- else
-
-  %p
-    You can now start illustrating this story. Please remember to follow our
-    = link_to "Artwork Guidelines", "http://publisher.pictorical.com#{artwork_guidelines_path}"
-    carefully, as they are very important for keeping the quality of our books awesome.
-
-  %p You can start illustrating the story right now. Please keep us updated on your work. We will send you friendly reminders each week or so, just to ask how you’re doing and see if you have any questions.
+%p
+  We will keep the book
+  %b= @book.title
+  reserved for you for two weeks. If you haven’t sent your first illustration by
+  = @expiration
+  then we will make the book available for another artist to illustrate it.
 
 %p
   Feel free to contact us at

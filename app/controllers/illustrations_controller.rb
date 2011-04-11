@@ -49,7 +49,7 @@ class IllustrationsController < ApplicationController
     if @illustration.save
       redirect_to @illustration, :notice => 'Success! Your image has been uploaded'
     else
-      render new_illustration_path, :alert => 'Error uploading!'
+      render new_illustration_path, :alert => 'Error uploading. Please try again in one hour. If you keep having a problem, write us at help@pictorical.com'
     end
   end
   
@@ -67,7 +67,7 @@ class IllustrationsController < ApplicationController
   
   def update
     @illustration = Illustration.find(params[:id])
-    if @illustration.update_attributes(params[:illustration])
+    if @illustration.update_attributes(params[:illustration])      
       render :action => "edit", :notice => 'Illustration was successfully updated.'
     else
       render :action => "edit", :notice => 'Illustration was not updated'

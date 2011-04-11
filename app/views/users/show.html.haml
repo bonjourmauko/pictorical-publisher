@@ -1,27 +1,19 @@
-#notice
-  = notice
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
 #admin-canvas
 
   %h1= "User #{@user.first_name} #{@user.last_name}"
 
-  - if @user.tutorial_mode?
-    %p
-      = "User in tutorial mode"
-      = link_to "release from tutorial", :action => "mature"
-  - else
-    %p
-      = "User not in tutorial mode"
-      = link_to "back to tutorial", :action => "demature"
-
   - if @user.admin?
     %p
       = "User is an admin"
-      = link_to "downgrade", :action => "unmake_admin"
+      = link_to "make artist", :action => "unmake_admin"
   - else
     %p
       = "User is an artist"
-      = link_to "upgrade", :action => "make_admin"
+      = link_to "make admin", :action => "make_admin"
     %hr
     %p
       = "First name:"

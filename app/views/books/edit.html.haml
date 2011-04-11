@@ -4,122 +4,20 @@
 
 - content_for :navbar do
   
-  -if notice || params["notice"]
-    #notice
-      = notice
-      = params["notice"]
-
-  -if alert || params["alert"]
-    #alert
-      = alert
-      = params["alert"]
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "book_info"
+  = render :partial => "book_stats"
+  = render :partial => "book_admin"
+  = render :partial => "follow_artwork_guidelines"
+  = render :partial => "book_too_short"
+  = render :partial => "book_actions"
+  = render :partial => "list_texts"
+  = render :partial => "upload_or_show_cover"
     
-  %h1= @book.title
-  
-  
-  .section
-    .item
-      Written by
-      %b #{@book.author.name} #{@book.author.last_name}
-    .item
-      Illustrated by
-      %b #{@book.user.name}
-  
-  
-  .section
-    .item
-      This book has 
-      %b #{@book.words} words
-    .item
-      We recommend 
-      %b #{@book.illustrations_lower}—#{@book.illustrations_upper} illustrations
-    .item
-      You have uploaded 
-      %b #{@book.illustrations.active.count} illustrations
-  .section
-    Please follow our
-    %b= link_to "Artwork Guidelines", artwork_guidelines_path
-    
-
-  - if @book.words < 4000
-    .section.redbox
-      %h3 This book is too short (#{@book.words} words)
-      Add one or two more stories by the same author to this book to reach 4000 words.
-      .item
-        = link_to "Add a story to my book", {:controller => "texts", :action => "index"}
-  
-  .section
-    - unless @book.words < 4000
-      When you are ready
-      %b= link_to "Publish this book", {:action => "review"},  :confirm => "Are you ready to publish this book?"
-      .item
-        or
-        = link_to "choose a new story", texts_path
-    - else
-      = link_to "Choose a new story", texts_path
-  
-  
-  - if @book.texts.count > 1
-    .section
-      Stories in this book:
-      - @book.texts.each do |text|
-        .item
-          = text.title
-          - unless @book.principal == text
-            = link_to "x", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "red", :confirm => "Are you sure you want to remove this story from your book?"
-  
-  - cover = @book.illustrations.active.find_by_tipe('cover')
-  - if cover.nil?
-    .section
-      .upload-link
-        = link_to "Upload cover", "/illustrations/new/cover/0"
-  - else
-    .section
-      %h3 Cover illustration
-    .section
-      = render :partial => "show_cover", :locals => {:cover => cover}
-
-
-  - unless @book.illustrations.active.find_by_tipe('cap').nil?
-    %h3.half Capital illustrations
-
-    - @book.illustrations.active.find_all_by_tipe('cap', :order => "position ASC").each do |illustration|
-      .section
-        .item.cap
-          = image_tag illustration.image.url(:i180w)
-        .item
-          = render :partial => "illustration_status", :locals => {:illustration => illustration}
-          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-          - if current_user && current_user.admin?
-            = link_to "Review", edit_illustration_path(illustration), :class => "red"
-        - if illustration.status == "not"
-          .redbox.problems
-            %pre= illustration.problems
-       
-  - unless @book.illustrations.active.find_by_tipe('inline').nil?
-    %h3.half Story illustrations
-    - @book.illustrations.active.find_all_by_tipe('inline', :order => "position ASC").each do |illustration|
-      .section
-        .item.inline
-          = image_tag illustration.image.url(:i180w)
-        .item
-          = render :partial => "illustration_status", :locals => {:illustration => illustration}
-          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-          - if current_user && current_user.admin?
-            = link_to "Review", edit_illustration_path(illustration), :class => "red"
-        - if illustration.status == "not"
-          .redbox.problems
-            %pre= illustration.problems
-
-
+  = render :partial => "list_illustrations", :locals => {:type => "cap"}
+  = render :partial => "list_illustrations", :locals => {:type => "inline"}
 
 #container.gray
-
   #story
     = @book.content.html_safe
-    
-    - @book.illustrations.active.each do |illustration|
-      - if illustration.tipe == "inline"
-        = render :partial => "show_inline_illustration", :locals => { :inline => illustration }
-      - if illustration.tipe == "cap"
-        = render :partial => "show_cap", :locals => { :cap => illustration }
+    = render :partial => "illustrations_for_placement", :locals => {:editable => true}

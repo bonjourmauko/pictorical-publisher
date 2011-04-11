@@ -61,6 +61,12 @@ a
   padding: 10px 0
   h1
     font-size:  20px
+    a
+      &:link, &:visited
+        color: black
+      &:hover
+        color: red
+        text-decoration: none
     
 #left_bar
   h1, h2
@@ -70,10 +76,10 @@ a
     font-size:  20px
 
 .redbox
-  border: 2px solid $red
+  border: 2px solid #EEC4C5
   padding: 5px
-  background: white
-  margin-top: 1em
+  background: #FAEBEB
+  margin-top: 0.5em
   h3
     color: $red
     font-size: 15px
@@ -95,13 +101,13 @@ a
   padding: 2px
   display: inline-block
   letter-spacing: 1px
-  &.review
+  &.review, &.yellow
     background: #F9B900
     color: black
-  &.ok
+  &.ok, &.green
     background: $green
     color: white
-  &.not
+  &.not, &.red
     background: $red
     color: white
 
@@ -205,4 +211,14 @@ a
     display: none
   li
     margin-left: 1.5em
-    
+
+#simple
+  font-size: 15px
+  width: 60%
+  padding:  10px
+  border: 5px solid #EEE
+  margin:  20px auto
+  p, h1, h2, h3
+    margin-bottom: 1em
+    &.smaller
+      font-size:  13px

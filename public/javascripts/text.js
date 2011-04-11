@@ -1,14 +1,3 @@
-function pad(number, length) {
-
-    var str = '' + number;
-    while (str.length < length) {
-        str = '0' + str;
-    }
-
-    return str;
-
-}
-
 function upload_link(type, position){
 	
 	if(type == "cap") { var what = "capital" }

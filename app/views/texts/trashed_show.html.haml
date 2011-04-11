@@ -1,14 +1,8 @@
 - title "Pictorical, trashed #{@text[:title]} by #{@text[:author]}"
 
 - content_for :navbar do
-  &nbsp;
-  - if notice 
-    #notice
-      = notice
-  - if alert
-    #alert
-      = alert
-
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
 #text-canvas
 

@@ -2,15 +2,9 @@
 
 
 - content_for :navbar do
-  - if notice 
-    #notice
-      = notice
-  - if alert
-    #alert
-      = alert
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
-  - if current_user.admin?
-    = render "layouts/adminbar"
 
 #list
 

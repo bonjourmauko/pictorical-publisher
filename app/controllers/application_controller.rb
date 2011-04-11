@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_active_book
 
   rescue_from CanCan::AccessDenied do |e|
-    redirect_to texts_path, :notice => "This is a nice message explaining that you can't access the page you were trying to reach"
+    render "dashboard/cant", :notice => "Sorry you can't access that page.", :layout => "simple"
   end
   
   private

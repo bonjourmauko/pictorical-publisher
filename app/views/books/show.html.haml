@@ -1,129 +1,19 @@
 - title "Pictorical : Edit your book"
 
-- javascripts "text"
+- javascripts "text-noeditable"
 
 - content_for :navbar do
-  
-  -if notice || params["notice"]
-    #notice
-      = notice
-      = params["notice"]
 
-  -if alert || params["alert"]
-    #alert
-      = alert
-      = params["alert"]
-    
-  %h1= @book.title
-  
-  
-  .section
-    %h3
-      Written by #{@book.author.name} #{@book.author.last_name}
-    %h3
-      Illustrated by #{@book.user.name}
-  
-  
-  .section
-    .item
-      This book has #{@book.words} words
-    .item
-      We recommend #{@book.illustrations_lower}—#{@book.illustrations_upper} illustrations
-    .item
-      You have uploaded #{@book.illustrations.active.count} illustrations
-      
-  - if @book.words < 4000
-    .section.redbox
-      %h3 This book is too short (#{@book.words} words)
-      Add one or two more stories by the same author to this book to reach 4000 words.
-      .item
-        = link_to "Add a story to my book", {:controller => "texts", :action => "index"}
-  
-  
-  .section.admin
-    status:
-    %b #{@book.status}
-    = link_to "active", {:action => "revise"}
-    = link_to "publish", {:action => "publish"}, :confirm => "Are you sure? Is the book published in the iBookstore? Is the artist/book/author page in pictorical.com set up?"
-    = link_to "delete", {:action => "destroy"}
-  
-  .section.admin
-    #multitext
-      Principal text:
-      ="#{@book.principal.title} [#{@book.principal.id}]"
-      .item.half
-        = form_tag("/books/#{@book.id}/add_text", :method => :get) do
-          %b Add text
-          = text_field_tag 'text_id'
-          = submit_tag 'add'
-    
-  
-  - if @book.texts.count > 1
-    .section
-      Stories in this book:
-      - @book.texts.each do |text|
-        .item
-          = text.title
-          - unless @book.principal == text
-            = link_to "x", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "red", :confirm => "Are you sure you want to remove this story from your book?"
-  
-  .section
-    %h3 Cover illustration
-  .section
-    - cover = @book.illustrations.active.find_by_tipe('cover')
-    - if cover.nil?
-      .upload-link
-        = link_to "Upload cover", "/illustrations/new?type=cover"
-    - else
-      = render :partial => "show_cover", :locals => {:cover => cover}
-
-  .section
-    %h3 Capital illustrations
-  - unless @book.illustrations.active.find_by_tipe('cap').nil?
-    - @book.illustrations.active.find_all_by_tipe('cap', :order => "position ASC").each do |illustration|
-      .section
-        .item.cap
-          = image_tag illustration.image.url(:i180w)
-        .item
-          = render :partial => "illustration_status", :locals => {:illustration => illustration}
-          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-          - if current_user && current_user.admin?
-            = link_to "Review", edit_illustration_path(illustration), :class => "red"
-        - if illustration.status == "not"
-          .redbox.problems
-            %pre= illustration.problems
-       
-
-  .section
-    %h3 Story illustrations
-  - unless @book.illustrations.active.find_by_tipe('inline').nil?
-    - @book.illustrations.active.find_all_by_tipe('inline', :order => "position ASC").each do |illustration|
-      .section
-        .item.inline
-          = image_tag illustration.image.url(:i180w)
-        .item
-          = render :partial => "illustration_status", :locals => {:illustration => illustration}
-          = link_to "change or delete", illustration, :method => :delete, :confirm => "Are you sure?"
-          - if current_user && current_user.admin?
-            = link_to "Review", edit_illustration_path(illustration), :class => "red"
-        - if illustration.status == "not"
-          .redbox.problems
-            %pre= illustration.problems
-
-
-
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "book_info"
+  = render :partial => "book_stats"
+  = render :partial => "show_book_status"
+  = render :partial => "show_cover"
+ 
 #container.gray
-
   #story
     = @book.content.html_safe
-    
-    - @book.illustrations.active.each do |illustration|
-      - if illustration.tipe == "inline"
-        = render :partial => "show_inline_illustration", :locals => { :inline => illustration }
-      - if illustration.tipe == "cap"
-        = render :partial => "show_cap", :locals => { :cap => illustration }
-
-
+    = render :partial => "illustrations_for_placement", :locals => {:editable => false}
 
 
 

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many          :books
+  has_many          :illustrations, :through => :books
   scope             :sorted, order('created_at DESC')
 
   devise            :database_authenticatable,
@@ -92,7 +93,6 @@ class User < ActiveRecord::Base
       self.admin = false
     end
 
-    self.tutorial_mode ||= true
   end
 
   def is_admin

@@ -1,6 +1,9 @@
 - title "Edit illustration"
 
 - content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+
+
   .section
     .item
       %h1
@@ -35,6 +38,4 @@
   = image_tag @illustration.image.url(:i600w)  
   
 - else  
-
-  .sampler-transparent
-    = image_tag @illustration.image.url(:i600w)
+  = render :partial => "sampler_transparent" 

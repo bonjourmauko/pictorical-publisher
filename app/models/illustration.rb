@@ -1,5 +1,6 @@
 class Illustration < ActiveRecord::Base
   belongs_to  :book
+  has_one     :user, :through => :book
   scope       :active, where(:deleted => false)
   
   has_attached_file :image,

@@ -55,7 +55,9 @@ PublisherPictoricalCom::Application.routes.draw do
   
   resources :illustrations
 
-  root :to => "dashboard#welcome"
+  match "cant", :to => "dashboard#cant", :as => :cant
+
+  root :to => "dashboard#start"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

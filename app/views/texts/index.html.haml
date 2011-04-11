@@ -1,16 +1,8 @@
 - title "Pictorical : Choose a story"
 
 - content_for :navbar do
-  - if notice 
-    #notice
-      = notice
-  - if alert
-    #alert
-      = alert
-
-  - if current_user.admin?
-    = render "layouts/adminbar"
-      
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
   .section
     - @authors.each do |author|
