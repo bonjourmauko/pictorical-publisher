@@ -9,7 +9,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "/website-disclaimer", :to => "pages#website_disclaimer", :as => :website_disclaimer, :via => :get
   match "/copyright-notice", :to => "pages#copyright_notice", :as => :copyright_notice, :via => :get
   match "/legal", :to => "pages#legal", :as => :legal, :via => :get
-
+  match "/help", :to => "pages#help", :as => :help, :via => :get
 
   devise_for :users
 

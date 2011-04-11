@@ -9,8 +9,12 @@
 
   - if params[:status] == "review" || params[:status] == "ok" || params[:status] == "not"
     - @set = @illustrations.find_all_by_status(params[:status], :order => "id DESC")
+    %h1
+      Illustrations with status #{params[:status]}
   - else
     - @set = @illustrations.order("id DESC")
+    %h1
+      All active illustrations 
 
   - @set.each do |illustration|
     - unless illustration.book.nil?
