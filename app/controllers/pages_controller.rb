@@ -22,4 +22,8 @@ class PagesController < ApplicationController
   def legal
   end
 
+  def help
+    render "help", :layout => "simple"
+  end
+
 end

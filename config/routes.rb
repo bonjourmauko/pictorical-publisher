@@ -9,7 +9,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "/website-disclaimer", :to => "pages#website_disclaimer", :as => :website_disclaimer, :via => :get
   match "/copyright-notice", :to => "pages#copyright_notice", :as => :copyright_notice, :via => :get
   match "/legal", :to => "pages#legal", :as => :legal, :via => :get
-
+  match "/help", :to => "pages#help", :as => :help, :via => :get
 
   devise_for :users
 
@@ -49,8 +49,18 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/remove_text", :to => "books#remove_text"
 
   resources :books
+  
+  match "illustrations/uploaded", :to => "illustrations#uploaded", :as => :illustration_uploaded
+  match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
+  
+  resources :illustrations
 
-  root :to => "dashboard#welcome"
+  match "cant", :to => "dashboard#cant", :as => :cant
+
+
+  match "reminders/book_no_illustration", :to => "reminders#book_no_illustration", :as => :book_no_illustration
+
+  root :to => "dashboard#start"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

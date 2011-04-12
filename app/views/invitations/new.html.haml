@@ -1,7 +1,7 @@
-#notice
-  = notice
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
 #admin-canvas
   %h1 New invitation
   = render 'form', :invitation => @invitation, :reject => @reject
-  .admin
-    = link_to "All", :action => "index"

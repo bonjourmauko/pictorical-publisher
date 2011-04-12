@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-
-  has_many :collections
+  
+  has_many  :illustrations
+  has_many  :collections
   has_many  :texts, :through => :collections
 
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
@@ -12,6 +13,9 @@ class Book < ActiveRecord::Base
   scope       :not_deleted, where(:status => ['active','review','published'])
   scope       :deleted, where(:status => 'destroyed')
   scope       :sorted, order('created_at DESC')
+  scope       :active, where(:status => 'active')
+  
+  #accepts_nested_attributes_for :illustration
 
   after_initialize :status?
 
@@ -40,16 +44,12 @@ class Book < ActiveRecord::Base
 
   def content
 
-    if self.texts.count == 1
-      contents = self.principal.content
-    else
       contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
       self.texts.each do |text|
         unless text == principal
           contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
         end
       end
-    end
 
     return contents
 

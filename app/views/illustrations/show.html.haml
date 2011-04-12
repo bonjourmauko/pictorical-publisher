@@ -1,0 +1,52 @@
+- title "Show illustration"
+
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  
+
+  .section
+    Illustration for
+    .item
+      %h1= link_to @illustration.book.title, edit_book_path(@illustration.book)
+      
+  .section
+    By #{@illustration.book.user.name}
+    
+  .section
+    Uploaded #{time_ago_in_words(@illustration.created_at)} ago
+    .item
+      = link_to "Change or delete this illustration", @illustration, :confirm => "You are about to delete this illustration. After this you can upload a new one. Are you sure?", :method => :delete,  :class => "red"
+  
+  .section
+    .item
+      Size
+      %b #{@illustration.width} x #{@illustration.height}
+    .item
+      Format
+      %b #{@illustration.image.content_type}
+  
+  .section
+    .item
+      - if @illustration.status == "review"
+        .status.review.big Pending review
+        .item.half We will check this illustration soon
+      - if @illustration.status == "ok"
+        .status.ok.big &#x2714; Ok
+        .item.half Great! This illustration is perfect
+      - if @illustration.status == "not"
+        .status.not.big There is a problem
+        .item.half
+          %pre= @illustration.problems
+  
+  .section
+    Return to
+    = link_to "your book", edit_book_path(@illustration.book)
+    
+- if @illustration.tipe == "cover"
+
+  = image_tag @illustration.image.url(:i600w)
+  = image_tag "cover-bottom.png"
+  
+- else  
+  = render :partial => "sampler_ipad"
+  = render :partial => "sampler_transparent" 

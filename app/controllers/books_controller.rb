@@ -1,43 +1,21 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
-  before_filter :get_active_book
-  before_filter :check_for_active_book, :except => [:new, :show, :revise, :publish, :destroy, :index, :index_by_status, :add_text, :remove_text]
-  before_filter :find_book_by_id, :only => [:show, :edit, :publish, :revise, :destroy, :add_text, :remove_text]
-
-  # nuevas columnas:
-
-  #   book_status = active, review, published, destroyed
-  #   book_message : es un mensaje de nosotros al artista si le pedimos que revise su libro (ver "revise")
-
-
-  # actions where artists have access to
-  # new
-  # edit
-  # change
-  # review
-
+  before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text]
+  
 
   def index
 
     status = params[:status]
-
+    
     if status.nil? || status.empty?
-
       @books = Book.sorted.all
-
     else
-
       @books = Book.sorted.find_all_by_status(status)
-
     end
 
   end
+ 
 
-
-
-
-  def show
-  end
 
 
 
@@ -89,13 +67,19 @@ class BooksController < ApplicationController
   end
 
   def edit
-    if @book != current_user.active_book || @book.nil?
-      @book = current_user.active_book
-      redirect_to edit_book_path @book[:id]
+    if @book.status == "active" || current_user.admin? #book is editable
+      render :edit
+    else #book is not editable
+      redirect_to @book, :alert => "The book is not editable. Please wait until we review it, or write help@pictorical.com if there is any problem"
     end
-
   end
+  
+  def show  
+  end
+    
 
+  
+  
   def change
     principal_text = @active_book.principal
     principal_text.availability = true
@@ -110,23 +94,21 @@ class BooksController < ApplicationController
     if @active_book.save
       mail = Notifications.review_book(@active_book)
       mail.deliver
+      render :review, :layout => "simple"
     end
   end
 
   def publish
-    unless @book.user_tutorial_mode
-      @book.status = "published"
-      if @book.save
-        mail = Notifications.publish_book(@book)
-        mail.deliver
-        redirect_to @book, :notice => "book has been published"
-      else
-        redirect_to @book, :notice => "could not change status"
-      end
+    @book.status = "published"
+    if @book.save
+      mail = Notifications.publish_book(@book)
+      mail.deliver
+      redirect_to @book, :notice => "book has been published"
     else
-      redirect_to @book, :notice => "can't publish a book from a user in tutorial mode"
+      redirect_to @book, :notice => "could not change status"
     end
   end
+  
 
   def revise
     @book.status = "active"
@@ -196,16 +178,9 @@ class BooksController < ApplicationController
 
   private
 
-  def get_active_book
-    @active_book = current_user.books.where(:status => 'active').first
-  end
-
-  def check_for_active_book
-    redirect_to texts_path if @active_book.nil?
-  end
-
   def find_book_by_id
     @book = Book.find(params[:id])
   end
-
+  
+  
 end

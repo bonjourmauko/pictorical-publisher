@@ -1,0 +1,24 @@
+- divid = small ? "" : "#{illustration.tipe}#{illustration.position}"
+%div{:id => divid}
+
+  - if illustration.tipe == "inline" && !small
+    - size = :i600w
+  - else
+    - size = :i180w
+
+  .item
+    - if editable
+      = link_to illustration do
+        = image_tag illustration.image.url(size), :class => illustration.tipe
+    - else
+      = image_tag illustration.image.url(size), :class => illustration.tipe
+        
+  .item
+    = render :partial => "illustration_status", :locals => {:illustration => illustration}
+    - if editable
+      = link_to "change or delete", illustration, :method => :delete, :confirm => "You are about to delete this illustration. After this you can upload a new one. Are you sure?"
+    - if current_user && current_user.admin?
+      = link_to "Review", edit_illustration_path(illustration), :class => "red"
+  - if illustration.status == "not"
+    .redbox.problems
+      %pre= illustration.problems

@@ -1,0 +1,4 @@
+.section
+  - cover = @book.illustrations.active.find_by_tipe('cover')
+  - if cover
+    = render :partial => "show_illustration", :locals => { :illustration => cover, :small => false, :editable => false}

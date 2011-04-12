@@ -1,0 +1,25 @@
+- title "Books No Illustrations"
+
+- content_for :navbar do
+
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
+#admin-canvas
+  %h1 Active books with no illustrations
+
+  - if @books.count > 0
+    - @books.each do |book|
+      - last_reminder = book.user.last_book_no_illustration_reminder_at || 100.years.ago
+      
+      .item.half
+        #{book.id}
+        = link_to "#{book.title}", edit_book_path(book) unless book.text.nil?
+        by
+        = link_to "#{book.user.name}", book.user unless book.user.nil?
+        .less
+          Created #{time_ago_in_words(book.created_at)} ago
+          ·
+          Last sent #{time_ago_in_words(last_reminder)} ago
+  - else
+    Empty

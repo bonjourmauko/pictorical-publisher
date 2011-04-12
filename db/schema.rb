@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315235028) do
+ActiveRecord::Schema.define(:version => 20110411013712) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -43,11 +43,22 @@ ActiveRecord::Schema.define(:version => 20110315235028) do
   add_index "collections", ["text_id"], :name => "index_collections_on_text_id"
 
   create_table "illustrations", :force => true do |t|
-    t.string   "fullsize_url"
-    t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.integer  "book_id"
+    t.string   "image_original_id"
+    t.integer  "position"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "image_file_extension"
+    t.string   "image_file_name"
+    t.boolean  "deleted"
+    t.string   "tipe"
+    t.string   "status"
+    t.text     "problems"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
@@ -80,9 +91,9 @@ ActiveRecord::Schema.define(:version => 20110315235028) do
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                     :default => "", :null => false
-    t.string   "encrypted_password",         :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                             :default => "", :null => false
+    t.string   "email",                                                :default => "", :null => false
+    t.string   "encrypted_password",                    :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                                        :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
@@ -109,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20110315235028) do
     t.string   "art_school_where"
     t.string   "art_school_when"
     t.string   "reset_password_token"
+    t.datetime "last_illustration_mail_sent_at"
+    t.datetime "last_book_no_illustration_reminder_at"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true

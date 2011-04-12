@@ -1,6 +1,9 @@
 - title "Pictorical, trashed #{@text[:title]} by #{@text[:author]}"
-#notice
-  = notice
+
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
 #text-canvas
 
   #title

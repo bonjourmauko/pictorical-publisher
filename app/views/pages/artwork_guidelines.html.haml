@@ -1,8 +1,13 @@
-- title "Pictorical : Artwork Guidelines"
-#guideline-canvas
+- title "Artwork guidelines"
 
-  -for i in (1..13) do
-    %p
-    = tag "a", {:name => "a#{i}"}
-    = link_to :anchor => "a#{i+1}" do
-      = image_tag "artwork-guidelines/slide.#{i.to_s.rjust(3,'0')}.png"
+
+- content_for :navbar do
+  .item.half= link_to "Technique", :anchor => "technique"
+  .item.half= link_to "Types of illustrations", :anchor => "types"
+  .item.half= link_to "Image sizes", :anchor => "sizes"
+  .item.half= link_to "Illustration edges", :anchor => "edges"
+  .item.half= link_to "Transparency and file formats", :anchor => "formats"
+  .item.half= link_to "Tips", :anchor => "tips"
+
+#guidelines
+  = render :partial => "illustrations/artwork_guidelines", :locals => {:toc => false}
