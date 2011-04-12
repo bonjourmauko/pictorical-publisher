@@ -16,14 +16,19 @@ class IllustrationsController < ApplicationController
   end
   
   def new
-    @type = params[:type]
-    @position = params[:position]
-    @illustration = Illustration.new
-    @transloadit_params = {
-       "auth" => { "key" => TRANSLOADIT[:auth_key] },
-       "template_id" => TRANSLOADIT[:template_id],
-       "redirect_url" => illustrations_url
-     }
+    unless @active_book.nil?
+      @type = params[:type]
+      @position = params[:position]
+      @illustration = Illustration.new
+      @transloadit_params = {
+         "auth" => { "key" => TRANSLOADIT[:auth_key] },
+         "template_id" => TRANSLOADIT[:template_id],
+         "redirect_url" => illustrations_url
+       }
+    else
+      render "dashboard/cant"
+    end
+        
   end
   
   def create
@@ -36,7 +41,7 @@ class IllustrationsController < ApplicationController
     end
     
     @illustration.update_attributes(
-      :image_file_name        => illustration[:name], 
+      :image_file_name        => "filename", #illustration[:name] just so check for error
       :image_content_type     => illustration[:mime], 
       :image_file_size        => illustration[:size], 
       :image_file_extension   => illustration[:ext].downcase,
