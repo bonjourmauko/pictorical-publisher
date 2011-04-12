@@ -12,6 +12,7 @@ class DashboardController < ApplicationController
       if current_user.admin?
         render "admin"
       else
+        @review_book = current_user.books.find_by_status("review")
         render "start", :layout => "simple"
       end
     end
