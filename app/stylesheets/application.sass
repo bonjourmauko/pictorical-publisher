@@ -23,6 +23,14 @@ $linkblue: #4362CE
 
 body, pre
   font: 13px  "Helvetica Neue", Helvetica, Arial, sans-serif
+  color: #333
+
+pre
+  white-space: -moz-pre-wrap /* Mozilla, supported since 1999 */
+  white-space: -pre-wrap /* Opera */
+  white-space: -o-pre-wrap /* Opera */
+  white-space: pre-wrap /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+  word-wrap: break-word /* IE 5.5+ */
 
 a
   color: $linkblue
@@ -118,13 +126,7 @@ a
   border-top: 1px solid #ddd
   margin-top: 20px
 
-#story
-  p, h1
-    margin: 1em 0
-    font: 16px "Georgia", "Trebuchet MS", Verdana, sans-serif
-  h1
-    font-size: 24px
-    text-align: center
+
   .inline
     width: 100%
     
@@ -170,6 +172,38 @@ a
     margin-bottom: 1em
   p
     margin-bottom: 1em
+  #story
+    p, h1, h2, h3, h4, h5
+      margin: 1em 0
+      font-family: Georgia, serif
+      font-size: 18px
+      font-style: normal
+      font-weight: normal
+      text-transform: normal
+      letter-spacing: normal
+      text-align: center  
+    p
+      line-height: 1.4em
+      text-align: justify
+    h1
+      font-size: 41px
+      line-height: 1.2em  
+    h2, h3
+      font-size: 32px
+      //font-style: italic
+      line-height: 1.4em
+    h4
+      font-size: 18px
+      text-transform: uppercase
+      letter-spacing: 1px
+      line-height: 1.7em
+    h5
+      font-size: 15px
+      font-style: normal
+      line-height: 1.7em
+      font-style: italic
+      text-transform: uppercase
+  
 
 #guidelines
   h2
