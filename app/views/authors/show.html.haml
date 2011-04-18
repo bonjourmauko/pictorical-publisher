@@ -18,11 +18,11 @@
         ·
         = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
       
-      - if !@author[:country].empty?
+      - if !@author[:country].nil?
         ·
         = @author[:country]
         
-      - if @author[:defunction]
+      - if !@author[:defunction].nil?
         ·
         = @author[:defunction]
         
