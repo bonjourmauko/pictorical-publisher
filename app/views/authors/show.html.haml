@@ -26,7 +26,17 @@
         ·
         = @author[:defunction]
         
-    %p
-      - @author.texts.each do |text|
+    - @author.texts.each do |text|
+      %p
         = link_to text[:title], text
         %br
+        - unless text[:published].nil?
+          Published at
+          = text[:published]
+        %br
+        Public Domain in
+        - copyright_status_of(text).each do |key, value|
+          - if value
+            ·
+            = value
+          
