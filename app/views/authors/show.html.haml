@@ -33,7 +33,7 @@
         - unless text[:published].nil?
           Published at
           = text[:published]
-        %br
+          %br
         Public Domain in
         - copyright_status_of(text).each do |key, value|
           - if value
