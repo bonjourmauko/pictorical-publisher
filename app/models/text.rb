@@ -18,12 +18,14 @@ class Text < ActiveRecord::Base
                         :words,
                         :source,
                         :deleted,
-                        :availability
+                        :availability,
+                        :published
 
   validates_presence_of :title,
                         :author_id,
                         :content,
-                        :source
+                        :source,
+                        :published
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
