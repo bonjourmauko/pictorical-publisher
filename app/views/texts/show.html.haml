@@ -8,7 +8,8 @@
   %h1
     #{@text.title}
   .section
-    by #{@text.author.name} #{@text.author.last_name}
+    by
+    = link_to "#{@text.author.name} #{@text.author.last_name}", @text.author
 
 
   
