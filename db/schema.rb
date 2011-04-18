@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418182010) do
+ActiveRecord::Schema.define(:version => 20110418214236) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110418182010) do
     t.string   "tipe"
     t.string   "status"
     t.text     "problems"
+    t.boolean  "draft"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"

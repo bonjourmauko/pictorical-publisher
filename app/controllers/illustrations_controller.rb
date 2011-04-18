@@ -52,7 +52,8 @@ class IllustrationsController < ApplicationController
       :tipe                   => params[:type],
       :book_id                => current_user.books.where(:status => 'active').first.id,
       :deleted                => false,
-      :status                 => "review"
+      :status                 => "review",
+      :draft                  => params[:draft]
     )
         
     if @illustration.save
@@ -66,8 +67,12 @@ class IllustrationsController < ApplicationController
     @illustration = Illustration.find(params[:id])
     @illustration.deleted = true
     @illustration.save
-    @active_book = current_user.books.where(:status => 'active').first
-    redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been deleted'
+    unless current_user.admin?
+      @active_book = current_user.books.where(:status => 'active').first
+      redirect_to edit_book_path(@active_book), :notice => 'Success! Your image has been deleted'
+    else
+      redirect_to edit_illustration_path(@illustration), :notice => 'Success! Your image has been deleted'
+    end
   end
   
   def edit
@@ -96,12 +101,7 @@ class IllustrationsController < ApplicationController
       render :action => "edit", :notice => 'Illustration was not updated'
     end
   end
-  
-  private
 
-  def get_active_book
-    @active_book = current_user.books.where(:status => 'active').first
-  end
   
   
 end

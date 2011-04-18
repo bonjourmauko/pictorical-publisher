@@ -6,7 +6,9 @@
     = hidden_field_tag :position, @position
     = file_field_tag :image
   %p
-    = submit_tag "Upload illustration"
+    = check_box_tag :draft
+    This is a sketch (not the final version)
+  = submit_tag "Upload illustration"
 
 :javascript
   var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
