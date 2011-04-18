@@ -38,6 +38,8 @@ module TextsHelper
       when "usa"
         if !text[:published].nil? && text[:published] < 1923
           "US"
+        elsif !text[:published].nil? && text[:published] > 1923 && text[:published] < 1963 && text[:renewal].nil?
+          "US"
         else
           false
         end

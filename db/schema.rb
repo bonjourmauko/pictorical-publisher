@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418182010) do
+ActiveRecord::Schema.define(:version => 20110418235229) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110418182010) do
     t.boolean  "deleted"
     t.boolean  "availability"
     t.integer  "published"
+    t.integer  "renewal"
   end
 
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"

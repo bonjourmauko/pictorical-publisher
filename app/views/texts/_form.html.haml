@@ -22,6 +22,9 @@
     .title= f.label :published
     .field= f.text_field :published, :size => 70
   %p
+    .title= f.label :renewal, "Renewal (only U.S.)"
+    .field= f.text_field :renewal, :size => 70
+  %p
     .actions
       = f.submit
   %p
