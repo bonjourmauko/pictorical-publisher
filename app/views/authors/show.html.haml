@@ -7,11 +7,26 @@
   %h1= "#{@author.name} #{@author.last_name}"
 
   .admin
-    = link_to "edit", :action => "edit"
-    ·
-    = link_to "new", :action => "new"
-    ·
-    = link_to "all", :action => "index"
-    - if @author.texts.first.nil?
+    %p
+      = link_to "edit", :action => "edit"
       ·
-      = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
+      = link_to "new", :action => "new"
+      ·
+      = link_to "all", :action => "index"
+      
+      - if @author.texts.first.nil?
+        ·
+        = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
+      
+      - if !@author[:country].empty?
+        ·
+        = @author[:country]
+        
+      - if @author[:defunction]
+        ·
+        = @author[:defunction]
+        
+    %p
+      - @author.texts.each do |text|
+        = link_to text[:title], text
+        %br
