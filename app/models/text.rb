@@ -24,8 +24,8 @@ class Text < ActiveRecord::Base
   validates_presence_of :title,
                         :author_id,
                         :content,
-                        :source,
-                        :published
+                        :source#,
+                        #:published
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
