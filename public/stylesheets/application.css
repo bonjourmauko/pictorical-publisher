@@ -315,7 +315,7 @@ a:hover {
 }
 /* line 221, ../../app/stylesheets/application.sass */
 #list .onetext {
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
 }
 
 /* line 224, ../../app/stylesheets/application.sass */
@@ -394,5 +394,10 @@ form p {
 /* line 268, ../../app/stylesheets/application.sass */
 sup {
   font-size: 70%;
+  color: #999999;
+}
+
+/* line 272, ../../app/stylesheets/application.sass */
+.textinfo {
   color: #999999;
 }
