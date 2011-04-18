@@ -19,7 +19,8 @@ class Text < ActiveRecord::Base
                         :source,
                         :deleted,
                         :availability,
-                        :published
+                        :published,
+                        :renewal
 
   validates_presence_of :title,
                         :author_id,
