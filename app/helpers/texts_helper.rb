@@ -24,10 +24,10 @@ module TextsHelper
   
   def copyright_status_of(text)
     copyright = {
-      :usa        => by_country(text, "usa"),
-      :uk         => by_country(text, "uk"),
-      :australia  => by_country(text, "australia"),
-      :canada     => by_country(text, "canada")
+      :usa        => by_country(text, "US"),
+      :uk         => by_country(text, "UK"),
+      :australia  => by_country(text, "AU"),
+      :canada     => by_country(text, "CA")
     }   
   end
   
@@ -35,32 +35,79 @@ module TextsHelper
   
   def by_country(text, country)
     case country
-      when "usa"
-        if !text[:published].nil? && text[:published] < 1923
-          "US"
-        elsif !text[:published].nil? && text[:published] > 1923 && text[:published] < 1963 && text[:renewal].nil?
-          "US"
+      
+      when "US"
+        if us(text)
+          country
         else
           false
         end
-      when "uk"
-        if !text.author[:defunction].nil? && Time.now.year - text.author[:defunction] > 70
-          "UK"
+      
+      when "UK"
+        if uk(text) || rule_of_shorter_term_for_uk_us(text)
+          country
         else
           false
         end
-      when "australia"
-       if !text.author[:defunction].nil? && text.author[:defunction] < 1955
-         "AU"
+      
+      when "AU"
+       if au(text)
+         country
        else
          false
        end
-      when "canada"
-        if !text.author[:defunction].nil? && Time.now.year - text.author[:defunction] > 50
-          "CA"
+      
+      when "CA"
+        if ca(text)
+          country
         else
           false
         end
+        
+    end
+  end
+  
+  def us(text)
+    if !text[:published].nil? && text[:published] < 1923
+      true
+    elsif !text[:published].nil? && text[:published] >= 1923 && text[:published] <= 1963 && text[:renewal].nil?
+      true
+    else
+      false
+    end
+  end
+  
+  def uk(text)
+    if !text.author[:defunction].nil? && Time.now.year - text.author[:defunction] > 70
+      true
+    else
+      false
+    end
+  end
+  
+  def au(text)
+    if !text.author[:defunction].nil? && text.author[:defunction] < 1955
+      true
+    else
+      false
+    end
+  end
+  
+  def ca(text)
+    if !text.author[:defunction].nil? && Time.now.year - text.author[:defunction] > 50
+      true
+    else
+      false
+    end
+  end
+  
+  def rule_of_the_shorter_term_for_uk_us(text)
+    if us(text) && text.author[:country] == "United States" && text[:published] < 1928
+      true
+    elsif us(text) && text.author[:country] == "United States" && Time.now.year - text.author[:defunction] > 50
+      true
+    else
+      false
     end
   end
   
