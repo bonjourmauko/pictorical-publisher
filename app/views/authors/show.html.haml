@@ -18,11 +18,11 @@
         ·
         = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
       
-      - if !@author[:country].nil?
+      - unless @author[:country].nil?
         ·
         = @author[:country]
         
-      - if !@author[:defunction].nil?
+      - unless @author[:defunction].nil? || @author[:defunction] == 0
         ·
         = @author[:defunction]
         
@@ -30,7 +30,7 @@
       %p
         = link_to text[:title], text
         %br
-        - unless text[:published].nil?
+        - unless text[:published].nil? or text[:published] == 0
           Published at
           = text[:published]
           %br
