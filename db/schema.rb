@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110418235229) do
     t.string   "tipe"
     t.string   "status"
     t.text     "problems"
+    t.boolean  "draft"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
