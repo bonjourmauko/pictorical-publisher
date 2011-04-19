@@ -1,0 +1,48 @@
+- tipe = @illustration.tipe
+- if current_user.admin?
+  .item
+    Type
+    %b #{@illustration.tipe}
+.item
+  Width
+  %b #{@illustration.width}
+  - if tipe == 'inline' || tipe == 'cap'
+    - required_width = 2400
+  - elsif tipe == 'cover'
+    - required_width = 4800   
+  - if @illustration.width == required_width
+    %span.green ok
+  - else
+    %span.red not
+.item
+  Height
+  %b #{@illustration.height}
+  - if tipe == 'cover'
+    - if @illustration.height == 4800
+      %span.green ok
+    - else
+      %span.red not
+  - elsif tipe == 'cap'
+    - if @illustration.height == 2400
+      %span.green ok
+    - else
+      %span.red not    
+  - elsif tipe == 'inline'
+    - if @illustration.height == 3440 || @illustration.height < 1720
+      %span.green ok
+    - else
+      %span.red not
+
+.item
+  Format
+  %b #{@illustration.image.content_type}
+  - if tipe == 'inline' || tipe == 'cap'
+    - if @illustration.image.content_type == "image/png"
+      %span.green ok
+    - else
+      %span.red not
+  - elsif tipe == 'cover'
+    - if @illustration.image.content_type == "image/jpeg"
+      %span.green ok
+    - else
+      %span.red not     
