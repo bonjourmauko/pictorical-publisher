@@ -1,7 +1,8 @@
 class Text < ActiveRecord::Base
   belongs_to        :author
-  has_many :collections
-  has_many  :books, :through => :collections
+  belongs_to        :translator
+  has_many          :collections
+  has_many          :books, :through => :collections
 
   delegate          :name, :last_name, :to => :author, :prefix => true
   scope             :sorted, order('title ASC')
@@ -14,19 +15,29 @@ class Text < ActiveRecord::Base
 
   attr_accessible       :title,
                         :author_id,
+                        :translator_id,
                         :content,
                         :words,
                         :source,
                         :deleted,
                         :availability,
                         :published,
-                        :renewal
+                        :renewal,
+                        :translation_published,
+                        :translation_renewal
 
   validates_presence_of :title,
                         :author_id,
                         :content,
-                        :source#,
-                        #:published
+                        :source
+  
+  #validates_presence_of :published, :on => :create
+                        
+  #validates_numericality_of :published,             :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :renewal,               :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :translation_published, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :translation_renewal,   :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
