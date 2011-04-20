@@ -44,7 +44,7 @@ module TextsHelper
         end
       
       when "UK"
-        if uk(text) || rule_of_shorter_term_for_uk_us(text)
+        if uk(text) || rule_of_the_shorter_term_for_uk_us(text)
           country
         else
           false
