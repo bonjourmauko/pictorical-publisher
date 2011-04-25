@@ -17,11 +17,11 @@ module Copyright
 
   module ByCountry
     def us(data)
-      true if Rules::us_before_1923(data[:published]) or Rules::us_between_1923_and_1963(data[:published], data[:renewal])
+      true if Rules::us_before_1923(data[:country], data[:published]) or Rules::us_between_1923_and_1963(data[:country], data[:published], data[:renewal])
     end
     
     def uk(data)
-      true if Rules::life_plus_70(data[:defunction]) or Rules::us_uk_between_1900_and_1920(data[:defunction], data[:published], data[:renewal]) or Rules::us_uk_between_1921_and_1922(data[:published]) or Rules::us_uk_between_1923_and_1927(data[:defunction], data[:published], data[:renewal]) or Rules::us_uk_between_1928_and_1963(data[:defunction], data[:published], data[:renewal])
+      true if Rules::life_plus_70(data[:defunction]) or Rules::us_uk_between_1900_and_1920(data[:country], data[:defunction], data[:published], data[:renewal]) or Rules::us_uk_between_1921_and_1922(data[:country], data[:published]) or Rules::us_uk_between_1923_and_1927(data[:country], data[:defunction], data[:published], data[:renewal]) or Rules::us_uk_between_1928_and_1963(data[:country], data[:defunction], data[:published], data[:renewal])
     end
     
     def au(data)
@@ -53,28 +53,28 @@ module Copyright
         true if defunction and defunction < 1955
       end
   
-      def us_before_1923(published)
-        true if published and published < 1923
+      def us_before_1923(country, published)
+        true if published and country == "United States" and published < 1923
       end
   
-      def us_between_1923_and_1963(published, renewal)
-        true if published and published >= 1923 and published <= 1963 and !renewal
+      def us_between_1923_and_1963(country, published, renewal)
+        true if published and country == "United States" and published >= 1923 and published <= 1963 and !renewal
       end
 
-      def us_uk_between_1900_and_1920(defunction, published, renewal)
-        true if (published and published >= 1900 and published <= 1920) and ((renewal and life_plus_50(defunction)) or !renewal)
+      def us_uk_between_1900_and_1920(country, defunction, published, renewal)
+        true if (published and country == "United States" and published >= 1900 and published <= 1920) and ((renewal and life_plus_50(defunction)) or !renewal)
       end
     
-      def us_uk_between_1921_and_1922(published)
-        true if published and published <= 1921 and published >= 1922
+      def us_uk_between_1921_and_1922(country, published)
+        true if published and country == "United States" and published <= 1921 and published >= 1922
       end
     
-      def us_uk_between_1923_and_1927(defunction, published, renewal)
-        true if (published and published >= 1923 and published <= 1927) and ((renewal and life_plus_70(defunction)) or !renewal)
+      def us_uk_between_1923_and_1927(country, defunction, published, renewal)
+        true if (published and country == "United States" and published >= 1923 and published <= 1927) and ((renewal and life_plus_70(defunction)) or !renewal)
       end
     
-      def us_uk_between_1928_and_1963(defunction, published, renewal)
-        true if (published and published >= 1928 and published <= 1963) and ((renewal and life_plus_70(defunction)) or (!renewal and life_plus_50(defunction)))
+      def us_uk_between_1928_and_1963(country, defunction, published, renewal)
+        true if (published and country == "United States" and published >= 1928 and published <= 1963) and ((renewal and life_plus_70(defunction)) or (!renewal and life_plus_50(defunction)))
       end
     end 
   end
