@@ -1,4 +1,6 @@
 class Text < ActiveRecord::Base
+  extend Copyright
+
   belongs_to        :author
   belongs_to        :translator
   has_many          :collections
@@ -41,7 +43,11 @@ class Text < ActiveRecord::Base
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
-
+  
+  def copyright_status
+    Text.copyright_status_of self
+  end
+  
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
   end

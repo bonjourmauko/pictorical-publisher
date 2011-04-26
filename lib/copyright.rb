@@ -16,8 +16,10 @@ module Copyright
   private
 
   module ByCountry
+    extend self
+    
     def us(data)
-      true if Rules::us_before_1923(data[:country], data[:published]) or Rules::us_between_1923_and_1963(data[:country], data[:published], data[:renewal])
+      true if Rules::us_before_1923(data[:published]) or Rules::us_between_1923_and_1963(data[:published], data[:renewal])
     end
     
     def uk(data)
@@ -41,6 +43,8 @@ module Copyright
     end
     
     module Rules
+      extend self
+      
       def life_plus_50(defunction)
         true if defunction and Time.now.year - defunction > 50
       end
@@ -53,12 +57,12 @@ module Copyright
         true if defunction and defunction < 1955
       end
   
-      def us_before_1923(country, published)
-        true if published and country == "United States" and published < 1923
+      def us_before_1923(published)
+        true if published and published < 1923
       end
   
-      def us_between_1923_and_1963(country, published, renewal)
-        true if published and country == "United States" and published >= 1923 and published <= 1963 and !renewal
+      def us_between_1923_and_1963(published, renewal)
+        true if published and published >= 1923 and published <= 1963 and !renewal
       end
 
       def us_uk_between_1900_and_1920(country, defunction, published, renewal)
@@ -80,6 +84,8 @@ module Copyright
   end
   
   module Questions
+    extend self
+    
     def is_author_defunction?(text)
       true unless text.author[:defunction].nil?
     end
@@ -113,45 +119,45 @@ module Copyright
     data = {}
     
     if Questions::is_translator?(text)
-      data += { :country => text.translator[:country] }
+      data[:country] = text.translator[:country]
       
       if Questions::is_translator_defunction?(text)
-        data += { :defunction => text.translator[:defunction] }
+        data[:defunction] = text.translator[:defunction]
       else
-        data += { :defunction => false}
+        data[:defunction] = false
       end
       
       if Questions::is_translation_published?(text)
-        data += { :published => text[:translation_published] }
+        data[:published] = text[:translation_published]
       else
-        data += { :published => false }
+        data[:published] = false
       end
         
       if Questions::is_translation_renewal?(text)
-        data += { :renewal => text[:translation_renewal] }
+        data[:renewal] = text[:translation_renewal]
       else
-        data += { :renewal => false }
+        data[:renewal] = false
       end
       
     else
-      data += { :country => text.author[:country] }
+      data[:country] = text.author[:country]
       
       if Questions::is_author_defunction?(text)
-        data += { :defunction => text.author[:defunction] }
+        data[:defunction] = text.author[:defunction]
       else
-        data += { :defunction => false }
+        data[:defunction] = false
       end
       
       if Questions::is_published?(text)
-        data += { :published => text[:published] }
+        data[:published] = text[:published]
       else
-        data += { :published => false }
+        data[:published] = false
       end
         
       if Questions::is_renewal?(text)
-        data += { :renewal => text[:renewal] }
+        data[:renewal] = text[:renewal]
       else
-        data += { :renewal => false }
+        data[:renewal] = false
       end       
     end
     
