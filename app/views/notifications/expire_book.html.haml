@@ -1,0 +1,17 @@
+%p  
+  Hi #{@user.first_name},
+%p
+  Your book, "#{@book.title}," has expired.
+%p
+  Books expire after 2 weeks if you don't upload an illustration. We do this to give all of the artists the same opportunity to illustrate the texts they want.
+%p
+  You can go to 
+  = link_to "http://publisher.pictorical.com", "http://publisher.pictorical.com"
+  to choose a new story to illustrate or if you want to pick "#{@book.texts.first.title}" again, then you have to wait until a week from today to begin illustrating the book again.
+%p
+  If you have any questions, or need help choosing your next story, you can reach us at
+  = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
+%p
+  Kindest regards,
+%p
+  The Pictorical Team
