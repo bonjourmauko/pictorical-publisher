@@ -1,0 +1,25 @@
+= simple_form_for translator do |f|
+  - if translator.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(translator.errors.count, "error")
+        prohibited this text from being saved:
+      %ul
+        - translator.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    .title= f.label :name
+    .field= f.input :name, :label => false
+  %p
+    .title= f.label :last_name
+    .field= f.input :last_name, :label => false
+  %p
+    .title= f.label :country
+    .field= f.input :country, :label => false
+  %p
+    .title= f.label :defunction, "Defunction (if available)"
+    .field= f.input :defunction, :label => false
+  
+  %p
+    .actions
+      = f.submit

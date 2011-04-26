@@ -1,7 +1,5 @@
 PublisherPictoricalCom::Application.routes.draw do
 
-  #get "dashboard/welcome"
-
   match "/terms-and-conditions", :to => "pages#terms_and_conditions", :as => :terms_and_conditions, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
   match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
@@ -31,9 +29,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "trashes", :to => "texts#trashed_index", :as => :trashes
 
   resources :authors
-
-  match "/new_fancy", :to => "authors#new_fancy"
-  match "/create_fancy", :to => "author#create_fancy"
+  resources :translators
 
   match "invitations/reject", :to => "invitations#reject", :as => :reject_artist
   

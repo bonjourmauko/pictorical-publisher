@@ -11,19 +11,30 @@
     .title= f.label :title
     .field= f.text_field :title, :size => 70
   %p
+    .title= f.label :source
+    .field= f.text_field :source, :size => 70
+  %p
     .title
       = f.label :author_id
       %span= link_to "new", :controller => "authors", :action => "new"
     .field= collection_select(:text, :author_id, Author.sorted.all, :id, :name_with_initial, :prompt => true)
   %p
-    .title= f.label :source
-    .field= f.text_field :source, :size => 70
-  %p
     .title= f.label :published
     .field= f.text_field :published, :size => 70
   %p
-    .title= f.label :renewal, "Renewal (only U.S.)"
+    .title= f.label :renewal, "Renewal (U.S. only)"
     .field= f.text_field :renewal, :size => 70
+  %p
+    .title
+      = f.label :translator_id
+      %span= link_to "new", :controller => "translators", :action => "new"
+    .field= collection_select(:text, :translator_id, Translator.sorted.all, :id, :name_with_initial, :prompt => true)
+  %p
+    .title= f.label :tranlation_published, "Translation Published (if available)"
+    .field= f.text_field :translation_published, :size => 70
+  %p
+    .title= f.label :tranlation_renewal, "Translation Renewal (U.S. only)"
+    .field= f.text_field :translation_renewal, :size => 70
   %p
     .actions
       = f.submit
