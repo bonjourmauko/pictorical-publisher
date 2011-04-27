@@ -115,6 +115,18 @@ class Notifications < ActionMailer::Base
     end
     
   end
+  
+  def expire_book(book)
+    @book = book
+    @user = book.user
+    @subject = "Your book expired"
+    
+    mail(:to => @user[:email], :subject => @subject) do |format|
+      format.html
+    end
+    
+  end
+  
 
 
 end
