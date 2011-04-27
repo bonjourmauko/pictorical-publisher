@@ -8,7 +8,7 @@ class RemindersController < ApplicationController
   def book_no_illustration
     if current_user.admin?
       @books = []
-      Book.active.each do |book|
+      Book.active.order('created_at').each do |book|
         if book.illustrations.active.count == 0
         
           user = book.user
@@ -24,10 +24,9 @@ class RemindersController < ApplicationController
             end
           
           end
-          books << book
+          @books << book
         end
       end
-      @books = books.sort_by { |b| b.created_at }
     else
       redirect_to :root
     end
