@@ -15,9 +15,13 @@ Net::HTTP.start("s3.amazonaws.com") do |http|
 %br
 resp = http.get(illustration.url)
 %br
-filename = illustration[:tipe] + "-" + illustration[:position] + "-" + illustration[:name] + "." + illustration[:ext]
+filename = illustration[:tipe] + "_" + illustration[:position] + "_" + illustration[:name] + "." + illustration[:ext]
 %br
-open(filename, "wb") { |file| file.write(resp.body) }
+open(filename, "wb") do |file|
+%br
+file.write(resp.body)
+%br
+end # |file|
 %br
 end # |http|
 %br
