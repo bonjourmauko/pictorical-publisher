@@ -24,11 +24,10 @@ class RemindersController < ApplicationController
             end
           
           end
-        
-          @books << book
-        
+          books << book
         end
       end
+      @books = books.sort_by { |b| b.created_at }
     else
       redirect_to :root
     end
