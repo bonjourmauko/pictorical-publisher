@@ -8,7 +8,7 @@ class RemindersController < ApplicationController
   def book_no_illustration
     if current_user.admin?
       @books = []
-      Book.active.order("id").each do |book|
+      Book.active.each do |book|
         if book.illustrations.active.count == 0
         
           user = book.user
