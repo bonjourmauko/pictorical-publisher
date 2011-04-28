@@ -199,6 +199,13 @@ class BooksController < ApplicationController
       redirect_to edit_book_path @book, :alert => "text doesn't exist"
     end
   end
+  
+  
+  
+  
+  def download_originals
+    render "download_originals", :layout => false
+  end
 
 
 
