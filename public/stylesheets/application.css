@@ -402,14 +402,20 @@ a:hover {
 form p {
   margin-bottom: 1em;
 }
-
 /* line 281, ../../app/stylesheets/application.sass */
+form .box {
+  background: #f3f3f3;
+  border: 1px solid #f3f3f3;
+  padding: 0 1em;
+}
+
+/* line 285, ../../app/stylesheets/application.sass */
 sup {
   font-size: 70%;
   color: #999999;
 }
 
-/* line 285, ../../app/stylesheets/application.sass */
+/* line 289, ../../app/stylesheets/application.sass */
 .textinfo {
   color: #999999;
 }
