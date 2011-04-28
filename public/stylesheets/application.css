@@ -62,101 +62,101 @@ a:hover {
   text-decoration: underline;
 }
 
-/* line 44, ../../app/stylesheets/application.sass */
+/* line 47, ../../app/stylesheets/application.sass */
 #notice, #alert {
   padding: 5px;
   color: white;
   margin-bottom: 1em;
 }
 
-/* line 49, ../../app/stylesheets/application.sass */
+/* line 52, ../../app/stylesheets/application.sass */
 #notice {
   background: #0a8b00;
 }
 
-/* line 52, ../../app/stylesheets/application.sass */
+/* line 55, ../../app/stylesheets/application.sass */
 #alert {
   background: #cb0802;
 }
 
-/* line 55, ../../app/stylesheets/application.sass */
+/* line 58, ../../app/stylesheets/application.sass */
 .section {
   margin-bottom: 1em;
 }
 
-/* line 58, ../../app/stylesheets/application.sass */
+/* line 61, ../../app/stylesheets/application.sass */
 .admin {
   background: #eeeeee;
   padding: 5px;
 }
 
-/* line 62, ../../app/stylesheets/application.sass */
+/* line 65, ../../app/stylesheets/application.sass */
 #userinfo, #title {
   padding: 10px 0;
 }
 
-/* line 65, ../../app/stylesheets/application.sass */
+/* line 68, ../../app/stylesheets/application.sass */
 #userinfo {
   text-align: right;
 }
 
-/* line 68, ../../app/stylesheets/application.sass */
+/* line 71, ../../app/stylesheets/application.sass */
 #title {
   padding: 10px 0;
 }
-/* line 70, ../../app/stylesheets/application.sass */
+/* line 73, ../../app/stylesheets/application.sass */
 #title h1 {
   font-size: 20px;
 }
-/* line 73, ../../app/stylesheets/application.sass */
+/* line 76, ../../app/stylesheets/application.sass */
 #title h1 a:link, #title h1 a:visited {
   color: black;
 }
-/* line 75, ../../app/stylesheets/application.sass */
+/* line 78, ../../app/stylesheets/application.sass */
 #title h1 a:hover {
   color: red;
   text-decoration: none;
 }
 
-/* line 80, ../../app/stylesheets/application.sass */
+/* line 83, ../../app/stylesheets/application.sass */
 #left_bar h1, #left_bar h2 {
   margin-bottom: 0.5em;
   font-weight: normal;
 }
-/* line 83, ../../app/stylesheets/application.sass */
+/* line 86, ../../app/stylesheets/application.sass */
 #left_bar h1 {
   font-size: 20px;
 }
 
-/* line 86, ../../app/stylesheets/application.sass */
+/* line 89, ../../app/stylesheets/application.sass */
 .redbox {
   border: 2px solid #eec4c5;
   padding: 5px;
   background: #faebeb;
   margin-top: 0.5em;
 }
-/* line 91, ../../app/stylesheets/application.sass */
+/* line 94, ../../app/stylesheets/application.sass */
 .redbox h3 {
   color: #cb0802;
   font-size: 15px;
   margin-bottom: 0;
 }
 
-/* line 96, ../../app/stylesheets/application.sass */
+/* line 99, ../../app/stylesheets/application.sass */
 #container {
   padding: 20px;
 }
-/* line 98, ../../app/stylesheets/application.sass */
+/* line 101, ../../app/stylesheets/application.sass */
 #container.gray {
   background: #f4f4f4;
 }
 
-/* line 101, ../../app/stylesheets/application.sass */
+/* line 104, ../../app/stylesheets/application.sass */
 .inline, .cap, .cover {
   margin-bottom: 5px;
 }
 
-/* line 104, ../../app/stylesheets/application.sass */
+/* line 107, ../../app/stylesheets/application.sass */
 .status {
   font-size: 10px;
   text-transform: uppercase;
@@ -164,32 +164,32 @@ a:hover {
   display: inline-block;
   letter-spacing: 1px;
 }
-/* line 106, ../../app/stylesheets/application.sass */
+/* line 109, ../../app/stylesheets/application.sass */
 .status.big {
   font-size: 14px;
 }
-/* line 112, ../../app/stylesheets/application.sass */
+/* line 115, ../../app/stylesheets/application.sass */
 .status.review, .status.yellow {
   background: #f9b900;
   color: black;
 }
-/* line 115, ../../app/stylesheets/application.sass */
+/* line 118, ../../app/stylesheets/application.sass */
 .status.ok, .status.green {
   background: #0a8b00;
   color: white;
 }
-/* line 118, ../../app/stylesheets/application.sass */
+/* line 121, ../../app/stylesheets/application.sass */
 .status.not, .status.red {
   background: #cb0802;
   color: white;
 }
-/* line 121, ../../app/stylesheets/application.sass */
+/* line 124, ../../app/stylesheets/application.sass */
 .status.draft, .status.black {
   background: #333333;
   color: white;
 }
 
-/* line 125, ../../app/stylesheets/application.sass */
+/* line 128, ../../app/stylesheets/application.sass */
 #footer {
   font-size: 12px;
   text-align: center;
@@ -197,12 +197,12 @@ a:hover {
   border-top: 1px solid #dddddd;
   margin-top: 20px;
 }
-/* line 133, ../../app/stylesheets/application.sass */
+/* line 136, ../../app/stylesheets/application.sass */
 #footer .inline {
   width: 100%;
 }
 
-/* line 137, ../../app/stylesheets/application.sass */
+/* line 140, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad {
   width: 620px;
   height: 794px;
@@ -210,7 +210,7 @@ a:hover {
   font: 18px "Georgia", "Trebuchet MS", Verdana, sans-serif;
   margin-bottom: 30px;
 }
-/* line 143, ../../app/stylesheets/application.sass */
+/* line 146, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner {
   position: relative;
   top: 146px;
@@ -219,17 +219,17 @@ a:hover {
   height: 509px;
   overflow: hidden;
 }
-/* line 150, ../../app/stylesheets/application.sass */
+/* line 153, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner p {
   margin-bottom: 1em;
   text-align: justify;
 }
-/* line 154, ../../app/stylesheets/application.sass */
+/* line 157, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner img.inline {
   width: 100%;
   margin-bottom: 20px;
 }
-/* line 157, ../../app/stylesheets/application.sass */
+/* line 160, ../../app/stylesheets/application.sass */
 .sampler-ipad .ipad .inner img.cap {
   width: 40%;
   float: left;
@@ -237,7 +237,7 @@ a:hover {
   margin-bottom: 10px;
 }
 
-/* line 163, ../../app/stylesheets/application.sass */
+/* line 166, ../../app/stylesheets/application.sass */
 .sampler-transparent {
   background-image: url("/images/transparent.png");
   width: 600px;
@@ -245,22 +245,22 @@ a:hover {
   margin: 0 auto;
 }
 
-/* line 170, ../../app/stylesheets/application.sass */
+/* line 173, ../../app/stylesheets/application.sass */
 #main h1 {
   font-size: 24px;
   margin-bottom: 1em;
 }
-/* line 173, ../../app/stylesheets/application.sass */
+/* line 176, ../../app/stylesheets/application.sass */
 #main h2 {
   font-size: 18px;
   margin-bottom: 1em;
 }
-/* line 176, ../../app/stylesheets/application.sass */
+/* line 179, ../../app/stylesheets/application.sass */
 #main p {
   margin-bottom: 1em;
 }
-/* line 179, ../../app/stylesheets/application.sass */
-#main #story p, #main #story h1, #main #story h2, #main #story h3, #main #story h4, #main #story h5 {
+/* line 182, ../../app/stylesheets/application.sass */
+#main #story p, #main #story h1, #main #story h2, #main #story h3, #main #story h4, #main #story h5, #main #story blockquote {
   margin: 1em 0;
   font-family: Georgia, serif;
   font-size: 18px;
@@ -270,29 +270,29 @@ a:hover {
   letter-spacing: normal;
   text-align: center;
 }
-/* line 188, ../../app/stylesheets/application.sass */
+/* line 191, ../../app/stylesheets/application.sass */
 #main #story p {
   line-height: 1.4em;
   text-align: justify;
 }
-/* line 191, ../../app/stylesheets/application.sass */
+/* line 194, ../../app/stylesheets/application.sass */
 #main #story h1 {
   font-size: 41px;
   line-height: 1.2em;
 }
-/* line 194, ../../app/stylesheets/application.sass */
+/* line 197, ../../app/stylesheets/application.sass */
 #main #story h2, #main #story h3 {
   font-size: 32px;
   line-height: 1.4em;
 }
-/* line 198, ../../app/stylesheets/application.sass */
+/* line 201, ../../app/stylesheets/application.sass */
 #main #story h4 {
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.7em;
 }
-/* line 203, ../../app/stylesheets/application.sass */
+/* line 206, ../../app/stylesheets/application.sass */
 #main #story h5 {
   font-size: 15px;
   font-style: normal;
@@ -300,52 +300,56 @@ a:hover {
   font-style: italic;
   text-transform: uppercase;
 }
-
 /* line 212, ../../app/stylesheets/application.sass */
+#main #story blockquote {
+  padding-left: 1em;
+}
+
+/* line 217, ../../app/stylesheets/application.sass */
 #guidelines h2 {
   margin-top: 2em;
   border-top: 1px solid #dddddd;
   padding-top: 1em;
 }
 
-/* line 218, ../../app/stylesheets/application.sass */
+/* line 223, ../../app/stylesheets/application.sass */
 #list h4 {
   font-size: 18px;
   margin: 1em 0;
 }
-/* line 221, ../../app/stylesheets/application.sass */
+/* line 226, ../../app/stylesheets/application.sass */
 #list .onetext {
   margin-bottom: 0.75em;
 }
 
-/* line 224, ../../app/stylesheets/application.sass */
+/* line 229, ../../app/stylesheets/application.sass */
 #admin-bar {
   margin-bottom: 1em;
   padding-left: 1em;
 }
 
-/* line 229, ../../app/stylesheets/application.sass */
+/* line 234, ../../app/stylesheets/application.sass */
 #registration-canvas .input {
   margin-bottom: 1em;
 }
-/* line 231, ../../app/stylesheets/application.sass */
+/* line 236, ../../app/stylesheets/application.sass */
 #registration-canvas .label {
   font-weight: bold;
 }
-/* line 233, ../../app/stylesheets/application.sass */
+/* line 238, ../../app/stylesheets/application.sass */
 #registration-canvas .label .required {
   color: #cb0802;
 }
-/* line 235, ../../app/stylesheets/application.sass */
+/* line 240, ../../app/stylesheets/application.sass */
 #registration-canvas .label .optional {
   color: #0a8b00;
 }
-/* line 237, ../../app/stylesheets/application.sass */
+/* line 242, ../../app/stylesheets/application.sass */
 #registration-canvas .field-block {
   display: inline-block;
 }
 
-/* line 240, ../../app/stylesheets/application.sass */
+/* line 245, ../../app/stylesheets/application.sass */
 #error_explanation {
   margin-bottom: 1em;
   border: 2px solid #cb0802;
@@ -353,17 +357,17 @@ a:hover {
   background: #cb0802;
   color: white;
 }
-/* line 246, ../../app/stylesheets/application.sass */
+/* line 251, ../../app/stylesheets/application.sass */
 #error_explanation h2 {
   font-size: 13px;
   display: none;
 }
-/* line 249, ../../app/stylesheets/application.sass */
+/* line 254, ../../app/stylesheets/application.sass */
 #error_explanation li {
   margin-left: 1.5em;
 }
 
-/* line 252, ../../app/stylesheets/application.sass */
+/* line 257, ../../app/stylesheets/application.sass */
 #simple {
   font-size: 15px;
   width: 60%;
@@ -371,33 +375,33 @@ a:hover {
   border: 5px solid #eeeeee;
   margin: 20px auto;
 }
-/* line 258, ../../app/stylesheets/application.sass */
+/* line 263, ../../app/stylesheets/application.sass */
 #simple p, #simple h1, #simple h2, #simple h3 {
   margin-bottom: 1em;
 }
-/* line 260, ../../app/stylesheets/application.sass */
+/* line 265, ../../app/stylesheets/application.sass */
 #simple p.smaller, #simple h1.smaller, #simple h2.smaller, #simple h3.smaller {
   font-size: 13px;
 }
 
-/* line 262, ../../app/stylesheets/application.sass */
+/* line 267, ../../app/stylesheets/application.sass */
 .less {
   color: #999999;
   font-size: 11px;
 }
 
-/* line 266, ../../app/stylesheets/application.sass */
+/* line 271, ../../app/stylesheets/application.sass */
 form p {
   margin-bottom: 1em;
 }
 
-/* line 268, ../../app/stylesheets/application.sass */
+/* line 273, ../../app/stylesheets/application.sass */
 sup {
   font-size: 70%;
   color: #999999;
 }
 
-/* line 272, ../../app/stylesheets/application.sass */
+/* line 277, ../../app/stylesheets/application.sass */
 .textinfo {
   color: #999999;
 }
