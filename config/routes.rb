@@ -45,12 +45,18 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/remove_text", :to => "books#remove_text"
   match "books/:id/expire", :to => "books#expire", :as => :expire_book
 
+  match "books/:id/download_originals", :to => "books#download_originals", :as => :download_originals
+
+
   resources :books
   
   match "illustrations/uploaded", :to => "illustrations#uploaded", :as => :illustration_uploaded
   match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
   
   resources :illustrations
+
+
+
 
   match "cant", :to => "dashboard#cant", :as => :cant
 
