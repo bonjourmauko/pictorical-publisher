@@ -260,7 +260,7 @@ a:hover {
   margin-bottom: 1em;
 }
 /* line 182, ../../app/stylesheets/application.sass */
-#main #story p, #main #story h1, #main #story h2, #main #story h3, #main #story h4, #main #story h5, #main #story blockquote {
+#main #story p, #main #story h1, #main #story h2, #main #story h3, #main #story h4, #main #story h5 {
   margin: 1em 0;
   font-family: Georgia, serif;
   font-size: 18px;
@@ -302,54 +302,62 @@ a:hover {
 }
 /* line 212, ../../app/stylesheets/application.sass */
 #main #story blockquote {
-  padding-left: 1em;
+  margin: 1em 0;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: normal;
+  letter-spacing: normal;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
-/* line 217, ../../app/stylesheets/application.sass */
+/* line 225, ../../app/stylesheets/application.sass */
 #guidelines h2 {
   margin-top: 2em;
   border-top: 1px solid #dddddd;
   padding-top: 1em;
 }
 
-/* line 223, ../../app/stylesheets/application.sass */
+/* line 231, ../../app/stylesheets/application.sass */
 #list h4 {
   font-size: 18px;
   margin: 1em 0;
 }
-/* line 226, ../../app/stylesheets/application.sass */
+/* line 234, ../../app/stylesheets/application.sass */
 #list .onetext {
   margin-bottom: 0.75em;
 }
 
-/* line 229, ../../app/stylesheets/application.sass */
+/* line 237, ../../app/stylesheets/application.sass */
 #admin-bar {
   margin-bottom: 1em;
   padding-left: 1em;
 }
 
-/* line 234, ../../app/stylesheets/application.sass */
+/* line 242, ../../app/stylesheets/application.sass */
 #registration-canvas .input {
   margin-bottom: 1em;
 }
-/* line 236, ../../app/stylesheets/application.sass */
+/* line 244, ../../app/stylesheets/application.sass */
 #registration-canvas .label {
   font-weight: bold;
 }
-/* line 238, ../../app/stylesheets/application.sass */
+/* line 246, ../../app/stylesheets/application.sass */
 #registration-canvas .label .required {
   color: #cb0802;
 }
-/* line 240, ../../app/stylesheets/application.sass */
+/* line 248, ../../app/stylesheets/application.sass */
 #registration-canvas .label .optional {
   color: #0a8b00;
 }
-/* line 242, ../../app/stylesheets/application.sass */
+/* line 250, ../../app/stylesheets/application.sass */
 #registration-canvas .field-block {
   display: inline-block;
 }
 
-/* line 245, ../../app/stylesheets/application.sass */
+/* line 253, ../../app/stylesheets/application.sass */
 #error_explanation {
   margin-bottom: 1em;
   border: 2px solid #cb0802;
@@ -357,17 +365,17 @@ a:hover {
   background: #cb0802;
   color: white;
 }
-/* line 251, ../../app/stylesheets/application.sass */
+/* line 259, ../../app/stylesheets/application.sass */
 #error_explanation h2 {
   font-size: 13px;
   display: none;
 }
-/* line 254, ../../app/stylesheets/application.sass */
+/* line 262, ../../app/stylesheets/application.sass */
 #error_explanation li {
   margin-left: 1.5em;
 }
 
-/* line 257, ../../app/stylesheets/application.sass */
+/* line 265, ../../app/stylesheets/application.sass */
 #simple {
   font-size: 15px;
   width: 60%;
@@ -375,33 +383,33 @@ a:hover {
   border: 5px solid #eeeeee;
   margin: 20px auto;
 }
-/* line 263, ../../app/stylesheets/application.sass */
+/* line 271, ../../app/stylesheets/application.sass */
 #simple p, #simple h1, #simple h2, #simple h3 {
   margin-bottom: 1em;
 }
-/* line 265, ../../app/stylesheets/application.sass */
+/* line 273, ../../app/stylesheets/application.sass */
 #simple p.smaller, #simple h1.smaller, #simple h2.smaller, #simple h3.smaller {
   font-size: 13px;
 }
 
-/* line 267, ../../app/stylesheets/application.sass */
+/* line 275, ../../app/stylesheets/application.sass */
 .less {
   color: #999999;
   font-size: 11px;
 }
 
-/* line 271, ../../app/stylesheets/application.sass */
+/* line 279, ../../app/stylesheets/application.sass */
 form p {
   margin-bottom: 1em;
 }
 
-/* line 273, ../../app/stylesheets/application.sass */
+/* line 281, ../../app/stylesheets/application.sass */
 sup {
   font-size: 70%;
   color: #999999;
 }
 
-/* line 277, ../../app/stylesheets/application.sass */
+/* line 285, ../../app/stylesheets/application.sass */
 .textinfo {
   color: #999999;
 }
