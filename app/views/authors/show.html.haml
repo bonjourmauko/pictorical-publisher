@@ -43,7 +43,7 @@
         Public Domain in
         - if text[:public_domain_anyway]
           Everywhere
-          - unless text[:public_domain_anyway_comment].nil?
+          - unless text[:public_domain_anyway_comment].empty?
             (#{text[:public_domain_anyway_comment]})
         - else
           - text.copyright_status.each do |key, value|
