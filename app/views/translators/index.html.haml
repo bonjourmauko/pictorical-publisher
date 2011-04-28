@@ -1,0 +1,10 @@
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
+#admin-canvas
+  %h1 All translators
+
+  - @translators.each do |translator|
+    %p
+      = link_to "#{translator.last_name}, #{translator.name}", translator

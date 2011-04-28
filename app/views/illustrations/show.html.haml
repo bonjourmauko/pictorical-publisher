@@ -26,6 +26,10 @@
       %b #{@illustration.image.content_type}
   
   .section
+    .item.half
+      - unless @illustration.draft.nil?
+        - if @illustration.draft?
+          .status.draft.big Draft
     .item
       - if @illustration.status == "review"
         .status.review.big Pending review

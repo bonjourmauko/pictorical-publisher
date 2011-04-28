@@ -1,7 +1,10 @@
 class Text < ActiveRecord::Base
+  extend Copyright
+
   belongs_to        :author
-  has_many :collections
-  has_many  :books, :through => :collections
+  belongs_to        :translator
+  has_many          :collections
+  has_many          :books, :through => :collections
 
   delegate          :name, :last_name, :to => :author, :prefix => true
   scope             :sorted, order('title ASC')
@@ -14,20 +17,39 @@ class Text < ActiveRecord::Base
 
   attr_accessible       :title,
                         :author_id,
+                        :translator_id,
                         :content,
                         :words,
                         :source,
                         :deleted,
-                        :availability
+                        :availability,
+                        :published,
+                        :renewal,
+                        :translation_published,
+                        :translation_renewal,
+                        :public_domain_anyway,
+                        :public_domain_anyway_comment
 
   validates_presence_of :title,
                         :author_id,
                         :content,
                         :source
+  
+  #validates_presence_of :published, :on => :create
+                        
+  #validates_numericality_of :published,             :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :renewal,               :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :translation_published, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+  #validates_numericality_of :translation_renewal,   :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
+
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
-
+  
+  def copyright_status
+    Text.copyright_status_of self
+  end
+  
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
   end

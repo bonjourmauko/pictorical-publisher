@@ -1,0 +1,19 @@
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
+#admin-canvas
+
+  %h1= "#{@translator.name} #{@translator.last_name}"
+
+  .admin
+    %p
+      = link_to "edit", :action => "edit"
+      ·
+      = link_to "new", :action => "new"
+      ·
+      = link_to "all", :action => "index"
+      
+      - if @translator.texts.first.nil?
+        ·
+        = link_to "delete", @translator, :confirm => 'Are you sure?', :method => :delete

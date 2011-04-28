@@ -21,5 +21,7 @@
           Created #{time_ago_in_words(book.created_at)} ago
           ·
           Last sent #{time_ago_in_words(last_reminder)} ago
+          ·
+          = link_to "expire", expire_book_path(book), :class => "red"
   - else
     Empty

@@ -1,0 +1,11 @@
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+  
+#admin-canvas
+  %h1 Edit translator
+  = render 'form', :translator => @translator
+  .admin
+    = link_to "New", :action => "new"
+    ·
+    = link_to "All", :action => "index"
