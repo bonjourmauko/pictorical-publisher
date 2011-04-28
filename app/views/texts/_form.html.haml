@@ -7,34 +7,51 @@
       %ul
         - text.errors.full_messages.each do |msg|
           %li= msg
-  %p
-    .title= f.label :title
-    .field= f.text_field :title, :size => 70
-  %p
-    .title= f.label :source
-    .field= f.text_field :source, :size => 70
-  %p
-    .title
-      = f.label :author_id
-      %span= link_to "new", :controller => "authors", :action => "new"
-    .field= collection_select(:text, :author_id, Author.sorted.all, :id, :name_with_initial, :prompt => true)
-  %p
-    .title= f.label :published
-    .field= f.text_field :published, :size => 70
-  %p
-    .title= f.label :renewal, "Renewal (U.S. only)"
-    .field= f.text_field :renewal, :size => 70
-  %p
-    .title
-      = f.label :translator_id
-      %span= link_to "new", :controller => "translators", :action => "new"
-    .field= collection_select(:text, :translator_id, Translator.sorted.all, :id, :name_with_initial, :prompt => true)
-  %p
-    .title= f.label :tranlation_published, "Translation Published (if available)"
-    .field= f.text_field :translation_published, :size => 70
-  %p
-    .title= f.label :tranlation_renewal, "Translation Renewal (U.S. only)"
-    .field= f.text_field :translation_renewal, :size => 70
+  .box
+    %p
+      .title= f.label :title
+      .field= f.text_field :title, :size => 70
+    %p
+      .title= f.label :source
+      .field= f.text_field :source, :size => 70
+    %p
+      .title
+        = f.label :author_id
+        %span= link_to "new", :controller => "authors", :action => "new"
+        = collection_select(:text, :author_id, Author.sorted.all, :id, :name_with_initial, :prompt => true)
+  &nbsp;
+  .box
+    %p
+      .title
+        = f.label :published
+        = f.text_field :published, :size => 10
+    %p
+      .title
+        = f.label :renewal, "Renewal (U.S. only)"
+        = f.text_field :renewal, :size => 10
+  &nbsp;
+  .box
+    %p
+      .title
+        = f.label :force_public_domain, "Force Public Domain?"
+        = f.check_box :force_public_domain
+        why? 
+        = f.text_field :force_public_domain_comment, :size => 50
+  &nbsp;
+  .box
+    %p
+      .title
+        = f.label :translator_id
+        %span= link_to "new", :controller => "translators", :action => "new"
+        = collection_select(:text, :translator_id, Translator.sorted.all, :id, :name_with_initial, :prompt => true)
+    %p
+      .title
+        = f.label :tranlation_published, "Translation Published (if available)"
+        = f.text_field :translation_published, :size => 10
+    %p
+      .title
+        = f.label :tranlation_renewal, "Translation Renewal (U.S. only)"
+        = f.text_field :translation_renewal, :size => 10
   %p
     .actions
       = f.submit
