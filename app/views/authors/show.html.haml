@@ -41,9 +41,9 @@
           = link_to "#{text.translator[:name]} #{text.translator[:last_name]}", text.translator
           %br
         Public Domain in
-        - if text.force_public_domain
+        - if text[:public_domain_anyway]
           Everywhere
-          - unless text.force_public_domain_comment.empty?
+          - unless text[:force_public_domain_comment].nil?
             (#{text.force_public_domain_comment})
         - else
           - text.copyright_status.each do |key, value|

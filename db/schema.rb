@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428175051) do
+ActiveRecord::Schema.define(:version => 20110428195307) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(:version => 20110428175051) do
     t.integer  "translator_id"
     t.integer  "translation_published"
     t.integer  "translation_renewal"
-    t.boolean  "force_public_domain"
-    t.text     "force_public_domain_comment"
+    t.boolean  "public_domain_anyway"
+    t.text     "public_domain_anyway_comment"
   end
 
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"

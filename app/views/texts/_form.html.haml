@@ -33,14 +33,6 @@
   .box
     %p
       .title
-        = f.label :force_public_domain, "Force Public Domain?"
-        = f.check_box :force_public_domain
-        why? 
-        = f.text_field :force_public_domain_comment, :size => 50
-  &nbsp;
-  .box
-    %p
-      .title
         = f.label :translator_id
         %span= link_to "new", :controller => "translators", :action => "new"
         = collection_select(:text, :translator_id, Translator.sorted.all, :id, :name_with_initial, :prompt => true)
@@ -52,6 +44,14 @@
       .title
         = f.label :tranlation_renewal, "Translation Renewal (U.S. only)"
         = f.text_field :translation_renewal, :size => 10
+    &nbsp;
+    .box
+      %p
+        .title
+          = f.label :public_domain_anyway, "Public Domain Anyway?"
+          = f.check_box :force_public_domain
+          why? 
+          = f.text_field :public_domain_anyway_comment, "Comment", :size => 50
   %p
     .actions
       = f.submit

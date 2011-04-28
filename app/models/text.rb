@@ -27,8 +27,8 @@ class Text < ActiveRecord::Base
                         :renewal,
                         :translation_published,
                         :translation_renewal,
-                        :force_public_domain,
-                        :force_public_domain_comment
+                        :public_domain_anyway,
+                        :public_domain_anyway_comment
 
   validates_presence_of :title,
                         :author_id,
