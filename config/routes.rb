@@ -43,6 +43,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/destroy/:id", :to => "books#destroy"
   match "books/:id/add_text", :to => "books#add_text"
   match "books/:id/remove_text", :to => "books#remove_text"
+  match "books/:id/expire", :to => "books#expire", :as => :expire_book
 
   resources :books
   

@@ -33,7 +33,7 @@
         - unless text[:published].nil? or text[:published] == 0
           Published at
           = text[:published]
-        %br
+          %br
         - unless text.translator.nil? or text[:translation_published].nil?
           Translated at
           = text[:translation_published]
@@ -41,8 +41,13 @@
           = link_to "#{text.translator[:name]} #{text.translator[:last_name]}", text.translator
           %br
         Public Domain in
-        - text.copyright_status.each do |key, value|
-          - if value
-            ·
-            = key.to_s.upcase
+        - if text.force_public_domain
+          Everywhere
+          - unless text.force_public_domain_comment.empty?
+            (#{text.force_public_domain_comment})
+        - else
+          - text.copyright_status.each do |key, value|
+            - if value
+              ·
+              = key.to_s.upcase
           

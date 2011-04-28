@@ -9,8 +9,7 @@ class Translator < ActiveRecord::Base
   
   validates_presence_of :name,
                         :last_name,
-                        :country,
-                        :defunction
+                        :country
                         
   #validates_numericality_of :defunction, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
 

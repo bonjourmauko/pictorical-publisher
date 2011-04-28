@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
-  before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text]
+  before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text, :expire]
   
 
   def index
@@ -31,6 +31,10 @@ class BooksController < ApplicationController
 
         @book.principal = text
         @book.save
+        
+        user = @book.user
+        user.last_book_no_illustration_reminder_at = 0
+        user.save
 
         text.availability = false
         text.save
@@ -81,6 +85,7 @@ class BooksController < ApplicationController
   
   
   def change
+    
     principal_text = @active_book.principal
     principal_text.availability = true
     principal_text.save
@@ -122,11 +127,32 @@ class BooksController < ApplicationController
   def destroy
     @book.status = "destroyed"
     if @book.save
+
       redirect_to @book, :notice => "changed status to destroyed"
     else
       redirect_to @book, :notice =>  "could not change status"
     end
   end
+
+  def expire
+    @book.status = "expired"
+    if @book.created_at.advance(:days => 15) < Time.now
+      if @book.save
+
+        
+        mail = Notifications.expire_book(@book)
+        mail.deliver
+        redirect_to book_no_illustration_path, :notice => "changed status to expired"
+      else
+        redirect_to book_no_illustration_path, :alert => "could not change status"
+      end
+    else
+      redirect_to book_no_illustration_path, :alert => "book is less than 14 days old"
+    end
+  end
+
+
+
 
   def add_text
 

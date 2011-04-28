@@ -24,9 +24,7 @@ class RemindersController < ApplicationController
             end
           
           end
-        
           @books << book
-        
         end
       end
     else
