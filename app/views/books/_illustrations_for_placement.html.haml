@@ -1,0 +1,3 @@
+- @book.illustrations.active.each do |illustration|
+  - unless illustration.tipe == "cover"
+    = render :partial => "show_illustration", :locals => { :illustration => illustration, :small => false, :editable => editable}

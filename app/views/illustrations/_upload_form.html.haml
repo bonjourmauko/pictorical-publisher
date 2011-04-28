@@ -1,0 +1,20 @@
+= form_tag('http://api2.transloadit.com/assemblies', :multipart => true, :id => 'upload_illustration') do
+  = hidden_field_tag :params, @transloadit_params.to_json
+  
+  %p
+    = hidden_field_tag :type, @type
+    = hidden_field_tag :position, @position
+    = file_field_tag :image
+  %p
+    = check_box_tag :draft
+    This is a sketch (not the final version)
+  = submit_tag "Upload illustration"
+
+:javascript
+  var tlProtocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+  document.write(unescape("%3Cscript src='" + tlProtocol + "assets.transloadit.com/js/jquery.transloadit2.js' type='text/javascript'%3E%3C/script%3E"));
+:javascript
+  $(document).ready(function() {
+    $('#upload_illustration').transloadit();
+  });
+  

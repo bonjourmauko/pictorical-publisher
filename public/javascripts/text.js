@@ -1,12 +1,19 @@
-function pad(number, length) {
-
-    var str = '' + number;
-    while (str.length < length) {
-        str = '0' + str;
-    }
-
-    return str;
-
+function upload_link(type, position){
+	
+	if(type == "cap") { var what = "capital" }
+	else
+	{
+		if(type == "inline") { var what = "illustration" }
+		else
+		{
+			if(type == "cover") { var what = "cover" }
+		}
+	}
+	
+	str = '<div class="upload-link"><a href="/illustrations/new/' + type + '/' + position + '">Upload '+what+' here</a></div>';
+	
+	return str;
+	
 }
 
 
@@ -14,34 +21,42 @@ $(document).ready(function() {
   
   var wordcount = 0;
   
-	if($('#story h1').length){
-		
-		$('#story h1').each(function(index) {
+	
+	//assigns caps
 
-			$(this).after('<div class="parnum">CAP'+ (index+1) +'</div>');
-			
-		});
 		
-	} else { $('#story p:first').before('<div class="parnum">CAP</div>');}
-  
+		
+	$('#story h1').each(function(index) {
+		
+		var key = 'cap' + (index+1)
+
+		if( $('#'+key).length > 0 )
+		{
+			$('#'+key).insertAfter($(this));
+		}
+		else
+		{
+			$(this).after( upload_link('cap', index+1) );
+		}
+	});
+
+
+	
 
   $('#story p').each(function(index) {
 
-    var positionemail = pad(index+1,3);
-    $(this).after('<div class="parnum">'+pad(index+1,3)+'</div>');
+		var key = 'inline' + (index+1)
+		
+		if( $('#'+key).length > 0 )
+		{
+			$('#'+key).insertAfter($(this));
+		}
+		else
+		{
+			$(this).after( upload_link('inline', index+1) );
+		}
 
-    var string = $(this).text();
-    var count = string.split(" "); 
-    wordcount = wordcount + count.length;
+  });
 
-    });
-
-    wordcount = wordcount/1.2; // correction for number of word 
-
-    var number_of_illustrations = wordcount/300;
-    var number_of_illustrations_top = Math.round(number_of_illustrations*1.2);
-    var number_of_illustrations_bottom = Math.round(Math.min(wordcount/300,20+(wordcount-6000)/600,30+(wordcount-12000)/1200)*0.9);
-
-    $('#number_of_illustrations').html( number_of_illustrations_bottom + "-" + number_of_illustrations_top );
 
 });

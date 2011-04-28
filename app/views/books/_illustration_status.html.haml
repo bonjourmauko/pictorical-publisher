@@ -1,0 +1,8 @@
+- if illustration.draft?
+  .status.draft Draft
+- if illustration.status == "review"
+  .status.review Pending review
+- if illustration.status == "ok"
+  .status.ok &#x2714; Ok
+- if illustration.status == "not"
+  .status.not There is a problem

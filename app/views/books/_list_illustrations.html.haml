@@ -1,0 +1,10 @@
+- unless @book.illustrations.active.find_by_tipe(type).nil?
+  .section
+    -if type == "cap"
+      %b Capital illustrations
+    -elsif type == "inline"
+      %b Story illustrations
+
+- @book.illustrations.active.find_all_by_tipe(type, :order => "position ASC").each do |illustration|
+  .section
+    = render :partial => "show_illustration", :locals => { :illustration => illustration, :small => true, :editable => true}

@@ -1,0 +1,9 @@
+- if @book.texts.count > 1
+  .section
+    .item.half
+      Stories in this book:
+    - @book.texts.each do |text|
+      .item
+        · #{text.title}
+        - unless @book.principal == text
+          = link_to "x", "/books/#{@book.id}/remove_text?text_id=#{text.id}" , :class => "red", :confirm => "Are you sure you want to remove this story from your book?"

@@ -11,9 +11,6 @@ class AuthorsController < ApplicationController
     @authors = Author.sorted.all
   end
 
-  def show
-  end
-
   def new
     @author = Author.new
   end
@@ -27,18 +24,12 @@ class AuthorsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
-
-
     if @author.update_attributes(params[:author])
       redirect_to @author, :notice => 'Author was successfully updated.'
     else
       render :action => "edit"
     end
-
   end
 
   def destroy

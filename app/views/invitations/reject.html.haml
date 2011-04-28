@@ -1,0 +1,9 @@
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
+#admin-canvas
+  %h1.reject REJECT ARTIST
+  = render 'form', :invitation => @invitation
+  .admin
+    = link_to "All", :action => "index"

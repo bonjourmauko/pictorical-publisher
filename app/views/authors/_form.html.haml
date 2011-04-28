@@ -1,4 +1,4 @@
-= form_for author do |f|
+= simple_form_for author do |f|
   - if author.errors.any?
     #error_explanation
       %h2
@@ -9,10 +9,17 @@
           %li= msg
   %p
     .title= f.label :name
-    .field= f.text_field :name
+    .field= f.input :name, :label => false
   %p
     .title= f.label :last_name
-    .field= f.text_field :last_name
+    .field= f.input :last_name, :label => false
+  %p
+    .title= f.label :country
+    .field= f.input :country, :label => false
+  %p
+    .title= f.label :defunction, "Defunction (if available)"
+    .field= f.input :defunction, :label => false
+  
   %p
     .actions
       = f.submit

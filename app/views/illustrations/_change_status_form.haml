@@ -1,0 +1,27 @@
+= form_for @illustration do |f|
+  - if @illustration.errors.any?
+    #error_explanation
+      %h2
+        - text.errors.full_messages.each do |msg|
+          %li= msg
+  .section
+    .title Status
+    .item.half
+      .status.review
+        = f.radio_button :status, "review"
+        Review &nbsp;
+    .item.half
+      .status.ok
+        = f.radio_button :status, "ok"
+        Ok &nbsp;
+    .item.half
+      .status.not
+        = f.radio_button :status, "not"
+        Not &nbsp;
+      
+  .section
+    .title Problems
+    .field= f.text_area :problems, :rows => 5, :cols => 40
+    
+    .actions
+      = f.submit

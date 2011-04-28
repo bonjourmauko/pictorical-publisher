@@ -1,9 +1,10 @@
-#notice
-  = notice
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
+
 #admin-canvas
   %h1 All authors
-  .admin
-    = link_to "New", :action => "new"
+
   - @authors.each do |author|
     %p
       = link_to "#{author.last_name}, #{author.name}", author

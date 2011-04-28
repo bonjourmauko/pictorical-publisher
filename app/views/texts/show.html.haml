@@ -1,65 +1,90 @@
 - title "Pictorical, Illustrate #{@text[:title]} by #{@text[:author]}"
-#notice
-  = notice
-#text-canvas
 
-  #title
-    %h1
-      -if @text[:deleted]
-        .deleted= @text[:title]
-      -else
-        = @text[:title]
-    %h3
-      %span.up
-        = "#{@text.author_name} #{@text.author_last_name}"
-  #container
 
-    - if can? :new, Text
-      .admin
-        Admin:
-        = link_to "edit", :action => "edit"
-        ·
-        = link_to 'destroy', :action => "trashed_destroy"
-        ·
-        - if @text.availability
-          text is available
-          = link_to 'make unavailable', :action => "make_unavailable"
-        - else
-          text is unavailable
-          = link_to 'make available', :action => "make_available"
-        %br
-        %br
-        %b= "Books with this text"
-        - if @text.books.not_deleted.count > 0
-          - @text.books.not_deleted.each do |book|
-            .x= link_to "Book #{book.id} by #{book.user.name} (#{book.user_id}) · status: #{book.status}", book
-        - else
-          .x No books with this text
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
+  %h1
+    #{@text.title}
+  .section
+    by
+    = link_to "#{@text.author.name} #{@text.author.last_name}", @text.author
+
+
+  
+  
+  
+
+  .section
+    .item
+      This story has #{@text.words} words
+    .item
+      We recommend between #{@text.illustrations_lower} and #{@text.illustrations_upper} illustrations for this story
+
+  .section
     - unless current_user.has_books_under_review?
-      #action-box
-        = "#{@text.words} words · #{@text.illustrations_lower}~#{@text.illustrations_upper} illustrations"
-        ·
-        - if @text.availability?
-          = illustrate_change_or_add
-          or
+      - if @text.availability?
+        - if @active_book.nil? || @active_book.text.nil?
+          %b= link_to "Illustrate this story", { :controller => "books", :action => "new", :text_id => @text[:id] }
         - else
-          Not available.
+          - if @active_book.text[:id] == @text[:id]
+            = link_to "You are illustrating this story", {:controller => "books", :action => "edit", :id => @active_book.id}
+          - else # this text is not the text in the active book
+            - unless @active_book.nil?
+              = link_to "Add to your book", {:controller => "books", :action => "add_text", :id => @active_book.id, :text_id => @text[:id]}, :class => "add-text"
+              or
+            .item
+              = link_to "Start a new book with this story", {:controller => "books", :action => "change", :text_id => @text[:id]}, :confirm => 'If you change your story, the other story will be available for other artists to illustrate. Are you sure you want to change it?'
 
-        = link_to "choose another", {:action => "index"}, :class => "choose"
+
+      - else # text is not available
+        Not available.
 
       - if @text.words < 4000
-        #warning-box
-          %b= "This is a short story (#{@text.words} words)"
-          %br
-          = "Want to illustrate it? Click \"Illustrate text\". You will have to choose one or two more stories by the same author to reach 4000 words."
+        .redbox
+          %h3 This is a short story (#{@text.words} words)
+          Want to illustrate it? Click 
+          %b Illustrate this story.
+          You will have to choose one or two more stories by the same author to reach 4000 words.
 
-    - else
-      #warning-box
+    - else # current user has books under review
+      .redbox
         Please wait until we publish your book to start illustrating a new one
 
+  - if can? :new, Text
+    .section.admin
+      .item
+      = link_to "Edit text", :action => "edit"
+      .item
+      -unless @text.deleted
+        %span.green Text is not deleted
+        = link_to 'Delete', :action => "trashed_destroy"
+      .item
+        - if @text.availability
+          %span.green Text is available
+          = link_to 'Make unavailable', :action => "make_unavailable"
+        - else
+          %span.red Text is unavailable
+          = link_to 'Make available', :action => "make_available"
+    .section.admin
+      %b= "Books with this text"
+      - if @text.books.not_deleted.count > 0
+        - @text.books.not_deleted.each do |book|
+          .item.half
+            .item
+              = link_to "Book #{book.id}", book
+              by #{book.user.name} [#{book.user_id}]
+            .item
+              status: #{book.status}
+      - else
+        .item
+          No books with this text     
 
 
 
-    #story
-      = @text[:content].html_safe
+#container.gray
+  #story
+    %h1
+      #{@text.title}
+    = @text[:content].html_safe

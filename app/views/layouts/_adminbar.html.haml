@@ -1,16 +1,34 @@
-#admin-bar
-  .header= link_to "Invites", invitations_path
-  .item= link_to "new", new_invitation_path
-  .item= link_to "red'md", invitations_path + "?redeemed=yes"
-  .item= link_to "not-red'md", invitations_path + "?redeemed=no"
-  .header= link_to "Users", users_path
-  .header= link_to "Books", books_path
-  .item= link_to "active", books_path + "?status=active"
-  .item= link_to "review", books_path + "?status=review"
-  .item= link_to "published", books_path + "?status=published"
-  .item= link_to "destroyed", books_path + "?status=destroyed"
-  .header= link_to "Texts", texts_path
-  .item= link_to "new", new_text_path
-  .item= link_to "trash", trashes_path
-  .header= link_to "Authors", authors_path
-  .item= link_to "new", new_author_path
+-if current_user.admin
+  #admin-bar.admin
+    .item.half
+      %b= link_to "Invites", invitations_path
+      = link_to "new", new_invitation_path
+      = link_to "redmd", invitations_path + "?redeemed=yes"
+      = link_to "not-redmd", invitations_path + "?redeemed=no"
+    .item.half
+      %b= link_to "Users", users_path
+    .item.half
+      %b= link_to "Books", books_path
+      = link_to "active", books_path + "?status=active"
+      = link_to "review", books_path + "?status=review"
+      = link_to "published", books_path + "?status=published"
+      = link_to "destroyed", books_path + "?status=destroyed"
+    .item.half
+      %b= link_to "Texts", texts_path
+      = link_to "new", new_text_path
+      = link_to "trash", trashes_path
+    .item.half
+      %b= link_to "Authors", authors_path
+      = link_to "new", new_author_path
+    .item.half
+      %b= link_to "Translators", translators_path
+      = link_to "new", new_translator_path
+    .item.half
+      %b= link_to "Illustrations", illustrations_path
+      = link_to "review", illustrations_path + "?status=review"
+      = link_to "not", illustrations_path + "?status=not"
+      = link_to "ok", illustrations_path + "?status=ok"
+    .item.half
+      %b Reminders
+      = link_to "book no illustration", book_no_illustration_path
+        

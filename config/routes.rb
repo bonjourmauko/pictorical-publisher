@@ -1,7 +1,5 @@
 PublisherPictoricalCom::Application.routes.draw do
 
-  #get "dashboard/welcome"
-
   match "/terms-and-conditions", :to => "pages#terms_and_conditions", :as => :terms_and_conditions, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
   match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
@@ -9,7 +7,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "/website-disclaimer", :to => "pages#website_disclaimer", :as => :website_disclaimer, :via => :get
   match "/copyright-notice", :to => "pages#copyright_notice", :as => :copyright_notice, :via => :get
   match "/legal", :to => "pages#legal", :as => :legal, :via => :get
-
+  match "/help", :to => "pages#help", :as => :help, :via => :get
 
   devise_for :users
 
@@ -31,9 +29,10 @@ PublisherPictoricalCom::Application.routes.draw do
   match "trashes", :to => "texts#trashed_index", :as => :trashes
 
   resources :authors
+  resources :translators
 
-  match "/new_fancy", :to => "authors#new_fancy"
-  match "/create_fancy", :to => "author#create_fancy"
+  match "invitations/reject", :to => "invitations#reject", :as => :reject_artist
+  
 
   resources :invitations
 
@@ -44,10 +43,21 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/destroy/:id", :to => "books#destroy"
   match "books/:id/add_text", :to => "books#add_text"
   match "books/:id/remove_text", :to => "books#remove_text"
+  match "books/:id/expire", :to => "books#expire", :as => :expire_book
 
   resources :books
+  
+  match "illustrations/uploaded", :to => "illustrations#uploaded", :as => :illustration_uploaded
+  match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
+  
+  resources :illustrations
 
-  root :to => "dashboard#welcome"
+  match "cant", :to => "dashboard#cant", :as => :cant
+
+
+  match "reminders/book_no_illustration", :to => "reminders#book_no_illustration", :as => :book_no_illustration
+
+  root :to => "dashboard#start"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

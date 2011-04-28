@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-
-  has_many :collections
+  
+  has_many  :illustrations
+  has_many  :collections
   has_many  :texts, :through => :collections
 
   belongs_to :principal, :class_name => "Text",  :foreign_key => :principal_text_id
@@ -10,12 +11,11 @@ class Book < ActiveRecord::Base
 
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])
-  scope       :deleted, where(:status => 'destroyed')
-  scope       :sorted, order('created_at DESC')
-
+  scope       :deleted,     where(:status => 'destroyed')
+  scope       :sorted,      order('created_at DESC')
+  scope       :active,      where(:status => 'active')
+  
   after_initialize :status?
-
-
 
   def text
     self.texts.first
@@ -26,7 +26,6 @@ class Book < ActiveRecord::Base
   end
 
   def title
-
     if self.texts.count > 2
       self.principal.title.strip + " & Other Stories"
     elsif self.texts.count == 2
@@ -34,25 +33,17 @@ class Book < ActiveRecord::Base
     else
       self.principal.title.strip
     end
-
   end
 
-
   def content
-
-    if self.texts.count == 1
-      contents = self.principal.content
-    else
-      contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
-      self.texts.each do |text|
-        unless text == principal
-          contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
-        end
+    contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
+    self.texts.each do |text|
+      unless text == principal
+        contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
       end
     end
 
     return contents
-
   end
 
   def illustrations_lower
@@ -78,7 +69,6 @@ class Book < ActiveRecord::Base
     end
     return sums
   end
-
 
   private
 

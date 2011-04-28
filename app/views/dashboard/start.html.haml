@@ -1,0 +1,26 @@
+- title "Your Pictorical"
+
+%p
+  Hello #{current_user.name}!
+  
+  - unless @active_book.nil?
+    %p
+      You are illustrating
+      %b= link_to @active_book.title, edit_book_path(@active_book)
+  - else
+    - unless @review_book.nil?
+      %p
+        You finished your book
+        %b= link_to @review_book.title, @review_book
+        #{time_ago_in_words(@review_book.updated_at)} ago.
+      %p
+        We take between 1 to 2 weeks to review your book. We will send you an email when it's ready.
+    %p
+      Be inspired by choosing your next story
+      = link_to "here.", texts_path
+
+
+%p.smaller.admin
+  Boring? This is your start page and is under construction. What would you like to see here? Write us at 
+  = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
+  with your ideas.

@@ -1,0 +1,51 @@
+- title "Edit illustration"
+
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+
+  .section
+    Illustration #{@illustration.id} · #{@illustration.tipe.capitalize}
+    -if @illustration.tipe == 'inline' || @illustration.tipe == 'cap'
+      · Position #{@illustration.position}
+    
+
+  .section
+    .item
+      Book
+      = link_to "#{@illustration.book.title}", edit_book_path(@illustration.book)
+      %sup #{@illustration.book.id}
+    - unless @illustration.book.author.nil?
+      .item
+        Written by
+        = link_to "#{@illustration.book.author.name} #{@illustration.book.author.last_name}", @illustration.book.author
+        %sup #{@illustration.book.author.id}
+    .item
+      Illustrated by 
+      = link_to "#{@illustration.book.user.name}", @illustration.book.user
+      %sup #{@illustration.book.user.id}
+  .section
+    Uploaded #{time_ago_in_words(@illustration.created_at)} ago
+    = link_to "x", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
+  .section
+    = render :partial => "soft_validations"
+
+    - if @illustration.deleted?
+      .item.half
+        .status.red Deleted    
+    - unless @illustration.draft.nil?
+      - if @illustration.draft?
+        .item.half
+          .status.draft.big Draft
+  = render 'change_status_form', :illustration => @illustration
+  
+  = link_to "Illustrations for review", illustrations_path + "/?status=review"
+    
+- if @illustration.tipe == "cover"
+
+  = image_tag @illustration.image.url(:i600w)  
+  
+- else  
+  = render :partial => "sampler_transparent"
+  %br
+  %br
+  = render :partial => "sampler_ipad" 

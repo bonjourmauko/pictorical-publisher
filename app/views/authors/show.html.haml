@@ -1,16 +1,48 @@
-#notice
-  = notice
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  = render :partial => "layouts/adminbar"
 
 #admin-canvas
 
   %h1= "#{@author.name} #{@author.last_name}"
 
   .admin
-    = link_to "edit", :action => "edit"
-    ·
-    = link_to "new", :action => "new"
-    ·
-    = link_to "all", :action => "index"
-    - if @author.texts.first.nil?
+    %p
+      = link_to "edit", :action => "edit"
       ·
-      = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
+      = link_to "new", :action => "new"
+      ·
+      = link_to "all", :action => "index"
+      
+      - if @author.texts.first.nil?
+        ·
+        = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
+      
+      - unless @author[:country].nil?
+        ·
+        = @author[:country]
+        
+      - unless @author[:defunction].nil? || @author[:defunction] == 0
+        ·
+        = @author[:defunction]
+        
+    - @author.texts.each do |text|
+      %p
+        = link_to text[:title], text
+        %br
+        - unless text[:published].nil? or text[:published] == 0
+          Published at
+          = text[:published]
+          %br
+        - unless text.translator.nil? or text[:translation_published].nil?
+          Translated at
+          = text[:translation_published]
+          by
+          = link_to "#{text.translator[:name]} #{text.translator[:last_name]}", text.translator
+          %br
+        Public Domain in
+        - text.copyright_status.each do |key, value|
+          - if value
+            ·
+            = key.to_s.upcase
+          

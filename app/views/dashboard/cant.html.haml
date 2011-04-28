@@ -1,0 +1,11 @@
+- title "Sorry you can't access this page"
+
+%p
+  - if notice
+    notice
+  - elsif alert
+    alert
+  - else
+    Sorry you can't acces that page
+%p
+  = link_to "Go back.", :back

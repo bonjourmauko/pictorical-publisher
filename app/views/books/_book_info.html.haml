@@ -1,0 +1,9 @@
+%h1= @book.title
+
+.section
+  .item.half
+    Written by
+    %b #{@book.author.name} #{@book.author.last_name}
+  .item.half
+    Illustrated by
+    %b= link_to @book.user.name, @book.user

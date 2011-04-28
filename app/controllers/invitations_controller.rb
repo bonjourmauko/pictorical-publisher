@@ -38,24 +38,40 @@ class InvitationsController < ApplicationController
   end
 
   def new
-    @invitation = Invitation.new
+    @invitation = Invitation.new(:email => params[:email], :first_name => params[:name])
   end
 
   def create
     @invitation = Invitation.new(params[:invitation])
     @invitation.secret = Digest::SHA1.hexdigest("#{Time.now.to_s}")[0,10]
-      if @invitation.save
-        mail = Notifications.create_invitation(@invitation, request.host)
-        mail.deliver
-        redirect_to @invitation, :notice => 'Invitation was successfully created.'
+      unless session[:reject] == @invitation.email
+        if @invitation.save
+          mail = Notifications.create_invitation(@invitation, request.host)
+          mail.deliver
+          redirect_to @invitation, :notice => 'Invitation was successfully created.'
+        else
+          render :action => "new"
+        end
       else
-        render :action => "new"
+        mail = Notifications.reject_artist(@invitation.email, @invitation.first_name, request.host)
+        mail.deliver
+        redirect_to :reject_artist, :notice => "Artist #{@invitation.email} was rejected"
       end
+        
 
   end
 
   def edit
   end
+  
+  
+  def reject
+    session[:reject] = params[:email]
+    @reject = true
+    @invitation = Invitation.new(:email => params[:email], :first_name => params[:name])
+  end
+  
+  
 
   def update
     if @invitation.update_attributes(params[:invitation])
