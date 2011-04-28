@@ -6,14 +6,18 @@ illustrations = []
 %br
 
 - @book.illustrations.active.each do |i|
-  illustrations << {:tipe => '#{i.tipe}', :position => '#{i.position}', :name => '#{i.image_original_id}', :url => '/pictorical_publisher/#{i.image_original_id}/original.#{i.image_file_extension}', :ext => "#{i.image_file_extension}" }
+  illustrations << {:tipe => '#{i.tipe}', :position => '#{i.position}', :name => '#{i.image_original_id}', :ext => "#{i.image_file_extension}" }
   %br
 
+def download(illustrations)
+%br
 illustrations.each do |illustration|
 %br
 Net::HTTP.start("s3.amazonaws.com") do |http|
 %br
-resp = http.get(illustration.url)
+url = '/pictorical_publisher/' + illustration[:name] + '/original.' + illustration[:ext]
+%br
+resp = http.get(url)
 %br
 filename = illustration[:tipe] + "_" + illustration[:position] + "_" + illustration[:name] + "." + illustration[:ext]
 %br
@@ -21,8 +25,15 @@ open(filename, "wb") do |file|
 %br
 file.write(resp.body)
 %br
+illustrations.delete(illustration)
+%br
+puts filename + " downloaded, " + illustrations.count.to_s + " to go"
+%br
 end # |file|
 %br
 end # |http|
 %br
 end # |illustration|
+%br
+end # def
+%br
