@@ -226,8 +226,8 @@ class BooksController < ApplicationController
     render "epub/metadata", :layout => false
   end
   
-  def pub_toc
-    render "epub/toc", :layout => false
+  def epub_toc
+    render "/books/epub/toc", :layout => false
   end
   
 
