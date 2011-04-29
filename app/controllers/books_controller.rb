@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
-  before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text, :expire]
+  before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text, :expire, :update]
   
 
   def index
@@ -80,7 +80,14 @@ class BooksController < ApplicationController
   
   def show  
   end
-    
+  
+  def update
+    if @book.update_attributes(params[:book])
+      redirect_to edit_book_path, :notice => 'Book was successfully updated.'
+    else
+      redirect_to edit_book_path, :alert => "Book was not updated."
+    end
+  end
 
   
   
