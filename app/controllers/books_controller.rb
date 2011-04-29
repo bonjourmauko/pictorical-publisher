@@ -199,8 +199,37 @@ class BooksController < ApplicationController
       redirect_to edit_book_path @book, :alert => "text doesn't exist"
     end
   end
+  
+  # epub
 
-
+  def epub_content_00copyright
+    render "epub/content/00copyright", :layout => false
+  end
+  
+  def epub_content_01title
+    render "epub/content/01title", :layout => false
+  end
+  
+  def epub_content_02artist
+    render "epub/content/02artist", :layout => false
+  end
+  
+  def epub_content_03story
+    render "epub/content/03story", :layout => false
+  end
+  
+  def epub_content_images_download
+    render "epub/content/images/download", :layout => false
+  end
+  
+  def epub_metadata
+    render "epub/metadata", :layout => false
+  end
+  
+  def pub_toc
+    render "epub/toc", :layout => false
+  end
+  
 
   private
 
