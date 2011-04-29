@@ -29,7 +29,12 @@ class User < ActiveRecord::Base
                     :portfolio_url,
                     :twitter,
                     :accepted_license_agreement,
-                    :tutorial_mode
+                    :tutorial_mode,
+                    :face_file_name,
+                    :face_content_type,
+                    :face_file_size,
+                    :face_file_extension,
+                    :face_original_id
 
   validates         :email,
                     :presence => true,
@@ -56,6 +61,15 @@ class User < ActiveRecord::Base
   before_create :redeem_invitation
 
   after_create :send_welcome_email
+  
+  has_attached_file :face,
+                    :storage => :s3,
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :bucket => 'pictorical_publisher',
+                    :path => ":original_id/:style.:file_extension"
+  
+  
+  
   
   def name
 

@@ -13,6 +13,10 @@ class Ability
         illustration.try(:user) == current_user
       end
       
+      can [:facepic, :add_facepic], User do |user|
+        user.try(:id) == current_user.id
+      end
+      
       can [:new], Book
       can [:show, :edit, :change, :review, :add_text, :remove_text], Book do |book|
         book.try(:user) == current_user
