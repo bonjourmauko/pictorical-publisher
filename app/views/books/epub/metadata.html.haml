@@ -31,9 +31,16 @@
 %br
 = "Text: Public Domain;"
 %br
-= "Illustrations copyright © Victor Vicente Mendoza Monzoy 2011;"
+
+- if !@book.user[:artistic_name].empty?
+  = "Illustrations copyright © #{@book.user[:artistic_name]} #{Time.now.year};"
+- elsif !@book.user[:last_name].empty?
+  = "Illustrations copyright © #{@book.user.full_name} #{Time.now.year};"
+- else
+= "Illustrations copyright © #{@book.user[:last_name]} #{Time.now.year};"
+
 %br
-= "Design copyright © Pictorical Ltd 2011"
+= "Design copyright © Pictorical Ltd #{Time.now.year}"
 %br
 = "</dc:rights>"
 %br
