@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       )
         
       if @user.save
-        redirect_to facepic_path, :notice => "Success! Your image has been uploaded"
+        redirect_to edit_user_registration_path, :notice => "Success! Your image has been uploaded"
         #render :text => facepic[:original_id]
       else
         redirect_to facepic_path, :alert => 'Error uploading. Please try again in one hour. If you keep having a problem, write us at help@pictorical.com'
