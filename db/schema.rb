@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428231933) do
+ActiveRecord::Schema.define(:version => 20110429012254) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20110428231933) do
     t.integer  "user_id"
     t.string   "status"
     t.integer  "principal_text_id"
+    t.string   "isbn"
   end
 
   add_index "books", ["principal_text_id"], :name => "index_books_on_principal_text_id"

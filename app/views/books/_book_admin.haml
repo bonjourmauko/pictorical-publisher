@@ -7,6 +7,12 @@
     = link_to "delete", {:action => "destroy"}
 
   .section.admin
+    = form_for @book do |f|
+      %b ISBN
+      = f.text_field :isbn, :size => 20
+      = f.submit :value => "ok"
+
+  .section.admin
     #multitext
       Principal text:
       ="#{@book.principal.title} [#{@book.principal.id}]"
