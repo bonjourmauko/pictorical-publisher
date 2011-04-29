@@ -2,7 +2,18 @@
 
 - content_for :navbar do
   = render :partial => "shared/alerts_notices"
-    
+  - if @user.face.file?
+    .section
+      .item.half
+        = image_tag @user.face.url(:i280w)
+      .item.half
+        = link_to "Change your picture", facepic_path(@user)
+  - else
+    .section
+      .item.half
+        .nopicture280
+      .item.half
+        = link_to "Add your picture", facepic_path(@user)
   
 
 #registration-canvas

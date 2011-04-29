@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428214647) do
+ActiveRecord::Schema.define(:version => 20110428231933) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -154,6 +154,9 @@ ActiveRecord::Schema.define(:version => 20110428214647) do
     t.string   "facepic_content_type"
     t.integer  "facepic_file_size"
     t.datetime "facepic_updated_at"
+    t.string   "facepic_file_extension"
+    t.integer  "face_width"
+    t.integer  "face_height"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true

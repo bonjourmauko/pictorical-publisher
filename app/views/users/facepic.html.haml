@@ -1,0 +1,28 @@
+- content_for :navbar do
+  = render :partial => "shared/alerts_notices"
+  - if @user.face.file?
+  
+    .section
+      = image_tag @user.face.url(:i280w)
+
+  
+  .item.half
+    - if @user.face.file?
+      Change your picture
+    - else
+      Upload your picture
+  .section.yellowbg
+    = render :partial => "upload_facepic_form"
+
+%h1 Your Face Picture
+
+.section
+  .item.half
+    This picture will appear in the website and in the books.
+  .item.half
+    It has to be a
+    %b 600px wide and 800px tall JPG image.
+  .item.half
+    We will use it in
+    %b black and white.
+    If you upload a color picture, we will convert it automatically to black and white. 
