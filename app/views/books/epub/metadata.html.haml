@@ -2,17 +2,30 @@
 %br
 = "<metadata xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:opf='http://www.idpf.org/2007/opf'>"
 %br
-= "<dc:title>The Fall of the House of Usher</dc:title>"
+= "<dc:title>#{@book.title}</dc:title>"
 %br
-= "<dc:creator opf:file-as='Poe, Edgar Allan' opf:role='aut'>Edgar Allan Poe</dc:creator>"
+
+- if !@book.author[:last_name].empty?
+  = "<dc:creator opf:file-as='#{@book.author.name_with_initial}' opf:role='aut'>#{@book.text.author.full_name}</dc:creator>"
+- else
+  = "<dc:creator opf:file-as='#{@book.text.author[:last_name]}' opf:role='aut'>#{@book.text.author[:last_name]}</dc:creator>"
+
 %br
-= "<dc:creator opf:file-as='Mendoza Monzoy, Victor Vicente' opf:role='ill'>Victor Vicente Mendoza Monzoy</dc:creator>"
+
+- if !@book.user[:artistic_name].empty?
+  = "<dc:creator opf:file-as='#{@book.user[:artistic_name]}' opf:role='ill'>#{@book.user[:artistic_name]}</dc:creator>"
+- elsif !@book.user[:last_name].empty?
+  = "<dc:creator opf:file-as='#{@book.user.name_with_initial}' opf:role='ill'>#{@book.user.full_name}</dc:creator>"
+- else
+  = "<dc:creator opf:file-as='#{@book.user[:last_name]}' opf:role='ill'>#{@book.user[:last_name]}</dc:creator>"
+  
 %br
+
 = "<dc:publisher>Pictorical</dc:publisher>"
 %br
 = "<dc:language>en-US</dc:language>"
 %br
-= "<dc:identifier opf:scheme='Pictorical' id='bookid'>978-1-907911-08-8</dc:identifier>"
+= "<dc:identifier opf:scheme='Pictorical' id='bookid'>#{@book[:isbn]}</dc:identifier>"
 %br
 = "<dc:rights>"
 %br

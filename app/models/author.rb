@@ -19,5 +19,9 @@ class Author < ActiveRecord::Base
   def name_with_initial
     "#{last_name}, #{name}"
   end
+  
+  def full_name
+    "#{name} #{last_name}"
+  end
 
 end
