@@ -2,7 +2,7 @@
 %br
 = "<head>"
 %br
-= "<meta name='dtb:uid' content='978-1-907911-08-8'/><!-- UNIQUE ID-->"
+= "<meta name='dtb:uid' content='#{@book[:isbn]}'/><!-- UNIQUE ID-->"
 %br
 = "<meta name='dtb:depth' content='1'/>"
 %br
@@ -14,7 +14,7 @@
 %br
 = "<docTitle>"
 %br
-= "<text>The Fall of the House of Usher</text>"
+= "<text>#{@book.title}</text>"
 %br
 = "</docTitle>"
 %br
