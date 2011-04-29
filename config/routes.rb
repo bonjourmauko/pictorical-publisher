@@ -15,6 +15,10 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/:id/demature", :to => "users#demature"
   match "users/:id/make_admin", :to => "users#make_admin"
   match "users/:id/unmake_admin", :to => "users#unmake_admin"
+  match "users/facepic", :to => "users#facepic", :as => :facepic  
+  match "users/:id/facepic", :to => "users#facepic", :as => :facepic
+  match "users/:id/add_facepic", :to => "users#add_facepic", :as => :add_facepic
+  
 
   resources :users
 

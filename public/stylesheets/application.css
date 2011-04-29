@@ -419,3 +419,17 @@ sup {
 .textinfo {
   color: #999999;
 }
+
+/* line 291, ../../app/stylesheets/application.sass */
+.nopicture280 {
+  width: 280px;
+  height: 313px;
+  background: #bfb09d;
+}
+
+/* line 295, ../../app/stylesheets/application.sass */
+.label2 {
+  color: #777777;
+  margin: 0.5em 0;
+  font-size: 0.9em;
+}
