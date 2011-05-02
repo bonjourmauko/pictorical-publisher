@@ -208,7 +208,10 @@ class BooksController < ApplicationController
   end
   
   # epub
-
+  
+  def epub
+  end
+  
   def epub_content_00copyright
     render "/books/epub/content/00copyright", :layout => false
   end

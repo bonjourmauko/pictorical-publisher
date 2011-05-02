@@ -4,23 +4,15 @@
 %br
 = "<dc:title>#{@book.title}</dc:title>"
 %br
-
-- if !@book.author[:last_name].empty?
-  = "<dc:creator opf:file-as='#{@book.author.name_with_initial}' opf:role='aut'>#{@book.text.author.full_name}</dc:creator>"
-- else
-  = "<dc:creator opf:file-as='#{@book.text.author[:last_name]}' opf:role='aut'>#{@book.text.author[:last_name]}</dc:creator>"
-
+= "<dc:creator opf:file-as='#{@book.text.author.name_with_initial}' opf:role='aut'>#{@book.text.author.full_name}</dc:creator>"
 %br
 
 - if !@book.user[:artistic_name].empty?
   = "<dc:creator opf:file-as='#{@book.user[:artistic_name]}' opf:role='ill'>#{@book.user[:artistic_name]}</dc:creator>"
-- elsif !@book.user[:last_name].empty?
-  = "<dc:creator opf:file-as='#{@book.user.name_with_initial}' opf:role='ill'>#{@book.user.full_name}</dc:creator>"
 - else
-  = "<dc:creator opf:file-as='#{@book.user[:last_name]}' opf:role='ill'>#{@book.user[:last_name]}</dc:creator>"
+  = "<dc:creator opf:file-as='#{@book.user.name_with_initial}' opf:role='ill'>#{@book.user.real_name}</dc:creator>"
   
 %br
-
 = "<dc:publisher>Pictorical</dc:publisher>"
 %br
 = "<dc:language>en-US</dc:language>"
@@ -31,14 +23,7 @@
 %br
 = "Text: Public Domain;"
 %br
-
-- if !@book.user[:artistic_name].empty?
-  = "Illustrations copyright © #{@book.user[:artistic_name]} #{Time.now.year};"
-- elsif !@book.user[:last_name].empty?
-  = "Illustrations copyright © #{@book.user.full_name} #{Time.now.year};"
-- else
-= "Illustrations copyright © #{@book.user[:last_name]} #{Time.now.year};"
-
+= "Illustrations copyright © #{@book.user.real_name} #{Time.now.year};"
 %br
 = "Design copyright © Pictorical Ltd #{Time.now.year}"
 %br
@@ -70,6 +55,10 @@
 %br
 = "<!-- etc -->"
 %br
+- @book.illustrations.active.each do |i|
+  - if i[:tipe] == "inline" 
+    = "<item id='illustration#{i[:position]}' href='content/images/#{i[:position]}_#{i[image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
+    %br
 %br
 = "<item id='artist1' href='content/images/artist.png' media-type='image/png'/>"
 %br

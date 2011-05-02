@@ -49,13 +49,14 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/remove_text", :to => "books#remove_text"
   match "books/:id/expire", :to => "books#expire", :as => :expire_book
 
+  match "books/:id/epub",                         :to => "books#epub",                          :as => :epub
   match "books/:id/epub/content/00copyright",     :to => "books#epub_content_00copyright",      :as => :epub_content_00copyright
   match "books/:id/epub/content/01title",         :to => "books#epub_content_01title",          :as => :epub_content_01title
   match "books/:id/epub/content/02artist",        :to => "books#epub_content_02artist",         :as => :epub_content_02artist  
   match "books/:id/epub/content/03story",         :to => "books#epub_content_03story",          :as => :epub_content_03story
   match "books/:id/epub/content/images/download", :to => "books#epub_content_images_download",  :as => :epub_content_images_download
   match "books/:id/epub/metadata",                :to => "books#epub_metadata",                 :as => :epub_metadata
-  match "books/:id/epub/toc",                     :to => "books#epub_toc",                       :as => :epub_toc
+  match "books/:id/epub/toc",                     :to => "books#epub_toc",                      :as => :epub_toc
   
 
 

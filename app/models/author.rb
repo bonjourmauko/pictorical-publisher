@@ -17,11 +17,19 @@ class Author < ActiveRecord::Base
   validates_uniqueness_of :last_name  
   
   def name_with_initial
-    "#{last_name}, #{name}"
+    if !name.nil?
+      "#{last_name}, #{name}"
+    else
+      "#{last_name}"
+    end
   end
   
   def full_name
-    "#{name} #{last_name}"
+    if !name.nil?
+      "#{name} #{last_name}"
+    else
+      "#{last_name}"
+    end
   end
 
 end

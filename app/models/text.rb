@@ -50,6 +50,14 @@ class Text < ActiveRecord::Base
     Text.copyright_status_of self
   end
   
+  def first_published
+    if !translation_published.nil?
+      translation_published
+    else
+      published
+    end
+  end
+  
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
   end

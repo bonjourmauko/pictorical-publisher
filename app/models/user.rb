@@ -82,11 +82,29 @@ class User < ActiveRecord::Base
   end
   
   def name_with_initial
-    "#{last_name}, #{first_name}"
+    if !last_name.nil?
+      "#{last_name}, #{first_name}"
+    else
+      "#{last_name}"
+    end
   end
   
   def full_name
-    "#{first_name} #{last_name}"
+    if !artistic_name.nil?
+      "#{artistic_name}"
+    elsif !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
+  end
+  
+  def real_name
+    if !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
   end
   
 

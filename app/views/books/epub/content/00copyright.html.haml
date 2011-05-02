@@ -1,0 +1,45 @@
+= "<?xml version='1.0' encoding='UTF-8'?>"
+%br
+= "<html xmlns='http://www.w3.org/1999/xhtml'>"
+%br
+= "<head>"
+%br
+= "<title>Copyright</title>"
+%br
+= "<link href='styles/copyright.css' rel='stylesheet' type='text/css' />"
+%br
+= "</head>"
+%br
+= "<body>"
+%br
+= "<h1>Pictorical</h1>"
+%br
+= "<h2>Published by Pictorical Ltd, London</h2>"
+%br
+= "<h3>WWW.PICTORICAL.COM</h3>"
+%br
+= "<h2>Story first published #{@book.texts.first.first_published}<br />"
+%br
+= "Published in Pictorical #{Time.now.year}</h2>"
+%br
+= "<h2>Book and cover design copyright &#169; Pictorical Ltd, #{Time.now.year}<br />"
+%br
+
+
+= "Illustrations copyright &#169; #{@book.artist.real_name}, 2011</h2>"
+
+
+%br
+= "<h2>Pictorical is a trademark of Pictorical Ltd.</h2>"
+%br
+= "<h2>Pictorical Ltd is registered in England.<br />Company number 07290547.</h2>"
+%br
+= "<h2>All rights reserved. No part of this publication may be reproduced, distributed, or transmited in any form or by any means, or stored in a database or retrieval system, without the prior written permission of the publisher.</h2>"
+%br
+= "<h2>The moral right of the editor has been asserted.</h2>"
+%br
+= "<h2>ISBN-13: #{@book[:isbn]}</h2>"
+%br
+= "</body>"
+%br
+= "</html>"
