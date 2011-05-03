@@ -15,7 +15,15 @@ illustrations.each do |illustration|
 %br
 Net::HTTP.start("s3.amazonaws.com") do |http|
 %br
+if illustration[:tipe] == "cover"
+%br
 url = '/pictorical_publisher/' + illustration[:name] + '/original.' + illustration[:ext]
+%br
+else
+%br
+url = '/pictorical_publisher/' + illustration[:name] + '/i600w.' + illustration[:ext]
+%br
+end
 %br
 resp = http.get(url)
 %br

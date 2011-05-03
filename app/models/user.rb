@@ -71,8 +71,8 @@ class User < ActiveRecord::Base
   
   
   
+  # arreglar
   def name
-
       unless self.artistic_name.length > 0
          "#{self.first_name} #{self.last_name}"
       else
@@ -81,9 +81,32 @@ class User < ActiveRecord::Base
       
   end
   
+  def name_with_initial
+    if !last_name.nil?
+      "#{last_name}, #{first_name}"
+    else
+      "#{last_name}"
+    end
+  end
   
-
-
+  def full_name
+    if !artistic_name.nil?
+      "#{artistic_name}"
+    elsif !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
+  end
+  
+  def real_name
+    if !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
+  end
+  
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first
