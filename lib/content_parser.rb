@@ -1,11 +1,49 @@
 module ContentParser
   def epubeize(book)
     content = Nokogiri::HTML book.content
+    position = 1
     
     content.css("p").each do |p|
+      if p['class'] == "first"
+        div = Nokogiri::XML::Node.new "div", content
+        div['class'] = "initial7"
+        p.add_previous_sibling div
+        
+        img = Nokogiri::XML::Node.new "img", content
+        img['src'] = 'images/cap.png'
+        img['alt'] = p.content.each_char.first
+        img.parent = div
+        
+        p.content = p.content[1..-1]
+      else
+        book.illustrations.active.each do |i|
+          if i[:position] == position and i[:tipe] == "inline"
+            _p = Nokogiri::XML::Node.new "p", content
+            p.add_previous_sibling _p
+          
+            img = Nokogiri::XML::Node.new "img", content
+            img['src'] = "images/#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
+            img['alt'] = 'illustration'
+            img.parent = _p
+          elsif i[:position] == position + 1 and i[:tipe] == "inline" and content.search("p").last == p
+            _p = Nokogiri::XML::Node.new "p", content
+            p.add_next_sibling _p
+          
+            img = Nokogiri::XML::Node.new "img", content
+            img['src'] = "images/#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
+            img['alt'] = 'illustration'
+            img.parent = _p
+          end
+        end
+        
+        position += 1
+      end
     end
     
-    content.to_html.html_safe
+    content = content.to_html
     
+    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '')
+    
+    content
   end
 end
