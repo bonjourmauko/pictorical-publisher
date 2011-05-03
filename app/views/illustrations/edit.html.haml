@@ -23,6 +23,8 @@
       Illustrated by 
       = link_to "#{@illustration.book.user.name}", @illustration.book.user
       %sup #{@illustration.book.user.id}
+    .item
+      = render "change_position_form"
   .section
     Uploaded #{time_ago_in_words(@illustration.created_at)} ago
     = link_to "x", @illustration, :confirm => "Are you sure?", :method => :delete,  :class => "red"
