@@ -35,8 +35,7 @@ module ContentParser
             img.parent = _p
           end
         end
-        
-        position += 1
+      position += 1
       end
     end
     
