@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  extend ContentParser
   
   has_many  :illustrations
   has_many  :collections
@@ -16,7 +17,11 @@ class Book < ActiveRecord::Base
   scope       :active,      where(:status => 'active')
   
   after_initialize :status?
-
+  
+  def epubeized
+    Book.epubeize self
+  end
+  
   def text
     self.texts.first
   end
