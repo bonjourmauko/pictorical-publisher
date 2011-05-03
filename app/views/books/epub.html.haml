@@ -7,12 +7,16 @@
 
 #admin-canvas
 
-  = "- content"
-  = link_to "-- 00copyright.html",  epub_content_00_copyright_path    @book[:id]
-  = link_to "-- 01title.html",      epub_content_01title_path         @book[:id]
-  = link_to "-- 02artist.html",     epub_content_02artist_path        @book[:id]
-  = link_to "-- 03story.html",      epub_content_03story_path         @book[:id]
-  = "-- images"
-  = link_to "--- download",         epub_content_images_download_path @book[:id]
-  = link_to "- metadata.opf",       epub_metadata_path                @book[:id]
-  = link_to "- toc.ncx",            epub_toc_path                     @book[:id]
+  %b= "content"
+  %br
+  = link_to "-  00copyright.html",  epub_content_00copyright_path(@book[:id])
+  %br
+  = link_to "-  03story.html",      epub_content_03story_path(@book[:id])
+  %br
+  %b= "-  images"
+  %br
+  = link_to "- -  download",         epub_content_images_download_path(@book[:id])
+  %br
+  = link_to "metadata.opf",       epub_metadata_path(@book[:id])
+  %br
+  = link_to "toc.ncx",            epub_toc_path(@book[:id])
