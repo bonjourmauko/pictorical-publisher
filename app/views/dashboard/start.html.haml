@@ -2,7 +2,7 @@
 
 %p
   Hello #{current_user.name}!
-  
+
   - unless @active_book.nil?
     %p
       You are illustrating
@@ -21,6 +21,6 @@
 
 
 %p.smaller.admin
-  Boring? This is your start page and is under construction. What would you like to see here? Write us at 
+  Boring? This is your start page and is under construction. What would you like to see here? Write us at
   = link_to "artists@pictorical.com", "mailto:artists@pictorical.com"
   with your ideas.

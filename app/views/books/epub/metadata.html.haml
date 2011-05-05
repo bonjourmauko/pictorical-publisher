@@ -11,7 +11,7 @@
   = "<dc:creator opf:file-as='#{@book.user[:artistic_name]}' opf:role='ill'>#{@book.user[:artistic_name]}</dc:creator>"
 - else
   = "<dc:creator opf:file-as='#{@book.user.name_with_initial}' opf:role='ill'>#{@book.user.real_name}</dc:creator>"
-  
+
 %br
 = "<dc:publisher>Pictorical</dc:publisher>"
 %br
@@ -56,7 +56,7 @@
 = "<!-- etc -->"
 %br
 - @book.illustrations.active.each do |i|
-  - if i[:tipe] == "inline" 
+  - if i[:tipe] == "inline"
     = "<item id='illustration#{i[:position]}' href='content/images/#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
     %br
 %br

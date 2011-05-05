@@ -62,16 +62,16 @@ class User < ActiveRecord::Base
   before_create :redeem_invitation
 
   after_create :send_welcome_email
-  
+
   has_attached_file :face,
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :bucket => 'pictorical_publisher',
                     :path => ":original_id/:style.:file_extension"
-  
-  
-  
-  
+
+
+
+
   # arreglar
   def name
       unless self.artistic_name.length > 0
@@ -79,9 +79,9 @@ class User < ActiveRecord::Base
       else
         self.artistic_name
       end
-      
+
   end
-  
+
   def name_with_initial
     if !last_name.nil?
       "#{last_name}, #{first_name}"
@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
       "#{last_name}"
     end
   end
-  
+
   def full_name
     if !artistic_name.nil?
       "#{artistic_name}"
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
       "#{last_name}"
     end
   end
-  
+
   def real_name
     if !last_name.nil?
       "#{first_name} #{last_name}"
@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
       "#{last_name}"
     end
   end
-  
+
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first

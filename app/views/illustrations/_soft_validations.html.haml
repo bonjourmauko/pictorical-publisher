@@ -9,7 +9,7 @@
   - if tipe == 'inline' || tipe == 'cap'
     - required_width = 2400
   - elsif tipe == 'cover'
-    - required_width = 4800   
+    - required_width = 4800
   - if @illustration.width == required_width
     %span.green ok
   - else
@@ -26,7 +26,7 @@
     - if @illustration.height == 2400
       %span.green ok
     - else
-      %span.red not    
+      %span.red not
   - elsif tipe == 'inline'
     - if @illustration.height == 3440 || @illustration.height < 1720
       %span.green ok
@@ -45,4 +45,4 @@
     - if @illustration.image.content_type == "image/jpeg"
       %span.green ok
     - else
-      %span.red not     
+      %span.red not

@@ -21,5 +21,5 @@ module TextsHelper
       end
     end
   end
-  
+
 end

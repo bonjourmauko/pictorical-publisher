@@ -14,7 +14,7 @@
   - else
     - @set = @illustrations.order("id DESC")
     %h1
-      All active illustrations 
+      All active illustrations
 
   - @set.each do |illustration|
     - unless illustration.book.nil?
@@ -22,11 +22,11 @@
         = illustration.id
         ·
         = link_to illustration.tipe + " #" + illustration.position.to_s, edit_illustration_path(illustration)
-        
+
         for
         = link_to illustration.book do
           = illustration.book.title
           = "(" + illustration.book.illustrations.active.count.to_s + ")"
         ·
         = time_ago_in_words(illustration.created_at) + " ago"
-        = "· status: "+illustration.status unless illustration.status.nil?
+        = "· status: "+illustration.status if illustration.status?
