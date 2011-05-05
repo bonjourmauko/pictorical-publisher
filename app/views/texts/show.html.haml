@@ -12,9 +12,9 @@
     = link_to "#{@text.author.name} #{@text.author.last_name}", @text.author
 
 
-  
-  
-  
+
+
+
 
   .section
     .item
@@ -44,7 +44,7 @@
       - if @text.words < 4000
         .redbox
           %h3 This is a short story (#{@text.words} words)
-          Want to illustrate it? Click 
+          Want to illustrate it? Click
           %b Illustrate this story.
           You will have to choose one or two more stories by the same author to reach 4000 words.
 
@@ -79,7 +79,7 @@
               status: #{book.status}
       - else
         .item
-          No books with this text     
+          No books with this text
 
 
 

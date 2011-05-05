@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |e|
     render "dashboard/cant", :notice => "Sorry you can't access that page.", :layout => "simple"
   end
-  
+
   private
-  
+
   def get_active_book
     unless current_user.nil?
       @active_book = current_user.books.where(:status => 'active').first
     end
   end
-  
-  
+
+
 end

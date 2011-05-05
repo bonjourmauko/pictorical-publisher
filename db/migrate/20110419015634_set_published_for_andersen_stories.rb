@@ -10,12 +10,12 @@ class SetPublishedForAndersenStories < ActiveRecord::Migration
         text[:published] = 0
         text.save
       end
-      
+
       Text.where(:author_id => 3).each do |text|
         text[:published] = 0
         text.save
-      end      
-      
+      end
+
     end
   end
 

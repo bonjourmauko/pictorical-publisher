@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   extend ContentParser
-  
+
   has_many  :illustrations
   has_many  :collections
   has_many  :texts, :through => :collections
@@ -15,13 +15,13 @@ class Book < ActiveRecord::Base
   scope       :deleted,     where(:status => 'destroyed')
   scope       :sorted,      order('created_at DESC')
   scope       :active,      where(:status => 'active')
-  
+
   after_initialize :status?
-  
+
   def epubeized
     Book.epubeize self
   end
-  
+
   def text
     self.texts.first
   end

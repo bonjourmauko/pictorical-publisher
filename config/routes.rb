@@ -18,7 +18,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/facepic", :to => "users#facepic", :as => :facepic  
   match "users/:id/facepic", :to => "users#facepic", :as => :facepic
   match "users/:id/add_facepic", :to => "users#add_facepic", :as => :add_facepic
-  
+
 
   resources :users
 
@@ -36,7 +36,7 @@ PublisherPictoricalCom::Application.routes.draw do
   resources :translators
 
   match "invitations/reject", :to => "invitations#reject", :as => :reject_artist
-  
+
 
   resources :invitations
 
@@ -57,14 +57,14 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/epub/content/images/download", :to => "books#epub_content_images_download",  :as => :epub_content_images_download
   match "books/:id/epub/metadata",                :to => "books#epub_metadata",                 :as => :epub_metadata
   match "books/:id/epub/toc",                     :to => "books#epub_toc",                      :as => :epub_toc
-  
+
 
 
   resources :books
-  
+
   match "illustrations/uploaded", :to => "illustrations#uploaded", :as => :illustration_uploaded
   match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
-  
+
   resources :illustrations
 
 
