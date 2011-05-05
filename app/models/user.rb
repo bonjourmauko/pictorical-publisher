@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
                     :face_content_type,
                     :face_file_size,
                     :face_file_extension,
-                    :face_original_id
+                    :face_original_id,
+                    :pictorical_link
 
   validates         :email,
                     :presence => true,
