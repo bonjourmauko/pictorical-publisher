@@ -51,6 +51,8 @@
 - @book.illustrations.active.each do |i|
   - if i[:tipe] == "cap"
     = "<item id='capital' href='content/images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
+    %br
+    %br
   - elsif i[:tipe] == "inline"
     = "<item id='illustration#{i[:position]}' href='content/images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
     %br
