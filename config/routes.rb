@@ -1,7 +1,5 @@
 PublisherPictoricalCom::Application.routes.draw do
 
-  #get "dashboard/welcome"
-
   match "/terms-and-conditions", :to => "pages#terms_and_conditions", :as => :terms_and_conditions, :via => :get
   match "/license-agreement", :to => "pages#license_agreement", :as => :license_agreement, :via => :get
   match "/artwork-guidelines", :to => "pages#artwork_guidelines", :as => :artwork_guidelines, :via => :get
@@ -17,6 +15,10 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/:id/demature", :to => "users#demature"
   match "users/:id/make_admin", :to => "users#make_admin"
   match "users/:id/unmake_admin", :to => "users#unmake_admin"
+  match "users/facepic", :to => "users#facepic", :as => :facepic  
+  match "users/:id/facepic", :to => "users#facepic", :as => :facepic
+  match "users/:id/add_facepic", :to => "users#add_facepic", :as => :add_facepic
+  
 
   resources :users
 
@@ -31,9 +33,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "trashes", :to => "texts#trashed_index", :as => :trashes
 
   resources :authors
-
-  match "/new_fancy", :to => "authors#new_fancy"
-  match "/create_fancy", :to => "author#create_fancy"
+  resources :translators
 
   match "invitations/reject", :to => "invitations#reject", :as => :reject_artist
   
@@ -47,6 +47,18 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/destroy/:id", :to => "books#destroy"
   match "books/:id/add_text", :to => "books#add_text"
   match "books/:id/remove_text", :to => "books#remove_text"
+  match "books/:id/expire", :to => "books#expire", :as => :expire_book
+
+  match "books/:id/epub",                         :to => "books#epub",                          :as => :epub
+  match "books/:id/epub/content/00copyright",     :to => "books#epub_content_00copyright",      :as => :epub_content_00copyright
+  #match "books/:id/epub/content/01title",         :to => "books#epub_content_01title",          :as => :epub_content_01title
+  #match "books/:id/epub/content/02artist",        :to => "books#epub_content_02artist",         :as => :epub_content_02artist  
+  match "books/:id/epub/content/03story",         :to => "books#epub_content_03story",          :as => :epub_content_03story
+  match "books/:id/epub/content/images/download", :to => "books#epub_content_images_download",  :as => :epub_content_images_download
+  match "books/:id/epub/metadata",                :to => "books#epub_metadata",                 :as => :epub_metadata
+  match "books/:id/epub/toc",                     :to => "books#epub_toc",                      :as => :epub_toc
+  
+
 
   resources :books
   
@@ -54,6 +66,9 @@ PublisherPictoricalCom::Application.routes.draw do
   match "illustrations/new/:type/:position", :to => "illustrations#new", :as => :new_illustration
   
   resources :illustrations
+
+
+
 
   match "cant", :to => "dashboard#cant", :as => :cant
 

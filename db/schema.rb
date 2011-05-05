@@ -10,13 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411013712) do
+ActiveRecord::Schema.define(:version => 20110429012254) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.integer  "defunction"
   end
 
   create_table "books", :force => true do |t|
@@ -26,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20110411013712) do
     t.integer  "user_id"
     t.string   "status"
     t.integer  "principal_text_id"
+    t.string   "isbn"
   end
 
   add_index "books", ["principal_text_id"], :name => "index_books_on_principal_text_id"
@@ -59,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110411013712) do
     t.string   "tipe"
     t.string   "status"
     t.text     "problems"
+    t.boolean  "draft"
   end
 
   add_index "illustrations", ["book_id"], :name => "index_illustrations_on_book_id"
@@ -86,9 +90,26 @@ ActiveRecord::Schema.define(:version => 20110411013712) do
     t.integer  "words"
     t.boolean  "deleted"
     t.boolean  "availability"
+    t.integer  "published"
+    t.integer  "renewal"
+    t.integer  "translator_id"
+    t.integer  "translation_published"
+    t.integer  "translation_renewal"
+    t.boolean  "public_domain_anyway"
+    t.text     "public_domain_anyway_comment"
   end
 
   add_index "texts", ["author_id"], :name => "index_texts_on_author_id"
+  add_index "texts", ["translator_id"], :name => "index_texts_on_translator_id"
+
+  create_table "translators", :force => true do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "country"
+    t.integer  "defunction"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                :default => "", :null => false
@@ -122,6 +143,13 @@ ActiveRecord::Schema.define(:version => 20110411013712) do
     t.string   "reset_password_token"
     t.datetime "last_illustration_mail_sent_at"
     t.datetime "last_book_no_illustration_reminder_at"
+    t.string   "facepic_file_name"
+    t.string   "facepic_content_type"
+    t.integer  "facepic_file_size"
+    t.datetime "facepic_updated_at"
+    t.string   "facepic_file_extension"
+    t.integer  "face_width"
+    t.integer  "face_height"
   end
 
   add_index "users", ["email"], :name => "index_artists_on_email", :unique => true

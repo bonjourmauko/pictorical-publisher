@@ -29,7 +29,12 @@ class User < ActiveRecord::Base
                     :portfolio_url,
                     :twitter,
                     :accepted_license_agreement,
-                    :tutorial_mode
+                    :tutorial_mode,
+                    :face_file_name,
+                    :face_content_type,
+                    :face_file_size,
+                    :face_file_extension,
+                    :face_original_id
 
   validates         :email,
                     :presence => true,
@@ -57,8 +62,17 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
   
+  has_attached_file :face,
+                    :storage => :s3,
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :bucket => 'pictorical_publisher',
+                    :path => ":original_id/:style.:file_extension"
+  
+  
+  
+  
+  # arreglar
   def name
-
       unless self.artistic_name.length > 0
          "#{self.first_name} #{self.last_name}"
       else
@@ -67,9 +81,32 @@ class User < ActiveRecord::Base
       
   end
   
+  def name_with_initial
+    if !last_name.nil?
+      "#{last_name}, #{first_name}"
+    else
+      "#{last_name}"
+    end
+  end
   
-
-
+  def full_name
+    if !artistic_name.nil?
+      "#{artistic_name}"
+    elsif !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
+  end
+  
+  def real_name
+    if !last_name.nil?
+      "#{first_name} #{last_name}"
+    else
+      "#{last_name}"
+    end
+  end
+  
 
   def active_book
     Book.where(:user_id => self.id, :status => "active").first

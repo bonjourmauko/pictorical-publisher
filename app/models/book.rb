@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  extend ContentParser
   
   has_many  :illustrations
   has_many  :collections
@@ -11,16 +12,16 @@ class Book < ActiveRecord::Base
 
   has_many    :illustrations
   scope       :not_deleted, where(:status => ['active','review','published'])
-  scope       :deleted, where(:status => 'destroyed')
-  scope       :sorted, order('created_at DESC')
-  scope       :active, where(:status => 'active')
+  scope       :deleted,     where(:status => 'destroyed')
+  scope       :sorted,      order('created_at DESC')
+  scope       :active,      where(:status => 'active')
   
-  #accepts_nested_attributes_for :illustration
-
   after_initialize :status?
-
-
-
+  
+  def epubeized
+    Book.epubeize self
+  end
+  
   def text
     self.texts.first
   end
@@ -30,7 +31,6 @@ class Book < ActiveRecord::Base
   end
 
   def title
-
     if self.texts.count > 2
       self.principal.title.strip + " & Other Stories"
     elsif self.texts.count == 2
@@ -38,21 +38,17 @@ class Book < ActiveRecord::Base
     else
       self.principal.title.strip
     end
-
   end
 
-
   def content
-
-      contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
-      self.texts.each do |text|
-        unless text == principal
-          contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
-        end
+    contents = "<h1>#{self.principal.title}</h1>\n\n#{self.principal.content}\n\n"
+    self.texts.each do |text|
+      unless text == principal
+        contents << "<h1>#{text.title}</h1>\n\n#{text.content}\n\n"
       end
+    end
 
     return contents
-
   end
 
   def illustrations_lower
@@ -78,7 +74,6 @@ class Book < ActiveRecord::Base
     end
     return sums
   end
-
 
   private
 

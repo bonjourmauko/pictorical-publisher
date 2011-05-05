@@ -6,4 +6,4 @@
     %b #{@book.author.name} #{@book.author.last_name}
   .item.half
     Illustrated by
-    %b #{@book.user.name}
+    %b= link_to @book.user.name, @book.user
