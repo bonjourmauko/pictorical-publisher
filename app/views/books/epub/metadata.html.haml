@@ -48,15 +48,10 @@
 = "<item id='cover' href='content/images/cover.jpg' media-type='image/jpeg'/>"
 %br
 %br
-= "<item id='capital' href='content/images/cap.png' media-type='image/png'/>"
-%br
-%br
-= "<!--<item id='illustration1' href='content/images/005.png' media-type='image/png'/>-->"
-%br
-= "<!-- etc -->"
-%br
 - @book.illustrations.active.each do |i|
-  - if i[:tipe] == "inline"
+  - if i[:tipe] == "cap"
+    = "<item id='capital' href='content/images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
+  - elsif i[:tipe] == "inline"
     = "<item id='illustration#{i[:position]}' href='content/images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}' media-type='image/#{i[:image_file_extension]}'/>"
     %br
 %br

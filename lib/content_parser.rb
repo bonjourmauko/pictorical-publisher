@@ -15,7 +15,7 @@ module ContentParser
 
         img = Nokogiri::XML::Node.new "img", content
         img['src'] = "images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
-        img['alt'] = p.content.each_char.first
+        img['alt'] = "illustration"
         img.parent = div
 
         p.content = p.content[1..-1]
@@ -55,7 +55,7 @@ module ContentParser
     wrapper = nodes.wrap("<div class='block'></div>")
 
     content = content.to_html
-    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!("<br>", "<br />")
+    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!("<br>", "<br />").gsub!('"illustration">', '"illustration" />')
     content
   end
 end
