@@ -7,12 +7,14 @@ module ContentParser
     
     content.css("p").each do |p|
       if p['class'] == "first"
+        i = book.illustrations.active.where(:tipe => "cap").first
+        
         div = Nokogiri::XML::Node.new "div", content
         div['class'] = "initial7"
         p.add_previous_sibling div
         
         img = Nokogiri::XML::Node.new "img", content
-        img['src'] = 'images/cap.png'
+        img['src'] = "images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
         img['alt'] = p.content.each_char.first
         img.parent = div
         
@@ -24,7 +26,7 @@ module ContentParser
             p.add_previous_sibling _p
           
             img = Nokogiri::XML::Node.new "img", content
-            img['src'] = "images/#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
+            img['src'] = "images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
             img['alt'] = 'illustration'
             img.parent = _p
           elsif i[:position] == position + 1 and i[:tipe] == "inline" and content.search("p").last == p
@@ -32,7 +34,7 @@ module ContentParser
             p.add_next_sibling _p
           
             img = Nokogiri::XML::Node.new "img", content
-            img['src'] = "images/#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
+            img['src'] = "images/#{i[:tipe]}_#{i[:position]}_#{i[:image_original_id]}.#{i[:image_file_extension]}"
             img['alt'] = 'illustration'
             img.parent = _p
           end
@@ -50,9 +52,7 @@ module ContentParser
     end
     
     content = content.to_html
-    
-    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '')
-    
+    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!("<br>", "<br />")
     content
   end
 end
