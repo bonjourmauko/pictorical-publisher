@@ -91,10 +91,10 @@ class Notifications < ActionMailer::Base
   end
 
   def illustration_feedback(illustration)
-    
+
     @illustration = illustration
     @user = illustration.user
-    
+
     @subject = "New feedback for your illustrations"
 
     mail(:to => @user[:email], :subject => @subject) do |format|
@@ -109,24 +109,24 @@ class Notifications < ActionMailer::Base
     @user = book.user
     @expiration = (book.created_at.advance :weeks => 2).strftime("%e %B")
     @subject = "We are waiting for your first illustration"
-    
+
     mail(:to => @user[:email], :subject => @subject) do |format|
       format.html
     end
-    
+
   end
-  
+
   def expire_book(book)
     @book = book
     @user = book.user
     @subject = "Your book expired"
-    
+
     mail(:to => @user[:email], :subject => @subject) do |format|
       format.html
     end
-    
+
   end
-  
+
 
 
 end

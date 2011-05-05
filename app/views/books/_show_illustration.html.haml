@@ -12,7 +12,7 @@
         = image_tag illustration.image.url(size), :class => illustration.tipe
     - else
       = image_tag illustration.image.url(size), :class => illustration.tipe
-        
+
   .item
     = render :partial => "illustration_status", :locals => {:illustration => illustration}
     - if editable

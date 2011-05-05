@@ -37,5 +37,5 @@ class TranslatorsController < ApplicationController
   def find_translator_by_id
     @translator = Translator.find(params[:id])
   end
-  
+
 end

@@ -29,13 +29,13 @@
       File format:
       %b 32 bit PNG with transparency
     .section
-      = image_tag "size-cap.png"   
+      = image_tag "size-cap.png"
   -if @type == "cover"
     .section
       File format:
       %b High quality JPEG
     .section
-      = image_tag "size-cover.png" 
+      = image_tag "size-cover.png"
 
 #guidelines
   = render :partial => "artwork_guidelines", :locals => {:toc => true}

@@ -11,7 +11,7 @@
   - if @books.count > 0
     - @books.each do |book|
       - last_reminder = book.user.last_book_no_illustration_reminder_at || 100.years.ago
-      
+
       .item.half
         #{book.id}
         = link_to "#{book.title}", edit_book_path(book) unless book.text.nil?

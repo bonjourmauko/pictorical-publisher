@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   load_and_authorize_resource
   before_filter :find_book_by_id, :only => [:show, :edit, :update, :publish, :revise, :destroy, :add_text, :remove_text, :expire, :update]
-  
+
 
   def index
 
     status = params[:status]
-    
+
     if status.nil? || status.empty?
       @books = Book.sorted.all
     else
@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     end
 
   end
- 
+
 
 
 
@@ -31,7 +31,7 @@ class BooksController < ApplicationController
 
         @book.principal = text
         @book.save
-        
+
         user = @book.user
         user.last_book_no_illustration_reminder_at = 0
         user.save
@@ -77,10 +77,10 @@ class BooksController < ApplicationController
       redirect_to @book, :alert => "The book is not editable. Please wait until we review it, or write help@pictorical.com if there is any problem"
     end
   end
-  
-  def show  
+
+  def show
   end
-  
+
   def update
     if @book.update_attributes(params[:book])
       redirect_to edit_book_path, :notice => 'Book was successfully updated.'
@@ -89,10 +89,10 @@ class BooksController < ApplicationController
     end
   end
 
-  
-  
+
+
   def change
-    
+
     principal_text = @active_book.principal
     principal_text.availability = true
     principal_text.save
@@ -120,7 +120,7 @@ class BooksController < ApplicationController
       redirect_to @book, :notice => "could not change status"
     end
   end
-  
+
 
   def revise
     @book.status = "active"
@@ -146,7 +146,7 @@ class BooksController < ApplicationController
     if @book.created_at.advance(:days => 15) < Time.now
       if @book.save
 
-        
+
         mail = Notifications.expire_book(@book)
         mail.deliver
         redirect_to book_no_illustration_path, :notice => "changed status to expired"
@@ -206,46 +206,46 @@ class BooksController < ApplicationController
       redirect_to edit_book_path @book, :alert => "text doesn't exist"
     end
   end
-  
+
   # epub
-  
+
   def epub
   end
-  
+
   def epub_content_00copyright
     render "/books/epub/content/00copyright", :layout => false
   end
-  
+
   def epub_content_01title
     render "/books/epub/content/01title", :layout => false
   end
-  
+
   def epub_content_02artist
     render "/books/epub/content/02artist", :layout => false
   end
-  
+
   def epub_content_03story
     render "/books/epub/content/03story", :layout => false
   end
-  
+
   def epub_content_images_download
     render "/books/epub/content/images/download", :layout => false
   end
-  
+
   def epub_metadata
     render "/books/epub/metadata", :layout => false
   end
-  
+
   def epub_toc
     render "/books/epub/toc", :layout => false
   end
-  
+
 
   private
 
   def find_book_by_id
     @book = Book.find(params[:id])
   end
-  
-  
+
+
 end

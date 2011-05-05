@@ -57,21 +57,21 @@ class InvitationsController < ApplicationController
         mail.deliver
         redirect_to :reject_artist, :notice => "Artist #{@invitation.email} was rejected"
       end
-        
+
 
   end
 
   def edit
   end
-  
-  
+
+
   def reject
     session[:reject] = params[:email]
     @reject = true
     @invitation = Invitation.new(:email => params[:email], :first_name => params[:name])
   end
-  
-  
+
+
 
   def update
     if @invitation.update_attributes(params[:invitation])

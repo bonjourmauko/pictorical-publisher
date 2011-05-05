@@ -2,11 +2,15 @@ class Text < ActiveRecord::Base
   extend Copyright
 
   belongs_to        :author
+  delegate          :name, :last_name, :defunction, :to => :author, :prefix => true
+
   belongs_to        :translator
+  delegate          :full_name, :to => :translator, :prefix => true
+
   has_many          :collections
   has_many          :books, :through => :collections
 
-  delegate          :name, :last_name, :to => :author, :prefix => true
+
   scope             :sorted, order('title ASC')
   scope             :not_deleted, where(:deleted => false)
   scope             :deleted, where(:deleted => true)
@@ -34,9 +38,9 @@ class Text < ActiveRecord::Base
                         :author_id,
                         :content,
                         :source
-  
+
   #validates_presence_of :published, :on => :create
-                        
+
   #validates_numericality_of :published,             :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
   #validates_numericality_of :renewal,               :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
   #validates_numericality_of :translation_published, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => Time.now.year
@@ -45,11 +49,19 @@ class Text < ActiveRecord::Base
 
   #por alguna razón los textos se duplican
   validates_uniqueness_of :title, :scope => :author_id
-  
+
+  def is_published?
+    published and published > 0
+  end
+
+  def is_translated?
+    translator and translation_published
+  end
+
   def copyright_status
     Text.copyright_status_of self
   end
-  
+
   def first_published
     if !translation_published.nil?
       translation_published
@@ -57,7 +69,7 @@ class Text < ActiveRecord::Base
       published
     end
   end
-  
+
   def pages
     [(words.to_f)/(320.to_f),1.0].max.round
   end
@@ -103,8 +115,5 @@ class Text < ActiveRecord::Base
   def count_words
     self.words = self.content.scan(/[\w-]+/).size
   end
-  
-  def published_available?
-    published and published > 0
-  end
+
 end

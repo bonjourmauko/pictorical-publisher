@@ -13,7 +13,7 @@
       = link_to "new", :action => "new"
       ·
       = link_to "all", :action => "index"
-      
+
       - if @translator.texts.first.nil?
         ·
         = link_to "delete", @translator, :confirm => 'Are you sure?', :method => :delete

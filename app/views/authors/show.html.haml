@@ -13,31 +13,28 @@
       = link_to "new", :action => "new"
       ·
       = link_to "all", :action => "index"
-      
+
       - if @author.texts.first.nil?
         ·
         = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
-      
+
       ·
       = "From #{@author[:country]}"
-        
-      - if @author.is_defuncted?
+
+      - if @author.is_defunct?
         ·
         = "Defuncted at #{@author[:defunction]}"
-        
+
     - @author.texts.each do |text|
       %p
         = link_to text[:title], text
         %br
         - if text.is_published?
-          Published at
-          = text[:published]
+          = "Published at #{text[:published]}"
           %br
-        - unless text.translator.nil? or text[:translation_published].nil?
-          Translated at
-          = text[:translation_published]
-          by
-          = link_to "#{text.translator[:name]} #{text.translator[:last_name]}", text.translator
+        - if text.is_translated?
+          = "Translated at #{text[:translation_published]} by"
+          = link_to "#{text.translator_full_name}", text.translator
           %br
         Public Domain in
         - if text[:public_domain_anyway]
@@ -49,4 +46,3 @@
             - if value
               ·
               = key.to_s.upcase
-          

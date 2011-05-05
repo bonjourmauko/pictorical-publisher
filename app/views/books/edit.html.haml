@@ -3,7 +3,7 @@
 - javascripts "text"
 
 - content_for :navbar do
-  
+
   = render :partial => "shared/alerts_notices"
   = render :partial => "book_info"
   = render :partial => "book_stats"
@@ -13,7 +13,7 @@
   = render :partial => "book_actions"
   = render :partial => "list_texts"
   = render :partial => "upload_or_show_cover"
-    
+
   = render :partial => "list_illustrations", :locals => {:type => "cap"}
   = render :partial => "list_illustrations", :locals => {:type => "inline"}
 

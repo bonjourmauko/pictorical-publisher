@@ -1,11 +1,11 @@
 - content_for :navbar do
   = render :partial => "shared/alerts_notices"
   - if @user.face.file?
-  
+
     .section
       = image_tag @user.face.url(:i280w)
 
-  
+
   .item.half
     - if @user.face.file?
       Change your picture
@@ -25,4 +25,4 @@
   .item.half
     We will use it in
     %b black and white.
-    If you upload a color picture, we will convert it automatically to black and white. 
+    If you upload a color picture, we will convert it automatically to black and white.
