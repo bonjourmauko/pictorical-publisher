@@ -1,6 +1,8 @@
 module ContentParser
   def epubeize(book)
     content = Nokogiri::HTML book.content
+    content.encoding = 'utf-8'
+    
     position = 1
     
     content.css("p").each do |p|
@@ -37,6 +39,14 @@ module ContentParser
         end
       position += 1
       end
+    end
+    
+    content.css("blockquote").each do |blockquote|
+      p = Nokogiri::XML::Node.new "p", content
+      blockquote.children.each do |child|
+        child.parent = p
+      end
+      blockquote.add_child p
     end
     
     content = content.to_html
