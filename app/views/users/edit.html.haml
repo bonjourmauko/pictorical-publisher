@@ -1,2 +1,7 @@
-%h1 Users#edit
-%p Find me in app/views/artists/edit.html.haml
+%h1 Hola
+
+- form_for @user do |f|
+  = f.label :pictorical_link
+  = f.text_field :pictorical_link
+  
+  = f.submit
