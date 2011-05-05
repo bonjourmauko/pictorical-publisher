@@ -146,7 +146,13 @@
         For example:
         %i Saint Martins College, London UK, BA Fine Arts, 2009-2010
       = f.text_field :art_school_name, :size => 60
-
+    
+    -#- if current_user.admin?
+    -#  .input
+    -#    .label
+    -#      Pictorical Link
+    -#      %span.required admin
+    -#    = f.text_field :pictorical_link
 
 
 

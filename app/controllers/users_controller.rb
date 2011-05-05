@@ -6,7 +6,12 @@ class UsersController < ApplicationController
     @users = User.sorted.all
   end
 
-  def show
+  def update
+    if @user.update_attributes(params[:user])
+      redirect_to @user, :notice => 'User was successfully updated.'
+    else
+      render :action => "edit"
+    end
   end
 
   def make_admin #releases the user from tutorial

@@ -14,6 +14,8 @@
     %p
       = "User is an artist"
       = link_to "make admin", :action => "make_admin"
+      ·
+      = link_to "edit", :action => "edit"
     %hr
     %p
       = "First name:"
@@ -65,7 +67,10 @@
     %p
       Portfolio:
       %b= link_to(@user.portfolio_url,@user.portfolio_url)  if @user.portfolio_url?
-
+    
+    %p
+      Pictorical Link:
+      %b= "#{@user[:pictorical_link]}" if @user.pictorical_link?
     %p
       = "Artschool:"
       %b= "#{@user.art_school_name}" if @user.art_school_name?

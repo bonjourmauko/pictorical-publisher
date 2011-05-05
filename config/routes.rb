@@ -15,7 +15,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "users/:id/demature", :to => "users#demature"
   match "users/:id/make_admin", :to => "users#make_admin"
   match "users/:id/unmake_admin", :to => "users#unmake_admin"
-  match "users/facepic", :to => "users#facepic", :as => :facepic
+  match "users/facepic", :to => "users#facepic", :as => :facepic  
   match "users/:id/facepic", :to => "users#facepic", :as => :facepic
   match "users/:id/add_facepic", :to => "users#add_facepic", :as => :add_facepic
 
@@ -52,7 +52,7 @@ PublisherPictoricalCom::Application.routes.draw do
   match "books/:id/epub",                         :to => "books#epub",                          :as => :epub
   match "books/:id/epub/content/00copyright",     :to => "books#epub_content_00copyright",      :as => :epub_content_00copyright
   #match "books/:id/epub/content/01title",         :to => "books#epub_content_01title",          :as => :epub_content_01title
-  #match "books/:id/epub/content/02artist",        :to => "books#epub_content_02artist",         :as => :epub_content_02artist
+  match "books/:id/epub/content/02artist",        :to => "books#epub_content_02artist",         :as => :epub_content_02artist  
   match "books/:id/epub/content/03story",         :to => "books#epub_content_03story",          :as => :epub_content_03story
   match "books/:id/epub/content/images/download", :to => "books#epub_content_images_download",  :as => :epub_content_images_download
   match "books/:id/epub/metadata",                :to => "books#epub_metadata",                 :as => :epub_metadata
