@@ -18,19 +18,18 @@
         ·
         = link_to "delete", @author, :confirm => 'Are you sure?', :method => :delete
       
-      - unless @author[:country].nil?
-        ·
-        = @author[:country]
+      ·
+      = "From #{@author[:country]}"
         
-      - unless @author[:defunction].nil? || @author[:defunction] == 0
+      - if @author.is_defuncted?
         ·
-        = @author[:defunction]
+        = "Defuncted at #{@author[:defunction]}"
         
     - @author.texts.each do |text|
       %p
         = link_to text[:title], text
         %br
-        - unless text[:published].nil? or text[:published] == 0
+        - if text.is_published?
           Published at
           = text[:published]
           %br

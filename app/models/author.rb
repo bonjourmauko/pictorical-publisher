@@ -31,5 +31,9 @@ class Author < ActiveRecord::Base
       "#{last_name}"
     end
   end
+  
+  def is_defuncted?
+    defunction and defunction > 0
+  end
 
 end

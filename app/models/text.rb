@@ -103,4 +103,8 @@ class Text < ActiveRecord::Base
   def count_words
     self.words = self.content.scan(/[\w-]+/).size
   end
+  
+  def published_available?
+    published and published > 0
+  end
 end
