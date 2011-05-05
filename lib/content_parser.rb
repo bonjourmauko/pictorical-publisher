@@ -50,6 +50,9 @@ module ContentParser
       end
       blockquote.add_child p
     end
+    
+    nodes = content.css "blockquote"
+    wrapper = nodes.wrap("<div class='block'></div>")
 
     content = content.to_html
     content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!("<br>", "<br />")
