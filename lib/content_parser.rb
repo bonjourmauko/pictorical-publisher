@@ -53,9 +53,10 @@ module ContentParser
     
     nodes = content.css "blockquote"
     wrapper = nodes.wrap("<div class='block'></div>")
-
+    
     content = content.to_html
-    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!("<br>", "<br />").gsub!('"illustration">', '"illustration" />')
+    content.gsub!(/<!.*?>/, '').gsub!(/<.*?html>/, '').gsub!(/<.*?body>/, '').gsub!('"illustration">', '"illustration" />')
+    content.gsub!("<br>", "<br />") if content =~ /<br.*?>/
     content
   end
 end
