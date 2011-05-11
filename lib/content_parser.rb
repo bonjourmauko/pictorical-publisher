@@ -54,17 +54,22 @@ module ContentParser
       img.parent = parent
   end
   
-  def add_sibling(node, where, sibling)
-    _node = eval "Nokogiri::XML::Node.new '#{sibling}', @content"
+  def add_sibling(node, where, tag, params)
+    _node = eval "Nokogiri::XML::Node.new '#{tag}', @content"
+    
+    params.each do |key, value|
+      eval "_node['#{key}'] = '#{value}'"
+    end
+    
     node.send "add_#{where}_sibling", _node
   end
   
   def add_child(node, child)
-    _child} = Nokogiri::XML::Node.new '#{child}', @content
-          #{node}.children.each do |child|
-            child.parent = #{child}
-          end
-          #{node}.add_child #{p}"
+    _node = eval "Nokogiri::XML::Node.new '#{child}', @content"
+    node.children.each do |child|
+      child.parent = _node
+    end
+    node.send "add_child", _node
   end
   
   def position_offset(node, i, position)
